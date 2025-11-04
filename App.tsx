@@ -1,8 +1,5 @@
-import React from 'react';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { StyleSheet } from 'react-native';
-import { AppNavigator } from './src/navigation/AppNavigator';
-import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+
 import {
   CormorantGaramond_300Light,
   CormorantGaramond_300Light_Italic,
@@ -20,7 +17,12 @@ import {
   Texturina_700Bold,
   Texturina_800ExtraBold,
 } from '@expo-google-fonts/texturina';
-import * as SplashScreen from 'expo-splash-screen';
+
+import { AppNavigator } from './src/navigation/AppNavigator';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { useFonts } from 'expo-font';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -62,5 +64,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:"pink"
   },
 });
