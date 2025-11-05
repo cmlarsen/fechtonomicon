@@ -24,10 +24,9 @@ export interface Flashcard {
   weapon: string;
   originalTerm: string;
   englishTerm: string;
-  description: string;
-  definition?: string;
-  technicalDescription?: string;
-  application?: string;
+  briefDescription: string;
+  fullDescription?: string;
+  briefApplication?: string;
   fullApplication?: string;
   related?: string[];
   source_primary?: SourcePrimary;

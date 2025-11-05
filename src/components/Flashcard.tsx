@@ -1,6 +1,4 @@
 import {
-  Dimensions,
-  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -19,38 +17,32 @@ import { CornerBrackets } from "./CornerBrackets";
 import type { Flashcard as FlashcardType } from "../types/flashcard";
 import React from "react";
 import { SectionDivider } from "./SectionDivider";
-
-const { height: SCREEN_HEIGHT } = Dimensions.get("window");
+import { LinkedText } from "./LinkedText";
+import { useFlashcardStore } from "../store/flashcardStore";
 
 interface FlashcardProps {
   card: FlashcardType;
-  onRelatedCardPress?: (cardId: string) => void;
+  onOpenDetails?: () => void;
+  onTermPress?: (cardId: string) => void;
 }
 
 export const Flashcard: React.FC<FlashcardProps> = ({
   card,
-  onRelatedCardPress,
+  onOpenDetails,
+  onTermPress,
 }) => {
-  const handleCitationPress = (citation: any) => {
-    // Future: handle citation navigation
-    console.log("Citation pressed:", citation);
-  };
+  const { allCards } = useFlashcardStore();
 
-  // Extract simple term from related card IDs for display
-  const getTermFromId = (id: string) => {
-    const parts = id.split(".");
-    return parts[parts.length - 1].replace(/_/g, " ");
+  const handleTermPress = (cardId: string) => {
+    if (onTermPress) {
+      onTermPress(cardId);
+    }
   };
 
   return (
     <View style={styles.container} testID="flashcard-container">
       <CornerBrackets />
-      <ScrollView
-        style={styles.scrollView}
-        contentContainerStyle={styles.scrollContent}
-        showsVerticalScrollIndicator={true}
-        bounces={true}
-      >
+      <View style={styles.content}>
         <View style={styles.header}>
           <View style={styles.titleContainer}>
             <Text style={styles.originalTerm}>{card.originalTerm}</Text>
@@ -58,53 +50,30 @@ export const Flashcard: React.FC<FlashcardProps> = ({
           </View>
         </View>
 
-        {(card.definition || card.description) && (
+        {card.briefDescription && (
           <>
             <SectionDivider label="DESCRIPTION" ornament="❦" />
-            <Text style={styles.description}>
-              {card.definition || card.description}
-            </Text>
+            <LinkedText
+              text={card.briefDescription}
+              allCards={allCards}
+              onTermPress={handleTermPress}
+              style={styles.description}
+            />
           </>
         )}
-        {card.technicalDescription && (
-          <>
-            <SectionDivider label="TECHNICAL DETAILS" ornament="⚙" />
-            <Text style={styles.description}>{card.technicalDescription}</Text>
-          </>
-        )}
-        {card.application && (
+
+        {card.briefApplication && (
           <>
             <SectionDivider label="APPLICATION" ornament="⚔" />
-            <Text style={styles.description}>{card.application}</Text>
+            <LinkedText
+              text={card.briefApplication}
+              allCards={allCards}
+              onTermPress={handleTermPress}
+              style={styles.description}
+            />
           </>
         )}
-        {card.fullApplication && (
-          <>
-            <SectionDivider label="DETAILED APPLICATION" ornament="📖" />
-            <Text style={styles.description}>{card.fullApplication}</Text>
-          </>
-        )}
-        {card.related && card.related.length > 0 && (
-          <>
-            <SectionDivider label="RELATED CONCEPTS" ornament="⚜" />
-            <View style={styles.chipContainer}>
-              {card.related.map((relatedId) => (
-                <TouchableOpacity
-                  key={relatedId}
-                  style={styles.chip}
-                  onPress={() => onRelatedCardPress?.(relatedId)}
-                  activeOpacity={0.85}
-                >
-                  <Text style={styles.chipText}>
-                    {getTermFromId(relatedId)}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-          </>
-        )}
-        {/* Inline pill badges with separator */}
-        <SectionDivider label="TAGS" ornament="⚜" />
+
         <View style={styles.badgeContainer}>
           <View style={styles.categoryBadge}>
             <Text style={styles.badgeText}>{card.category}</Text>
@@ -113,42 +82,17 @@ export const Flashcard: React.FC<FlashcardProps> = ({
             <Text style={styles.badgeText}>{card.weapon}</Text>
           </View>
         </View>
-        {/*
-        {card.source_primary && (
-          <>
-            <SectionDivider label="SOURCE" ornament="📜" />
-            <Text style={styles.sourceText}>
-              {card.source_primary.work} - {card.source_primary.section}
-            </Text>
-            <Text style={styles.sourceDetail}>
-              {card.source_primary.folio_or_marker}
-            </Text>
-          </>
-        )} */}
-        {/* {card.citations && card.citations.length > 0 && (
-          <>
-            <SectionDivider label="CITATIONS" ornament="✒" />
-            {card.citations.map((citation) => (
-              <TouchableOpacity
-                key={`${citation.type}-${
-                  citation.ref || citation.locator || Math.random()
-                }`}
-                style={styles.citationItem}
-                onPress={() => handleCitationPress(citation)}
-                activeOpacity={0.85}
-              >
-                <Text style={styles.citationType}>{citation.type}</Text>
-                {citation.locator && (
-                  <Text style={styles.citationLocator}>{citation.locator}</Text>
-                )}
-                {citation.note && (
-                  <Text style={styles.citationNote}>{citation.note}</Text>
-                )}
-              </TouchableOpacity>
-            ))}
-          </>
-        )} */}
-      </ScrollView>
+
+        {onOpenDetails && (
+          <TouchableOpacity
+            style={styles.detailsButton}
+            onPress={onOpenDetails}
+            activeOpacity={0.85}
+          >
+            <Text style={styles.detailsButtonText}>View Full Details</Text>
+          </TouchableOpacity>
+        )}
+      </View>
     </View>
   );
 };
@@ -164,27 +108,22 @@ const styles = StyleSheet.create({
     borderColor: colors.gold.main,
     overflow: "hidden",
   },
-  scrollView: {
+  content: {
     flex: 1,
-  },
-  scrollContent: {
     padding: spacing.xl,
     paddingTop: spacing.lg,
-    paddingBottom: spacing.xxl * 2.5, // Extra padding at bottom for FAB
+    justifyContent: "space-between",
   },
   header: {
     marginBottom: spacing.md,
   },
-  titleContainer: {
-    // marginBottom: spacing.md,
-  },
+  titleContainer: {},
   originalTerm: {
     fontSize: fontSize.xxxl,
     lineHeight: fontSize.xxxl * 1.2,
     fontFamily: fontFamily.title,
     color: colors.iron.dark,
     marginBottom: spacing.xs,
-    // Embossed text effect
     textShadowColor: "rgba(255, 255, 255, 0.8)",
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 1,
@@ -193,21 +132,14 @@ const styles = StyleSheet.create({
     fontSize: fontSize.xl,
     fontFamily: fontFamily.bodyMediumItalic,
     color: colors.iron.main,
-    // Subtle emboss
     textShadowColor: "rgba(255, 255, 255, 0.5)",
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 0.5,
   },
-  separatorLine: {
-    height: 1,
-    backgroundColor: colors.gold.main,
-    opacity: 0.2,
-    marginVertical: spacing.sm,
-  },
   badgeContainer: {
     flexDirection: "row",
     gap: spacing.sm,
-    marginTop: spacing.xs,
+    marginTop: spacing.md,
     justifyContent: "center",
   },
   categoryBadge: {
@@ -237,74 +169,29 @@ const styles = StyleSheet.create({
     fontSize: fontSize.md,
     fontFamily: fontFamily.body,
     color: colors.iron.main,
-    lineHeight: fontSize.md * 1.4, // Reduced from 1.8 to 1.4
+    lineHeight: fontSize.md * 1.4,
+    marginBottom: spacing.md,
   },
-  chipContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
-  },
-  chip: {
+  detailsButton: {
+    marginTop: spacing.lg,
     backgroundColor: colors.gold.light,
-    paddingVertical: spacing.sm,
-    paddingHorizontal: spacing.md,
-    borderRadius: borderRadius.round,
-    marginRight: spacing.sm,
-    marginBottom: spacing.sm,
-    borderWidth: 1,
+    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.xl,
+    borderRadius: borderRadius.md,
+    borderWidth: 1.5,
     borderColor: colors.gold.dark,
-    // Embossed button effect
+    alignItems: "center",
     shadowColor: "#FFFFFF",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.8,
     shadowRadius: 1,
     elevation: 2,
   },
-  chipText: {
-    color: colors.iron.dark,
-    fontSize: fontSize.sm,
-    fontFamily: fontFamily.bodySemiBold,
-    textTransform: "capitalize",
-  },
-  sourceText: {
+  detailsButtonText: {
     fontSize: fontSize.md,
     fontFamily: fontFamily.bodySemiBold,
     color: colors.iron.dark,
-    marginBottom: spacing.xs,
-  },
-  sourceDetail: {
-    fontSize: fontSize.sm,
-    fontFamily: fontFamily.bodyItalic,
-    color: colors.iron.main,
-  },
-  citationItem: {
-    backgroundColor: colors.parchment.dark,
-    padding: spacing.md,
-    borderRadius: borderRadius.md,
-    marginBottom: spacing.sm,
-    borderLeftWidth: 4,
-    borderLeftColor: colors.gold.main,
-    // Subtle embossed card effect
-    ...shadows.inset,
-  },
-  citationType: {
-    fontSize: fontSize.xs,
-    fontFamily: fontFamily.bodyBold,
-    color: colors.iron.dark,
     textTransform: "uppercase",
-    marginBottom: spacing.xs,
-    letterSpacing: 1,
-  },
-  citationLocator: {
-    fontSize: fontSize.sm,
-    fontFamily: fontFamily.bodyMedium,
-    color: colors.iron.main,
-    marginBottom: spacing.xs,
-  },
-  citationNote: {
-    fontSize: fontSize.sm,
-    fontFamily: fontFamily.body,
-    color: colors.iron.main,
-    opacity: 0.85,
+    letterSpacing: 0.5,
   },
 });

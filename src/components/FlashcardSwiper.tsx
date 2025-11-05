@@ -17,6 +17,8 @@ interface FlashcardSwiperProps {
   initialIndex?: number;
   onCardChange?: (card: FlashcardType, index: number) => void;
   onRelatedCardPress?: (cardId: string) => void;
+  onOpenDetails?: (card: FlashcardType) => void;
+  onTermPress?: (cardId: string) => void;
   onScrollProgress?: (offsetProgress: number, absoluteProgress: number) => void;
 }
 
@@ -27,12 +29,16 @@ interface AnimatedCardProps {
   item: FlashcardType;
   animationValue: SharedValue<number>;
   onRelatedCardPress?: (cardId: string) => void;
+  onOpenDetails?: (card: FlashcardType) => void;
+  onTermPress?: (cardId: string) => void;
 }
 
 const AnimatedCard: React.FC<AnimatedCardProps> = ({
   item,
   animationValue,
   onRelatedCardPress,
+  onOpenDetails,
+  onTermPress,
 }) => {
   const animatedStyle = useAnimatedStyle(() => {
     const opacity = interpolate(
@@ -55,7 +61,12 @@ const AnimatedCard: React.FC<AnimatedCardProps> = ({
 
   return (
     <Animated.View style={[styles.cardWrapper, animatedStyle]}>
-      <Flashcard card={item} onRelatedCardPress={onRelatedCardPress} />
+      <Flashcard
+        card={item}
+        onRelatedCardPress={onRelatedCardPress}
+        onOpenDetails={onOpenDetails ? () => onOpenDetails(item) : undefined}
+        onTermPress={onTermPress}
+      />
     </Animated.View>
   );
 };
@@ -65,6 +76,8 @@ export const FlashcardSwiper: React.FC<FlashcardSwiperProps> = ({
   initialIndex = 0,
   onCardChange,
   onRelatedCardPress,
+  onOpenDetails,
+  onTermPress,
 }) => {
   const carouselRef = useRef<ICarouselInstance>(null);
   const currentIndexRef = useRef(initialIndex);
@@ -101,6 +114,8 @@ export const FlashcardSwiper: React.FC<FlashcardSwiperProps> = ({
               item={item}
               animationValue={animationValue}
               onRelatedCardPress={onRelatedCardPress}
+              onOpenDetails={onOpenDetails}
+              onTermPress={onTermPress}
             />
           );
         }}

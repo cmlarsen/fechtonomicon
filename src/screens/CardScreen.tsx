@@ -102,6 +102,14 @@ export const CardScreen: React.FC<CardScreenProps> = ({
     }
   }, [allCards, selectedDisciplines, setCards, route?.params?.cardId]);
 
+  const handleOpenDetails = (card: FlashcardType) => {
+    navigation.navigate("FlashcardDetail", { cardId: card.id });
+  };
+
+  const handleTermPress = (cardId: string) => {
+    navigation.navigate("FlashcardDetail", { cardId });
+  };
+
   const handleCardChange = (card: FlashcardType, index: number) => {
     setCurrentCardIndex(index);
     useFlashcardStore.setState({ currentCard: card });
@@ -178,6 +186,8 @@ export const CardScreen: React.FC<CardScreenProps> = ({
               <Flashcard
                 card={currentCard}
                 onRelatedCardPress={handleRelatedCardPress}
+                onOpenDetails={() => handleOpenDetails(currentCard)}
+                onTermPress={handleTermPress}
               />
             )}
           </View>
@@ -189,6 +199,8 @@ export const CardScreen: React.FC<CardScreenProps> = ({
               initialIndex={currentCardIndex}
               onCardChange={handleCardChange}
               onRelatedCardPress={handleRelatedCardPress}
+              onOpenDetails={handleOpenDetails}
+              onTermPress={handleTermPress}
             />
           </View>
         )}
