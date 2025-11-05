@@ -1,9 +1,14 @@
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useEffect } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import {
   borderRadius,
   colors,
-  fontFamily,
   fontSize,
   shadows,
   spacing,
@@ -11,8 +16,9 @@ import {
 
 import { BackgroundPattern } from "../components/BackgroundPattern";
 import { DrawerActions } from "@react-navigation/native";
-import type { Flashcard } from "../types/flashcard";
+import { Flashcard } from "../components/Flashcard";
 import { FlashcardSwiper } from "../components/FlashcardSwiper";
+import type { Flashcard as FlashcardType } from "../types/flashcard";
 import flashcardsData from "../../assets/data/flashcards.json";
 import { useDrawerContext } from "../contexts/DrawerContext";
 import { useFlashcardStore } from "../store/flashcardStore";
@@ -21,23 +27,31 @@ import { widgetService } from "../services/widgetService";
 
 interface CardScreenProps {
   navigation: {
-    navigate: (screen: string) => void;
+    navigate: (screen: string, params?: { cardId?: string }) => void;
     dispatch: (action: unknown) => void;
+  };
+  route?: {
+    params?: {
+      cardId?: string;
+    };
   };
 }
 
-export const CardScreen: React.FC<CardScreenProps> = ({ navigation }) => {
+export const CardScreen: React.FC<CardScreenProps> = ({
+  navigation,
+  route,
+}) => {
   const { loadCards, loadFromStorage, allCards, selectedDisciplines } =
     useFlashcardStore();
   const { setCards, setOnCardPress } = useDrawerContext();
   const insets = useSafeAreaInsets();
-  const [shuffledCards, setShuffledCards] = React.useState<Flashcard[]>([]);
+  const [shuffledCards, setShuffledCards] = React.useState<FlashcardType[]>([]);
   const [currentCardIndex, setCurrentCardIndex] = React.useState(0);
 
   useEffect(() => {
     try {
       loadFromStorage();
-      loadCards((flashcardsData as any).records as Flashcard[]);
+      loadCards((flashcardsData as any).records as FlashcardType[]);
     } catch (error) {
       console.error("Error loading cards:", error);
     }
@@ -65,15 +79,30 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation }) => {
       // Update drawer context with cards
       setCards(shuffled);
 
+      // Handle deep link to specific card
+      const cardIdFromRoute = route?.params?.cardId;
+      let initialIndex = 0;
+
+      if (cardIdFromRoute) {
+        const foundIndex = shuffled.findIndex(
+          (card) => card.id === cardIdFromRoute
+        );
+        if (foundIndex !== -1) {
+          initialIndex = foundIndex;
+          setCurrentCardIndex(foundIndex);
+        }
+      }
+
       // Update current card
       if (shuffled.length > 0) {
-        useFlashcardStore.setState({ currentCard: shuffled[0] });
-        widgetService.updateWidget(shuffled[0]);
+        const cardToShow = shuffled[initialIndex];
+        useFlashcardStore.setState({ currentCard: cardToShow });
+        widgetService.updateWidget(cardToShow);
       }
     }
-  }, [allCards, selectedDisciplines, setCards]);
+  }, [allCards, selectedDisciplines, setCards, route?.params?.cardId]);
 
-  const handleCardChange = (card: Flashcard, index: number) => {
+  const handleCardChange = (card: FlashcardType, index: number) => {
     setCurrentCardIndex(index);
     useFlashcardStore.setState({ currentCard: card });
     widgetService.updateWidget(card);
@@ -85,6 +114,31 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation }) => {
     );
     if (relatedCardIndex !== -1) {
       setCurrentCardIndex(relatedCardIndex);
+      if (Platform.OS === "web") {
+        // On web, navigate to the card route
+        navigation.navigate("Card", { cardId });
+      }
+    }
+  };
+
+  const handleNextCard = () => {
+    const nextIndex = (currentCardIndex + 1) % shuffledCards.length;
+    const nextCard = shuffledCards[nextIndex];
+    setCurrentCardIndex(nextIndex);
+    handleCardChange(nextCard, nextIndex);
+    if (Platform.OS === "web") {
+      navigation.navigate("Card", { cardId: nextCard.id });
+    }
+  };
+
+  const handlePrevCard = () => {
+    const prevIndex =
+      currentCardIndex === 0 ? shuffledCards.length - 1 : currentCardIndex - 1;
+    const prevCard = shuffledCards[prevIndex];
+    setCurrentCardIndex(prevIndex);
+    handleCardChange(prevCard, prevIndex);
+    if (Platform.OS === "web") {
+      navigation.navigate("Card", { cardId: prevCard.id });
     }
   };
 
@@ -107,6 +161,8 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation }) => {
     navigation.dispatch(DrawerActions.toggleDrawer());
   };
 
+  const currentCard = shuffledCards[currentCardIndex];
+
   return (
     <BackgroundPattern>
       <View
@@ -115,18 +171,40 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation }) => {
           { paddingTop: insets.top, paddingBottom: insets.bottom },
         ]}
       >
-        <View style={[styles.swiperContainer]}>
-          <FlashcardSwiper
-            cards={shuffledCards}
-            initialIndex={currentCardIndex}
-            onCardChange={handleCardChange}
-            onRelatedCardPress={handleRelatedCardPress}
-          />
-        </View>
+        {Platform.OS === "web" ? (
+          // Web: Single card with prev/next buttons
+          <View style={styles.webCardContainer}>
+            {currentCard && (
+              <Flashcard
+                card={currentCard}
+                onRelatedCardPress={handleRelatedCardPress}
+              />
+            )}
+          </View>
+        ) : (
+          // Mobile: Swipeable carousel
+          <View style={[styles.swiperContainer]}>
+            <FlashcardSwiper
+              cards={shuffledCards}
+              initialIndex={currentCardIndex}
+              onCardChange={handleCardChange}
+              onRelatedCardPress={handleRelatedCardPress}
+            />
+          </View>
+        )}
 
-        {/* Always-visible FAB with sword-pommel icon */}
-        {/* <View style={[styles.fab, { bottom: insets.bottom + spacing.xl }]}> */}
-        <View style={[styles.fab]}>
+        {/* Navigation controls at bottom */}
+        <View style={[styles.bottomNav]}>
+          {Platform.OS === "web" && (
+            <TouchableOpacity
+              style={styles.navButton}
+              onPress={handlePrevCard}
+              activeOpacity={0.85}
+            >
+              <Text style={styles.navButtonText}>←</Text>
+            </TouchableOpacity>
+          )}
+
           <TouchableOpacity
             style={styles.fabButton}
             onPress={toggleDrawer}
@@ -134,6 +212,16 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation }) => {
           >
             <Text style={styles.fabIcon}>⚔</Text>
           </TouchableOpacity>
+
+          {Platform.OS === "web" && (
+            <TouchableOpacity
+              style={styles.navButton}
+              onPress={handleNextCard}
+              activeOpacity={0.85}
+            >
+              <Text style={styles.navButtonText}>→</Text>
+            </TouchableOpacity>
+          )}
         </View>
       </View>
     </BackgroundPattern>
@@ -149,12 +237,19 @@ const styles = StyleSheet.create({
   swiperContainer: {
     flex: 1,
   },
-  fab: {
-    // position: 'absolute',
-    // left: 0,
-    // right: 0,
-    // alignItems: 'center',
-    // zIndex: 100,
+  webCardContainer: {
+    flex: 1,
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: spacing.md,
+  },
+  bottomNav: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: spacing.lg,
+    paddingVertical: spacing.md,
   },
   fabButton: {
     width: 56,
@@ -166,7 +261,6 @@ const styles = StyleSheet.create({
     ...shadows.parchment,
     borderWidth: 3,
     borderColor: colors.gold.main,
-    // Embossed seal effect
     shadowColor: colors.gold.dark,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
@@ -176,26 +270,29 @@ const styles = StyleSheet.create({
   fabIcon: {
     fontSize: fontSize.xl,
     color: colors.gold.dark,
-    // Slight embossed text
     textShadowColor: "rgba(255, 255, 255, 0.6)",
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 1,
   },
-  footer: {
-    padding: spacing.lg,
+  navButton: {
+    width: 48,
+    height: 48,
+    borderRadius: borderRadius.round,
+    backgroundColor: colors.parchment.light,
+    justifyContent: "center",
     alignItems: "center",
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    zIndex: 10,
+    ...shadows.parchment,
+    borderWidth: 2,
+    borderColor: colors.gold.main,
+    shadowColor: colors.gold.dark,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 4,
   },
-  footerText: {
-    fontSize: fontSize.sm,
-    fontFamily: fontFamily.bodyMedium,
-    color: colors.text.light,
-    textShadowColor: "rgba(0, 0, 0, 0.3)",
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 3,
+  navButtonText: {
+    fontSize: fontSize.xxl,
+    color: colors.gold.dark,
+    fontWeight: "bold",
   },
 });

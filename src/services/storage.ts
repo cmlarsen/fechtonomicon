@@ -1,11 +1,51 @@
 import { STORAGE_KEYS, Discipline } from '../types/flashcard';
+import { Platform } from 'react-native';
 
 let mmkvInstance: any = null;
 let isMMKVAvailable = false;
 
-// Lazy initialization - only create MMKV when first accessed
+// Lazy initialization - only create storage when first accessed
 function getMMKV(): any {
   if (!mmkvInstance) {
+    // Use localStorage on web platform
+    if (Platform.OS === 'web') {
+      console.log('✅ Using localStorage for web platform');
+      mmkvInstance = {
+        set: (key: string, value: string) => {
+          try {
+            localStorage.setItem(key, value);
+          } catch (error) {
+            console.error('localStorage.setItem error:', error);
+          }
+        },
+        getString: (key: string) => {
+          try {
+            return localStorage.getItem(key) || undefined;
+          } catch (error) {
+            console.error('localStorage.getItem error:', error);
+            return undefined;
+          }
+        },
+        delete: (key: string) => {
+          try {
+            localStorage.removeItem(key);
+          } catch (error) {
+            console.error('localStorage.removeItem error:', error);
+          }
+        },
+        clearAll: () => {
+          try {
+            localStorage.clear();
+          } catch (error) {
+            console.error('localStorage.clear error:', error);
+          }
+        },
+      };
+      isMMKVAvailable = true;
+      return mmkvInstance;
+    }
+
+    // Use MMKV for native platforms
     try {
       // Dynamically require MMKV to handle cases where native module might not be ready
       const { MMKV } = require('react-native-mmkv');

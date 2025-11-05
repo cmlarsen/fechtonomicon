@@ -1,66 +1,71 @@
-import { Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../theme/tokens';
+import {
+  Dimensions,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import {
+  borderRadius,
+  colors,
+  fontFamily,
+  fontSize,
+  shadows,
+  spacing,
+} from "../theme/tokens";
 
-import { CornerBrackets } from './CornerBrackets';
-import type { Flashcard as FlashcardType } from '../types/flashcard';
-import React from 'react';
-import { SectionDivider } from './SectionDivider';
+import { CornerBrackets } from "./CornerBrackets";
+import type { Flashcard as FlashcardType } from "../types/flashcard";
+import React from "react";
+import { SectionDivider } from "./SectionDivider";
 
-const { height: SCREEN_HEIGHT } = Dimensions.get('window');
+const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 interface FlashcardProps {
   card: FlashcardType;
   onRelatedCardPress?: (cardId: string) => void;
 }
 
-export const Flashcard: React.FC<FlashcardProps> = ({ card, onRelatedCardPress }) => {
+export const Flashcard: React.FC<FlashcardProps> = ({
+  card,
+  onRelatedCardPress,
+}) => {
   const handleCitationPress = (citation: any) => {
     // Future: handle citation navigation
-    console.log('Citation pressed:', citation);
+    console.log("Citation pressed:", citation);
   };
 
   // Extract simple term from related card IDs for display
   const getTermFromId = (id: string) => {
-    const parts = id.split('.');
-    return parts[parts.length - 1].replace(/_/g, ' ');
+    const parts = id.split(".");
+    return parts[parts.length - 1].replace(/_/g, " ");
   };
 
   return (
     <View style={styles.container} testID="flashcard-container">
-        <CornerBrackets />
-        <ScrollView
-          style={styles.scrollView}
-          contentContainerStyle={styles.scrollContent}
-          showsVerticalScrollIndicator={true}
-          bounces={true}
-        >
+      <CornerBrackets />
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={true}
+        bounces={true}
+      >
         <View style={styles.header}>
           <View style={styles.titleContainer}>
             <Text style={styles.originalTerm}>{card.originalTerm}</Text>
-            <Text style={styles.englishTerm}>({card.englishTerm})</Text>
-          </View>
-          {/* Inline pill badges with separator */}
-          <View style={styles.separatorLine} />
-          <View style={styles.badgeContainer}>
-            <View style={styles.categoryBadge}>
-              <Text style={styles.badgeText}>{card.category}</Text>
-            </View>
-            <View style={styles.weaponBadge}>
-              <Text style={styles.badgeText}>{card.weapon}</Text>
-            </View>
+            <Text style={styles.englishTerm}>{card.englishTerm}</Text>
           </View>
         </View>
 
-        <SectionDivider ornament="❦" />
+        <SectionDivider label="DESCRIPTION" ornament="❦" />
         <Text style={styles.description}>{card.description}</Text>
-
         {card.application && (
           <>
             <SectionDivider label="APPLICATION" ornament="⚔" />
             <Text style={styles.description}>{card.application}</Text>
           </>
         )}
-
         {card.related && card.related.length > 0 && (
           <>
             <SectionDivider label="RELATED CONCEPTS" ornament="⚜" />
@@ -72,29 +77,44 @@ export const Flashcard: React.FC<FlashcardProps> = ({ card, onRelatedCardPress }
                   onPress={() => onRelatedCardPress?.(relatedId)}
                   activeOpacity={0.85}
                 >
-                  <Text style={styles.chipText}>{getTermFromId(relatedId)}</Text>
+                  <Text style={styles.chipText}>
+                    {getTermFromId(relatedId)}
+                  </Text>
                 </TouchableOpacity>
               ))}
             </View>
           </>
         )}
-
+        {/* Inline pill badges with separator */}
+        <SectionDivider label="TAGS" ornament="⚜" />
+        <View style={styles.badgeContainer}>
+          <View style={styles.categoryBadge}>
+            <Text style={styles.badgeText}>{card.category}</Text>
+          </View>
+          <View style={styles.weaponBadge}>
+            <Text style={styles.badgeText}>{card.weapon}</Text>
+          </View>
+        </View>
+        {/*
         {card.source_primary && (
           <>
             <SectionDivider label="SOURCE" ornament="📜" />
             <Text style={styles.sourceText}>
               {card.source_primary.work} - {card.source_primary.section}
             </Text>
-            <Text style={styles.sourceDetail}>{card.source_primary.folio_or_marker}</Text>
+            <Text style={styles.sourceDetail}>
+              {card.source_primary.folio_or_marker}
+            </Text>
           </>
-        )}
-
-        {card.citations && card.citations.length > 0 && (
+        )} */}
+        {/* {card.citations && card.citations.length > 0 && (
           <>
             <SectionDivider label="CITATIONS" ornament="✒" />
             {card.citations.map((citation) => (
               <TouchableOpacity
-                key={`${citation.type}-${citation.ref || citation.locator || Math.random()}`}
+                key={`${citation.type}-${
+                  citation.ref || citation.locator || Math.random()
+                }`}
                 style={styles.citationItem}
                 onPress={() => handleCitationPress(citation)}
                 activeOpacity={0.85}
@@ -109,22 +129,22 @@ export const Flashcard: React.FC<FlashcardProps> = ({ card, onRelatedCardPress }
               </TouchableOpacity>
             ))}
           </>
-        )}
-        </ScrollView>
+        )} */}
+      </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
     backgroundColor: colors.parchment.primary,
     borderRadius: borderRadius.lg,
     ...shadows.parchment,
     borderWidth: 1.5,
     borderColor: colors.gold.main,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   scrollView: {
     flex: 1,
@@ -138,15 +158,16 @@ const styles = StyleSheet.create({
     marginBottom: spacing.md,
   },
   titleContainer: {
-    marginBottom: spacing.sm,
+    // marginBottom: spacing.md,
   },
   originalTerm: {
     fontSize: fontSize.xxxl,
+    lineHeight: fontSize.xxxl * 1.2,
     fontFamily: fontFamily.title,
     color: colors.iron.dark,
     marginBottom: spacing.xs,
     // Embossed text effect
-    textShadowColor: 'rgba(255, 255, 255, 0.8)',
+    textShadowColor: "rgba(255, 255, 255, 0.8)",
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 1,
   },
@@ -155,7 +176,7 @@ const styles = StyleSheet.create({
     fontFamily: fontFamily.bodyMediumItalic,
     color: colors.iron.main,
     // Subtle emboss
-    textShadowColor: 'rgba(255, 255, 255, 0.5)',
+    textShadowColor: "rgba(255, 255, 255, 0.5)",
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 0.5,
   },
@@ -166,9 +187,10 @@ const styles = StyleSheet.create({
     marginVertical: spacing.sm,
   },
   badgeContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: spacing.sm,
     marginTop: spacing.xs,
+    justifyContent: "center",
   },
   categoryBadge: {
     backgroundColor: colors.parchment.light,
@@ -190,7 +212,7 @@ const styles = StyleSheet.create({
     color: colors.iron.main,
     fontSize: fontSize.xs,
     fontFamily: fontFamily.bodySemiBold,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
     letterSpacing: 0.5,
   },
   description: {
@@ -200,8 +222,9 @@ const styles = StyleSheet.create({
     lineHeight: fontSize.md * 1.4, // Reduced from 1.8 to 1.4
   },
   chipContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
   },
   chip: {
     backgroundColor: colors.gold.light,
@@ -213,7 +236,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.gold.dark,
     // Embossed button effect
-    shadowColor: '#FFFFFF',
+    shadowColor: "#FFFFFF",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.8,
     shadowRadius: 1,
@@ -223,7 +246,7 @@ const styles = StyleSheet.create({
     color: colors.iron.dark,
     fontSize: fontSize.sm,
     fontFamily: fontFamily.bodySemiBold,
-    textTransform: 'capitalize',
+    textTransform: "capitalize",
   },
   sourceText: {
     fontSize: fontSize.md,
@@ -250,7 +273,7 @@ const styles = StyleSheet.create({
     fontSize: fontSize.xs,
     fontFamily: fontFamily.bodyBold,
     color: colors.iron.dark,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
     marginBottom: spacing.xs,
     letterSpacing: 1,
   },

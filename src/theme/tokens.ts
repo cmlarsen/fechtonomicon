@@ -72,7 +72,7 @@ export const fontSize = {
   lg: 20,        // Increased from 18
   xl: 26,        // Increased from 24
   xxl: 34,       // Increased from 32
-  xxxl: 44,      // Increased from 40
+  xxxl: 36,      // Increased from 40
 };
 
 export const fontFamily = {

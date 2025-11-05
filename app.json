@@ -33,7 +33,14 @@
       "predictiveBackGestureEnabled": false
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro",
+      "output": "single",
+      "name": "HEMA Flashcards",
+      "shortName": "HEMA Cards",
+      "description": "Study Historical European Martial Arts with interactive flashcards",
+      "backgroundColor": "#ffffff",
+      "themeColor": "#5C3D2E"
     }
   }
 }

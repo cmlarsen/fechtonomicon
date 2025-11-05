@@ -9,7 +9,7 @@ import { DrawerProvider } from '../contexts/DrawerContext';
 import { colors } from '../theme/tokens';
 
 export type RootDrawerParamList = {
-  Card: undefined;
+  Card: { cardId?: string } | undefined;
   DisciplineSelection: undefined;
 };
 
@@ -17,10 +17,19 @@ const Drawer = createDrawerNavigator<RootDrawerParamList>();
 const Stack = createStackNavigator();
 
 const linking = {
-  prefixes: ['hemaflashcards://', 'https://hemaflashcards.app'],
+  prefixes: ['hemaflashcards://', 'https://hemaflashcards.app', 'http://localhost:8081'],
   config: {
     screens: {
-      Card: 'card',
+      Main: {
+        screens: {
+          Card: {
+            path: 'card/:cardId?',
+            parse: {
+              cardId: (cardId: string) => cardId,
+            },
+          },
+        },
+      },
       DisciplineSelection: 'disciplines',
     },
   },

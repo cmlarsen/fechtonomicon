@@ -10,16 +10,20 @@ A React Native app for learning HEMA (Historical European Martial Arts) vocabula
 - 📊 **Progress Tracking**: Automatically tracks which cards you've viewed
 - 🔧 **Customizable**: Select which disciplines to study
 - 📲 **iOS Widget**: Display a random flashcard on your home screen (updates hourly)
-- 💾 **Offline Storage**: All data stored locally using MMKV
+- 🌐 **Web Support**: Run the app in any modern web browser with localStorage persistence
+- 🔗 **Shareable URLs**: Deep link to specific cards via URL parameters
+- 💾 **Offline Storage**: All data stored locally (MMKV on mobile, localStorage on web)
 - 🧪 **Test-Driven**: Built with TDD practices
 
 ## Tech Stack
 
 - **React Native** (via Expo)
+- **React Native Web** - Web platform support
 - **TypeScript**
 - **Zustand** - State management
-- **MMKV** - Fast local storage
-- **React Navigation** - Navigation
+- **MMKV** - Fast local storage (mobile)
+- **localStorage** - Web persistence
+- **React Navigation** - Navigation with deep linking
 - **React Native Gesture Handler** - Smooth swipe animations
 - **Jest & Testing Library** - Unit and integration tests
 - **Swift** - Native iOS widget
@@ -30,8 +34,8 @@ A React Native app for learning HEMA (Historical European Martial Arts) vocabula
 
 - Node.js 20+ (managed via nvm recommended)
 - Yarn
-- iOS development: Xcode 14+, macOS
-- CocoaPods (for iOS dependencies)
+- **For iOS development**: Xcode 14+, macOS, CocoaPods
+- **For web**: Any modern web browser
 
 ### Installation
 
@@ -56,10 +60,30 @@ cd ios && pod install && cd ..
 yarn start
 ```
 
-5. Run on iOS:
+5. Run on your preferred platform:
 ```bash
+# iOS
 yarn ios
+
+# Web
+yarn web
 ```
+
+### Web Version
+
+The web version provides the full flashcard experience in your browser:
+
+- **Mobile-centered layout**: The app displays in a mobile-sized viewport on desktop
+- **localStorage persistence**: Your progress is saved between browser sessions
+- **Shareable card URLs**: Share specific cards via URLs like `http://localhost:8081/card/card-id`
+- **Responsive**: Works on desktop and mobile browsers
+
+To run the web version:
+```bash
+yarn web
+```
+
+The app will open in your default browser at `http://localhost:8081`.
 
 ### Setting Up the iOS Widget
 
@@ -172,13 +196,15 @@ The iOS widget communicates with the React Native app via:
 ## Future Enhancements
 
 - [ ] Android support
-- [ ] Web support
+- [x] Web support
 - [ ] Quiz system
 - [ ] Additional disciplines (Rapier, Sword & Buckler, etc.)
 - [ ] Image support for flashcards
 - [ ] Spaced repetition system
 - [ ] Progress statistics
 - [ ] Custom flashcard creation
+- [ ] Share button for easy URL copying
+- [ ] PWA support for installable web app
 
 ## Contributing
 
