@@ -134,14 +134,6 @@ export const DrawerContent: React.FC<DrawerContentComponentProps> = ({
         </View>
       </View>
 
-      {/* Ornamental separator */}
-      <View style={styles.separator}>
-        <View style={styles.separatorLine} />
-      </View>
-
-      {/* Settings pinned at bottom */}
-
-      <View style={styles.separatorLine} />
       {/* Search Bar */}
       <View style={styles.searchContainer}>
         <View style={styles.searchInputContainer}>
@@ -261,11 +253,12 @@ const styles = StyleSheet.create({
     // borderTopColor: "rgba(201, 171, 106, 0.3)",
   },
   settingsItem: {
-    // flexDirection: "row",
-    // alignItems: "center",
-    // paddingVertical: spacing.md,
-    // paddingHorizontal: spacing.lg,
-    // backgroundColor: colors.parchment.primary,
+    alignItems: "center",
+    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.sm,
+    backgroundColor: colors.burgundy.main,
+    borderRadius: borderRadius.md,
+    alignSelf: "flex-start",
   },
   settingsIcon: {
     fontSize: fontSize.md,
@@ -274,8 +267,8 @@ const styles = StyleSheet.create({
   },
   settingsText: {
     fontSize: fontSize.sm,
-    fontFamily: fontFamily.bodySemiBold,
-    color: colors.text.primary,
+    fontFamily: fontFamily.bodyBold,
+    color: colors.parchment.primary,
   },
   scrollView: {
     flex: 1,

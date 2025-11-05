@@ -17,6 +17,13 @@ export const colors = {
     dark: '#3A3936', // Dark iron
     light: '#8B8A87', // Light iron
   },
+  // Rich burgundy for accents and highlights
+  burgundy: {
+    dark: '#4A1A1F', // Deep burgundy
+    main: '#722F37', // Rich burgundy
+    light: '#9B4A54', // Light burgundy
+    lighter: '#C1707A', // Pale burgundy
+  },
   // Keep legacy for compatibility
   primary: {
     dark: '#3D2817',

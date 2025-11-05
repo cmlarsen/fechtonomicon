@@ -19,6 +19,7 @@ import { DrawerActions } from "@react-navigation/native";
 import { Flashcard } from "../components/Flashcard";
 import { FlashcardSwiper } from "../components/FlashcardSwiper";
 import type { Flashcard as FlashcardType } from "../types/flashcard";
+import { LoadingState } from "../components/LoadingState";
 import germanData from "../../assets/data/german-longsword-data.json";
 import { getDisciplineFromCardId } from "../utils/disciplineMapper";
 import italianData from "../../assets/data/italian-longsword-data.json";
@@ -52,6 +53,7 @@ export const CardScreen: React.FC<CardScreenProps> = ({
   const { setCards, setOnCardPress } = useDrawerContext();
   const insets = useSafeAreaInsets();
   const [currentCardIndex, setCurrentCardIndex] = React.useState(0);
+  const [isLoading, setIsLoading] = React.useState(true);
   const prevCardsLengthRef = React.useRef(0);
   const cardsLoadedRef = React.useRef(false);
 
@@ -59,6 +61,7 @@ export const CardScreen: React.FC<CardScreenProps> = ({
   useEffect(() => {
     if (cardsLoadedRef.current) return;
     cardsLoadedRef.current = true;
+    setIsLoading(true);
 
     try {
       loadFromStorage();
@@ -72,8 +75,10 @@ export const CardScreen: React.FC<CardScreenProps> = ({
       }));
 
       loadCards(cardsWithDiscipline);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error loading cards:", error);
+      setIsLoading(false);
     }
   }, [loadFromStorage, loadCards]);
 
@@ -234,6 +239,7 @@ export const CardScreen: React.FC<CardScreenProps> = ({
   }, [navigation]);
 
   const currentCard = sortedCards[currentCardIndex];
+  const showLoading = isLoading || sortedCards.length === 0;
 
   return (
     <BackgroundPattern>
@@ -243,7 +249,10 @@ export const CardScreen: React.FC<CardScreenProps> = ({
           { paddingTop: insets.top, paddingBottom: insets.bottom },
         ]}
       >
-        {Platform.OS === "web" ? (
+        {showLoading ? (
+          // Loading state
+          <LoadingState />
+        ) : Platform.OS === "web" ? (
           // Web: Single card with prev/next buttons
           <View style={styles.webCardContainer}>
             {currentCard && (
@@ -268,36 +277,38 @@ export const CardScreen: React.FC<CardScreenProps> = ({
           </View>
         )}
 
-        {/* Navigation controls at bottom */}
-        <View style={[styles.bottomNav]}>
-          {Platform.OS === "web" && (
+        {/* Navigation controls at bottom - only show when not loading */}
+        {!showLoading && (
+          <View style={[styles.bottomNav]}>
+            {Platform.OS === "web" && (
+              <TouchableOpacity
+                style={styles.navButton}
+                onPress={handlePrevCard}
+                activeOpacity={0.85}
+              >
+                <Text style={styles.navButtonText}>←</Text>
+              </TouchableOpacity>
+            )}
+
             <TouchableOpacity
-              style={styles.navButton}
-              onPress={handlePrevCard}
+              style={styles.fabButton}
+              onPress={toggleDrawer}
               activeOpacity={0.85}
             >
-              <Text style={styles.navButtonText}>←</Text>
+              <Text style={styles.fabIcon}>⚔</Text>
             </TouchableOpacity>
-          )}
 
-          <TouchableOpacity
-            style={styles.fabButton}
-            onPress={toggleDrawer}
-            activeOpacity={0.85}
-          >
-            <Text style={styles.fabIcon}>⚔</Text>
-          </TouchableOpacity>
-
-          {Platform.OS === "web" && (
-            <TouchableOpacity
-              style={styles.navButton}
-              onPress={handleNextCard}
-              activeOpacity={0.85}
-            >
-              <Text style={styles.navButtonText}>→</Text>
-            </TouchableOpacity>
-          )}
-        </View>
+            {Platform.OS === "web" && (
+              <TouchableOpacity
+                style={styles.navButton}
+                onPress={handleNextCard}
+                activeOpacity={0.85}
+              >
+                <Text style={styles.navButtonText}>→</Text>
+              </TouchableOpacity>
+            )}
+          </View>
+        )}
       </View>
     </BackgroundPattern>
   );
@@ -324,7 +335,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: spacing.lg,
-    paddingVertical: spacing.md,
+    paddingVertical: spacing.sm,
   },
   fabButton: {
     width: 56,
