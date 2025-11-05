@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react-native';
 import { Flashcard } from '../../src/components/Flashcard';
 import { Flashcard as FlashcardType } from '../../src/types/flashcard';
@@ -16,9 +15,7 @@ const mockCardWithRelated: FlashcardType = {
   description: 'This is another test description.',
   discipline: 'meyer-longsword',
   relatedCards: ['card1', 'card2'],
-  externalLinks: [
-    { url: 'https://example.com', label: 'Example Link' },
-  ],
+  externalLinks: [{ url: 'https://example.com', label: 'Example Link' }],
 };
 
 describe('Flashcard Component', () => {

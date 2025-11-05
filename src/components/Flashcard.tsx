@@ -1,24 +1,11 @@
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import {
-  borderRadius,
-  colors,
-  fontFamily,
-  fontSize,
-  shadows,
-  spacing,
-} from "../theme/tokens";
-
-import { CornerBrackets } from "./CornerBrackets";
-import type { Flashcard as FlashcardType } from "../types/flashcard";
-import React from "react";
-import { SectionDivider } from "./SectionDivider";
-import { LinkedText } from "./LinkedText";
-import { useFlashcardStore } from "../store/flashcardStore";
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useFlashcardStore } from '../store/flashcardStore';
+import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../theme/tokens';
+import type { Flashcard as FlashcardType } from '../types/flashcard';
+import { CornerBrackets } from './CornerBrackets';
+import { LinkedText } from './LinkedText';
+import { SectionDivider } from './SectionDivider';
 
 interface FlashcardProps {
   card: FlashcardType;
@@ -26,11 +13,7 @@ interface FlashcardProps {
   onTermPress?: (cardId: string) => void;
 }
 
-export const Flashcard: React.FC<FlashcardProps> = ({
-  card,
-  onOpenDetails,
-  onTermPress,
-}) => {
+export const Flashcard: React.FC<FlashcardProps> = ({ card, onOpenDetails, onTermPress }) => {
   const { allCards } = useFlashcardStore();
 
   const handleTermPress = (cardId: string) => {
@@ -74,14 +57,14 @@ export const Flashcard: React.FC<FlashcardProps> = ({
           </>
         )}
 
-        <View style={styles.badgeContainer}>
+        {/* <View style={styles.badgeContainer}>
           <View style={styles.categoryBadge}>
             <Text style={styles.badgeText}>{card.category}</Text>
           </View>
           <View style={styles.weaponBadge}>
             <Text style={styles.badgeText}>{card.weapon}</Text>
           </View>
-        </View>
+        </View> */}
 
         {onOpenDetails && (
           <TouchableOpacity
@@ -99,20 +82,20 @@ export const Flashcard: React.FC<FlashcardProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
     backgroundColor: colors.parchment.primary,
     borderRadius: borderRadius.lg,
     ...shadows.parchment,
     borderWidth: 1.5,
     borderColor: colors.gold.main,
-    overflow: "hidden",
+    overflow: 'hidden',
   },
   content: {
     flex: 1,
     padding: spacing.xl,
     paddingTop: spacing.lg,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
   },
   header: {
     marginBottom: spacing.md,
@@ -124,7 +107,7 @@ const styles = StyleSheet.create({
     fontFamily: fontFamily.title,
     color: colors.iron.dark,
     marginBottom: spacing.xs,
-    textShadowColor: "rgba(255, 255, 255, 0.8)",
+    textShadowColor: 'rgba(255, 255, 255, 0.8)',
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 1,
   },
@@ -132,15 +115,15 @@ const styles = StyleSheet.create({
     fontSize: fontSize.xl,
     fontFamily: fontFamily.bodyMediumItalic,
     color: colors.iron.main,
-    textShadowColor: "rgba(255, 255, 255, 0.5)",
+    textShadowColor: 'rgba(255, 255, 255, 0.5)',
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 0.5,
   },
   badgeContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: spacing.sm,
     marginTop: spacing.md,
-    justifyContent: "center",
+    justifyContent: 'center',
   },
   categoryBadge: {
     backgroundColor: colors.parchment.light,
@@ -162,7 +145,7 @@ const styles = StyleSheet.create({
     color: colors.iron.main,
     fontSize: fontSize.xs,
     fontFamily: fontFamily.bodySemiBold,
-    textTransform: "uppercase",
+    textTransform: 'uppercase',
     letterSpacing: 0.5,
   },
   description: {
@@ -180,8 +163,8 @@ const styles = StyleSheet.create({
     borderRadius: borderRadius.md,
     borderWidth: 1.5,
     borderColor: colors.gold.dark,
-    alignItems: "center",
-    shadowColor: "#FFFFFF",
+    alignItems: 'center',
+    shadowColor: '#FFFFFF',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.8,
     shadowRadius: 1,
@@ -191,7 +174,7 @@ const styles = StyleSheet.create({
     fontSize: fontSize.md,
     fontFamily: fontFamily.bodySemiBold,
     color: colors.iron.dark,
-    textTransform: "uppercase",
+    textTransform: 'uppercase',
     letterSpacing: 0.5,
   },
 });

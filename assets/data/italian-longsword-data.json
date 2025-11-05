@@ -1,0 +1,607 @@
+{
+    "meta": {
+        "title": "Italian Longsword"
+    },
+    "records": [
+        {
+            "originalTerm": "Posta di Donna",
+            "englishTerm": "Woman’s Guard",
+            "category": "guard",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "High, powerful shoulder-or overhead guard that can launch all blows and oppose them, used to seize initiative and break guards with committed strikes.  ￼",
+            "detailedDescription": "Stand with the sword chambered on the shoulder (right or left) or lifted high (soprana), hands near the head, point rearward or slightly upward. Body is coiled for a descending fendente or a swift feint-to-thrust. From Donna you can beat aside attacks or enter the bind with advantage; guards similar to it are its counters, but Donna claims the high line and striking momentum.  ￼",
+            "application": "Open with mandritto/riverso fendenti; threaten thrusts out of the feint; break static guards by driving through the center.  ￼",
+            "fullApplication": "Use Donna in zufechta to force reactions. If the opponent thrusts high, cross and exchange/break the thrust; if they cut, beat or overbind and finish with fendente or punta. Rotate between Donna and Fenestra to vary lines while maintaining upper-line pressure. In Vadi, related high guards retain quick advance-strike-recover timing.  ￼"
+        },
+        {
+            "originalTerm": "Posta di Donna la Soprana",
+            "englishTerm": "High Woman’s Guard",
+            "category": "guard",
+            "master": [
+                "Fiore dei Liberi"
+            ],
+            "briefDefinition": "Overhead variant of Donna that deceives with a raised cut and quickly converts to a thrust.  ￼",
+            "detailedDescription": "Lift the hilt above the head, point back; show a descending blow, then turn the hands and shoot the point straight down the center. The extra height lengthens the thrust path and increases leverage for strong parries against descending blows.  ￼",
+            "application": "Feint cut → snap thrust; or drop the hands into fendente against committed entries.  ￼",
+            "fullApplication": "From Soprana, threaten head/shoulder; if opponent rises to parry, turn the hands and deliver a direct punta; if they remain low, crash with fendente to bind and work stretto plays. Use as a momentary deception rather than a resting guard.  ￼"
+        },
+        {
+            "originalTerm": "Posta di Donna la Sinestra",
+            "englishTerm": "Left Woman’s Guard",
+            "category": "guard",
+            "master": [
+                "Fiore dei Liberi"
+            ],
+            "briefDefinition": "Left-side Donna that covers and strikes from the off side, beating thrusts down and launching powerful riversi.  ￼",
+            "detailedDescription": "Chamber the sword on the left shoulder; hips loaded to deliver riverso fendente or to beat down incoming points. It mirrors right-side Donna in power and options but threatens different lines and hand targets.  ￼",
+            "application": "Answer right-handers’ inside thrusts by beating down and counter-cutting; open with riverso fendente into mezza spada.  ￼",
+            "fullApplication": "Use left Donna to invite a forehand and to counter with a strong riverso into bind; feel (sentire) for opposition and wind to thrust if resisted. Transition on the step to Fenestra Sinestra to threaten a quick punta.  ￼"
+        },
+        {
+            "originalTerm": "Posta di Fenestra",
+            "englishTerm": "Window Guard",
+            "category": "guard",
+            "master": [
+                "Fiore dei Liberi"
+            ],
+            "briefDefinition": "High-line guard at head level (\"window\"), quick for deceit and thrusting, with strong defensive crossings.  ￼",
+            "detailedDescription": "Hold the hilt beside the temple, point forward across the line. From here, strike with short thrusts, exchange/break incoming thrusts, or deliver mezzani. The compact hand position enables fast parry-riposte.  ￼",
+            "application": "Threaten direct punta; if opposed, beat or exchange and riposte; use to bait and counter high blows.  ￼",
+            "fullApplication": "In zufechta, carry Fenestra to set a central threat; when the opponent commits a thrust, shift the point offline and thrust through (scambiar di punta); against cuts, cross high and answer with a short thrust or redoubled mezzano.  ￼"
+        },
+        {
+            "originalTerm": "Posta di Fenestra la Sinestra",
+            "englishTerm": "Left Window Guard",
+            "category": "guard",
+            "master": [
+                "Fiore dei Liberi"
+            ],
+            "briefDefinition": "Window guard on the left side; mirrors right Fenestra, enabling swift off-side thrusts and parry-ripostes.  ￼",
+            "detailedDescription": "Hilt beside left temple, point forward; favors quick riverso-line thrusts and cross-parries against mandritti. Transitions fluidly to Longa or Donna on the step.  ￼",
+            "application": "Use against right-side pressure to threaten inside-line thrusts; exchange or break thrusts and riposte.  ￼",
+            "fullApplication": "From left Fenestra, invite a right-hand cut; meet it with a tight cross and stab into the opening; if bound, wind to Longa and keep the point on.  ￼"
+        },
+        {
+            "originalTerm": "Posta di Vera Fenestra",
+            "englishTerm": "True Window Guard",
+            "category": "guard",
+            "master": [
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Vadi's \"true window\" presented on the left with a lower, more forward window-line presentation.  ￼",
+            "detailedDescription": "Carry the window with lead-side advance and the point projecting more forward than Fiore’s depiction. Functions as a thrust-centric, deceptive high-line guard within Vadi’s timing model.  ￼",
+            "application": "Probe with short punta; recover on the retreat step; mix with Falcone and Sagittaria to vary entry lines.  ￼",
+            "fullApplication": "Use Vera Fenestra to control center; if crossed, take mezzo tempo to stab during their recovery; otherwise wheel (rota) into horizontal pressure to hands.  ￼"
+        },
+        {
+            "originalTerm": "Posta Breve",
+            "englishTerm": "Short Guard",
+            "category": "guard",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Close, withdrawn point-on guard—deceptive for short thrusts; Fiore notes it ‘wants a long sword’ and lacks stability as a base.  ￼",
+            "detailedDescription": "Arms drawn in, hilt near chest/face, point centered. It tempts with short lunging thrusts and quick retractions, but the compact structure is not for prolonged waiting.  ￼",
+            "application": "Snipe with short punta; if pressed, slip to Longa or beat to Corona; do not camp here.  ￼",
+            "fullApplication": "Use briefly to provoke parry; when they extend, take mezzo tempo thrust; if they rush, drop to Iron Gate variants to receive and counter.  ￼"
+        },
+        {
+            "originalTerm": "Posta Longa",
+            "englishTerm": "Long Guard",
+            "category": "guard",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Extended point-threat with arms long; Fiore calls it ‘full of deception’, ideal for testing defenses and striking with direct thrusts.  ￼",
+            "detailedDescription": "Extend hands and point straight to the target, body balanced. From here, disengage to thrust, void cuts, or convert to binds without ceding the center.  ￼",
+            "application": "Use as probing guard to force reactions; exchange thrusts favoring longer reach.  ￼",
+            "fullApplication": "In zufechta, carry Longa to measure; if their point searches, strike in mezzo tempo; if they cut, withdraw the hands and stab as the cut passes; or shift to Corona to catch descending blows.  ￼"
+        },
+        {
+            "originalTerm": "Posta Frontale (Posta di Corona)",
+            "englishTerm": "Frontal / Crown Guard",
+            "category": "guard",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Centered, point-up crossing guard like a ‘crown’; intercepts and deflects high/low attacks with strong crossings.  ￼",
+            "detailedDescription": "Hold the hilt centered, point rising; meet high thrusts by crossing offline, beat low thrusts to ground, and absorb descending cuts into the crown to riposte.  ￼",
+            "application": "Adopt when expecting incoming blows; convert catches to immediate ripostes.  ￼",
+            "fullApplication": "Use Corona as a defensive hub: invite, catch on the crown, then step to flank and answer with fendente or punta to face/hands. Transition to Bicorno if you need a locked, point-on center threat.  ￼"
+        },
+        {
+            "originalTerm": "Mezza Porta di Ferro",
+            "englishTerm": "Middle Iron Gate",
+            "category": "guard",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Low, centered Iron Gate with the point forward; a stable waiting guard that easily thrusts into attacks.  ￼",
+            "detailedDescription": "Hilt near hip/midline, tip aimed at opponent’s center. Receive blows on the strong, then thrust through the opening or rise with fendente to enter stretto.  ￼",
+            "application": "Wait out attacks; stop-thrust, then cover out; or rise with fendente to hands.  ￼",
+            "fullApplication": "Against cut entries, let them fall onto your strong, turn the point into their forward line and thrust; if parried, follow with redoubled mezzano. Vadi lists the position among his longsword guards.  ￼"
+        },
+        {
+            "originalTerm": "Tutta Porta di Ferro (Porta di Ferro Piana Terrena)",
+            "englishTerm": "Full Iron Gate",
+            "category": "guard",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Very low Iron Gate with blade near the ground (‘flat to the earth’); strong for beating aside thrusts and waiting.  ￼",
+            "detailedDescription": "Lower the hands and point so the blade nearly rests to the earth, stance rooted. Beat low thrusts outward and rise into counter-attacks as the opponent extends.  ￼",
+            "application": "Adopt when receiving; break thrusts downward and answer with rising cuts or thrusts.  ￼",
+            "fullApplication": "Use to deny low-line stabs and leg blows; as they overreach, step and deliver sottano → fendente sequence to hands/head, or thrust straight from the lift.  ￼"
+        },
+        {
+            "originalTerm": "Posta di Coda Longa",
+            "englishTerm": "Long Tail",
+            "category": "guard",
+            "master": [
+                "Fiore dei Liberi"
+            ],
+            "briefDefinition": "Rear-weighted, sword extended low behind like a tail; a waiting guard that transitions quickly to thrust or descending cut.  ￼",
+            "detailedDescription": "Typically right foot back, blade low to right rear. Draws attacks, then steps forward with fendente or uncurls into a thrust as you enter narrow play.  ￼",
+            "application": "Bait, then step-cut; or spring a thrust as they advance.  ￼",
+            "fullApplication": "Use Coda Longa to create tempo; when they strike, slip the target and answer with a step-in fendente to bind, then work stretto. If they hesitate, advance to Longa to take center.  ￼"
+        },
+        {
+            "originalTerm": "Posta di Coda Longa la Sinestra",
+            "englishTerm": "Left Long Tail",
+            "category": "guard",
+            "master": [
+                "Fiore dei Liberi"
+            ],
+            "briefDefinition": "Left-side mirror of Long Tail, sword low behind the left flank, offering analogous waiting and counter-attacking lines.  ￼",
+            "detailedDescription": "Reverse the tail position to the left; favors riverso and false-edge actions on the rise, with easy rotation into Boar’s Tooth on the left.  ￼",
+            "application": "Use to draw forehand blows and reply with riverso or rising thrust.  ￼",
+            "fullApplication": "Against right-handers, let the mandritto overshoot and cut riverso to the arms; if they thrust, break it downward and step to their flank.  ￼"
+        },
+        {
+            "originalTerm": "Posta Dente di Cinghiaro",
+            "englishTerm": "Boar’s Tooth",
+            "category": "guard",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Low left-lead guard named for the boar’s tusk; launches rising thrusts and hand-attacks as the opponent enters.  ￼",
+            "detailedDescription": "Left foot forward, hilt near hip, point angled upward toward the opponent’s hands; attack ‘as a boar with its lower teeth’, then follow with cuts. Excellent counter-offensive base.  ￼",
+            "application": "Stop-hit the hands with a rising punta; pursue with fendente/mezzano.  ￼",
+            "fullApplication": "When they extend, stab up the middle to the hands/face; if their blade beats yours, let it pass and redouble with mezzano to forearms; recover to Iron Gate if measure closes awkwardly.  ￼"
+        },
+        {
+            "originalTerm": "Posta Dente di Cinghiaro Mezana",
+            "englishTerm": "Middle Boar’s Tooth",
+            "category": "guard",
+            "master": [
+                "Fiore dei Liberi"
+            ],
+            "briefDefinition": "Variant of Boar’s Tooth at a more central/mid height noted in some traditions of Fiore’s material. (Scholarly note: naming varies across manuscripts.)  ￼",
+            "detailedDescription": "Carry Dente di Cinghiaro slightly higher and centered to emphasize immediate thrusts to the face while retaining low-line counter options. Use as a transitional presentation rather than a static pose.  ￼",
+            "application": "Threaten direct centerline punta; drop to full Iron Gate if pressed low.  ￼",
+            "fullApplication": "Against cautious opponents, show mid-height tusk to provoke a beat; disengage and stab; if they close, sink to Tutta Porta and reset the threat from below.  ￼"
+        },
+        {
+            "originalTerm": "Posta di Bicorno",
+            "englishTerm": "Two-Horned Guard",
+            "category": "guard",
+            "master": [
+                "Fiore dei Liberi"
+            ],
+            "briefDefinition": "Tight, point-on guard with hilt close and point locked on center so it cannot be displaced.  ￼",
+            "detailedDescription": "Hands near the face/chest, quillons like ‘two horns’; point threatens straight ahead. Ideal for holding center against entries and for sudden straight thrusts.  ￼",
+            "application": "Fix the opponent in the line; take the first intention thrust when they move.  ￼",
+            "fullApplication": "If they attempt to beat, yield minimally and replace the point (remiso) into their advance; if they cut, raise to Corona or slip and stab from the close.  ￼"
+        },
+        {
+            "originalTerm": "Posta di Falcone",
+            "englishTerm": "Falcon Guard",
+            "category": "guard",
+            "master": [
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Vadi-specific high guard, kin to Donna but with different timing/line, favoring quick advance-strike-recover actions.  ￼",
+            "detailedDescription": "Adopt a high carriage with readiness to step the lead foot and immediately deliver a descending or diagonal blow, recovering back to guard per Vadi’s cadence.  ￼",
+            "application": "Use as a mobile striking platform to preempt or punish slow entries.  ￼",
+            "fullApplication": "From Falcone, take the Vor with a sharp fendente; if they attempt to parry, turn the hands and stab in mezzo tempo; recover to Vera Fenestra or Sagittaria.  ￼"
+        },
+        {
+            "originalTerm": "Posta Sagittaria",
+            "englishTerm": "Archer’s Guard",
+            "category": "guard",
+            "master": [
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Low, forward-projecting guard akin to a lower, more forward Fenestra; name borrowed from armored context.  ￼",
+            "detailedDescription": "Project the point forward at mid-high line with a compressed structure, prepared to dart a thrust like an archer’s shot and recover.  ￼",
+            "application": "Probe with straight punta; if opposed, wheel to rota or retreat to Vera Fenestra.  ￼",
+            "fullApplication": "Use Sagittaria to contest center against long guards; take single-time thrusts as they shift; if they cut, slip under and riposte with volante.  ￼"
+        },
+        {
+            "originalTerm": "Posta di Cinghiaro (var.)",
+            "englishTerm": "Boar’s Guard (Left-Foot-Forward Variant)",
+            "category": "guard",
+            "master": [
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Vadi shows an additional boar’s-tooth-type guard with opposite foot lead from the usual depiction.  ￼",
+            "detailedDescription": "Adopt boar’s-tooth mechanics but switch the forward leg; this alters entry angles and hand targets while retaining rising thrust utility.  ￼",
+            "application": "Use to confound expectations about your lead and hand targets while keeping tusk-style counters.  ￼",
+            "fullApplication": "Show the ‘wrong’ lead to invite a habitual parry; cut across it with a quick riverso or a lift-thrust to the hands, then step to close if they overextend.  ￼"
+        },
+        {
+            "originalTerm": "Fendente",
+            "englishTerm": "Descending (Cleaving) Blow",
+            "category": "strike",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Downward blows that ‘split the teeth to the knee’, breaking guards and returning to guard along their path.  ￼",
+            "detailedDescription": "Deliver diagonally or vertically from high line, true-edge leading, with whole-body rotation and step. Finish in low guards or recover by retracting along the same line.  ￼",
+            "application": "Primary power attack to seize Vor or smash static guards.  ￼",
+            "fullApplication": "Open with fendente to bind; if parried, wind to thrust or redouble with mezzano. Against lower guards, strike down the center to force a weak catch.  ￼"
+        },
+        {
+            "originalTerm": "Sottano",
+            "englishTerm": "Rising Blow",
+            "category": "strike",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Ascending blows that travel the same road as fendente but from knee up, often seeking the hands.  ￼",
+            "detailedDescription": "Cut up from low to high with either edge, often from Iron Gate or Boar’s Tooth; immediately follow with a descending reply if needed.  ￼",
+            "application": "Hand-hunting counter to incoming entries; set up redoubling.  ￼",
+            "fullApplication": "When the opponent extends, lift with sottano to hands/arms, then drop a fendente to head or recover to Longa to maintain point-on threat.  ￼"
+        },
+        {
+            "originalTerm": "Mezzano",
+            "englishTerm": "Middle (Thwarting) Blow",
+            "category": "strike",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Horizontal/diagonal-horizontal blows above the knee that ‘thwart’, beat thrusts, and redouble.  ￼",
+            "detailedDescription": "Travel roughly horizontal; used to interrupt lines, beat points aside, and maintain continuous offense between high and low actions.  ￼",
+            "application": "Use as redouble after parries; beat thrusts off-line.  ￼",
+            "fullApplication": "From a bind, take short mezzano to hands, then wheel into another cut (rota) or thrust; if their point threatens, strike the blade aside with a mezzo and enter.  ￼"
+        },
+        {
+            "originalTerm": "Mandritto",
+            "englishTerm": "Forehand Cut",
+            "category": "strike",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Any blow from the fencer’s right (forehand) side—can be fendente, mezzano, or sottano. (Terminological convention across Italian sources.)",
+            "detailedDescription": "Generate from right shoulder/hip; true-edge for descending/horizontal, false-edge possible on rising; pair with steps to close or angle.",
+            "application": "Default power-side actions; combine with riverso sequences to keep tempo.",
+            "fullApplication": "Open with mandritto fendente to bind; if they slip, follow with mandritto mezzano to hands, then thrust through the center. (General usage across Fiore/Vadi.)"
+        },
+        {
+            "originalTerm": "Riverso",
+            "englishTerm": "Backhand Cut",
+            "category": "strike",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Any blow from the left (backhand) side; rising riversi often use the false edge, descending the true edge.",
+            "detailedDescription": "Deliver from left shoulder/hip; excellent for striking across the opponent’s weapon arm and for redoubling after a forehand.",
+            "application": "Punish overcommitted forehands; follow mandritti for continuous pressure.",
+            "fullApplication": "After parrying inward, snap riverso mezzano to the hands and recover point-on; if they rush, drop to stretto and finish with pommel/throw per plays."
+        },
+        {
+            "originalTerm": "Falso",
+            "englishTerm": "False-Edge Cut",
+            "category": "strike",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Any cut made with the back (false) edge; common on rising or backhand actions to create fast, short lines.",
+            "detailedDescription": "Rotate the hands so the false edge leads; useful for quick lifts from low guards and for deceptive changes of line in binds.",
+            "application": "Use falso sottano to snipe hands en route to fendente; use falso to disengage and re-enter.",
+            "fullApplication": "When pressed on your true edge, turn the hands to falso to slip their bind and strike the open line, then return to true-edge structure for power."
+        },
+        {
+            "originalTerm": "Punta",
+            "englishTerm": "Thrust",
+            "category": "thrust",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Point attack along the body’s midline; Fiore enumerates five thrusts; Vadi extols the thrust as venomous and rival to all blows.  ￼",
+            "detailedDescription": "Drive the point with shoulders and step; keep the line between groin and forehead; exchange against high thrusts or break opposing thrusts before delivering your own.  ￼",
+            "application": "Probe from Longa/Fenestra; exchange or break in defense; finish binds with short stabs.  ￼",
+            "fullApplication": "From a central guard, feint cut and deliver a straight punta; if met, disengage and thrust other side; if they thrust, take scambiar di punta with an offline step.  ￼"
+        },
+        {
+            "originalTerm": "Rota",
+            "englishTerm": "Wheel Blow",
+            "category": "strike",
+            "master": [
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Vadi’s circular, turning blow that can flow through forehand fendente and destroy hands as it wheels.  ￼",
+            "detailedDescription": "A horizontal/curving strike delivered with rotational body-mechanics; often chained between other cuts to maintain continuous pressure on the opponent’s weapon arm.  ￼",
+            "application": "Use to redouble after a parry or to cut through recovering lines to hands/forearms.  ￼",
+            "fullApplication": "After beating a thrust aside, wheel the blade in rota across the hands; if they chase, reverse into a second rota or finish with a thrust under cover.  ￼"
+        },
+        {
+            "originalTerm": "Volante",
+            "englishTerm": "Flying Blow",
+            "category": "strike",
+            "master": [
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Vadi’s upward diagonal blows ‘from the knee up’ that often banish downward blows and thrusts.  ￼",
+            "detailedDescription": "Rise sharply from low line, commonly on the left/false-edge, crossing center to intercept or preempt the opponent’s descending or point attacks.  ￼",
+            "application": "Answer high-line pressure with a fast rising volante; follow with fendente or thrust.  ￼",
+            "fullApplication": "When they begin a high cut, step slightly offline and throw volante to the hands under the blow, then redouble down the opened line before they recover.  ￼"
+        },
+        {
+            "originalTerm": "Mezza Spada",
+            "englishTerm": "Half-Sword (Middle Crossing)",
+            "category": "concept",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Phase where blades meet around the middle; neither has clear advantage and actions tend toward close play.  ￼",
+            "detailedDescription": "At the mid-bind, feel for pressure; wind, thrust, strike the hands, or enter to grapple (zogho stretto). Control their point before closing.  ￼",
+            "application": "Use to transition from wide to close play; execute pommel strikes, disarms, or short thrusts.  ￼",
+            "fullApplication": "From mezza spada, if they are hard, go soft and wind to thrust; if they are soft, press through with fendente or grab the hilt to throw; always secure the line before body entries.  ￼"
+        },
+        {
+            "originalTerm": "Zogho Largo",
+            "englishTerm": "Wide Play",
+            "category": "concept",
+            "master": [
+                "Fiore dei Liberi"
+            ],
+            "briefDefinition": "Actions at wider distance: crossings at mid/tip or without crossing, leaving room to strike or withdraw without immediate grappling.  ￼",
+            "detailedDescription": "Parry at mid-blade and strike with free hands; maintain measure; avoid body contact unless advantage is created.  ￼",
+            "application": "Use largo to test and wound safely; convert to stretto only when binding close.  ￼",
+            "fullApplication": "If the bind occurs near the tips, strike to openings and exit; if pressure collapses distance, shift to stretto tactics.  ￼"
+        },
+        {
+            "originalTerm": "Zogho Stretto",
+            "englishTerm": "Close Play",
+            "category": "concept",
+            "master": [
+                "Fiore dei Liberi"
+            ],
+            "briefDefinition": "Actions at close distance: crossings nearer the hilt/half-sword leading to grappling, pommel strikes, and disarms.  ￼",
+            "detailedDescription": "With short measure and bound blades, control their weapon, then use off-hand, pommel, or throws while protecting the line.  ￼",
+            "application": "Enter when the bind collapses; finish quickly with holds or short thrusts.  ￼",
+            "fullApplication": "From stretto, if their point is free, close it with your hilt and strike with pommel; if you gain the outside, throw or off-balance before they recover.  ￼"
+        },
+        {
+            "originalTerm": "Scambiar di Punta",
+            "englishTerm": "Exchange of Thrust",
+            "category": "concept",
+            "master": [
+                "Fiore dei Liberi"
+            ],
+            "briefDefinition": "Counter-thrust against an incoming thrust by stepping offline and driving your point into them as theirs is voided.  ￼",
+            "detailedDescription": "As their thrust comes, take a slight offline step, cross/beat just enough to clear, and thrust straight into their opening; recover or pursue as needed.  ￼",
+            "application": "Use when you read a committed thrust and have line advantage.  ￼",
+            "fullApplication": "From Longa/Fenestra, if they lunge, shift head/torso off line, deflect minimally, and stab to face/chest; continue to bind only if the exchange fails.  ￼"
+        },
+        {
+            "originalTerm": "Rompere di Punta",
+            "englishTerm": "Breaking of Thrust",
+            "category": "concept",
+            "master": [
+                "Fiore dei Liberi"
+            ],
+            "briefDefinition": "Beat/deflect the opponent’s thrust aside with a strike (often a descending blow) to void the line and open a riposte.  ￼",
+            "detailedDescription": "Meet the incoming point with a sharp cut onto the blade (typically fendente/mezzano), driving it off-line; immediately answer with a thrust or cut.  ￼",
+            "application": "Preferred when timing or reach denies a safe exchange of thrust.  ￼",
+            "fullApplication": "Against a central lunge, step offline, strike the blade down with fendente, and thrust over it; if they resist, bind to mezza spada and finish per stretto plays.  ￼"
+        },
+        {
+            "originalTerm": "Colpo di Villano",
+            "englishTerm": "Villain’s (Peasant’s) Blow",
+            "category": "concept",
+            "master": [
+                "Fiore dei Liberi"
+            ],
+            "briefDefinition": "An overly strong, crude overhand strike used as a teaching scenario; Fiore shows how to evade/intercept and counter as it overcommits.  ￼",
+            "detailedDescription": "As the heavy high blow descends, void the line or meet it early; then seize the moment of imbalance to thrust, strike, or throw. Emphasizes timing against raw strength.  ￼",
+            "application": "Train counters to committed, telegraphed strikes; develop offline entries.  ￼",
+            "fullApplication": "Step off line as it falls; catch or let it pass; immediately thrust to face or take the arms; if they crash in, transition to stretto grappling.  ￼"
+        },
+        {
+            "originalTerm": "Mezzo Tempo",
+            "englishTerm": "Half-Tempo",
+            "category": "concept",
+            "master": [
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Strike in the middle of the opponent’s action—‘just one turn of the wrist: quick and immediately striking’.  ￼",
+            "detailedDescription": "Exploit small motion to land before their action completes: a short thrust, a quick hand turn, or a compact cut taken on their preparation or extension.  ￼",
+            "application": "Use against wide preparations or slow recoveries; favors compact guards (Vera Fenestra, Longa).  ￼",
+            "fullApplication": "As they raise to cut, turn the hands and deliver a straight punta before their blow falls; if they disengage, take a short rota to the hands, keeping time advantage.  ￼"
+        },
+        {
+            "originalTerm": "Accrescere",
+            "englishTerm": "Advance (Increase) Step",
+            "category": "footwork",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Short lead-foot advance that increases stance length and closes measure without a full pass.",
+            "detailedDescription": "Lead foot steps forward a small amount; rear foot may follow to re-establish stance. Used to approach safely, provoke, or set up actions while remaining balanced. Vadi favors striking off a quick lead-foot advance and recovering immediately.",
+            "application": "Probe from Longa/Fenestra; gain a tempo and line without over-commitment; pair with point-on threats and immediate ripostes.",
+            "fullApplication": "In onset, accrescere from Longa to force a parry; if they cut, void or cover and thrust in mezzo tempo; if they hesitate, accrescere again to enter a bind or pass offline with a fendente."
+        },
+        {
+            "originalTerm": "Discressere",
+            "englishTerm": "Retreat (Decrease) Step",
+            "category": "footwork",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Short lead-foot withdrawal that shortens stance and opens measure without a full pass back.",
+            "detailedDescription": "Lead foot moves back toward the rear foot, reducing reach and buying time. Used to make attacks fall short, let strikes land on the forte, and create space for counters.",
+            "application": "Create evasive space during their attack; make a blow miss or weaken on contact; reset measure to re-enter on your terms.",
+            "fullApplication": "Parry a cut on your strong while discressere to void its power, then accrescere back in with a thrust; or discressere to deny grappling measure and re-establish largo play."
+        },
+        {
+            "originalTerm": "Passare",
+            "englishTerm": "Passing Step (Forward)",
+            "category": "footwork",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Rear foot passes forward to become lead, covering ground for committed entries and powerful blows.",
+            "detailedDescription": "A deep forward step, ideally taken slightly offline, that couples body mass to the strike or cover. Standard mechanic for entering narrow play and breaking guards with force.",
+            "application": "From Donna or Coda Longa, pass forward with fendente or thrust to seize initiative and close safely.",
+            "fullApplication": "Step the front foot slightly offline, then pass with the rear foot as you cover and strike; arrive on their flank, bind on your forte, and finish with thrust or second cut."
+        },
+        {
+            "originalTerm": "Tornare",
+            "englishTerm": "Returning Step (Pass Back)",
+            "category": "footwork",
+            "master": [
+                "Fiore dei Liberi"
+            ],
+            "briefDefinition": "Lead foot passes back to become rear, retreating in one action while keeping guard.",
+            "detailedDescription": "Reverse of the forward pass. Used to exit measure quickly after a failed action or to deny the opponent a safe riposte.",
+            "application": "Abort an exchange cleanly; void a riposte; regain space from stretto to re-establish largo.",
+            "fullApplication": "After your cut is parried, tornare immediately to void their riposte; present point-on as you retreat to discourage pursuit, then re-enter with an accrescere and thrust."
+        },
+        {
+            "originalTerm": "Zufechta",
+            "englishTerm": "Onset of the Fight",
+            "category": "concept",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "The approach into fighting distance where the first credible threats are launched to seize initiative.",
+            "detailedDescription": "The phase of closing from out of measure into range under cover of guards, feints, or point-on threats. The goal is to enter safely while forcing reactions.",
+            "application": "Advance with point controlling the center (Longa/Fenestra); enter on an angle with a prepared strike or thrust to take the Vor.",
+            "fullApplication": "Approach with a slight accrescere and point-on; when they parry or reach, step offline and strike in mezzo tempo; if they wait, pass with a fendente to bind on your forte."
+        },
+        {
+            "originalTerm": "Vor",
+            "englishTerm": "Initiative (Before)",
+            "category": "concept",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "State of acting first and dictating tempo so the opponent must respond.",
+            "detailedDescription": "You control timing by launching actions that force parries or binds, then immediately following before the opponent can take their own turn.",
+            "application": "Strike decisively from pulsativa guards (Donna, Tutta Porta) or threaten point-on from Longa to keep the opponent reacting.",
+            "fullApplication": "Open with a sharp fendente from Falcone; as they parry, turn the hands to a thrust without ceding tempo; if they remain passive, redouble mezzano to the hands to preserve Vor."
+        },
+        {
+            "originalTerm": "Sentire",
+            "englishTerm": "Feeling (in the Bind)",
+            "category": "concept",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Tactile reading of pressure in the blade bind—if they are hard, go soft; if soft, go strong.",
+            "detailedDescription": "Use pressure and contact to decide whether to yield and wind around, or press through with cuts/thrusts. Core to actions at mezza spada.",
+            "application": "At the bind, test: if you meet stiff resistance, slip or wind to the open line; if you feel weakness, thrust or cut through immediately.",
+            "fullApplication": "Cross at mid-blade; feel them push hard—yield a little, slide off, and thrust around their blade; next exchange they’re soft—drive straight in on the line with point or fendente."
+        },
+        {
+            "originalTerm": "Remiso",
+            "englishTerm": "Remise (Renewed Attack)",
+            "category": "concept",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Immediate continuation after a parried or missed attack without withdrawing or pausing.",
+            "detailedDescription": "Replace the point or rebound the blade to a new opening before the opponent can riposte; favors compact hand turns and short lines.",
+            "application": "After a thrust is beaten slightly off-line, replace the point instantly; after a cut is parried, let it rebound into a second cut or thrust.",
+            "fullApplication": "Thrust from Longa; they beat weakly—keep forward intent and slide the point back onto center for a fast second thrust; or mandritto is parried—remise into riverso to the far opening."
+        },
+        {
+            "originalTerm": "Pulsativa",
+            "englishTerm": "Power-Striking Guard (Class)",
+            "category": "concept",
+            "master": [
+                "Fiore dei Liberi"
+            ],
+            "briefDefinition": "Fiore’s label for guards designed to deliver very powerful blows and break opposing guards.",
+            "detailedDescription": "Positions like Posta di Donna and Tutta Porta di Ferro generate maximal force via body rotation and structure; used to seize momentum.",
+            "application": "Adopt to open exchanges with committed fendenti or rising actions that overwhelm static defenses.",
+            "fullApplication": "From Donna Destra, step diagonally and strike a hard fendente to break their cover; if checked, follow immediately with thrust or mezzano before they recover."
+        },
+        {
+            "originalTerm": "Stabile",
+            "englishTerm": "Stable Guard (Class)",
+            "category": "concept",
+            "master": [
+                "Fiore dei Liberi"
+            ],
+            "briefDefinition": "Firm, rooted guards structured to receive force and riposte safely.",
+            "detailedDescription": "Examples include Mezza Porta di Ferro and Dente di Cinghiaro; they close lines on the forte and resist displacement.",
+            "application": "Wait in a stable guard to draw attacks, take them on the strong, and answer instantly.",
+            "fullApplication": "In Mezza Porta di Ferro, meet the cut on your forte while stepping slightly offline, then thrust up the middle or drop a fendente as their blade rebounds."
+        },
+        {
+            "originalTerm": "Instabile",
+            "englishTerm": "Unstable (Moving) Guard (Class)",
+            "category": "concept",
+            "master": [
+                "Fiore dei Liberi"
+            ],
+            "briefDefinition": "Mobile, deceptive guards used transiently to feint, probe, and transition—unsuited to absorbing heavy blows.",
+            "detailedDescription": "Examples include Posta di Fenestra, Posta Longa, and Posta Breve; emphasize speed, deception, and quick conversion to cover or attack.",
+            "application": "Use to invite and then change line: threaten point-on, void incoming cuts, and counter in mezzo tempo.",
+            "fullApplication": "From Fenestra, show a high threat; as they cut, shift to catch or slip the blow and snap a straight thrust; from Longa, withdraw hands to void their beat and immediately strike."
+        },
+        {
+            "originalTerm": "Tempo",
+            "englishTerm": "Timing",
+            "category": "concept",
+            "master": [
+                "Filippo Vadi",
+                "Fiore dei Liberi"
+            ],
+            "briefDefinition": "The beat or window in which an action occurs; acting in the correct moment decides exchanges.",
+            "detailedDescription": "Includes initial time, mezzo tempo (striking during their motion), and counter-time. Economy of motion wins tempi and denies ripostes.",
+            "application": "Interrupt wide preparations with a short thrust; riposte the instant a parry succeeds; avoid multi-tempo actions unless you control measure.",
+            "fullApplication": "They raise to cut—turn the hands and deliver a straight punta in mezzo tempo; if you must parry, do so once and strike in the next beat before they can act."
+        },
+        {
+            "originalTerm": "Misura",
+            "englishTerm": "Measure (Distance)",
+            "category": "concept",
+            "master": [
+                "Fiore dei Liberi",
+                "Filippo Vadi"
+            ],
+            "briefDefinition": "Management of distance: from out of measure to wide (largo) to close (stretto) and grappling range.",
+            "detailedDescription": "Guards and footwork regulate entry and denial of measure. Wide play favors strikes with room to exit; close play favors binds, thrusts, and grapples.",
+            "application": "Hold point-on to fix measure; accrescere to threaten safely; discressere/tornare to deny their reach; choose actions appropriate to distance.",
+            "fullApplication": "Stand just outside reach in Breve to lure entry; as they step, extend to Longa and thrust before they arrive; if measure collapses to stretto, secure the weapon and finish with pommel or throw."
+        }
+    ]
+}

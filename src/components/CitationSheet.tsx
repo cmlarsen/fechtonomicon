@@ -1,6 +1,14 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Modal, TouchableOpacity, Animated, Dimensions } from 'react-native';
-import { colors, spacing, fontSize, fontFamily, borderRadius, shadows } from '../theme/tokens';
+import {
+  Animated,
+  Dimensions,
+  Modal,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../theme/tokens';
 
 interface CitationSheetProps {
   visible: boolean;
@@ -38,17 +46,8 @@ export const CitationSheet: React.FC<CitationSheetProps> = ({ visible, citations
   }, [visible, slideAnim]);
 
   return (
-    <Modal
-      visible={visible}
-      transparent
-      animationType="none"
-      onRequestClose={onClose}
-    >
-      <TouchableOpacity
-        style={styles.overlay}
-        activeOpacity={1}
-        onPress={onClose}
-      >
+    <Modal visible={visible} transparent animationType="none" onRequestClose={onClose}>
+      <TouchableOpacity style={styles.overlay} activeOpacity={1} onPress={onClose}>
         <Animated.View
           style={[
             styles.sheet,
@@ -73,9 +72,7 @@ export const CitationSheet: React.FC<CitationSheetProps> = ({ visible, citations
                   {citation.locator && (
                     <Text style={styles.citationLocator}>{citation.locator}</Text>
                   )}
-                  {citation.note && (
-                    <Text style={styles.citationNote}>{citation.note}</Text>
-                  )}
+                  {citation.note && <Text style={styles.citationNote}>{citation.note}</Text>}
                 </View>
               ))}
             </View>

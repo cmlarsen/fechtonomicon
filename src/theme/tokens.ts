@@ -1,21 +1,21 @@
 export const colors = {
   // Manuscript parchment tones
   parchment: {
-    primary: '#F8F4E8',    // Warm aged paper
-    light: '#FFF8EE',       // Light vellum
-    dark: '#EDD9BF',        // Aged edges
+    primary: '#F8F4E8', // Warm aged paper
+    light: '#FFF8EE', // Light vellum
+    dark: '#EDD9BF', // Aged edges
   },
   // Antique gold accents
   gold: {
-    main: '#C9AB6A',        // Antique gold
-    light: '#E8D4A0',       // Pale gold
-    dark: '#B8964D',        // Deep gold
+    main: '#C9AB6A', // Antique gold
+    light: '#E8D4A0', // Pale gold
+    dark: '#B8964D', // Deep gold
   },
   // Iron gray for text
   iron: {
-    main: '#5C5B58',        // Iron gray
-    dark: '#3A3936',        // Dark iron
-    light: '#8B8A87',       // Light iron
+    main: '#5C5B58', // Iron gray
+    dark: '#3A3936', // Dark iron
+    light: '#8B8A87', // Light iron
   },
   // Keep legacy for compatibility
   primary: {
@@ -30,26 +30,26 @@ export const colors = {
     light: '#B85C5C',
   },
   background: {
-    primary: '#F8F4E8',    // Updated to new parchment
+    primary: '#F8F4E8', // Updated to new parchment
     secondary: '#EDD9BF',
     card: '#FFF8EE',
     dark: '#2A1810',
   },
   text: {
-    primary: '#3A3936',    // Updated to dark iron
-    secondary: '#5C5B58',  // Updated to iron gray
-    light: '#8B8A87',      // Updated to light iron
+    primary: '#3A3936', // Updated to dark iron
+    secondary: '#5C5B58', // Updated to iron gray
+    light: '#8B8A87', // Updated to light iron
     inverse: '#F8F4E8',
   },
   accent: {
-    gold: '#C9AB6A',       // Updated to antique gold
+    gold: '#C9AB6A', // Updated to antique gold
     goldLight: '#E8D4A0',
     burgundy: '#722F37',
     burgundyLight: '#9B4A54',
   },
   border: {
     light: '#D4C4B0',
-    main: '#C9AB6A',       // Updated to antique gold
+    main: '#C9AB6A', // Updated to antique gold
     dark: '#B8964D',
   },
   shadow: 'rgba(42, 24, 16, 0.15)',
@@ -68,11 +68,11 @@ export const spacing = {
 export const fontSize = {
   xs: 12,
   sm: 14,
-  md: 18,        // Increased from 16 for better readability
-  lg: 20,        // Increased from 18
-  xl: 26,        // Increased from 24
-  xxl: 34,       // Increased from 32
-  xxxl: 36,      // Increased from 40
+  md: 18, // Increased from 16 for better readability
+  lg: 20, // Increased from 18
+  xl: 26, // Increased from 24
+  xxl: 34, // Increased from 32
+  xxxl: 36, // Increased from 40
 };
 
 export const fontFamily = {

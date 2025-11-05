@@ -1,8 +1,8 @@
-import { STORAGE_KEYS, Discipline } from '../types/flashcard';
 import { Platform } from 'react-native';
+import { Discipline, STORAGE_KEYS } from '../types/flashcard';
 
 let mmkvInstance: any = null;
-let isMMKVAvailable = false;
+let _isMMKVAvailable = false;
 
 // Lazy initialization - only create storage when first accessed
 function getMMKV(): any {
@@ -41,7 +41,7 @@ function getMMKV(): any {
           }
         },
       };
-      isMMKVAvailable = true;
+      _isMMKVAvailable = true;
       return mmkvInstance;
     }
 
@@ -55,11 +55,11 @@ function getMMKV(): any {
       }
 
       mmkvInstance = new MMKV();
-      isMMKVAvailable = true;
+      _isMMKVAvailable = true;
       console.log('✅ MMKV initialized successfully');
     } catch (error) {
       console.warn('⚠️ MMKV not available, using in-memory fallback:', error);
-      isMMKVAvailable = false;
+      _isMMKVAvailable = false;
 
       // Create an in-memory fallback storage
       const memoryStorage: Record<string, string> = {};
@@ -73,7 +73,7 @@ function getMMKV(): any {
           delete memoryStorage[key];
         },
         clearAll: () => {
-          Object.keys(memoryStorage).forEach(key => delete memoryStorage[key]);
+          Object.keys(memoryStorage).forEach((key) => delete memoryStorage[key]);
         },
       };
     }

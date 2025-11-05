@@ -1,16 +1,9 @@
-import Carousel, {
-  type ICarouselInstance,
-} from "react-native-reanimated-carousel";
-import { Dimensions, StyleSheet, View } from "react-native";
-import { useEffect, useRef } from "react";
-import Animated, {
-  interpolate,
-  useAnimatedStyle,
-  type SharedValue,
-} from "react-native-reanimated";
-
-import { Flashcard } from "./Flashcard";
-import type { Flashcard as FlashcardType } from "../types/flashcard";
+import { useEffect, useRef } from 'react';
+import { Dimensions, StyleSheet, View } from 'react-native';
+import Animated, { interpolate, type SharedValue, useAnimatedStyle } from 'react-native-reanimated';
+import Carousel, { type ICarouselInstance } from 'react-native-reanimated-carousel';
+import type { Flashcard as FlashcardType } from '../types/flashcard';
+import { Flashcard } from './Flashcard';
 
 interface FlashcardSwiperProps {
   cards: FlashcardType[];
@@ -22,7 +15,7 @@ interface FlashcardSwiperProps {
   onScrollProgress?: (offsetProgress: number, absoluteProgress: number) => void;
 }
 
-const { width: SCREEN_WIDTH } = Dimensions.get("window");
+const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const CARD_WIDTH = SCREEN_WIDTH * 1; // Cards take 92% of screen width for subtle peek effect
 
 interface AnimatedCardProps {
@@ -41,17 +34,9 @@ const AnimatedCard: React.FC<AnimatedCardProps> = ({
   onTermPress,
 }) => {
   const animatedStyle = useAnimatedStyle(() => {
-    const opacity = interpolate(
-      animationValue.value,
-      [-1, 0, 1],
-      [0.8, 1, 0.8]
-    );
+    const opacity = interpolate(animationValue.value, [-1, 0, 1], [0.8, 1, 0.8]);
 
-    const shadowOpacity = interpolate(
-      animationValue.value,
-      [-0.5, 0, 0.5],
-      [0, 0.6, 0]
-    );
+    const shadowOpacity = interpolate(animationValue.value, [-0.5, 0, 0.5], [0, 0.6, 0]);
 
     return {
       opacity,
@@ -140,14 +125,14 @@ export const FlashcardSwiper: React.FC<FlashcardSwiperProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   cardWrapper: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    shadowColor: "#000",
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 8,

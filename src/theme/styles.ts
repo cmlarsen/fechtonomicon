@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { colors, spacing, fontSize, fontWeight, borderRadius, shadows } from './tokens';
+import { borderRadius, colors, fontSize, fontWeight, shadows, spacing } from './tokens';
 
 export const globalStyles = StyleSheet.create({
   container: {

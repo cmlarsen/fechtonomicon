@@ -1,18 +1,20 @@
+import type { StackNavigationProp } from '@react-navigation/stack';
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import type { RootStackParamList } from '../navigation/AppNavigator';
 import { useFlashcardStore } from '../store/flashcardStore';
-import { Discipline } from '../types/flashcard';
-import { colors, spacing, fontSize, fontFamily, fontWeight, borderRadius, shadows } from '../theme/tokens';
+import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../theme/tokens';
+import type { Discipline } from '../types/flashcard';
 
 interface DisciplineSelectionScreenProps {
-  navigation: any;
+  navigation: StackNavigationProp<RootStackParamList, 'DisciplineSelection'>;
 }
 
 const DISCIPLINES: { id: Discipline; name: string; description: string }[] = [
   {
     id: 'meyer-longsword',
     name: 'Meyer Longsword',
-    description: 'Joachim Meyer\'s German longsword system',
+    description: "Joachim Meyer's German longsword system",
   },
   {
     id: 'rapier',
@@ -69,14 +71,21 @@ export const DisciplineSelectionScreen: React.FC<DisciplineSelectionScreenProps>
             >
               <View style={styles.disciplineContent}>
                 <View style={styles.disciplineHeader}>
-                  <Text style={[styles.disciplineName, isSelected && styles.disciplineNameSelected]}>
+                  <Text
+                    style={[styles.disciplineName, isSelected && styles.disciplineNameSelected]}
+                  >
                     {discipline.name}
                   </Text>
                   <View style={[styles.checkbox, isSelected && styles.checkboxSelected]}>
                     {isSelected && <Text style={styles.checkmark}>✓</Text>}
                   </View>
                 </View>
-                <Text style={[styles.disciplineDescription, isSelected && styles.disciplineDescriptionSelected]}>
+                <Text
+                  style={[
+                    styles.disciplineDescription,
+                    isSelected && styles.disciplineDescriptionSelected,
+                  ]}
+                >
                   {discipline.description}
                 </Text>
               </View>
@@ -105,15 +114,16 @@ const styles = StyleSheet.create({
     paddingBottom: spacing.lg,
   },
   title: {
-    fontSize: fontSize.xxxl,
-    fontWeight: fontWeight.bold,
+    fontSize: fontSize.xxl,
+    fontFamily: fontFamily.title,
     color: colors.text.primary,
     marginBottom: spacing.xs,
+    lineHeight: fontSize.xxl * 1.2,
   },
   subtitle: {
     fontSize: fontSize.md,
-    color: colors.text.light,
-    fontWeight: fontWeight.regular,
+    fontFamily: fontFamily.body,
+    color: colors.text.secondary,
   },
   content: {
     flex: 1,
@@ -142,21 +152,23 @@ const styles = StyleSheet.create({
     marginBottom: spacing.sm,
   },
   disciplineName: {
-    fontSize: fontSize.xl,
-    fontWeight: fontWeight.semibold,
+    fontSize: fontSize.lg,
+    fontFamily: fontFamily.bodySemiBold,
     color: colors.text.primary,
     flex: 1,
   },
   disciplineNameSelected: {
-    color: colors.primary.dark,
+    color: colors.iron.dark,
   },
   disciplineDescription: {
     fontSize: fontSize.md,
-    color: colors.text.light,
+    fontFamily: fontFamily.bodyItalic,
+    color: colors.text.secondary,
     lineHeight: fontSize.md * 1.4,
   },
   disciplineDescriptionSelected: {
-    color: colors.text.secondary,
+    color: colors.iron.main,
+    fontFamily: fontFamily.bodyMediumItalic,
   },
   checkbox: {
     width: 28,
@@ -173,16 +185,16 @@ const styles = StyleSheet.create({
     borderColor: colors.accent.gold,
   },
   checkmark: {
-    color: colors.text.primary,
+    color: colors.iron.dark,
     fontSize: fontSize.md,
-    fontWeight: fontWeight.bold,
+    fontFamily: fontFamily.bodyBold,
   },
   footer: {
     padding: spacing.lg,
     paddingBottom: spacing.xl,
   },
   doneButton: {
-    backgroundColor: colors.primary.main,
+    backgroundColor: colors.iron.dark,
     paddingVertical: spacing.md,
     borderRadius: borderRadius.md,
     alignItems: 'center',
@@ -190,7 +202,9 @@ const styles = StyleSheet.create({
   },
   doneButtonText: {
     color: colors.text.inverse,
-    fontSize: fontSize.lg,
-    fontWeight: fontWeight.semibold,
+    fontSize: fontSize.md,
+    fontFamily: fontFamily.bodySemiBold,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
   },
 });

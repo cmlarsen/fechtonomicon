@@ -1,16 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { colors, spacing, fontSize, fontFamily } from '../theme/tokens';
+import { colors, fontFamily, fontSize, spacing } from '../theme/tokens';
 
 interface SectionDividerProps {
   label?: string;
   ornament?: string; // Unicode character like ⚔ 🗡 ❧ ⚜
 }
 
-export const SectionDivider: React.FC<SectionDividerProps> = ({
-  label,
-  ornament = '⚔'
-}) => {
+export const SectionDivider: React.FC<SectionDividerProps> = ({ label, ornament = '⚔' }) => {
   return (
     <View style={styles.container}>
       <View style={styles.lineContainer}>

@@ -1,7 +1,7 @@
-import React, { useMemo } from "react";
-import { StyleSheet, Text } from "react-native";
-import type { Flashcard } from "../types/flashcard";
-import { colors, fontFamily } from "../theme/tokens";
+import React, { useMemo } from 'react';
+import { StyleSheet, Text } from 'react-native';
+import { colors, fontFamily } from '../theme/tokens';
+import type { Flashcard } from '../types/flashcard';
 
 interface LinkedTextProps {
   text: string;
@@ -10,12 +10,7 @@ interface LinkedTextProps {
   style?: any;
 }
 
-export const LinkedText: React.FC<LinkedTextProps> = ({
-  text,
-  allCards,
-  onTermPress,
-  style,
-}) => {
+export const LinkedText: React.FC<LinkedTextProps> = ({ text, allCards, onTermPress, style }) => {
   const termMap = useMemo(() => {
     const map = new Map<string, string>();
 
@@ -35,18 +30,18 @@ export const LinkedText: React.FC<LinkedTextProps> = ({
     const parts: Array<{ text: string; isLink: boolean; cardId?: string }> = [];
 
     if (!text || termMap.size === 0) {
-      return [{ text: text || "", isLink: false }];
+      return [{ text: text || '', isLink: false }];
     }
 
     const termKeys = Array.from(termMap.keys())
       .sort((a, b) => b.length - a.length)
-      .map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+      .map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
 
     if (termKeys.length === 0) {
       return [{ text, isLink: false }];
     }
 
-    const regex = new RegExp(`\\b(${termKeys.join("|")})\\b`, "gi");
+    const regex = new RegExp(`\\b(${termKeys.join('|')})\\b`, 'gi');
 
     let lastIndex = 0;
     let match;
@@ -92,11 +87,7 @@ export const LinkedText: React.FC<LinkedTextProps> = ({
       {parseText.map((part, index) => {
         if (part.isLink && part.cardId) {
           return (
-            <Text
-              key={index}
-              onPress={() => onTermPress(part.cardId!)}
-              style={styles.link}
-            >
+            <Text key={index} onPress={() => onTermPress(part.cardId!)} style={styles.link}>
               {part.text}
             </Text>
           );
@@ -110,7 +101,7 @@ export const LinkedText: React.FC<LinkedTextProps> = ({
 const styles = StyleSheet.create({
   link: {
     color: colors.gold.dark,
-    textDecorationLine: "underline",
+    textDecorationLine: 'underline',
     fontFamily: fontFamily.bodySemiBold,
   },
 });

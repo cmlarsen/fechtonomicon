@@ -1,5 +1,4 @@
-import React from 'react';
-import { render, waitFor, fireEvent } from '@testing-library/react-native';
+import { fireEvent, render, waitFor } from '@testing-library/react-native';
 import { AppNavigator } from '../../src/navigation/AppNavigator';
 import { storage } from '../../src/services/storage';
 

@@ -1,29 +1,16 @@
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import React, { useEffect } from "react";
-import {
-  borderRadius,
-  colors,
-  fontSize,
-  shadows,
-  spacing,
-} from "../theme/tokens";
-
-import { BackgroundPattern } from "../components/BackgroundPattern";
-import { DrawerActions } from "@react-navigation/native";
-import { Flashcard } from "../components/Flashcard";
-import { FlashcardSwiper } from "../components/FlashcardSwiper";
-import type { Flashcard as FlashcardType } from "../types/flashcard";
-import flashcardsData from "../../assets/data/flashcards.json";
-import { useDrawerContext } from "../contexts/DrawerContext";
-import { useFlashcardStore } from "../store/flashcardStore";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { widgetService } from "../services/widgetService";
+import { DrawerActions } from '@react-navigation/native';
+import React, { useEffect } from 'react';
+import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import flashcardsData from '../../assets/data/german-longsword-data.json';
+import { BackgroundPattern } from '../components/BackgroundPattern';
+import { Flashcard } from '../components/Flashcard';
+import { FlashcardSwiper } from '../components/FlashcardSwiper';
+import { useDrawerContext } from '../contexts/DrawerContext';
+import { widgetService } from '../services/widgetService';
+import { useFlashcardStore } from '../store/flashcardStore';
+import { borderRadius, colors, fontSize, shadows, spacing } from '../theme/tokens';
+import type { Flashcard as FlashcardType } from '../types/flashcard';
 
 interface CardScreenProps {
   navigation: {
@@ -37,15 +24,11 @@ interface CardScreenProps {
   };
 }
 
-export const CardScreen: React.FC<CardScreenProps> = ({
-  navigation,
-  route,
-}) => {
-  const { loadCards, loadFromStorage, allCards, selectedDisciplines } =
-    useFlashcardStore();
+export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => {
+  const { loadCards, loadFromStorage, allCards, selectedDisciplines } = useFlashcardStore();
   const { setCards, setOnCardPress } = useDrawerContext();
   const insets = useSafeAreaInsets();
-  const [shuffledCards, setShuffledCards] = React.useState<FlashcardType[]>([]);
+  const [sortedCards, setSortedCards] = React.useState<FlashcardType[]>([]);
   const [currentCardIndex, setCurrentCardIndex] = React.useState(0);
 
   useEffect(() => {
@@ -53,7 +36,7 @@ export const CardScreen: React.FC<CardScreenProps> = ({
       loadFromStorage();
       loadCards((flashcardsData as any).records as FlashcardType[]);
     } catch (error) {
-      console.error("Error loading cards:", error);
+      console.error('Error loading cards:', error);
     }
   }, [loadFromStorage, loadCards]);
 
@@ -61,32 +44,30 @@ export const CardScreen: React.FC<CardScreenProps> = ({
     if (allCards.length > 0) {
       // Map weapon types to discipline format for filtering
       const weaponToDiscipline: Record<string, string> = {
-        longsword: "meyer-longsword",
-        rapier: "rapier",
-        messer: "messer",
+        longsword: 'meyer-longsword',
+        rapier: 'rapier',
+        messer: 'messer',
       };
 
-      // Filter by selected disciplines and shuffle
+      // Filter by selected disciplines and sort alphabetically
       const filtered = allCards.filter((card) => {
         const cardDiscipline = weaponToDiscipline[card.weapon] || card.weapon;
         return selectedDisciplines.includes(cardDiscipline as any);
       });
 
-      // Shuffle the cards for a random order
-      const shuffled = [...filtered].sort(() => Math.random() - 0.5);
-      setShuffledCards(shuffled);
+      // Sort the cards alphabetically by originalTerm
+      const sorted = [...filtered].sort((a, b) => a.originalTerm.localeCompare(b.originalTerm));
+      setSortedCards(sorted);
 
       // Update drawer context with cards
-      setCards(shuffled);
+      setCards(sorted);
 
       // Handle deep link to specific card
       const cardIdFromRoute = route?.params?.cardId;
       let initialIndex = 0;
 
       if (cardIdFromRoute) {
-        const foundIndex = shuffled.findIndex(
-          (card) => card.id === cardIdFromRoute
-        );
+        const foundIndex = sorted.findIndex((card) => card.id === cardIdFromRoute);
         if (foundIndex !== -1) {
           initialIndex = foundIndex;
           setCurrentCardIndex(foundIndex);
@@ -94,8 +75,8 @@ export const CardScreen: React.FC<CardScreenProps> = ({
       }
 
       // Update current card
-      if (shuffled.length > 0) {
-        const cardToShow = shuffled[initialIndex];
+      if (sorted.length > 0) {
+        const cardToShow = sorted[initialIndex];
         useFlashcardStore.setState({ currentCard: cardToShow });
         widgetService.updateWidget(cardToShow);
       }
@@ -103,11 +84,11 @@ export const CardScreen: React.FC<CardScreenProps> = ({
   }, [allCards, selectedDisciplines, setCards, route?.params?.cardId]);
 
   const handleOpenDetails = (card: FlashcardType) => {
-    navigation.navigate("FlashcardDetail", { cardId: card.id });
+    navigation.navigate('FlashcardDetail', { cardId: card.id });
   };
 
   const handleTermPress = (cardId: string) => {
-    navigation.navigate("FlashcardDetail", { cardId });
+    navigation.navigate('FlashcardDetail', { cardId });
   };
 
   const handleCardChange = (card: FlashcardType, index: number) => {
@@ -117,41 +98,38 @@ export const CardScreen: React.FC<CardScreenProps> = ({
   };
 
   const handleRelatedCardPress = (cardId: string) => {
-    const relatedCardIndex = shuffledCards.findIndex(
-      (card) => card.id === cardId
-    );
+    const relatedCardIndex = sortedCards.findIndex((card) => card.id === cardId);
     if (relatedCardIndex !== -1) {
       setCurrentCardIndex(relatedCardIndex);
-      if (Platform.OS === "web") {
+      if (Platform.OS === 'web') {
         // On web, navigate to the card route
-        navigation.navigate("Card", { cardId });
+        navigation.navigate('Card', { cardId });
       }
     }
   };
 
   const handleNextCard = () => {
-    const nextIndex = (currentCardIndex + 1) % shuffledCards.length;
-    const nextCard = shuffledCards[nextIndex];
+    const nextIndex = (currentCardIndex + 1) % sortedCards.length;
+    const nextCard = sortedCards[nextIndex];
     setCurrentCardIndex(nextIndex);
     handleCardChange(nextCard, nextIndex);
-    if (Platform.OS === "web") {
-      navigation.navigate("Card", { cardId: nextCard.id });
+    if (Platform.OS === 'web') {
+      navigation.navigate('Card', { cardId: nextCard.id });
     }
   };
 
   const handlePrevCard = () => {
-    const prevIndex =
-      currentCardIndex === 0 ? shuffledCards.length - 1 : currentCardIndex - 1;
-    const prevCard = shuffledCards[prevIndex];
+    const prevIndex = currentCardIndex === 0 ? sortedCards.length - 1 : currentCardIndex - 1;
+    const prevCard = sortedCards[prevIndex];
     setCurrentCardIndex(prevIndex);
     handleCardChange(prevCard, prevIndex);
-    if (Platform.OS === "web") {
-      navigation.navigate("Card", { cardId: prevCard.id });
+    if (Platform.OS === 'web') {
+      navigation.navigate('Card', { cardId: prevCard.id });
     }
   };
 
   const handleCardIndexPress = React.useCallback(
-    (cardId: string, index: number) => {
+    (_cardId: string, index: number) => {
       // Scroll to the selected card
       setCurrentCardIndex(index);
       // Close the drawer
@@ -169,17 +147,12 @@ export const CardScreen: React.FC<CardScreenProps> = ({
     navigation.dispatch(DrawerActions.toggleDrawer());
   };
 
-  const currentCard = shuffledCards[currentCardIndex];
+  const currentCard = sortedCards[currentCardIndex];
 
   return (
     <BackgroundPattern>
-      <View
-        style={[
-          styles.container,
-          { paddingTop: insets.top, paddingBottom: insets.bottom },
-        ]}
-      >
-        {Platform.OS === "web" ? (
+      <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
+        {Platform.OS === 'web' ? (
           // Web: Single card with prev/next buttons
           <View style={styles.webCardContainer}>
             {currentCard && (
@@ -195,7 +168,7 @@ export const CardScreen: React.FC<CardScreenProps> = ({
           // Mobile: Swipeable carousel
           <View style={[styles.swiperContainer]}>
             <FlashcardSwiper
-              cards={shuffledCards}
+              cards={sortedCards}
               initialIndex={currentCardIndex}
               onCardChange={handleCardChange}
               onRelatedCardPress={handleRelatedCardPress}
@@ -207,7 +180,7 @@ export const CardScreen: React.FC<CardScreenProps> = ({
 
         {/* Navigation controls at bottom */}
         <View style={[styles.bottomNav]}>
-          {Platform.OS === "web" && (
+          {Platform.OS === 'web' && (
             <TouchableOpacity
               style={styles.navButton}
               onPress={handlePrevCard}
@@ -217,15 +190,11 @@ export const CardScreen: React.FC<CardScreenProps> = ({
             </TouchableOpacity>
           )}
 
-          <TouchableOpacity
-            style={styles.fabButton}
-            onPress={toggleDrawer}
-            activeOpacity={0.85}
-          >
+          <TouchableOpacity style={styles.fabButton} onPress={toggleDrawer} activeOpacity={0.85}>
             <Text style={styles.fabIcon}>⚔</Text>
           </TouchableOpacity>
 
-          {Platform.OS === "web" && (
+          {Platform.OS === 'web' && (
             <TouchableOpacity
               style={styles.navButton}
               onPress={handleNextCard}
@@ -243,23 +212,23 @@ export const CardScreen: React.FC<CardScreenProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-between",
-    alignItems: "center",
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   swiperContainer: {
     flex: 1,
   },
   webCardContainer: {
     flex: 1,
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: spacing.md,
   },
   bottomNav: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     gap: spacing.lg,
     paddingVertical: spacing.md,
   },
@@ -268,8 +237,8 @@ const styles = StyleSheet.create({
     height: 56,
     borderRadius: borderRadius.round,
     backgroundColor: colors.parchment.light,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     ...shadows.parchment,
     borderWidth: 3,
     borderColor: colors.gold.main,
@@ -282,7 +251,7 @@ const styles = StyleSheet.create({
   fabIcon: {
     fontSize: fontSize.xl,
     color: colors.gold.dark,
-    textShadowColor: "rgba(255, 255, 255, 0.6)",
+    textShadowColor: 'rgba(255, 255, 255, 0.6)',
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 1,
   },
@@ -291,8 +260,8 @@ const styles = StyleSheet.create({
     height: 48,
     borderRadius: borderRadius.round,
     backgroundColor: colors.parchment.light,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     ...shadows.parchment,
     borderWidth: 2,
     borderColor: colors.gold.main,
@@ -305,6 +274,6 @@ const styles = StyleSheet.create({
   navButtonText: {
     fontSize: fontSize.xxl,
     color: colors.gold.dark,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
 });

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Joachim Meyer 1570 – Longsword Teaching Dataset (guards, master cuts, handworks, Stücke anchors)",
+    "title": "German Longsword",
     "version": "0.4.0",
     "format": "meyer.longsw.schema.v1",
     "generated_at": "2025-11-05T15:04:40.382Z",
@@ -16,11 +16,7 @@
       "weapon": "longsword",
       "originalTerm": "Vom Tag",
       "englishTerm": "From the Roof",
-      "related": [
-        "meyer1570.long.zornhut",
-        "meyer1570.long.langort",
-        "meyer1570.long.zornhau"
-      ],
+      "related": ["meyer1570.long.zornhut", "meyer1570.long.langort", "meyer1570.long.zornhau"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -76,10 +72,7 @@
       "weapon": "longsword",
       "originalTerm": "Ochs",
       "englishTerm": "Ox",
-      "related": [
-        "meyer1570.long.winden",
-        "meyer1570.long.schielhau"
-      ],
+      "related": ["meyer1570.long.winden", "meyer1570.long.schielhau"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -105,11 +98,7 @@
       "weapon": "longsword",
       "originalTerm": "Pflug",
       "englishTerm": "Plow",
-      "related": [
-        "meyer1570.long.langort",
-        "meyer1570.long.schielhau",
-        "meyer1570.long.winden"
-      ],
+      "related": ["meyer1570.long.langort", "meyer1570.long.schielhau", "meyer1570.long.winden"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -165,10 +154,7 @@
       "weapon": "longsword",
       "originalTerm": "Eisenport",
       "englishTerm": "Iron Gate",
-      "related": [
-        "meyer1570.long.unterhau",
-        "meyer1570.long.wechsel"
-      ],
+      "related": ["meyer1570.long.unterhau", "meyer1570.long.wechsel"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -224,11 +210,7 @@
       "weapon": "longsword",
       "originalTerm": "Sprechfenster",
       "englishTerm": "Speaking Window",
-      "related": [
-        "meyer1570.long.winden",
-        "meyer1570.long.langort",
-        "meyer1570.long.absetzen"
-      ],
+      "related": ["meyer1570.long.winden", "meyer1570.long.langort", "meyer1570.long.absetzen"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -254,11 +236,7 @@
       "weapon": "longsword",
       "originalTerm": "Schlüssel",
       "englishTerm": "Key",
-      "related": [
-        "meyer1570.long.wechsel",
-        "meyer1570.long.pflug",
-        "meyer1570.long.winden"
-      ],
+      "related": ["meyer1570.long.wechsel", "meyer1570.long.pflug", "meyer1570.long.winden"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -284,10 +262,7 @@
       "weapon": "longsword",
       "originalTerm": "Nebenhut",
       "englishTerm": "Side Guard",
-      "related": [
-        "meyer1570.long.unterhau",
-        "meyer1570.long.zwerchhau"
-      ],
+      "related": ["meyer1570.long.unterhau", "meyer1570.long.zwerchhau"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -313,10 +288,7 @@
       "weapon": "longsword",
       "originalTerm": "Schrankhut",
       "englishTerm": "Barrier Guard",
-      "related": [
-        "meyer1570.long.abschneiden",
-        "meyer1570.long.winden"
-      ],
+      "related": ["meyer1570.long.abschneiden", "meyer1570.long.winden"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -342,10 +314,7 @@
       "weapon": "longsword",
       "originalTerm": "Zornleger / Zornhut",
       "englishTerm": "Wrath Guard",
-      "related": [
-        "meyer1570.long.vom_tag",
-        "meyer1570.long.zornhau"
-      ],
+      "related": ["meyer1570.long.vom_tag", "meyer1570.long.zornhau"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -371,11 +340,7 @@
       "weapon": "longsword",
       "originalTerm": "Zornhau",
       "englishTerm": "Wrath Strike",
-      "related": [
-        "meyer1570.long.vom_tag",
-        "meyer1570.long.duplieren",
-        "meyer1570.long.mutieren"
-      ],
+      "related": ["meyer1570.long.vom_tag", "meyer1570.long.duplieren", "meyer1570.long.mutieren"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -401,10 +366,7 @@
       "weapon": "longsword",
       "originalTerm": "Krumphau",
       "englishTerm": "Crooked Strike",
-      "related": [
-        "meyer1570.long.zornhut",
-        "meyer1570.long.winden"
-      ],
+      "related": ["meyer1570.long.zornhut", "meyer1570.long.winden"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -430,10 +392,7 @@
       "weapon": "longsword",
       "originalTerm": "Zwerchhau",
       "englishTerm": "Thwart Strike",
-      "related": [
-        "meyer1570.long.nebenhut",
-        "meyer1570.long.winden"
-      ],
+      "related": ["meyer1570.long.nebenhut", "meyer1570.long.winden"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -459,10 +418,7 @@
       "weapon": "longsword",
       "originalTerm": "Scheitelhau",
       "englishTerm": "Scalp/Parting Strike",
-      "related": [
-        "meyer1570.long.vom_tag",
-        "meyer1570.long.langort"
-      ],
+      "related": ["meyer1570.long.vom_tag", "meyer1570.long.langort"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -488,10 +444,7 @@
       "weapon": "longsword",
       "originalTerm": "Schielhau",
       "englishTerm": "Squinter Strike",
-      "related": [
-        "meyer1570.long.ochs",
-        "meyer1570.long.absetzen"
-      ],
+      "related": ["meyer1570.long.ochs", "meyer1570.long.absetzen"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -547,10 +500,7 @@
       "weapon": "longsword",
       "originalTerm": "Binden",
       "englishTerm": "Binding",
-      "related": [
-        "meyer1570.long.absetzen",
-        "meyer1570.long.winden"
-      ],
+      "related": ["meyer1570.long.absetzen", "meyer1570.long.winden"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword"
@@ -610,10 +560,7 @@
       "weapon": "longsword",
       "originalTerm": "Durchwechseln",
       "englishTerm": "Changing-through",
-      "related": [
-        "meyer1570.long.zucken",
-        "meyer1570.long.mutieren"
-      ],
+      "related": ["meyer1570.long.zucken", "meyer1570.long.mutieren"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword"
@@ -638,10 +585,7 @@
       "weapon": "longsword",
       "originalTerm": "Abnehmen",
       "englishTerm": "Taking-off",
-      "related": [
-        "meyer1570.long.duplieren",
-        "meyer1570.long.zucken"
-      ],
+      "related": ["meyer1570.long.duplieren", "meyer1570.long.zucken"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword"
@@ -666,10 +610,7 @@
       "weapon": "longsword",
       "originalTerm": "Zucken",
       "englishTerm": "Pulling/Twitching-off",
-      "related": [
-        "meyer1570.long.abnehmen",
-        "meyer1570.long.durchwechseln"
-      ],
+      "related": ["meyer1570.long.abnehmen", "meyer1570.long.durchwechseln"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword"
@@ -694,10 +635,7 @@
       "weapon": "longsword",
       "originalTerm": "Duplieren",
       "englishTerm": "Doubling",
-      "related": [
-        "meyer1570.long.zornhau",
-        "meyer1570.long.mutieren"
-      ],
+      "related": ["meyer1570.long.zornhau", "meyer1570.long.mutieren"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword"
@@ -722,10 +660,7 @@
       "weapon": "longsword",
       "originalTerm": "Mutieren",
       "englishTerm": "Mutating",
-      "related": [
-        "meyer1570.long.winden",
-        "meyer1570.long.duplieren"
-      ],
+      "related": ["meyer1570.long.winden", "meyer1570.long.duplieren"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword"
@@ -750,10 +685,7 @@
       "weapon": "longsword",
       "originalTerm": "Abschneiden",
       "englishTerm": "Slicing-off",
-      "related": [
-        "meyer1570.long.schrankhut",
-        "meyer1570.long.winden"
-      ],
+      "related": ["meyer1570.long.schrankhut", "meyer1570.long.winden"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword"
@@ -778,10 +710,7 @@
       "weapon": "longsword",
       "originalTerm": "Ablaufen",
       "englishTerm": "Running-off / Flowing-off",
-      "related": [
-        "meyer1570.long.durchwechseln",
-        "meyer1570.long.zucken"
-      ],
+      "related": ["meyer1570.long.durchwechseln", "meyer1570.long.zucken"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword (Handworks)"
@@ -799,72 +728,6 @@
       "fullDescription": "When your blade is in contact with your opponent's, rotate your sword around the axis of your hilt, causing your blade to slip off or flow around their blade. The motion involves turning your hands/hilt while your blade arcs around this central pivot point. Your blade essentially 'runs off' or 'flows off' their blade rather than maintaining pressure or pushing through. The technique can involve your blade sliding down around the hilt—picture your blade rotating downward and around like water flowing off and around an obstacle.\n\nYour hands may make a small circular motion, or you might maintain hand position while rotating the blade through wrist and forearm action. The key is the flowing, continuous quality rather than a sharp disengagement. As you execute Ablaufen, your blade clears their blade and often repositions to a new line or angle. Your body may step or shift to support the new angle. The motion should feel smooth and flowing rather than jerky or forced.",
       "fullApplication": "Use Ablaufen when you find yourself in a dangerous or disadvantageous bind and need to exit safely without simply retreating or pulling away in a way that exposes you. This technique excels at escaping bad positions while maintaining some measure of control and initiative. When your opponent has superior leverage in the bind or when you realize continuing to fight in the current bind is disadvantageous, execute Ablaufen to slip your blade around and off theirs, then immediately re-establish threat from a new angle.\n\nUse this technique to reset the engagement while staying safe—you're not abandoning contact carelessly but rather flowing off in a controlled manner. Ablaufen can also be used offensively: flow off their blade and re-enter on a different line where they haven't prepared a response. The technique is particularly valuable against opponents who are very strong in the bind—rather than fighting their strength, you flow off and around, negating their advantage.\n\nPractice Ablaufen with emphasis on maintaining defensive structure throughout the motion—you're vulnerable during the transition, so execution must be smooth and your recovery position must be sound. The 'running off' or 'flowing off' metaphor is important: think of water running off a surface, finding the path of least resistance.\n\nUse Ablaufen when you need to disengage safely, when the current bind doesn't offer good options, or when you want to create a new angle of engagement. The technique appears less frequently in sources compared to other hauptstücke, suggesting it may be an advanced or situational technique rather than a core fundamental—use it when other options aren't favorable.",
       "briefApplication": "Use Ablaufen when you find yourself in a dangerous or disadvantageous bind and need to exit safely without simply retreating or pulling away in a way that exposes you."
-    },
-    {
-      "id": "meyer1570.long.stuecke.placeholder.01",
-      "category": "stueck",
-      "weapon": "longsword",
-      "originalTerm": "Stück (Longsword, early chapters)",
-      "englishTerm": "Device / Play",
-      "related": [
-        "meyer1570.long.winden",
-        "meyer1570.long.absetzen",
-        "meyer1570.long.zornhau"
-      ],
-      "source_primary": {
-        "work": "Meyer 1570",
-        "section": "Longsword",
-        "folio_or_marker": "per Garber 2023 Reading/Reference Editions"
-      },
-      "citations": [
-        {
-          "type": "wiktenauer",
-          "ref": "turn0search1",
-          "locator": "Garber–Chidester draft PDF",
-          "note": "first 11 chapters"
-        },
-        {
-          "type": "wiktenauer",
-          "ref": "turn1search22",
-          "locator": "Bibliography (Garber 2023)",
-          "note": "complete edition reference"
-        }
-      ],
-      "status": "needs_full_quote",
-      "briefDescription": "Specific named techniques and tactical sequences described in the early chapters of the longsword manuscripts, representing complete applications of the fundamental principles.",
-      "fullDescription": "The Stücke (singular: Stück) are not single movements but rather complete tactical plays or devices that combine multiple fundamental techniques into coherent sequences. Each Stück typically begins with a specific situation (e.g., 'when he strikes at you from above' or 'when you stand in Pflug and he thrusts'), then describes a series of actions: your initial response, your opponent's possible reactions, and your counter-actions based on those reactions.\n\nThe plays incorporate the hauptstücke (master techniques) in context, showing how guards, strikes, binds, and windings work together in actual fencing situations. The early chapters' Stücke focus on the five master strikes (Zornhau, Krumphau, Zwerchhau, Schielhau, Scheitelhau) and their applications, along with the four guards and associated techniques. Each play demonstrates principles like Vor/Nach (initiative), Fühlen (feeling), Indes (timing), and hard/soft (pressure assessment). The plays are teaching tools that bridge the gap between learning individual techniques in isolation and applying them in fluid combat.",
-      "fullApplication": "Study the Stücke as complete tactical lessons that show how to combine the system's fundamental elements in context. Rather than thinking of them as rigid sequences to memorize and execute exactly, understand them as examples that teach principles and tactical patterns. When practicing a Stück, focus on understanding why each action is prescribed: What is the opponent's commitment? How does your response exploit it? What are you feeling in the bind that dictates your next action?\n\nUse the Stücke as drilling frameworks to develop automatic responses to common situations. For example, the Zornhau Stücke teach you the complete pattern: strike Zornhau → establish bind → feel pressure → respond with Duplieren/Mutieren/wind based on what you feel. Practice these plays with a partner, taking turns as attacker and defender, focusing on smooth execution and proper reading of pressure.\n\nAs you become more skilled, the Stücke should become internalized patterns that emerge naturally in free fencing rather than consciously recalled sequences. The plays also serve as a curriculum: by working through the Stücke systematically, you encounter and practice all the system's elements in various combinations. Use them as your primary training method after learning the basic guards and strikes, as they teach you how everything fits together into a complete fencing system.",
-      "briefApplication": "Use them as your primary training method after learning the basic guards and strikes, as they teach you how everything fits together into a complete fencing system."
-    },
-    {
-      "id": "meyer1570.long.stuecke.placeholder.02",
-      "category": "stueck",
-      "weapon": "longsword",
-      "originalTerm": "Stück (Longsword, later chapters)",
-      "englishTerm": "Device / Play",
-      "related": [
-        "meyer1570.long.winden",
-        "meyer1570.long.mutieren",
-        "meyer1570.long.duplieren"
-      ],
-      "source_primary": {
-        "work": "Meyer 1570",
-        "section": "Longsword",
-        "folio_or_marker": "per Garber 2023"
-      },
-      "citations": [
-        {
-          "type": "wiktenauer",
-          "ref": "turn1search22",
-          "locator": "Bibliography (Garber 2023)",
-          "note": "authoritative print source"
-        }
-      ],
-      "status": "needs_full_quote",
-      "briefDescription": "Advanced and supplementary techniques described in later chapters of the manuscripts, expanding on the core system with additional applications, variations, and specialized techniques.",
-      "fullDescription": "The later Stücke continue the pattern of the early chapters but often include more advanced techniques, special cases, and refinements. These may cover topics such as: specific solutions for when standard techniques don't work, applications of grappling (Ringen am Schwert) when combatants close to very close range, techniques for fighting in armor, variations for different opponent behaviors, and advanced winding and binding combinations.\n\nThe later chapters in various manuscripts (like Ringeck, von Danzig, and later interpretations) expand the system beyond the core Hauptstücke, adding techniques from other masters, contextual variations, and pedagogical refinements. Some later Stücke address specific tactical problems: how to deal with aggressive rushers (Durchlaufen), how to handle the Kron position, how to fight against lefthanders, etc. The structure remains similar—situation described, response given, variations based on opponent's reactions—but the situations become more specialized or the responses more nuanced. Later sections may also include techniques with other weapons or transitional materials.",
-      "fullApplication": "Study the later Stücke after mastering the fundamental system taught in the early chapters. These plays provide depth and breadth, showing you how to handle special cases and edge situations that the core curriculum doesn't fully address. Use them to expand your tactical vocabulary and to develop solutions for specific problems you encounter in practice or sparring.\n\nThe later Stücke are valuable for: solving tactical puzzles that stump you, understanding how the system adapts to different contexts (armor, confined spaces, different weapons), and refining your understanding of techniques you thought you already knew. Don't rush to these plays too early—they assume competence with the fundamentals and build upon that foundation.\n\nHowever, as you advance, the later Stücke prevent your understanding from becoming rigid or limited. They show that the system is adaptable and comprehensive rather than formulaic. When studying later chapters, pay attention to which master is attributed as the source (if specified) as different masters emphasized different aspects or had different interpretations.\n\nUse these plays to test and expand your understanding: if a later Stück presents a technique that seems to contradict or differ from earlier teaching, work to understand why—often the difference reveals a deeper principle or shows how techniques adapt to different situations. The later Stücke are also valuable research material for understanding how the Liechtenauer tradition evolved and spread across different manuscripts and masters.",
-      "briefApplication": "Use them to expand your tactical vocabulary and to develop solutions for specific problems you encounter in practice or sparring."
     },
     {
       "id": "meyer1570.long.wechselhut",
@@ -1003,10 +866,10 @@
       "originalTerm": "Durchlaufen",
       "englishTerm": "Running Through",
       "status": "ok",
-      "fullApplication": "Use Durchlaufen when your opponent extends their arms forward and creates the opportunity for you to rush inside their reach before they can withdraw. This technique excels at transforming sword fencing into wrestling, taking the fight to a range where your grappling skills decide the outcome rather than swordplay. When you see your opponent thrust, hold a forward guard like Langort, or otherwise extend their arms forward, immediately rush forward inside their arms before they can withdraw their point to threaten you. The technique requires explosive commitment: don't hesitate or run through tentatively, but drive forward decisively past their point. As you run through, protect yourself: duck slightly or angle your head away from their crossguard to avoid head injury, and use your sword to control or block theirs as you close. Grip your sword at both the hilt and the blade to give you more control and leverage options in close range. Once you've successfully run through and closed inside their arms, immediately transition to wrestling techniques: execute throws using your sword as a lever against their neck or arms, attempt takedowns by disrupting their base, apply arm locks or joint manipulations, strike with your pommel to vulnerable targets, or attempt to disarm them (Schwertnehmen) by controlling their sword and stripping it away. The sources describe Durchlaufen as particularly effective against opponents who rely on extended guards and long-range tactics—you're taking away their range advantage by closing inside it. Practice Durchlaufen by developing the ability to recognize when arms are extended, explosive forward movement, and smooth transitions to wrestling techniques. Work with protective gear since this technique naturally leads to close physical contact and grappling. The technique teaches important lessons about range: there are multiple fighting distances (long range for cuts, middle range for binding, close range for wrestling), and you can deliberately change the range to your advantage. Use Durchlaufen when you're confident in your wrestling skills and want to negate your opponent's sword advantage, or when you've created a moment where their arms are extended and you can exploit this. The historical sources emphasize that Durchlaufen is for countering opponents who 'like to run in'—meaning it works both as a technique you initiate and as a counter when they attempt it. Be prepared to defend against Durchlaufen by not overextending your arms, maintaining mobility, and being ready to withdraw your point or strike them as they attempt to close. Remember that running through is a commitment: once you initiate, you must follow through completely. Don't use Durchlaufen carelessly, but when the moment is right and their arms are extended, commit fully to rushing inside and transitioning to wrestling. This technique embodies the principle that the longsword system includes all ranges of combat, from long cuts through binding work to close grappling—a complete martial system.",
+      "fullApplication": "Use Durchlaufen when your opponent extends their arms forward and creates the opportunity for you to rush inside their reach before they can withdraw. This technique excels at transforming sword fencing into wrestling, taking the fight to a range where your grappling skills decide the outcome rather than swordplay. When you see your opponent thrust, hold a forward guard like Langort, or otherwise extend their arms forward, immediately rush forward inside their arms before they can withdraw their point to threaten you.\n\nThe technique requires explosive commitment: don't hesitate or run through tentatively, but drive forward decisively past their point. As you run through, protect yourself: duck slightly or angle your head away from their crossguard to avoid head injury, and use your sword to control or block theirs as you close. Grip your sword at both the hilt and the blade to give you more control and leverage options in close range.\n\nOnce you've successfully run through and closed inside their arms, immediately transition to wrestling techniques: execute throws using your sword as a lever against their neck or arms, attempt takedowns by disrupting their base, apply arm locks or joint manipulations, strike with your pommel to vulnerable targets, or attempt to disarm them (Schwertnehmen) by controlling their sword and stripping it away.\n\nThe sources describe Durchlaufen as particularly effective against opponents who rely on extended guards and long-range tactics—you're taking away their range advantage by closing inside it. Practice Durchlaufen by developing the ability to recognize when arms are extended, explosive forward movement, and smooth transitions to wrestling techniques. Work with protective gear since this technique naturally leads to close physical contact and grappling.\n\nThe technique teaches important lessons about range: there are multiple fighting distances (long range for cuts, middle range for binding, close range for wrestling), and you can deliberately change the range to your advantage. Use Durchlaufen when you're confident in your wrestling skills and want to negate your opponent's sword advantage, or when you've created a moment where their arms are extended and you can exploit this.\n\nThe historical sources emphasize that Durchlaufen is for countering opponents who 'like to run in'—meaning it works both as a technique you initiate and as a counter when they attempt it. Be prepared to defend against Durchlaufen by not overextending your arms, maintaining mobility, and being ready to withdraw your point or strike them as they attempt to close.\n\nRemember that running through is a commitment: once you initiate, you must follow through completely. Don't use Durchlaufen carelessly, but when the moment is right and their arms are extended, commit fully to rushing inside and transitioning to wrestling. This technique embodies the principle that the longsword system includes all ranges of combat, from long cuts through binding work to close grappling—a complete martial system.",
       "definition": "Crash inside range to initiate ringen am schwert.",
       "briefDescription": "Crash inside range to initiate ringen am schwert.",
-      "fullDescription": "Durchlaufen (running through) is the technique of rushing inside your opponent's extended sword arms to initiate close-range grappling and wrestling at the sword (Ringen am Schwert). Execute this technique when your opponent's arms are extended forward (such as after a thrust or when they're holding a forward guard), creating a moment where you can run past their sword point by getting inside their arms. Rush forward decisively, dropping your hips slightly and driving forward under their extended arms. As you run through, maintain control of your sword—either by gripping it at blade and hilt to use it as a lever, or by positioning it to block or control their sword as you close. Your goal is to close distance so rapidly that you pass their point before they can withdraw it to stab you. Once inside their arms, you transition immediately to wrestling techniques: throws, takedowns, arm locks, blade disarms (Schwertnehmen), pommel strikes, or other close-combat techniques. Protect yourself as you run through: keep your head away from their crossguard, control their arms or blade as you close, and maintain your base and structure. The technique requires commitment and timing: you must see the moment when their arms are extended and commit fully to rushing inside before they can recover. Half-committed running through leaves you vulnerable. Durchlaufen appears in the sources as a response to specific situations and as a counter to opponents who like to use long-range tactics or who extend their arms forward frequently.",
+      "fullDescription": "Durchlaufen (running through) is the technique of rushing inside your opponent's extended sword arms to initiate close-range grappling and wrestling at the sword (Ringen am Schwert). Execute this technique when your opponent's arms are extended forward (such as after a thrust or when they're holding a forward guard), creating a moment where you can run past their sword point by getting inside their arms. Rush forward decisively, dropping your hips slightly and driving forward under their extended arms.\n\nAs you run through, maintain control of your sword—either by gripping it at blade and hilt to use it as a lever, or by positioning it to block or control their sword as you close. Your goal is to close distance so rapidly that you pass their point before they can withdraw it to stab you.\n\nOnce inside their arms, you transition immediately to wrestling techniques: throws, takedowns, arm locks, blade disarms (Schwertnehmen), pommel strikes, or other close-combat techniques. Protect yourself as you run through: keep your head away from their crossguard, control their arms or blade as you close, and maintain your base and structure.\n\nThe technique requires commitment and timing: you must see the moment when their arms are extended and commit fully to rushing inside before they can recover. Half-committed running through leaves you vulnerable. Durchlaufen appears in the sources as a response to specific situations and as a counter to opponents who like to use long-range tactics or who extend their arms forward frequently.",
       "briefApplication": "Use Durchlaufen when your opponent extends their arms forward and creates the opportunity for you to rush inside their reach before they can withdraw."
     },
     {

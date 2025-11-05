@@ -7,9 +7,7 @@ interface WidgetBridge {
   reloadWidget: () => Promise<void>;
 }
 
-const WidgetBridge: WidgetBridge | null = Platform.OS === 'ios'
-  ? NativeModules.WidgetBridge
-  : null;
+const WidgetBridge: WidgetBridge | null = Platform.OS === 'ios' ? NativeModules.WidgetBridge : null;
 
 export const widgetService = {
   async updateWidget(card: Flashcard): Promise<void> {

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
-import { Flashcard, Discipline } from '../types/flashcard';
 import { storage } from '../services/storage';
+import { Discipline, Flashcard } from '../types/flashcard';
 import { selectRandomCard } from '../utils/cardSelector';
 
 interface FlashcardStore {
@@ -57,7 +57,7 @@ export const useFlashcardStore = create<FlashcardStore>((set, get) => ({
       if (selectedDisciplines.length === 1) {
         return;
       }
-      newDisciplines = selectedDisciplines.filter(d => d !== discipline);
+      newDisciplines = selectedDisciplines.filter((d) => d !== discipline);
     } else {
       newDisciplines = [...selectedDisciplines, discipline];
     }

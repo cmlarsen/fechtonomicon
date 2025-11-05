@@ -1,21 +1,19 @@
+import type { DrawerContentComponentProps } from '@react-navigation/drawer';
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { DrawerContentComponentProps } from '@react-navigation/drawer';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useDrawerContext } from '../contexts/DrawerContext';
-import { Flashcard } from '../types/flashcard';
-import { colors, spacing, fontSize, fontFamily, fontWeight, borderRadius, shadows } from '../theme/tokens';
+import { colors, fontFamily, fontSize, spacing } from '../theme/tokens';
+import type { Flashcard } from '../types/flashcard';
 
 export const DrawerContent: React.FC<DrawerContentComponentProps> = ({ navigation }) => {
   const { cards, onCardPress } = useDrawerContext();
 
   // Sort cards alphabetically by originalTerm
-  const sortedCards = [...cards].sort((a, b) =>
-    a.originalTerm.localeCompare(b.originalTerm)
-  );
+  const sortedCards = [...cards].sort((a, b) => a.originalTerm.localeCompare(b.originalTerm));
 
-  const handleCardPress = (card: Flashcard, index: number) => {
+  const handleCardPress = (card: Flashcard) => {
     // Find the original index in the unsorted cards array
-    const originalIndex = cards.findIndex(c => c.id === card.id);
+    const originalIndex = cards.findIndex((c) => c.id === card.id);
     onCardPress(card.id, originalIndex);
   };
 
@@ -25,18 +23,9 @@ export const DrawerContent: React.FC<DrawerContentComponentProps> = ({ navigatio
 
   return (
     <View style={styles.container}>
-      {/* Header with App Title and decorative flourish */}
+      {/* Header with App Title */}
       <View style={styles.header}>
         <Text style={styles.appTitle}>Fechtonomicon</Text>
-        <Text style={styles.flourish}>⚔ ❦ ⚔</Text>
-        <TouchableOpacity
-          style={styles.settingsButton}
-          onPress={handleSettingsPress}
-          activeOpacity={0.85}
-        >
-          <Text style={styles.settingsIcon}>⚙</Text>
-          <Text style={styles.settingsText}>Settings</Text>
-        </TouchableOpacity>
       </View>
 
       {/* Ornamental separator */}
@@ -51,11 +40,11 @@ export const DrawerContent: React.FC<DrawerContentComponentProps> = ({ navigatio
             <Text style={styles.emptyText}>Loading cards...</Text>
           </View>
         ) : (
-          sortedCards.map((card, index) => (
+          sortedCards.map((card) => (
             <TouchableOpacity
               key={card.id}
               style={styles.cardItem}
-              onPress={() => handleCardPress(card, index)}
+              onPress={() => handleCardPress(card)}
               activeOpacity={0.85}
             >
               <Text style={styles.originalTerm}>{card.originalTerm}</Text>
@@ -64,6 +53,19 @@ export const DrawerContent: React.FC<DrawerContentComponentProps> = ({ navigatio
           ))
         )}
       </ScrollView>
+
+      {/* Settings pinned at bottom */}
+      <View style={styles.settingsSection}>
+        <View style={styles.separatorLine} />
+        <TouchableOpacity
+          style={styles.settingsItem}
+          onPress={handleSettingsPress}
+          activeOpacity={0.85}
+        >
+          <Text style={styles.settingsIcon}>⚙</Text>
+          <Text style={styles.settingsText}>Settings</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -108,33 +110,27 @@ const styles = StyleSheet.create({
     backgroundColor: colors.gold.main,
     opacity: 0.3,
   },
-  settingsButton: {
+  settingsSection: {
+    backgroundColor: colors.parchment.primary,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(201, 171, 106, 0.3)',
+  },
+  settingsItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.gold.light,
-    paddingVertical: spacing.sm,
-    paddingHorizontal: spacing.md,
-    borderRadius: borderRadius.md,
-    borderWidth: 1,
-    borderColor: colors.gold.dark,
-    // Embossed button
-    shadowColor: '#FFFFFF',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.8,
-    shadowRadius: 1,
-    elevation: 2,
+    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.lg,
+    backgroundColor: colors.parchment.primary,
   },
   settingsIcon: {
     fontSize: fontSize.md,
-    color: colors.gold.dark,
-    marginRight: spacing.xs,
+    color: colors.gold.main,
+    marginRight: spacing.sm,
   },
   settingsText: {
-    fontSize: fontSize.sm,
+    fontSize: fontSize.md,
     fontFamily: fontFamily.bodySemiBold,
-    color: colors.iron.dark,
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
+    color: colors.text.primary,
   },
   scrollView: {
     flex: 1,
@@ -143,21 +139,19 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.md,
     paddingHorizontal: spacing.lg,
     borderBottomWidth: 1,
-    borderBottomColor: colors.gold.main,
-    borderBottomStyle: 'solid',
-    opacity: 0.2,
+    borderBottomColor: 'rgba(201, 171, 106, 0.3)', // colors.gold.main with 30% opacity
     backgroundColor: colors.parchment.primary,
   },
   originalTerm: {
     fontSize: fontSize.md,
     fontFamily: fontFamily.bodySemiBold,
-    color: colors.iron.dark,
+    color: colors.text.primary,
     marginBottom: spacing.xs / 2,
   },
   englishTerm: {
     fontSize: fontSize.sm,
     fontFamily: fontFamily.bodyItalic,
-    color: colors.iron.main,
+    color: colors.text.secondary,
   },
   emptyState: {
     padding: spacing.xl,

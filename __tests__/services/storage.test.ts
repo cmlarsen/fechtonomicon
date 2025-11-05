@@ -1,5 +1,4 @@
 import { storage } from '../../src/services/storage';
-import { STORAGE_KEYS } from '../../src/types/flashcard';
 
 describe('Storage Service', () => {
   beforeEach(() => {

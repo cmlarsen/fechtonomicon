@@ -1,9 +1,4 @@
-export type Discipline =
-  | 'meyer-longsword'
-  | 'rapier'
-  | 'sword-buckler'
-  | 'messer'
-  | 'longsword';
+export type Discipline = 'meyer-longsword' | 'rapier' | 'sword-buckler' | 'messer' | 'longsword';
 
 export interface Citation {
   type: string;

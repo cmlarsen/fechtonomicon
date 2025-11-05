@@ -1,13 +1,13 @@
-import { CardScreen } from "../screens/CardScreen";
-import { DisciplineSelectionScreen } from "../screens/DisciplineSelectionScreen";
-import { DrawerContent } from "../components/DrawerContent";
-import { DrawerProvider } from "../contexts/DrawerContext";
-import { FlashcardDetailScreen } from "../screens/FlashcardDetailScreen";
-import { NavigationContainer } from "@react-navigation/native";
-import type React from "react";
-import { colors } from "../theme/tokens";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import type React from 'react';
+import { DrawerContent } from '../components/DrawerContent';
+import { DrawerProvider } from '../contexts/DrawerContext';
+import { CardScreen } from '../screens/CardScreen';
+import { DisciplineSelectionScreen } from '../screens/DisciplineSelectionScreen';
+import { FlashcardDetailScreen } from '../screens/FlashcardDetailScreen';
+import { colors } from '../theme/tokens';
 
 export type RootStackParamList = {
   Main: undefined;
@@ -24,26 +24,22 @@ const Drawer = createDrawerNavigator<RootDrawerParamList>();
 const Stack = createStackNavigator<RootStackParamList>();
 
 const linking = {
-  prefixes: [
-    "hemaflashcards://",
-    "https://hemaflashcards.app",
-    "http://localhost:8081",
-  ],
+  prefixes: ['hemaflashcards://', 'https://hemaflashcards.app', 'http://localhost:8081'],
   config: {
     screens: {
       Main: {
         screens: {
           Card: {
-            path: "card/:cardId?",
+            path: 'card/:cardId?',
             parse: {
               cardId: (cardId: string) => cardId,
             },
           },
         },
       },
-      DisciplineSelection: "disciplines",
+      DisciplineSelection: 'disciplines',
       FlashcardDetail: {
-        path: "card/:cardId/detail",
+        path: 'card/:cardId/detail',
         parse: {
           cardId: (cardId: string) => cardId,
         },
@@ -59,8 +55,8 @@ const DrawerNavigator = () => {
       drawerContent={(props) => <DrawerContent {...props} />}
       screenOptions={{
         headerShown: false,
-        drawerPosition: "left",
-        drawerType: "front",
+        drawerPosition: 'left',
+        drawerType: 'front',
         drawerStyle: {
           width: 300,
           backgroundColor: colors.background.card,
@@ -86,17 +82,17 @@ export const AppNavigator: React.FC = () => {
             name="DisciplineSelection"
             component={DisciplineSelectionScreen}
             options={{
-              presentation: "modal",
+              presentation: 'modal',
             }}
           />
           <Stack.Screen
             name="FlashcardDetail"
             component={FlashcardDetailScreen}
             options={{
-              presentation: "modal",
+              presentation: 'modal',
               gestureEnabled: true,
-              gestureDirection: "vertical",
-              animationTypeForReplace: "push",
+              gestureDirection: 'vertical',
+              animationTypeForReplace: 'push',
             }}
           />
         </Stack.Navigator>

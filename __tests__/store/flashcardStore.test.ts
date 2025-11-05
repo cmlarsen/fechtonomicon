@@ -1,6 +1,6 @@
-import { renderHook, act } from '@testing-library/react-native';
-import { useFlashcardStore } from '../../src/store/flashcardStore';
+import { act, renderHook } from '@testing-library/react-native';
 import { storage } from '../../src/services/storage';
+import { useFlashcardStore } from '../../src/store/flashcardStore';
 
 jest.mock('../../src/services/storage');
 
@@ -200,7 +200,7 @@ describe('Flashcard Store', () => {
         result.current.markCardViewed('card1');
       });
 
-      expect(result.current.viewedCardIds.filter(id => id === 'card1').length).toBe(1);
+      expect(result.current.viewedCardIds.filter((id) => id === 'card1').length).toBe(1);
     });
   });
 });

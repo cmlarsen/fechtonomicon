@@ -1,5 +1,5 @@
+import { Discipline, Flashcard } from '../../src/types/flashcard';
 import { selectRandomCard } from '../../src/utils/cardSelector';
-import { Flashcard, Discipline } from '../../src/types/flashcard';
 
 const mockCards: Flashcard[] = [
   {
@@ -64,7 +64,7 @@ describe('Card Selector', () => {
 
       for (let i = 0; i < 10; i++) {
         const result = selectRandomCard(
-          mockCards.filter(c => c.discipline === 'meyer-longsword'),
+          mockCards.filter((c) => c.discipline === 'meyer-longsword'),
           ['meyer-longsword'],
           viewedCards
         );
@@ -76,7 +76,7 @@ describe('Card Selector', () => {
 
     it('should reset and return a viewed card when all cards have been viewed', () => {
       const viewedCards = ['card1', 'card2'];
-      const meyerCards = mockCards.filter(c => c.discipline === 'meyer-longsword');
+      const meyerCards = mockCards.filter((c) => c.discipline === 'meyer-longsword');
 
       const result = selectRandomCard(meyerCards, ['meyer-longsword'], viewedCards);
 
@@ -101,7 +101,7 @@ describe('Card Selector', () => {
       for (let i = 0; i < 10; i++) {
         const result = selectRandomCard(mockCards, disciplines, []);
         expect(result).not.toBeNull();
-        expect(disciplines).toContain(result!.discipline);
+        expect(disciplines).toContain(result?.discipline);
       }
     });
 

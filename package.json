@@ -12,7 +12,13 @@
     "test:ci": "jest --ci",
     "clean:ios": "cd ios && rm -rf build && xcodebuild clean && cd ..",
     "rebuild:ios": "yarn clean:ios && cd ios && pod install && cd .. && yarn ios",
-    "clean:watchman": "watchman watch-del '/Users/caleb/CalebApps/fechtonomicon' ; watchman watch-project '/Users/caleb/CalebApps/fechtonomicon'"
+    "clean:watchman": "watchman watch-del '/Users/caleb/CalebApps/fechtonomicon' ; watchman watch-project '/Users/caleb/CalebApps/fechtonomicon'",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --apply .",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "check": "biome check .",
+    "check:fix": "biome check --apply ."
   },
   "dependencies": {
     "@expo-google-fonts/cormorant-garamond": "^0.4.1",
@@ -39,6 +45,7 @@
     "zustand": "^5.0.8"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.3.4",
     "@expo/prebuild-config": "^54.0.6",
     "@testing-library/jest-native": "^5.4.3",
     "@testing-library/react-native": "^13.3.3",

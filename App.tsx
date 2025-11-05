@@ -1,5 +1,3 @@
-import * as SplashScreen from "expo-splash-screen";
-
 import {
   CormorantGaramond_300Light,
   CormorantGaramond_300Light_Italic,
@@ -11,37 +9,37 @@ import {
   CormorantGaramond_600SemiBold_Italic,
   CormorantGaramond_700Bold,
   CormorantGaramond_700Bold_Italic,
-} from "@expo-google-fonts/cormorant-garamond";
-import { Platform, StyleSheet, View } from "react-native";
+} from '@expo-google-fonts/cormorant-garamond';
 import {
   Texturina_600SemiBold,
   Texturina_700Bold,
   Texturina_800ExtraBold,
-} from "@expo-google-fonts/texturina";
-
-import { AppNavigator } from "./src/navigation/AppNavigator";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-import React from "react";
-import { useFonts } from "expo-font";
+} from '@expo-google-fonts/texturina';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import React from 'react';
+import { Platform, StyleSheet, View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { AppNavigator } from './src/navigation/AppNavigator';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
-    "CormorantGaramond-Light": CormorantGaramond_300Light,
-    "CormorantGaramond-LightItalic": CormorantGaramond_300Light_Italic,
-    "CormorantGaramond-Regular": CormorantGaramond_400Regular,
-    "CormorantGaramond-Italic": CormorantGaramond_400Regular_Italic,
-    "CormorantGaramond-Medium": CormorantGaramond_500Medium,
-    "CormorantGaramond-MediumItalic": CormorantGaramond_500Medium_Italic,
-    "CormorantGaramond-SemiBold": CormorantGaramond_600SemiBold,
-    "CormorantGaramond-SemiBoldItalic": CormorantGaramond_600SemiBold_Italic,
-    "CormorantGaramond-Bold": CormorantGaramond_700Bold,
-    "CormorantGaramond-BoldItalic": CormorantGaramond_700Bold_Italic,
-    "Texturina-SemiBold": Texturina_600SemiBold,
-    "Texturina-Bold": Texturina_700Bold,
-    "Texturina-ExtraBold": Texturina_800ExtraBold,
+    'CormorantGaramond-Light': CormorantGaramond_300Light,
+    'CormorantGaramond-LightItalic': CormorantGaramond_300Light_Italic,
+    'CormorantGaramond-Regular': CormorantGaramond_400Regular,
+    'CormorantGaramond-Italic': CormorantGaramond_400Regular_Italic,
+    'CormorantGaramond-Medium': CormorantGaramond_500Medium,
+    'CormorantGaramond-MediumItalic': CormorantGaramond_500Medium_Italic,
+    'CormorantGaramond-SemiBold': CormorantGaramond_600SemiBold,
+    'CormorantGaramond-SemiBoldItalic': CormorantGaramond_600SemiBold_Italic,
+    'CormorantGaramond-Bold': CormorantGaramond_700Bold,
+    'CormorantGaramond-BoldItalic': CormorantGaramond_700Bold_Italic,
+    'Texturina-SemiBold': Texturina_600SemiBold,
+    'Texturina-Bold': Texturina_700Bold,
+    'Texturina-ExtraBold': Texturina_800ExtraBold,
   });
 
   React.useEffect(() => {
@@ -61,7 +59,7 @@ export default function App() {
   );
 
   // On web, wrap content in a centered container with max-width
-  if (Platform.OS === "web") {
+  if (Platform.OS === 'web') {
     return (
       <View style={styles.webOuterContainer}>
         <View style={styles.webInnerContainer}>{content}</View>
@@ -75,21 +73,21 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "pink",
+    backgroundColor: 'pink',
   },
   webOuterContainer: {
     flex: 1,
-    backgroundColor: "#2a1810",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#2a1810',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   webInnerContainer: {
-    width: "100%",
+    width: '100%',
     maxWidth: 480,
-    height: "100%",
+    height: '100%',
     maxHeight: 900,
-    overflow: "hidden",
-    boxShadow: "0 20px 60px rgba(0, 0, 0, 0.5)",
+    overflow: 'hidden',
+    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)',
     borderRadius: 12,
   } as any,
 });

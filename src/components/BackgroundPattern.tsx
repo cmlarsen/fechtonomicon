@@ -1,7 +1,6 @@
-import { ImageBackground, StyleSheet, View } from 'react-native';
-
 import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
+import { ImageBackground, StyleSheet, View } from 'react-native';
 import { colors } from '../theme/tokens';
 
 interface BackgroundPatternProps {
@@ -43,7 +42,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   patternImage: {
-    opacity: .3,
+    opacity: 0.3,
   },
   vignette: {
     flex: 1,

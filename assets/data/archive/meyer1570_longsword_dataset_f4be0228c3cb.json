@@ -18,11 +18,7 @@
       "englishTerm": "From the Roof",
       "description": "High guard with sword raised (shoulder or overhead), point back/up.",
       "application": "Launch descending cuts (esp. Zornhau); threaten high openings while advancing.",
-      "related": [
-        "meyer1570.long.zornhut",
-        "meyer1570.long.langort",
-        "meyer1570.long.zornhau"
-      ],
+      "related": ["meyer1570.long.zornhut", "meyer1570.long.langort", "meyer1570.long.zornhau"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -74,10 +70,7 @@
       "englishTerm": "Ox",
       "description": "Hands high to the side with the point forward like horns.",
       "application": "Direct thrust threat from high; strong platform for winding and hanging actions.",
-      "related": [
-        "meyer1570.long.winden",
-        "meyer1570.long.schielhau"
-      ],
+      "related": ["meyer1570.long.winden", "meyer1570.long.schielhau"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -101,11 +94,7 @@
       "englishTerm": "Plow",
       "description": "Hands near the hip/waist with the point forward on the centerline.",
       "application": "Stable thrusting base; enter with thrusts or middle/rising cuts, then wind as needed.",
-      "related": [
-        "meyer1570.long.langort",
-        "meyer1570.long.schielhau",
-        "meyer1570.long.winden"
-      ],
+      "related": ["meyer1570.long.langort", "meyer1570.long.schielhau", "meyer1570.long.winden"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -157,10 +146,7 @@
       "englishTerm": "Iron Gate",
       "description": "Low central guard (akin to porta di ferro), point forward/low.",
       "application": "Receive descending blows; rise into Unterhau or thrust depending on line.",
-      "related": [
-        "meyer1570.long.unterhau",
-        "meyer1570.long.wechsel"
-      ],
+      "related": ["meyer1570.long.unterhau", "meyer1570.long.wechsel"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -212,11 +198,7 @@
       "englishTerm": "Speaking Window",
       "description": "Point forward in front of the face; poised to feel and threaten.",
       "application": "Use contact (fühlen) to read intent; wind to thrust/cut as pressure dictates.",
-      "related": [
-        "meyer1570.long.winden",
-        "meyer1570.long.langort",
-        "meyer1570.long.absetzen"
-      ],
+      "related": ["meyer1570.long.winden", "meyer1570.long.langort", "meyer1570.long.absetzen"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -240,11 +222,7 @@
       "englishTerm": "Key",
       "description": "Hilt near chest/hip, blade angled; a transitional ‘holding’ line.",
       "application": "Bind and turn quickly into thrusts or cuts; link to Pflug/Wechsel.",
-      "related": [
-        "meyer1570.long.wechsel",
-        "meyer1570.long.pflug",
-        "meyer1570.long.winden"
-      ],
+      "related": ["meyer1570.long.wechsel", "meyer1570.long.pflug", "meyer1570.long.winden"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -268,10 +246,7 @@
       "englishTerm": "Side Guard",
       "description": "Blade held low to the side; profile narrow to the opponent.",
       "application": "Invite then sweep across with rising or crosswise actions.",
-      "related": [
-        "meyer1570.long.unterhau",
-        "meyer1570.long.zwerchhau"
-      ],
+      "related": ["meyer1570.long.unterhau", "meyer1570.long.zwerchhau"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -295,10 +270,7 @@
       "englishTerm": "Barrier Guard",
       "description": "Cross-body ‘barrier’ line that closes a lateral path.",
       "application": "Shut down a side and enter with slices or windings.",
-      "related": [
-        "meyer1570.long.abschneiden",
-        "meyer1570.long.winden"
-      ],
+      "related": ["meyer1570.long.abschneiden", "meyer1570.long.winden"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -322,10 +294,7 @@
       "englishTerm": "Wrath Guard",
       "description": "Shoulder/roof-variant aligned for the wrath-cut entry.",
       "application": "Prime the Zornhau; counter strong overcuts with forward pressure.",
-      "related": [
-        "meyer1570.long.vom_tag",
-        "meyer1570.long.zornhau"
-      ],
+      "related": ["meyer1570.long.vom_tag", "meyer1570.long.zornhau"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -349,11 +318,7 @@
       "englishTerm": "Wrath Strike",
       "description": "Powerful descending strike that seizes initiative on the high line.",
       "application": "Counter an incoming oberhau; bind strong then work duplieren/mutieren.",
-      "related": [
-        "meyer1570.long.vom_tag",
-        "meyer1570.long.duplieren",
-        "meyer1570.long.mutieren"
-      ],
+      "related": ["meyer1570.long.vom_tag", "meyer1570.long.duplieren", "meyer1570.long.mutieren"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -377,10 +342,7 @@
       "englishTerm": "Crooked Strike",
       "description": "Crossing diagonal/vertical action with long edge to hands/blade.",
       "application": "Disrupt guards/attacks (notably Ochs/vom Tag entries); target hands, break structure.",
-      "related": [
-        "meyer1570.long.zornhut",
-        "meyer1570.long.winden"
-      ],
+      "related": ["meyer1570.long.zornhut", "meyer1570.long.winden"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -404,10 +366,7 @@
       "englishTerm": "Thwart Strike",
       "description": "High horizontal strike; often short-edge from right, long-edge from left.",
       "application": "Win the high line over opponent’s hands; stop cuts; threaten head/arms.",
-      "related": [
-        "meyer1570.long.nebenhut",
-        "meyer1570.long.winden"
-      ],
+      "related": ["meyer1570.long.nebenhut", "meyer1570.long.winden"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -431,10 +390,7 @@
       "englishTerm": "Scalp/Parting Strike",
       "description": "Vertical descending blow to the crown; drives guard upward.",
       "application": "Break high guard; force a high parry to open winding/thrust.",
-      "related": [
-        "meyer1570.long.vom_tag",
-        "meyer1570.long.langort"
-      ],
+      "related": ["meyer1570.long.vom_tag", "meyer1570.long.langort"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -458,10 +414,7 @@
       "englishTerm": "Squinter Strike",
       "description": "Oblique ‘squinting’ blow that closes the line while striking.",
       "application": "Counter thrusting lines (Pflug/Ochs); displace and hit in one.",
-      "related": [
-        "meyer1570.long.ochs",
-        "meyer1570.long.absetzen"
-      ],
+      "related": ["meyer1570.long.ochs", "meyer1570.long.absetzen"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -513,10 +466,7 @@
       "englishTerm": "Binding",
       "description": "Establish blade contact to control line and tempo.",
       "application": "Create pressure to read (fühlen) then work winding or take-offs.",
-      "related": [
-        "meyer1570.long.absetzen",
-        "meyer1570.long.winden"
-      ],
+      "related": ["meyer1570.long.absetzen", "meyer1570.long.winden"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword"
@@ -572,10 +522,7 @@
       "englishTerm": "Changing-through",
       "description": "Withdraw the point under/around the opponent’s blade to the opposite line while staying in measure.",
       "application": "Use when your line is obstructed in the bind; re-present threat on the open side.",
-      "related": [
-        "meyer1570.long.zucken",
-        "meyer1570.long.mutieren"
-      ],
+      "related": ["meyer1570.long.zucken", "meyer1570.long.mutieren"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword"
@@ -598,10 +545,7 @@
       "englishTerm": "Taking-off",
       "description": "Lift off from the bind and strike around to the opposite opening.",
       "application": "Exploit overcommitted parries; leave contact to hit the blind side.",
-      "related": [
-        "meyer1570.long.duplieren",
-        "meyer1570.long.zucken"
-      ],
+      "related": ["meyer1570.long.duplieren", "meyer1570.long.zucken"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword"
@@ -624,10 +568,7 @@
       "englishTerm": "Pulling/Twitching-off",
       "description": "Brief disengagement in contact to strike into a new line.",
       "application": "When you feel strong pressure; slip off and hit the opposite opening.",
-      "related": [
-        "meyer1570.long.abnehmen",
-        "meyer1570.long.durchwechseln"
-      ],
+      "related": ["meyer1570.long.abnehmen", "meyer1570.long.durchwechseln"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword"
@@ -650,10 +591,7 @@
       "englishTerm": "Doubling",
       "description": "Hit the opposite side within the bind without losing contact.",
       "application": "Their parry sets you aside—double over/under to strike the other opening.",
-      "related": [
-        "meyer1570.long.zornhau",
-        "meyer1570.long.mutieren"
-      ],
+      "related": ["meyer1570.long.zornhau", "meyer1570.long.mutieren"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword"
@@ -676,10 +614,7 @@
       "englishTerm": "Mutating",
       "description": "Transform the bind by turning the point or edge onto a new line based on pressure.",
       "application": "If opponent is strong/weak in bind, rotate into the open quadrant (often to thrust).",
-      "related": [
-        "meyer1570.long.winden",
-        "meyer1570.long.duplieren"
-      ],
+      "related": ["meyer1570.long.winden", "meyer1570.long.duplieren"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword"
@@ -702,10 +637,7 @@
       "englishTerm": "Slicing-off",
       "description": "Short slice across hands/forearms while crossing or suppressing their blade.",
       "application": "As they raise to parry; slice to compromise grip and line, then thrust/cut.",
-      "related": [
-        "meyer1570.long.schrankhut",
-        "meyer1570.long.winden"
-      ],
+      "related": ["meyer1570.long.schrankhut", "meyer1570.long.winden"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword"
@@ -728,10 +660,7 @@
       "englishTerm": "Running-off / Flowing-off",
       "description": "Rotate the blade down around the hilt to slip off the opponent’s weapon.",
       "application": "Exit a dangerous bind safely or re-enter on a new angle with initiative.",
-      "related": [
-        "meyer1570.long.durchwechseln",
-        "meyer1570.long.zucken"
-      ],
+      "related": ["meyer1570.long.durchwechseln", "meyer1570.long.zucken"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword (Handworks)"
@@ -754,11 +683,7 @@
       "englishTerm": "Device / Play",
       "description": "Named sub-plays listed in Garber’s translation (first 11 chapters available in draft).",
       "application": "Use this node to link to the exact play text in your database.",
-      "related": [
-        "meyer1570.long.winden",
-        "meyer1570.long.absetzen",
-        "meyer1570.long.zornhau"
-      ],
+      "related": ["meyer1570.long.winden", "meyer1570.long.absetzen", "meyer1570.long.zornhau"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
@@ -788,11 +713,7 @@
       "englishTerm": "Device / Play",
       "description": "Later longsword pieces enumerated in Garber 2023 Reading/Reference Editions.",
       "application": "Anchor for ingesting each play with page/folio once your OCR/index is ready.",
-      "related": [
-        "meyer1570.long.winden",
-        "meyer1570.long.mutieren",
-        "meyer1570.long.duplieren"
-      ],
+      "related": ["meyer1570.long.winden", "meyer1570.long.mutieren", "meyer1570.long.duplieren"],
       "source_primary": {
         "work": "Meyer 1570",
         "section": "Longsword",
