@@ -10,7 +10,7 @@
     "web": "expo start --web",
     "test": "jest --watch",
     "test:ci": "jest --ci",
-    "clean:ios": "cd ios && xcodebuild clean && cd ..",
+    "clean:ios": "cd ios && rm -rf build && xcodebuild clean && cd ..",
     "rebuild:ios": "yarn clean:ios && cd ios && pod install && cd .. && yarn ios",
     "clean:watchman": "watchman watch-del '/Users/caleb/Documents/__Hobbies___/hema-flash-cards-app' ; watchman watch-project '/Users/caleb/Documents/__Hobbies___/hema-flash-cards-app'"
   },
