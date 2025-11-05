@@ -8,7 +8,7 @@
     "ios": "expo run:ios",
     "ios:device": "expo run:ios --device",
     "web": "expo start --web",
-    "build:web": "npx expo export:web",
+    "build:web": "npx expo export --platform web --output-dir web-build",
     "test": "jest --watch",
     "test:ci": "jest --ci",
     "clean:ios": "cd ios && rm -rf build && xcodebuild clean && cd ..",
