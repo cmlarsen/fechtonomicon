@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { memo, useCallback } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useFlashcardStore } from '../store/flashcardStore';
 import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../theme/tokens';
 import type { Flashcard as FlashcardType } from '../types/flashcard';
 import { CornerBrackets } from './CornerBrackets';
+import { DisciplineBadge } from './DisciplineBadge';
 import { LinkedText } from './LinkedText';
 import { SectionDivider } from './SectionDivider';
 
@@ -13,18 +14,23 @@ interface FlashcardProps {
   onTermPress?: (cardId: string) => void;
 }
 
-export const Flashcard: React.FC<FlashcardProps> = ({ card, onOpenDetails, onTermPress }) => {
-  const { allCards } = useFlashcardStore();
+export const Flashcard = memo<FlashcardProps>(({ card, onOpenDetails, onTermPress }) => {
+  const allCards = useFlashcardStore((state) => state.allCards);
 
-  const handleTermPress = (cardId: string) => {
+  const handleTermPress = useCallback((cardId: string) => {
     if (onTermPress) {
       onTermPress(cardId);
     }
-  };
+  }, [onTermPress]);
 
   return (
     <View style={styles.container} testID="flashcard-container">
       <CornerBrackets />
+      {card.discipline && (
+        <View style={styles.badgeContainer}>
+          <DisciplineBadge discipline={card.discipline} size="small" />
+        </View>
+      )}
       <View style={styles.content}>
         <View style={styles.header}>
           <View style={styles.titleContainer}>
@@ -78,7 +84,9 @@ export const Flashcard: React.FC<FlashcardProps> = ({ card, onOpenDetails, onTer
       </View>
     </View>
   );
-};
+});
+
+Flashcard.displayName = 'Flashcard';
 
 const styles = StyleSheet.create({
   container: {
@@ -90,6 +98,13 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor: colors.gold.main,
     overflow: 'hidden',
+    position: 'relative',
+  },
+  badgeContainer: {
+    position: 'absolute',
+    top: spacing.md,
+    right: spacing.md,
+    zIndex: 10,
   },
   content: {
     flex: 1,

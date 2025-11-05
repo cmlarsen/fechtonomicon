@@ -22,7 +22,7 @@ interface FlashcardStore {
 export const useFlashcardStore = create<FlashcardStore>((set, get) => ({
   currentCard: null,
   viewedCardIds: [],
-  selectedDisciplines: ['meyer-longsword'],
+  selectedDisciplines: ['italian-longsword', 'german-longsword'],
   allCards: [],
 
   loadCards: (cards: Flashcard[]) => {
@@ -87,7 +87,7 @@ export const useFlashcardStore = create<FlashcardStore>((set, get) => ({
     set({
       currentCard: null,
       viewedCardIds: [],
-      selectedDisciplines: ['meyer-longsword'],
+      selectedDisciplines: ['italian-longsword', 'german-longsword'],
       allCards: [],
     });
   },

@@ -1,25 +1,122 @@
-import type { DrawerContentComponentProps } from '@react-navigation/drawer';
-import React from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useDrawerContext } from '../contexts/DrawerContext';
-import { colors, fontFamily, fontSize, spacing } from '../theme/tokens';
-import type { Flashcard } from '../types/flashcard';
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import React, { memo, useCallback, useMemo, useState } from "react";
+import {
+  borderRadius,
+  colors,
+  fontFamily,
+  fontSize,
+  spacing,
+} from "../theme/tokens";
 
-export const DrawerContent: React.FC<DrawerContentComponentProps> = ({ navigation }) => {
+import { DisciplineBadge } from "./DisciplineBadge";
+import type { DrawerContentComponentProps } from "@react-navigation/drawer";
+import type { Flashcard } from "../types/flashcard";
+import { useDrawerContext } from "../contexts/DrawerContext";
+
+interface CardListItemProps {
+  card: Flashcard;
+  onPress: (card: Flashcard) => void;
+}
+
+const CardListItem = memo<CardListItemProps>(({ card, onPress }) => {
+  const handlePress = useCallback(() => {
+    onPress(card);
+  }, [card, onPress]);
+
+  return (
+    <TouchableOpacity
+      style={styles.cardItem}
+      onPress={handlePress}
+      activeOpacity={0.85}
+    >
+      <View style={styles.cardContent}>
+        <View style={styles.cardTextContainer}>
+          <Text style={styles.originalTerm}>{card.originalTerm}</Text>
+          <Text style={styles.englishTerm}>({card.englishTerm})</Text>
+        </View>
+        {card.discipline && (
+          <DisciplineBadge discipline={card.discipline} size="small" />
+        )}
+      </View>
+    </TouchableOpacity>
+  );
+});
+
+CardListItem.displayName = "CardListItem";
+
+export const DrawerContent: React.FC<DrawerContentComponentProps> = ({
+  navigation,
+}) => {
   const { cards, onCardPress } = useDrawerContext();
+  const [searchQuery, setSearchQuery] = useState("");
 
-  // Sort cards alphabetically by originalTerm
-  const sortedCards = [...cards].sort((a, b) => a.originalTerm.localeCompare(b.originalTerm));
+  // Filter and sort cards
+  const filteredAndSortedCards = useMemo(() => {
+    if (cards.length === 0) return [];
 
-  const handleCardPress = (card: Flashcard) => {
-    // Find the original index in the unsorted cards array
-    const originalIndex = cards.findIndex((c) => c.id === card.id);
-    onCardPress(card.id, originalIndex);
-  };
+    let filtered = cards;
 
-  const handleSettingsPress = () => {
-    navigation.navigate('DisciplineSelection');
-  };
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim();
+      filtered = cards.filter((card) => {
+        return (
+          card.originalTerm.toLowerCase().includes(query) ||
+          card.englishTerm.toLowerCase().includes(query) ||
+          card.briefDescription?.toLowerCase().includes(query) ||
+          false
+        );
+      });
+    }
+
+    return [...filtered].sort((a, b) =>
+      a.originalTerm.localeCompare(b.originalTerm)
+    );
+  }, [cards, searchQuery]);
+
+  const handleCardPress = useCallback(
+    (card: Flashcard) => {
+      // Find the original index in the unsorted cards array
+      const originalIndex = cards.findIndex((c) => c.id === card.id);
+      onCardPress(card.id, originalIndex);
+    },
+    [cards, onCardPress]
+  );
+
+  const handleSettingsPress = useCallback(() => {
+    navigation.navigate("DisciplineSelection");
+  }, [navigation]);
+
+  const handleClearSearch = useCallback(() => {
+    setSearchQuery("");
+  }, []);
+
+  const renderCardItem = useCallback(
+    ({ item: card }: { item: Flashcard }) => {
+      return <CardListItem card={card} onPress={handleCardPress} />;
+    },
+    [handleCardPress]
+  );
+
+  const keyExtractor = useCallback((card: Flashcard) => card.id, []);
+
+  const renderEmptyComponent = useCallback(() => {
+    return (
+      <View style={styles.emptyState}>
+        <Text style={styles.emptyText}>
+          {searchQuery.trim()
+            ? "No cards match your search"
+            : "Loading cards..."}
+        </Text>
+      </View>
+    );
+  }, [searchQuery]);
 
   return (
     <View style={styles.container}>
@@ -33,26 +130,43 @@ export const DrawerContent: React.FC<DrawerContentComponentProps> = ({ navigatio
         <View style={styles.separatorLine} />
       </View>
 
-      {/* Alphabetized Card List */}
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-        {sortedCards.length === 0 ? (
-          <View style={styles.emptyState}>
-            <Text style={styles.emptyText}>Loading cards...</Text>
-          </View>
-        ) : (
-          sortedCards.map((card) => (
+      {/* Search Bar */}
+      <View style={styles.searchContainer}>
+        <View style={styles.searchInputContainer}>
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search cards..."
+            placeholderTextColor={colors.text.secondary}
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+          />
+          {searchQuery.length > 0 && (
             <TouchableOpacity
-              key={card.id}
-              style={styles.cardItem}
-              onPress={() => handleCardPress(card)}
-              activeOpacity={0.85}
+              style={styles.clearButton}
+              onPress={handleClearSearch}
+              activeOpacity={0.7}
             >
-              <Text style={styles.originalTerm}>{card.originalTerm}</Text>
-              <Text style={styles.englishTerm}>({card.englishTerm})</Text>
+              <Text style={styles.clearButtonText}>✕</Text>
             </TouchableOpacity>
-          ))
-        )}
-      </ScrollView>
+          )}
+        </View>
+      </View>
+
+      {/* Alphabetized Card List */}
+      <FlatList
+        data={filteredAndSortedCards}
+        renderItem={renderCardItem}
+        keyExtractor={keyExtractor}
+        ListEmptyComponent={renderEmptyComponent}
+        contentContainerStyle={styles.listContent}
+        style={styles.listView}
+        showsVerticalScrollIndicator={false}
+        removeClippedSubviews={true}
+        maxToRenderPerBatch={10}
+        updateCellsBatchingPeriod={50}
+        initialNumToRender={10}
+        windowSize={10}
+      />
 
       {/* Settings pinned at bottom */}
       <View style={styles.settingsSection}>
@@ -90,14 +204,14 @@ const styles = StyleSheet.create({
     marginBottom: spacing.xs,
     lineHeight: fontSize.xxl * 1.2,
     // Embossed title
-    textShadowColor: 'rgba(255, 255, 255, 0.8)',
+    textShadowColor: "rgba(255, 255, 255, 0.8)",
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 1,
   },
   flourish: {
     fontSize: fontSize.lg,
     color: colors.gold.main,
-    textAlign: 'center',
+    textAlign: "center",
     marginBottom: spacing.md,
     opacity: 0.6,
   },
@@ -110,14 +224,46 @@ const styles = StyleSheet.create({
     backgroundColor: colors.gold.main,
     opacity: 0.3,
   },
+  searchContainer: {
+    paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.md,
+    backgroundColor: colors.parchment.primary,
+    borderBottomWidth: 1,
+    borderBottomColor: "rgba(201, 171, 106, 0.3)",
+  },
+  searchInputContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: colors.parchment.light,
+    borderRadius: borderRadius.md,
+    borderWidth: 1,
+    borderColor: colors.border.light,
+    paddingHorizontal: spacing.md,
+  },
+  searchInput: {
+    flex: 1,
+    fontSize: fontSize.md,
+    fontFamily: fontFamily.body,
+    color: colors.text.primary,
+    paddingVertical: spacing.sm,
+  },
+  clearButton: {
+    padding: spacing.xs,
+    marginLeft: spacing.xs,
+  },
+  clearButtonText: {
+    fontSize: fontSize.md,
+    color: colors.text.secondary,
+    fontFamily: fontFamily.bodySemiBold,
+  },
   settingsSection: {
     backgroundColor: colors.parchment.primary,
     borderTopWidth: 1,
-    borderTopColor: 'rgba(201, 171, 106, 0.3)',
+    borderTopColor: "rgba(201, 171, 106, 0.3)",
   },
   settingsItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingVertical: spacing.md,
     paddingHorizontal: spacing.lg,
     backgroundColor: colors.parchment.primary,
@@ -135,12 +281,27 @@ const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
   },
+  listView: {
+    flex: 1,
+  },
+  listContent: {
+    flexGrow: 1,
+  },
   cardItem: {
     paddingVertical: spacing.md,
     paddingHorizontal: spacing.lg,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(201, 171, 106, 0.3)', // colors.gold.main with 30% opacity
+    borderBottomColor: "rgba(201, 171, 106, 0.3)", // colors.gold.main with 30% opacity
     backgroundColor: colors.parchment.primary,
+  },
+  cardContent: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  cardTextContainer: {
+    flex: 1,
+    marginRight: spacing.sm,
   },
   originalTerm: {
     fontSize: fontSize.md,
@@ -155,7 +316,7 @@ const styles = StyleSheet.create({
   },
   emptyState: {
     padding: spacing.xl,
-    alignItems: 'center',
+    alignItems: "center",
   },
   emptyText: {
     fontSize: fontSize.md,

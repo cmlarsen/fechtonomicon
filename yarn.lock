@@ -2871,9 +2871,9 @@ expo-server@^1.0.4:
   resolved "https://registry.npmjs.org/expo-server/-/expo-server-1.0.4.tgz"
   integrity sha512-IN06r3oPxFh3plSXdvBL7dx0x6k+0/g0bgxJlNISs6qL5Z+gyPuWS750dpTzOeu37KyBG0RcyO9cXUKzjYgd4A==
 
-expo-splash-screen@^31.0.10:
+expo-splash-screen@~31.0.10:
   version "31.0.10"
-  resolved "https://registry.npmjs.org/expo-splash-screen/-/expo-splash-screen-31.0.10.tgz"
+  resolved "https://registry.yarnpkg.com/expo-splash-screen/-/expo-splash-screen-31.0.10.tgz#e0edd9782715b82a8eed34d5ebde778b79f850b4"
   integrity sha512-i6g9IK798mae4yvflstQ1HkgahIJ6exzTCTw4vEdxV0J2SwiW3Tj+CwRjf0te7Zsb+7dDQhBTmGZwdv00VER2A==
   dependencies:
     "@expo/prebuild-config" "^54.0.3"

@@ -5,7 +5,9 @@ export function selectRandomCard(
   selectedDisciplines: Discipline[],
   viewedCardIds: string[]
 ): Flashcard | null {
-  const eligibleCards = allCards.filter((card) => selectedDisciplines.includes(card.discipline));
+  const eligibleCards = allCards.filter(
+    (card) => card.discipline && selectedDisciplines.includes(card.discipline)
+  );
 
   if (eligibleCards.length === 0) {
     return null;

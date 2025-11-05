@@ -1,16 +1,31 @@
-import { DrawerActions } from '@react-navigation/native';
-import React, { useEffect } from 'react';
-import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import flashcardsData from '../../assets/data/german-longsword-data.json';
-import { BackgroundPattern } from '../components/BackgroundPattern';
-import { Flashcard } from '../components/Flashcard';
-import { FlashcardSwiper } from '../components/FlashcardSwiper';
-import { useDrawerContext } from '../contexts/DrawerContext';
-import { widgetService } from '../services/widgetService';
-import { useFlashcardStore } from '../store/flashcardStore';
-import { borderRadius, colors, fontSize, shadows, spacing } from '../theme/tokens';
-import type { Flashcard as FlashcardType } from '../types/flashcard';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import React, { useCallback, useEffect, useMemo } from "react";
+import {
+  borderRadius,
+  colors,
+  fontSize,
+  shadows,
+  spacing,
+} from "../theme/tokens";
+
+import { BackgroundPattern } from "../components/BackgroundPattern";
+import { DrawerActions } from "@react-navigation/native";
+import { Flashcard } from "../components/Flashcard";
+import { FlashcardSwiper } from "../components/FlashcardSwiper";
+import type { Flashcard as FlashcardType } from "../types/flashcard";
+import germanData from "../../assets/data/german-longsword-data.json";
+import { getDisciplineFromCardId } from "../utils/disciplineMapper";
+import italianData from "../../assets/data/italian-longsword-data.json";
+import { useDrawerContext } from "../contexts/DrawerContext";
+import { useFlashcardStore } from "../store/flashcardStore";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { widgetService } from "../services/widgetService";
 
 interface CardScreenProps {
   navigation: {
@@ -24,115 +39,191 @@ interface CardScreenProps {
   };
 }
 
-export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => {
-  const { loadCards, loadFromStorage, allCards, selectedDisciplines } = useFlashcardStore();
+export const CardScreen: React.FC<CardScreenProps> = ({
+  navigation,
+  route,
+}) => {
+  const loadCards = useFlashcardStore((state) => state.loadCards);
+  const loadFromStorage = useFlashcardStore((state) => state.loadFromStorage);
+  const allCards = useFlashcardStore((state) => state.allCards);
+  const selectedDisciplines = useFlashcardStore(
+    (state) => state.selectedDisciplines
+  );
   const { setCards, setOnCardPress } = useDrawerContext();
   const insets = useSafeAreaInsets();
-  const [sortedCards, setSortedCards] = React.useState<FlashcardType[]>([]);
   const [currentCardIndex, setCurrentCardIndex] = React.useState(0);
+  const prevCardsLengthRef = React.useRef(0);
+  const cardsLoadedRef = React.useRef(false);
 
+  // Load cards only once on mount
   useEffect(() => {
+    if (cardsLoadedRef.current) return;
+    cardsLoadedRef.current = true;
+
     try {
       loadFromStorage();
-      loadCards((flashcardsData as any).records as FlashcardType[]);
+      const italianRecords = (italianData as any).records as FlashcardType[];
+      const germanRecords = (germanData as any).records as FlashcardType[];
+      const allRecords = [...italianRecords, ...germanRecords];
+
+      const cardsWithDiscipline = allRecords.map((card) => ({
+        ...card,
+        discipline: getDisciplineFromCardId(card.id),
+      }));
+
+      loadCards(cardsWithDiscipline);
     } catch (error) {
-      console.error('Error loading cards:', error);
+      console.error("Error loading cards:", error);
     }
   }, [loadFromStorage, loadCards]);
 
+  // Memoize filtered and sorted cards
+  const sortedCards = useMemo(() => {
+    console.log("sortedCards re-render");
+    if (allCards.length === 0) return [];
+
+    const filtered = allCards.filter((card) => {
+      return card.discipline && selectedDisciplines.includes(card.discipline);
+    });
+
+    return [...filtered].sort((a, b) =>
+      a.originalTerm.localeCompare(b.originalTerm)
+    );
+  }, [allCards, selectedDisciplines]);
+
+  // Update drawer context only when sortedCards changes
   useEffect(() => {
-    if (allCards.length > 0) {
-      // Map weapon types to discipline format for filtering
-      const weaponToDiscipline: Record<string, string> = {
-        longsword: 'meyer-longsword',
-        rapier: 'rapier',
-        messer: 'messer',
-      };
+    setCards(sortedCards);
+  }, [sortedCards, setCards]);
 
-      // Filter by selected disciplines and sort alphabetically
-      const filtered = allCards.filter((card) => {
-        const cardDiscipline = weaponToDiscipline[card.weapon] || card.weapon;
-        return selectedDisciplines.includes(cardDiscipline as any);
-      });
+  // Preserve current card index when cards list changes
+  useEffect(() => {
+    if (sortedCards.length === 0) {
+      prevCardsLengthRef.current = 0;
+      setCurrentCardIndex(0);
+      return;
+    }
 
-      // Sort the cards alphabetically by originalTerm
-      const sorted = [...filtered].sort((a, b) => a.originalTerm.localeCompare(b.originalTerm));
-      setSortedCards(sorted);
+    // Get current card ID from store
+    const currentCardId = useFlashcardStore.getState().currentCard?.id;
 
-      // Update drawer context with cards
-      setCards(sorted);
-
-      // Handle deep link to specific card
-      const cardIdFromRoute = route?.params?.cardId;
-      let initialIndex = 0;
-
-      if (cardIdFromRoute) {
-        const foundIndex = sorted.findIndex((card) => card.id === cardIdFromRoute);
-        if (foundIndex !== -1) {
-          initialIndex = foundIndex;
-          setCurrentCardIndex(foundIndex);
-        }
-      }
-
-      // Update current card
-      if (sorted.length > 0) {
-        const cardToShow = sorted[initialIndex];
-        useFlashcardStore.setState({ currentCard: cardToShow });
-        widgetService.updateWidget(cardToShow);
+    if (currentCardId) {
+      // Try to find the current card in the new list
+      const newIndex = sortedCards.findIndex(
+        (card) => card.id === currentCardId
+      );
+      if (newIndex !== -1) {
+        // Current card still exists, preserve its position
+        prevCardsLengthRef.current = sortedCards.length;
+        setCurrentCardIndex(newIndex);
+        return;
       }
     }
-  }, [allCards, selectedDisciplines, setCards, route?.params?.cardId]);
 
-  const handleOpenDetails = (card: FlashcardType) => {
-    navigation.navigate('FlashcardDetail', { cardId: card.id });
-  };
+    // Only update if the cards list actually changed (not just a re-render)
+    if (prevCardsLengthRef.current !== sortedCards.length) {
+      // Current card not found or list length changed, check if current index is still valid
+      setCurrentCardIndex((prevIndex) => {
+        if (prevIndex >= sortedCards.length) {
+          // Index is out of bounds, reset to 0
+          const cardToShow = sortedCards[0];
+          if (cardToShow) {
+            useFlashcardStore.setState({ currentCard: cardToShow });
+            widgetService.updateWidget(cardToShow);
+          }
+          prevCardsLengthRef.current = sortedCards.length;
+          return 0;
+        }
 
-  const handleTermPress = (cardId: string) => {
-    navigation.navigate('FlashcardDetail', { cardId });
-  };
+        // Index is still valid, update the card
+        const cardToShow = sortedCards[prevIndex];
+        if (cardToShow) {
+          useFlashcardStore.setState({ currentCard: cardToShow });
+          widgetService.updateWidget(cardToShow);
+        }
+        prevCardsLengthRef.current = sortedCards.length;
+        return prevIndex;
+      });
+    }
+  }, [sortedCards]);
 
-  const handleCardChange = (card: FlashcardType, index: number) => {
+  // Handle deep link only when route params change
+  useEffect(() => {
+    if (sortedCards.length === 0) return;
+
+    const cardIdFromRoute = route?.params?.cardId;
+    if (!cardIdFromRoute) return;
+
+    const foundIndex = sortedCards.findIndex(
+      (card) => card.id === cardIdFromRoute
+    );
+    if (foundIndex !== -1) {
+      setCurrentCardIndex(foundIndex);
+      const cardToShow = sortedCards[foundIndex];
+      useFlashcardStore.setState({ currentCard: cardToShow });
+      widgetService.updateWidget(cardToShow);
+    }
+  }, [route?.params?.cardId, sortedCards]);
+
+  const handleOpenDetails = useCallback(
+    (card: FlashcardType) => {
+      navigation.navigate("FlashcardDetail", { cardId: card.id });
+    },
+    [navigation]
+  );
+
+  const handleTermPress = useCallback(
+    (cardId: string) => {
+      navigation.navigate("FlashcardDetail", { cardId });
+    },
+    [navigation]
+  );
+
+  const handleCardChange = useCallback((card: FlashcardType, index: number) => {
     setCurrentCardIndex(index);
     useFlashcardStore.setState({ currentCard: card });
     widgetService.updateWidget(card);
-  };
+  }, []);
 
-  const handleRelatedCardPress = (cardId: string) => {
-    const relatedCardIndex = sortedCards.findIndex((card) => card.id === cardId);
-    if (relatedCardIndex !== -1) {
-      setCurrentCardIndex(relatedCardIndex);
-      if (Platform.OS === 'web') {
-        // On web, navigate to the card route
-        navigation.navigate('Card', { cardId });
+  const handleRelatedCardPress = useCallback(
+    (cardId: string) => {
+      const relatedCardIndex = sortedCards.findIndex(
+        (card) => card.id === cardId
+      );
+      if (relatedCardIndex !== -1) {
+        setCurrentCardIndex(relatedCardIndex);
+        if (Platform.OS === "web") {
+          navigation.navigate("Card", { cardId });
+        }
       }
-    }
-  };
+    },
+    [sortedCards, navigation]
+  );
 
-  const handleNextCard = () => {
+  const handleNextCard = useCallback(() => {
     const nextIndex = (currentCardIndex + 1) % sortedCards.length;
     const nextCard = sortedCards[nextIndex];
     setCurrentCardIndex(nextIndex);
     handleCardChange(nextCard, nextIndex);
-    if (Platform.OS === 'web') {
-      navigation.navigate('Card', { cardId: nextCard.id });
+    if (Platform.OS === "web") {
+      navigation.navigate("Card", { cardId: nextCard.id });
     }
-  };
+  }, [currentCardIndex, sortedCards, handleCardChange, navigation]);
 
-  const handlePrevCard = () => {
-    const prevIndex = currentCardIndex === 0 ? sortedCards.length - 1 : currentCardIndex - 1;
+  const handlePrevCard = useCallback(() => {
+    const prevIndex =
+      currentCardIndex === 0 ? sortedCards.length - 1 : currentCardIndex - 1;
     const prevCard = sortedCards[prevIndex];
     setCurrentCardIndex(prevIndex);
     handleCardChange(prevCard, prevIndex);
-    if (Platform.OS === 'web') {
-      navigation.navigate('Card', { cardId: prevCard.id });
+    if (Platform.OS === "web") {
+      navigation.navigate("Card", { cardId: prevCard.id });
     }
-  };
+  }, [currentCardIndex, sortedCards, handleCardChange, navigation]);
 
-  const handleCardIndexPress = React.useCallback(
+  const handleCardIndexPress = useCallback(
     (_cardId: string, index: number) => {
-      // Scroll to the selected card
       setCurrentCardIndex(index);
-      // Close the drawer
       navigation.dispatch(DrawerActions.closeDrawer());
     },
     [navigation]
@@ -143,22 +234,26 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => 
     setOnCardPress(() => handleCardIndexPress);
   }, [handleCardIndexPress, setOnCardPress]);
 
-  const toggleDrawer = () => {
+  const toggleDrawer = useCallback(() => {
     navigation.dispatch(DrawerActions.toggleDrawer());
-  };
+  }, [navigation]);
 
   const currentCard = sortedCards[currentCardIndex];
 
   return (
     <BackgroundPattern>
-      <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
-        {Platform.OS === 'web' ? (
+      <View
+        style={[
+          styles.container,
+          { paddingTop: insets.top, paddingBottom: insets.bottom },
+        ]}
+      >
+        {Platform.OS === "web" ? (
           // Web: Single card with prev/next buttons
           <View style={styles.webCardContainer}>
             {currentCard && (
               <Flashcard
                 card={currentCard}
-                onRelatedCardPress={handleRelatedCardPress}
                 onOpenDetails={() => handleOpenDetails(currentCard)}
                 onTermPress={handleTermPress}
               />
@@ -180,7 +275,7 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => 
 
         {/* Navigation controls at bottom */}
         <View style={[styles.bottomNav]}>
-          {Platform.OS === 'web' && (
+          {Platform.OS === "web" && (
             <TouchableOpacity
               style={styles.navButton}
               onPress={handlePrevCard}
@@ -190,11 +285,15 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => 
             </TouchableOpacity>
           )}
 
-          <TouchableOpacity style={styles.fabButton} onPress={toggleDrawer} activeOpacity={0.85}>
+          <TouchableOpacity
+            style={styles.fabButton}
+            onPress={toggleDrawer}
+            activeOpacity={0.85}
+          >
             <Text style={styles.fabIcon}>⚔</Text>
           </TouchableOpacity>
 
-          {Platform.OS === 'web' && (
+          {Platform.OS === "web" && (
             <TouchableOpacity
               style={styles.navButton}
               onPress={handleNextCard}
@@ -212,23 +311,23 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   swiperContainer: {
     flex: 1,
   },
   webCardContainer: {
     flex: 1,
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
     padding: spacing.md,
   },
   bottomNav: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
     gap: spacing.lg,
     paddingVertical: spacing.md,
   },
@@ -237,8 +336,8 @@ const styles = StyleSheet.create({
     height: 56,
     borderRadius: borderRadius.round,
     backgroundColor: colors.parchment.light,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     ...shadows.parchment,
     borderWidth: 3,
     borderColor: colors.gold.main,
@@ -251,7 +350,7 @@ const styles = StyleSheet.create({
   fabIcon: {
     fontSize: fontSize.xl,
     color: colors.gold.dark,
-    textShadowColor: 'rgba(255, 255, 255, 0.6)',
+    textShadowColor: "rgba(255, 255, 255, 0.6)",
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 1,
   },
@@ -260,8 +359,8 @@ const styles = StyleSheet.create({
     height: 48,
     borderRadius: borderRadius.round,
     backgroundColor: colors.parchment.light,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     ...shadows.parchment,
     borderWidth: 2,
     borderColor: colors.gold.main,
@@ -274,6 +373,6 @@ const styles = StyleSheet.create({
   navButtonText: {
     fontSize: fontSize.xxl,
     color: colors.gold.dark,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
 });

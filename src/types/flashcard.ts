@@ -1,4 +1,23 @@
-export type Discipline = 'meyer-longsword' | 'rapier' | 'sword-buckler' | 'messer' | 'longsword';
+export type Discipline = 'italian-longsword' | 'german-longsword';
+
+export interface DisciplineInfo {
+  name: string;
+  shortName: string;
+  color: string;
+}
+
+export const DISCIPLINE_INFO: Record<Discipline, DisciplineInfo> = {
+  'italian-longsword': {
+    name: 'Italian Longsword',
+    shortName: 'Italian',
+    color: '#8B2C2C',
+  },
+  'german-longsword': {
+    name: 'German Longsword',
+    shortName: 'German',
+    color: '#5C3D2E',
+  },
+};
 
 export interface Citation {
   type: string;

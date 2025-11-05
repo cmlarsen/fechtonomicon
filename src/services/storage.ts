@@ -123,10 +123,10 @@ export const storage = {
   getSelectedDisciplines(): Discipline[] {
     try {
       const data = getMMKV().getString(STORAGE_KEYS.SELECTED_DISCIPLINES);
-      return data ? JSON.parse(data) : ['meyer-longsword'];
+      return data ? JSON.parse(data) : ['italian-longsword', 'german-longsword'];
     } catch (error) {
       console.error('Error getting selected disciplines:', error);
-      return ['meyer-longsword'];
+      return ['italian-longsword', 'german-longsword'];
     }
   },
 
