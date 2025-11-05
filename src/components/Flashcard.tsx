@@ -58,12 +58,30 @@ export const Flashcard: React.FC<FlashcardProps> = ({
           </View>
         </View>
 
-        <SectionDivider label="DESCRIPTION" ornament="❦" />
-        <Text style={styles.description}>{card.description}</Text>
+        {(card.definition || card.description) && (
+          <>
+            <SectionDivider label="DESCRIPTION" ornament="❦" />
+            <Text style={styles.description}>
+              {card.definition || card.description}
+            </Text>
+          </>
+        )}
+        {card.technicalDescription && (
+          <>
+            <SectionDivider label="TECHNICAL DETAILS" ornament="⚙" />
+            <Text style={styles.description}>{card.technicalDescription}</Text>
+          </>
+        )}
         {card.application && (
           <>
             <SectionDivider label="APPLICATION" ornament="⚔" />
             <Text style={styles.description}>{card.application}</Text>
+          </>
+        )}
+        {card.fullApplication && (
+          <>
+            <SectionDivider label="DETAILED APPLICATION" ornament="📖" />
+            <Text style={styles.description}>{card.fullApplication}</Text>
           </>
         )}
         {card.related && card.related.length > 0 && (

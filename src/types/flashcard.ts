@@ -25,7 +25,10 @@ export interface Flashcard {
   originalTerm: string;
   englishTerm: string;
   description: string;
+  definition?: string;
+  technicalDescription?: string;
   application?: string;
+  fullApplication?: string;
   related?: string[];
   source_primary?: SourcePrimary;
   citations?: Citation[];
