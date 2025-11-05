@@ -77,3 +77,7 @@ android/app/build/
 
 # Watchman
 .watchmanconfig
+
+# Large image files (should be optimized before committing)
+assets/splash-icon.png
+ios/fechtonomicon/Images.xcassets/SplashScreenLegacy.imageset/image*.png
