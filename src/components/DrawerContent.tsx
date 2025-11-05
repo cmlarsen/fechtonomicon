@@ -123,6 +123,15 @@ export const DrawerContent: React.FC<DrawerContentComponentProps> = ({
       {/* Header with App Title */}
       <View style={styles.header}>
         <Text style={styles.appTitle}>Fechtonomicon</Text>
+        <View style={styles.settingsSection}>
+          <TouchableOpacity
+            style={styles.settingsItem}
+            onPress={handleSettingsPress}
+            activeOpacity={0.85}
+          >
+            <Text style={styles.settingsText}>Select Disciplines</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
       {/* Ornamental separator */}
@@ -130,12 +139,15 @@ export const DrawerContent: React.FC<DrawerContentComponentProps> = ({
         <View style={styles.separatorLine} />
       </View>
 
+      {/* Settings pinned at bottom */}
+
+      <View style={styles.separatorLine} />
       {/* Search Bar */}
       <View style={styles.searchContainer}>
         <View style={styles.searchInputContainer}>
           <TextInput
             style={styles.searchInput}
-            placeholder="Search cards..."
+            placeholder="Search..."
             placeholderTextColor={colors.text.secondary}
             value={searchQuery}
             onChangeText={setSearchQuery}
@@ -167,19 +179,6 @@ export const DrawerContent: React.FC<DrawerContentComponentProps> = ({
         initialNumToRender={10}
         windowSize={10}
       />
-
-      {/* Settings pinned at bottom */}
-      <View style={styles.settingsSection}>
-        <View style={styles.separatorLine} />
-        <TouchableOpacity
-          style={styles.settingsItem}
-          onPress={handleSettingsPress}
-          activeOpacity={0.85}
-        >
-          <Text style={styles.settingsIcon}>⚙</Text>
-          <Text style={styles.settingsText}>Settings</Text>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 };
@@ -257,16 +256,16 @@ const styles = StyleSheet.create({
     fontFamily: fontFamily.bodySemiBold,
   },
   settingsSection: {
-    backgroundColor: colors.parchment.primary,
-    borderTopWidth: 1,
-    borderTopColor: "rgba(201, 171, 106, 0.3)",
+    // backgroundColor: colors.parchment.primary,
+    // borderTopWidth: 1,
+    // borderTopColor: "rgba(201, 171, 106, 0.3)",
   },
   settingsItem: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingVertical: spacing.md,
-    paddingHorizontal: spacing.lg,
-    backgroundColor: colors.parchment.primary,
+    // flexDirection: "row",
+    // alignItems: "center",
+    // paddingVertical: spacing.md,
+    // paddingHorizontal: spacing.lg,
+    // backgroundColor: colors.parchment.primary,
   },
   settingsIcon: {
     fontSize: fontSize.md,
@@ -274,7 +273,7 @@ const styles = StyleSheet.create({
     marginRight: spacing.sm,
   },
   settingsText: {
-    fontSize: fontSize.md,
+    fontSize: fontSize.sm,
     fontFamily: fontFamily.bodySemiBold,
     color: colors.text.primary,
   },

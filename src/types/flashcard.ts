@@ -9,12 +9,12 @@ export interface DisciplineInfo {
 export const DISCIPLINE_INFO: Record<Discipline, DisciplineInfo> = {
   'italian-longsword': {
     name: 'Italian Longsword',
-    shortName: 'Italian',
+    shortName: 'Italian LS',
     color: '#8B2C2C',
   },
   'german-longsword': {
     name: 'German Longsword',
-    shortName: 'German',
+    shortName: 'German LS',
     color: '#5C3D2E',
   },
 };

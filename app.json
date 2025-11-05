@@ -10,13 +10,15 @@
     "assetBundlePatterns": ["assets/**/*"],
     "splash": {
       "image": "./assets/splash-icon.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#F8F4E8"
     },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.hemaflashcards.app",
+      "displayName": "The Fechto",
       "infoPlist": {
+        "CFBundleDisplayName": "The Fechto",
         "NSAppTransportSecurity": {
           "NSAllowsArbitraryLoads": true
         }

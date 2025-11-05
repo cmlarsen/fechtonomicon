@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useCallback, memo, useMemo } from "react";
-import { Dimensions, StyleSheet, View } from "react-native";
+import { Dimensions, StyleSheet, View, Text } from "react-native";
 import Animated, {
   interpolate,
   type SharedValue,
@@ -122,15 +122,21 @@ const FlashcardSwiperComponent: React.FC<FlashcardSwiperProps> = ({
     return cards.map((c) => c.id).join("-");
   }, [cards]);
 
+  // Clamp initialIndex to valid range to prevent out-of-bounds errors
+  const safeInitialIndex = useMemo(() => {
+    if (cards.length === 0) return 0;
+    return Math.max(0, Math.min(initialIndex, cards.length - 1));
+  }, [cards.length, initialIndex]);
+
   useEffect(() => {
-    if (initialIndex !== currentIndexRef.current && carouselRef.current) {
+    if (safeInitialIndex !== currentIndexRef.current && carouselRef.current) {
       carouselRef.current.scrollTo({
-        index: initialIndex,
+        index: safeInitialIndex,
         animated: true,
       });
-      currentIndexRef.current = initialIndex;
+      currentIndexRef.current = safeInitialIndex;
     }
-  }, [initialIndex]);
+  }, [safeInitialIndex]);
 
   const handleSnapToItem = useCallback(
     (index: number) => {
@@ -161,6 +167,22 @@ const FlashcardSwiperComponent: React.FC<FlashcardSwiperProps> = ({
     },
     [onOpenDetails, onTermPress]
   );
+  // const renderItem = useCallback(
+  //   ({
+  //     item,
+  //     animationValue,
+  //   }: {
+  //     item: FlashcardType;
+  //     animationValue: SharedValue<number>;
+  //   }) => {
+  //     return (
+  //       <View>
+  //         <Text>{item.originalTerm}</Text>
+  //       </View>
+  //     );
+  //   },
+  //   [onOpenDetails, onTermPress]
+  // );
 
   if (cards.length === 0) {
     return null;
@@ -175,7 +197,7 @@ const FlashcardSwiperComponent: React.FC<FlashcardSwiperProps> = ({
         renderItem={renderItem}
         width={CARD_WIDTH}
         loop={false}
-        defaultIndex={initialIndex}
+        defaultIndex={safeInitialIndex}
         onSnapToItem={handleSnapToItem}
         mode="parallax"
         modeConfig={{

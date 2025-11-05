@@ -116,6 +116,12 @@ export const CardScreen: React.FC<CardScreenProps> = ({
         // Current card still exists, preserve its position
         prevCardsLengthRef.current = sortedCards.length;
         setCurrentCardIndex(newIndex);
+        // Update store with the card at new index
+        const cardToShow = sortedCards[newIndex];
+        if (cardToShow) {
+          useFlashcardStore.setState({ currentCard: cardToShow });
+          widgetService.updateWidget(cardToShow);
+        }
         return;
       }
     }
@@ -124,25 +130,14 @@ export const CardScreen: React.FC<CardScreenProps> = ({
     if (prevCardsLengthRef.current !== sortedCards.length) {
       // Current card not found or list length changed, check if current index is still valid
       setCurrentCardIndex((prevIndex) => {
-        if (prevIndex >= sortedCards.length) {
-          // Index is out of bounds, reset to 0
-          const cardToShow = sortedCards[0];
-          if (cardToShow) {
-            useFlashcardStore.setState({ currentCard: cardToShow });
-            widgetService.updateWidget(cardToShow);
-          }
-          prevCardsLengthRef.current = sortedCards.length;
-          return 0;
-        }
-
-        // Index is still valid, update the card
-        const cardToShow = sortedCards[prevIndex];
+        const safeIndex = prevIndex >= sortedCards.length ? 0 : prevIndex;
+        const cardToShow = sortedCards[safeIndex];
         if (cardToShow) {
           useFlashcardStore.setState({ currentCard: cardToShow });
           widgetService.updateWidget(cardToShow);
         }
         prevCardsLengthRef.current = sortedCards.length;
-        return prevIndex;
+        return safeIndex;
       });
     }
   }, [sortedCards]);

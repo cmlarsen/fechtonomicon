@@ -1,13 +1,17 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { colors, fontFamily, fontSize, spacing } from '../theme/tokens';
+import { StyleSheet, Text, View } from "react-native";
+import { colors, fontFamily, fontSize, spacing } from "../theme/tokens";
+
+import React from "react";
 
 interface SectionDividerProps {
   label?: string;
   ornament?: string; // Unicode character like ⚔ 🗡 ❧ ⚜
 }
 
-export const SectionDivider: React.FC<SectionDividerProps> = ({ label, ornament = '⚔' }) => {
+export const SectionDivider: React.FC<SectionDividerProps> = ({
+  label,
+  ornament = "⚔",
+}) => {
   return (
     <View style={styles.container}>
       <View style={styles.lineContainer}>
@@ -22,13 +26,13 @@ export const SectionDivider: React.FC<SectionDividerProps> = ({ label, ornament 
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: spacing.md,
-    alignItems: 'center',
+    marginVertical: spacing.sm,
+    alignItems: "center",
   },
   lineContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '100%',
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
   },
   line: {
     flex: 1,
@@ -47,7 +51,7 @@ const styles = StyleSheet.create({
     fontSize: fontSize.xs,
     fontFamily: fontFamily.bodySemiBold,
     color: colors.text.light,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
     letterSpacing: 1.5,
   },
 });
