@@ -11,7 +11,7 @@
 
 1. Save your pattern image to this directory:
    ```
-   /Users/caleb/Documents/__Hobbies___/hema-flash-cards-app/assets/images/floral-pattern.png
+   /Users/caleb/CalebApps/fechtonomicon/assets/images/floral-pattern.png
    ```
 
 2. The app will automatically pick it up and display it as a repeating background

@@ -1,6 +1,6 @@
 {
-  "name": "HEMA Flashcards",
-  "short_name": "HEMA Cards",
+  "name": "Fechtonomicon",
+  "short_name": "Fechtonomicon",
   "description": "Study Historical European Martial Arts with interactive flashcards",
   "start_url": "/",
   "display": "standalone",

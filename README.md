@@ -1,4 +1,4 @@
-# HEMA Flash Cards
+# Fechtonomicon
 
 A React Native app for learning HEMA (Historical European Martial Arts) vocabulary through interactive flashcards, with iOS widget support.
 
@@ -42,7 +42,7 @@ A React Native app for learning HEMA (Historical European Martial Arts) vocabula
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd hema-flash-cards-app
+cd fechtonomicon
 ```
 
 2. Install dependencies:
@@ -92,7 +92,7 @@ The iOS widget requires manual setup in Xcode. See [WIDGET_SETUP.md](./WIDGET_SE
 ## Project Structure
 
 ```
-hema-flash-cards-app/
+fechtonomicon/
 ├── assets/
 │   ├── data/
 │   │   └── flashcards.json          # Flashcard content

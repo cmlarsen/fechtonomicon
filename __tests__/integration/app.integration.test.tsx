@@ -23,7 +23,7 @@ describe('App Integration Tests', () => {
       const { findByText } = render(<AppNavigator />);
 
       await waitFor(async () => {
-        const title = await findByText(/HEMA Flash Cards/i);
+        const title = await findByText(/Fechtonomicon/i);
         expect(title).toBeTruthy();
       });
     });
@@ -43,7 +43,7 @@ describe('App Integration Tests', () => {
       const { findByText, getByText } = render(<AppNavigator />);
 
       await waitFor(async () => {
-        const title = await findByText(/HEMA Flash Cards/i);
+        const title = await findByText(/Fechtonomicon/i);
         expect(title).toBeTruthy();
       });
 
@@ -60,7 +60,7 @@ describe('App Integration Tests', () => {
       const { findByText, getByText } = render(<AppNavigator />);
 
       await waitFor(async () => {
-        const title = await findByText(/HEMA Flash Cards/i);
+        const title = await findByText(/Fechtonomicon/i);
         expect(title).toBeTruthy();
       });
 
@@ -77,7 +77,7 @@ describe('App Integration Tests', () => {
       const { findByText, getByText } = render(<AppNavigator />);
 
       await waitFor(async () => {
-        const title = await findByText(/HEMA Flash Cards/i);
+        const title = await findByText(/Fechtonomicon/i);
         expect(title).toBeTruthy();
       });
 
@@ -93,7 +93,7 @@ describe('App Integration Tests', () => {
       fireEvent.press(doneButton);
 
       await waitFor(async () => {
-        const title = await findByText(/HEMA Flash Cards/i);
+        const title = await findByText(/Fechtonomicon/i);
         expect(title).toBeTruthy();
       });
     });

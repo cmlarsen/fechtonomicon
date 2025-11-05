@@ -27,7 +27,7 @@ export const DrawerContent: React.FC<DrawerContentComponentProps> = ({ navigatio
     <View style={styles.container}>
       {/* Header with App Title and decorative flourish */}
       <View style={styles.header}>
-        <Text style={styles.appTitle}>HEMA{'\n'}Flash Cards</Text>
+        <Text style={styles.appTitle}>Fechtonomicon</Text>
         <Text style={styles.flourish}>⚔ ❦ ⚔</Text>
         <TouchableOpacity
           style={styles.settingsButton}

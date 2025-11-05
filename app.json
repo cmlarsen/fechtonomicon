@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "hema-flash-cards-app",
-    "slug": "hema-flash-cards-app",
+    "name": "fechtonomicon",
+    "slug": "fechtonomicon",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -36,8 +36,8 @@
       "favicon": "./assets/favicon.png",
       "bundler": "metro",
       "output": "single",
-      "name": "HEMA Flashcards",
-      "shortName": "HEMA Cards",
+      "name": "Fechtonomicon",
+      "shortName": "Fechtonomicon",
       "description": "Study Historical European Martial Arts with interactive flashcards",
       "backgroundColor": "#ffffff",
       "themeColor": "#5C3D2E"

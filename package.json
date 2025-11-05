@@ -1,5 +1,5 @@
 {
-  "name": "hema-flash-cards-app",
+  "name": "fechtonomicon",
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
@@ -12,7 +12,7 @@
     "test:ci": "jest --ci",
     "clean:ios": "cd ios && rm -rf build && xcodebuild clean && cd ..",
     "rebuild:ios": "yarn clean:ios && cd ios && pod install && cd .. && yarn ios",
-    "clean:watchman": "watchman watch-del '/Users/caleb/Documents/__Hobbies___/hema-flash-cards-app' ; watchman watch-project '/Users/caleb/Documents/__Hobbies___/hema-flash-cards-app'"
+    "clean:watchman": "watchman watch-del '/Users/caleb/CalebApps/fechtonomicon' ; watchman watch-project '/Users/caleb/CalebApps/fechtonomicon'"
   },
   "dependencies": {
     "@expo-google-fonts/cormorant-garamond": "^0.4.1",
