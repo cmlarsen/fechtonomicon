@@ -87,3 +87,17 @@
 - Commit messages should be clear and descriptive
 - Keep commits focused - one logical change per commit
 - Ensure CI checks pass before merging PRs
+
+## Design and UI Components
+- **CRITICAL**: Our design aesthetic is **cozy medieval manuscript** with a **delightful modern UX**
+- **ALWAYS use existing button components** when creating new components that need buttons:
+  - Use `PrimaryButton` from `src/components/buttons` for primary actions (gold theme)
+  - Use `SecondaryButton` from `src/components/buttons` for secondary actions (parchment/burgundy variants)
+  - Use `IconButton` from `src/components/buttons` for circular icon buttons
+- Do not create new button styles or components - reuse the existing button suite
+- When designing new UI components, maintain consistency with the medieval manuscript aesthetic:
+  - Use colors from `src/theme/tokens.ts` (parchment, gold, iron, burgundy, green)
+  - Use fonts from the theme tokens (CormorantGaramond for body, Texturina for titles)
+  - Apply appropriate shadows and borders that match the existing design language
+  - Ensure components feel both cozy/medieval and delightfully modern in UX
+- Reference existing components in `src/components/` for design patterns and styling consistency

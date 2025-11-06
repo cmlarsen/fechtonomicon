@@ -1,6 +1,7 @@
 import { usePostHog } from 'posthog-react-native';
 import React, { useEffect, useRef, useState } from 'react';
 import {
+  Alert,
   Animated,
   Dimensions,
   KeyboardAvoidingView,
@@ -15,7 +16,10 @@ import {
   View,
 } from 'react-native';
 import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../theme/tokens';
+
 import type { Flashcard } from '../types/flashcard';
+import { getNetlifyFunctionUrl } from '../utils/netlifyConfig';
+import { IconButton, PrimaryButton } from './buttons';
 
 interface CorrectionModalProps {
   visible: boolean;
@@ -38,6 +42,7 @@ export const CorrectionModal: React.FC<CorrectionModalProps> = ({
   const posthog = usePostHog();
   const slideAnim = useRef(new Animated.Value(SCREEN_HEIGHT)).current;
   const [editedText, setEditedText] = useState(fieldValue);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const textInputRef = useRef<TextInput>(null);
 
   useEffect(() => {
@@ -71,15 +76,8 @@ export const CorrectionModal: React.FC<CorrectionModalProps> = ({
     }
   }, [visible, slideAnim, fieldValue]);
 
-  const handleSendEmail = async () => {
+  const fallbackToEmail = async () => {
     if (!card) return;
-
-    posthog?.capture('submit_edit_tapped', {
-      cardId: card.id,
-      cardTerm: card.originalTerm,
-      fieldName,
-      hasChanges: editedText !== fieldValue,
-    });
 
     const subject = encodeURIComponent(`Suggested Edit: ${card.originalTerm} - ${fieldName}`);
     const body = encodeURIComponent(`Card ID: ${card.id}
@@ -100,8 +98,98 @@ Additional notes:
         onClose();
       }
     } catch {
-      // Email failed, just close
       onClose();
+    }
+  };
+
+  const handleSubmitEdit = async () => {
+    if (!card || isSubmitting) return;
+
+    setIsSubmitting(true);
+
+    posthog?.capture('submit_edit_tapped', {
+      cardId: card.id,
+      cardTerm: card.originalTerm,
+      fieldName,
+      hasChanges: editedText !== fieldValue,
+    });
+
+    try {
+      const response = await fetch(getNetlifyFunctionUrl(), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          cardId: card.id,
+          fieldName,
+          originalValue: fieldValue,
+          correctedValue: editedText,
+          term: card.originalTerm,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        posthog?.capture('edit_submitted_success', {
+          cardId: card.id,
+          fieldName,
+          prNumber: data.prNumber,
+        });
+
+        Alert.alert(
+          'Edit Submitted!',
+          `Your edit suggestion has been submitted. PR #${data.prNumber} has been created.\n\nWould you like to view it?`,
+          [
+            {
+              text: 'Close',
+              style: 'cancel',
+              onPress: onClose,
+            },
+            {
+              text: 'View PR',
+              onPress: () => {
+                if (data.prUrl) {
+                  Linking.openURL(data.prUrl);
+                }
+                onClose();
+              },
+            },
+          ]
+        );
+      } else {
+        throw new Error(data.error || 'Failed to submit edit');
+      }
+    } catch (error) {
+      posthog?.capture('edit_submit_failed', {
+        cardId: card.id,
+        fieldName,
+        error: error instanceof Error ? error.message : 'Unknown error',
+      });
+
+      Alert.alert(
+        'Submission Failed',
+        'Unable to submit edit automatically. Would you like to send it via email instead?',
+        [
+          {
+            text: 'Cancel',
+            style: 'cancel',
+            onPress: () => {
+              setIsSubmitting(false);
+            },
+          },
+          {
+            text: 'Send Email',
+            onPress: async () => {
+              setIsSubmitting(false);
+              await fallbackToEmail();
+            },
+          },
+        ]
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -125,13 +213,9 @@ Additional notes:
           >
             <TouchableOpacity activeOpacity={1} onPress={(e) => e.stopPropagation()}>
               {/* Close button in upper right */}
-              <TouchableOpacity
-                style={styles.closeIconButton}
-                onPress={onClose}
-                activeOpacity={0.7}
-              >
-                <Text style={styles.closeIconText}>✕</Text>
-              </TouchableOpacity>
+              <View style={styles.closeButtonContainer}>
+                <IconButton icon="✕" onPress={onClose} size="small" variant="gold" />
+              </View>
 
               <Text style={styles.title}>Suggest Edit</Text>
 
@@ -155,9 +239,12 @@ Additional notes:
               </ScrollView>
 
               <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.emailButton} onPress={handleSendEmail}>
-                  <Text style={styles.buttonText}>Send Email</Text>
-                </TouchableOpacity>
+                <PrimaryButton
+                  title={isSubmitting ? 'Submitting...' : 'Submit Edit'}
+                  onPress={handleSubmitEdit}
+                  size="medium"
+                  disabled={isSubmitting}
+                />
               </View>
             </TouchableOpacity>
           </Animated.View>
@@ -195,30 +282,11 @@ const styles = StyleSheet.create({
     marginBottom: spacing.md,
     marginHorizontal: spacing.sm,
   },
-  closeIconButton: {
+  closeButtonContainer: {
     position: 'absolute',
     top: spacing.md,
     right: spacing.md,
-    width: 32,
-    height: 32,
-    borderRadius: borderRadius.round,
-    backgroundColor: colors.parchment.light,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 1.5,
-    borderColor: colors.gold.main,
     zIndex: 10,
-    shadowColor: '#FFFFFF',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.8,
-    shadowRadius: 1,
-    elevation: 3,
-  },
-  closeIconText: {
-    fontSize: fontSize.lg,
-    color: colors.iron.dark,
-    fontFamily: fontFamily.bodyBold,
-    lineHeight: fontSize.lg,
   },
   title: {
     fontSize: fontSize.xl,
@@ -256,27 +324,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.lg,
     paddingTop: spacing.md,
     paddingBottom: spacing.sm,
-  },
-  emailButton: {
-    width: '100%',
-    backgroundColor: colors.gold.light,
-    paddingVertical: spacing.md,
-    paddingHorizontal: spacing.lg,
-    borderRadius: borderRadius.md,
-    borderWidth: 1.5,
-    borderColor: colors.gold.dark,
-    alignItems: 'center',
-    shadowColor: '#FFFFFF',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.8,
-    shadowRadius: 1,
-    elevation: 2,
-  },
-  buttonText: {
-    fontSize: fontSize.md,
-    fontFamily: fontFamily.bodySemiBold,
-    color: colors.iron.dark,
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
   },
 });
