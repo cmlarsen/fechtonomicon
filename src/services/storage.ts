@@ -1,90 +1,10 @@
-import { Platform } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Discipline, STORAGE_KEYS } from '../types/flashcard';
 
-let mmkvInstance: any = null;
-let _isMMKVAvailable = false;
-
-// Lazy initialization - only create storage when first accessed
-function getMMKV(): any {
-  if (!mmkvInstance) {
-    // Use localStorage on web platform
-    if (Platform.OS === 'web') {
-      console.log('✅ Using localStorage for web platform');
-      mmkvInstance = {
-        set: (key: string, value: string) => {
-          try {
-            localStorage.setItem(key, value);
-          } catch (error) {
-            console.error('localStorage.setItem error:', error);
-          }
-        },
-        getString: (key: string) => {
-          try {
-            return localStorage.getItem(key) || undefined;
-          } catch (error) {
-            console.error('localStorage.getItem error:', error);
-            return undefined;
-          }
-        },
-        delete: (key: string) => {
-          try {
-            localStorage.removeItem(key);
-          } catch (error) {
-            console.error('localStorage.removeItem error:', error);
-          }
-        },
-        clearAll: () => {
-          try {
-            localStorage.clear();
-          } catch (error) {
-            console.error('localStorage.clear error:', error);
-          }
-        },
-      };
-      _isMMKVAvailable = true;
-      return mmkvInstance;
-    }
-
-    // Use MMKV for native platforms
-    try {
-      // Dynamically require MMKV to handle cases where native module might not be ready
-      const { MMKV } = require('react-native-mmkv');
-
-      if (!MMKV) {
-        throw new Error('MMKV constructor not available');
-      }
-
-      mmkvInstance = new MMKV();
-      _isMMKVAvailable = true;
-      console.log('✅ MMKV initialized successfully');
-    } catch (error) {
-      console.warn('⚠️ MMKV not available, using in-memory fallback:', error);
-      _isMMKVAvailable = false;
-
-      // Create an in-memory fallback storage
-      const memoryStorage: Record<string, string> = {};
-
-      mmkvInstance = {
-        set: (key: string, value: string) => {
-          memoryStorage[key] = value;
-        },
-        getString: (key: string) => memoryStorage[key],
-        delete: (key: string) => {
-          delete memoryStorage[key];
-        },
-        clearAll: () => {
-          Object.keys(memoryStorage).forEach((key) => delete memoryStorage[key]);
-        },
-      };
-    }
-  }
-  return mmkvInstance;
-}
-
 export const storage = {
-  getViewedCards(): string[] {
+  async getViewedCards(): Promise<string[]> {
     try {
-      const data = getMMKV().getString(STORAGE_KEYS.VIEWED_CARDS);
+      const data = await AsyncStorage.getItem(STORAGE_KEYS.VIEWED_CARDS);
       return data ? JSON.parse(data) : [];
     } catch (error) {
       console.error('Error getting viewed cards:', error);
@@ -92,37 +12,37 @@ export const storage = {
     }
   },
 
-  setViewedCards(cardIds: string[]): void {
+  async setViewedCards(cardIds: string[]): Promise<void> {
     try {
-      getMMKV().set(STORAGE_KEYS.VIEWED_CARDS, JSON.stringify(cardIds));
+      await AsyncStorage.setItem(STORAGE_KEYS.VIEWED_CARDS, JSON.stringify(cardIds));
     } catch (error) {
       console.error('Error setting viewed cards:', error);
     }
   },
 
-  addViewedCard(cardId: string): void {
+  async addViewedCard(cardId: string): Promise<void> {
     try {
-      const viewedCards = this.getViewedCards();
+      const viewedCards = await this.getViewedCards();
       if (!viewedCards.includes(cardId)) {
         viewedCards.push(cardId);
-        this.setViewedCards(viewedCards);
+        await this.setViewedCards(viewedCards);
       }
     } catch (error) {
       console.error('Error adding viewed card:', error);
     }
   },
 
-  resetViewedCards(): void {
+  async resetViewedCards(): Promise<void> {
     try {
-      getMMKV().delete(STORAGE_KEYS.VIEWED_CARDS);
+      await AsyncStorage.removeItem(STORAGE_KEYS.VIEWED_CARDS);
     } catch (error) {
       console.error('Error resetting viewed cards:', error);
     }
   },
 
-  getSelectedDisciplines(): Discipline[] {
+  async getSelectedDisciplines(): Promise<Discipline[]> {
     try {
-      const data = getMMKV().getString(STORAGE_KEYS.SELECTED_DISCIPLINES);
+      const data = await AsyncStorage.getItem(STORAGE_KEYS.SELECTED_DISCIPLINES);
       return data ? JSON.parse(data) : ['italian-longsword', 'german-longsword'];
     } catch (error) {
       console.error('Error getting selected disciplines:', error);
@@ -130,34 +50,35 @@ export const storage = {
     }
   },
 
-  setSelectedDisciplines(disciplines: Discipline[]): void {
+  async setSelectedDisciplines(disciplines: Discipline[]): Promise<void> {
     try {
-      getMMKV().set(STORAGE_KEYS.SELECTED_DISCIPLINES, JSON.stringify(disciplines));
+      await AsyncStorage.setItem(STORAGE_KEYS.SELECTED_DISCIPLINES, JSON.stringify(disciplines));
     } catch (error) {
       console.error('Error setting selected disciplines:', error);
     }
   },
 
-  getLastCardShown(): string | null {
+  async getLastCardShown(): Promise<string | null> {
     try {
-      return getMMKV().getString(STORAGE_KEYS.LAST_CARD_SHOWN) || null;
+      const data = await AsyncStorage.getItem(STORAGE_KEYS.LAST_CARD_SHOWN);
+      return data || null;
     } catch (error) {
       console.error('Error getting last card shown:', error);
       return null;
     }
   },
 
-  setLastCardShown(cardId: string): void {
+  async setLastCardShown(cardId: string): Promise<void> {
     try {
-      getMMKV().set(STORAGE_KEYS.LAST_CARD_SHOWN, cardId);
+      await AsyncStorage.setItem(STORAGE_KEYS.LAST_CARD_SHOWN, cardId);
     } catch (error) {
       console.error('Error setting last card shown:', error);
     }
   },
 
-  clearAll(): void {
+  async clearAll(): Promise<void> {
     try {
-      getMMKV().clearAll();
+      await AsyncStorage.clear();
     } catch (error) {
       console.error('Error clearing all data:', error);
     }

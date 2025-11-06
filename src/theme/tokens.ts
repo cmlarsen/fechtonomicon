@@ -43,7 +43,7 @@ export const colors = {
     dark: '#2A1810',
   },
   text: {
-    primary: '#3A3936', // Updated to dark iron
+    primary: '#333333', // Updated to dark iron
     secondary: '#5C5B58', // Updated to iron gray
     light: '#8B8A87', // Updated to light iron
     inverse: '#F8F4E8',
@@ -74,7 +74,7 @@ export const spacing = {
 
 export const fontSize = {
   xs: 12,
-  sm: 14,
+  sm: 16,
   md: 18, // Increased from 16 for better readability
   lg: 20, // Increased from 18
   xl: 26, // Increased from 24
@@ -88,7 +88,7 @@ export const fontFamily = {
   titleSemiBold: 'Texturina-SemiBold',
   bodyLight: 'CormorantGaramond-Light',
   bodyLightItalic: 'CormorantGaramond-LightItalic',
-  body: 'CormorantGaramond-Regular',
+  body: 'CormorantGaramond-Medium',
   bodyItalic: 'CormorantGaramond-Italic',
   bodyMedium: 'CormorantGaramond-Medium',
   bodyMediumItalic: 'CormorantGaramond-MediumItalic',

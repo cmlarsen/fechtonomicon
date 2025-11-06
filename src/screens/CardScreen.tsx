@@ -45,7 +45,6 @@ export const CardScreen: React.FC<CardScreenProps> = ({
   route,
 }) => {
   const loadCards = useFlashcardStore((state) => state.loadCards);
-  const loadFromStorage = useFlashcardStore((state) => state.loadFromStorage);
   const allCards = useFlashcardStore((state) => state.allCards);
   const selectedDisciplines = useFlashcardStore(
     (state) => state.selectedDisciplines
@@ -64,7 +63,6 @@ export const CardScreen: React.FC<CardScreenProps> = ({
     setIsLoading(true);
 
     try {
-      loadFromStorage();
       const italianRecords = (italianData as any).records as FlashcardType[];
       const germanRecords = (germanData as any).records as FlashcardType[];
       const allRecords = [...italianRecords, ...germanRecords];
@@ -80,7 +78,7 @@ export const CardScreen: React.FC<CardScreenProps> = ({
       console.error("Error loading cards:", error);
       setIsLoading(false);
     }
-  }, [loadFromStorage, loadCards]);
+  }, [loadCards]);
 
   // Memoize filtered and sorted cards
   const sortedCards = useMemo(() => {

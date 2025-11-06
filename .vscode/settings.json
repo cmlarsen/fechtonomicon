@@ -1,5 +1,6 @@
 {
   "cmake.configureOnOpen": false,
   "editor.formatOnSave": true,
-  "cSpell.words": ["Fechtonomicon"]
+  "cSpell.words": ["Fechtonomicon"],
+  "editor.defaultFormatter": "biomejs.biome"
 }

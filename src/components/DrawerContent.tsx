@@ -67,10 +67,8 @@ export const DrawerContent: React.FC<DrawerContentComponentProps> = ({
       const query = searchQuery.toLowerCase().trim();
       filtered = cards.filter((card) => {
         return (
-          card.originalTerm.toLowerCase().includes(query) ||
-          card.englishTerm.toLowerCase().includes(query) ||
-          card.briefDescription?.toLowerCase().includes(query) ||
-          false
+          card.originalTerm.toLowerCase().startsWith(query) ||
+          card.englishTerm.toLowerCase().startsWith(query)
         );
       });
     }

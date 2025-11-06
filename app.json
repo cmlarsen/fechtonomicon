@@ -7,7 +7,9 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
-    "assetBundlePatterns": ["assets/**/*"],
+    "assetBundlePatterns": [
+      "assets/**/*"
+    ],
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "cover",
@@ -22,7 +24,8 @@
         "NSAppTransportSecurity": {
           "NSAllowsArbitraryLoads": true
         }
-      }
+      },
+      "appleTeamId": "YGFSEKK4H2"
     },
     "android": {
       "adaptiveIcon": {
@@ -41,6 +44,12 @@
       "description": "Study Historical European Martial Arts with interactive flashcards",
       "backgroundColor": "#F8F4E8",
       "themeColor": "#5C3D2E"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4750fe71-fb15-4fd9-ab2a-9647609aa50a"
+      }
+    },
+    "owner": "yetanothersidequest"
   }
 }

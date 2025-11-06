@@ -1,14 +1,29 @@
-import React from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import flashcardsData from '../../assets/data/german-longsword-data.json';
-import { BackgroundPattern } from '../components/BackgroundPattern';
-import { CornerBrackets } from '../components/CornerBrackets';
-import { LinkedText } from '../components/LinkedText';
-import { SectionDivider } from '../components/SectionDivider';
-import { useFlashcardStore } from '../store/flashcardStore';
-import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../theme/tokens';
-import type { Flashcard as FlashcardType } from '../types/flashcard';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import {
+  borderRadius,
+  colors,
+  fontFamily,
+  fontSize,
+  shadows,
+  spacing,
+} from "../theme/tokens";
+
+import { BackgroundPattern } from "../components/BackgroundPattern";
+import { CornerBrackets } from "../components/CornerBrackets";
+import type { Flashcard as FlashcardType } from "../types/flashcard";
+import { LinkedText } from "../components/LinkedText";
+import React from "react";
+import { SectionDivider } from "../components/SectionDivider";
+import { VideoSection } from "../components/VideoEmbed";
+import flashcardsData from "../../assets/data/german-longsword-data.json";
+import { useFlashcardStore } from "../store/flashcardStore";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 interface FlashcardDetailScreenProps {
   navigation: {
@@ -39,7 +54,7 @@ export const FlashcardDetailScreen: React.FC<FlashcardDetailScreenProps> = ({
     if (foundCard) return foundCard;
 
     // Fallback to flashcardsData
-    const records = (flashcardsData as any).records as FlashcardType[];
+    const records = (flashcardsData as { records: FlashcardType[] }).records;
     return records.find((c) => c.id === cardId) || null;
   }, [route.params?.cardId, allCards]);
 
@@ -50,12 +65,12 @@ export const FlashcardDetailScreen: React.FC<FlashcardDetailScreenProps> = ({
   }, [route.params?.cardId]);
 
   const getTermFromId = (id: string) => {
-    const parts = id.split('.');
-    return parts[parts.length - 1].replace(/_/g, ' ');
+    const parts = id.split(".");
+    return parts[parts.length - 1].replace(/_/g, " ");
   };
 
   const handleRelatedCardPress = (cardId: string) => {
-    navigation.navigate('FlashcardDetail', { cardId });
+    navigation.navigate("FlashcardDetail", { cardId });
   };
 
   if (!card) {
@@ -63,7 +78,10 @@ export const FlashcardDetailScreen: React.FC<FlashcardDetailScreenProps> = ({
       <BackgroundPattern>
         <View style={styles.container}>
           <Text style={styles.errorText}>Card not found</Text>
-          <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+          <TouchableOpacity
+            style={styles.backButton}
+            onPress={() => navigation.goBack()}
+          >
             <Text style={styles.backButtonText}>Go Back</Text>
           </TouchableOpacity>
         </View>
@@ -105,7 +123,12 @@ export const FlashcardDetailScreen: React.FC<FlashcardDetailScreenProps> = ({
                   <Text style={styles.englishTerm}>{card.englishTerm}</Text>
                 </View>
               </View>
-
+              {card.videoLinks && card.videoLinks.length > 0 && (
+                <>
+                  <SectionDivider label="VIDEOS" ornament="▶" />
+                  <VideoSection videoLinks={card.videoLinks} />
+                </>
+              )}
               {card.briefDescription && (
                 <>
                   <SectionDivider label="DESCRIPTION" ornament="❦" />
@@ -114,6 +137,8 @@ export const FlashcardDetailScreen: React.FC<FlashcardDetailScreenProps> = ({
                     allCards={allCards}
                     onTermPress={handleRelatedCardPress}
                     style={styles.description}
+                    card={card}
+                    fieldName="Description"
                   />
                 </>
               )}
@@ -125,6 +150,8 @@ export const FlashcardDetailScreen: React.FC<FlashcardDetailScreenProps> = ({
                     allCards={allCards}
                     onTermPress={handleRelatedCardPress}
                     style={styles.description}
+                    card={card}
+                    fieldName="Technical Details"
                   />
                 </>
               )}
@@ -136,6 +163,8 @@ export const FlashcardDetailScreen: React.FC<FlashcardDetailScreenProps> = ({
                     allCards={allCards}
                     onTermPress={handleRelatedCardPress}
                     style={styles.description}
+                    card={card}
+                    fieldName="Application"
                   />
                 </>
               )}
@@ -147,9 +176,12 @@ export const FlashcardDetailScreen: React.FC<FlashcardDetailScreenProps> = ({
                     allCards={allCards}
                     onTermPress={handleRelatedCardPress}
                     style={styles.description}
+                    card={card}
+                    fieldName="Detailed Application"
                   />
                 </>
               )}
+
               {card.related && card.related.length > 0 && (
                 <>
                   <SectionDivider label="RELATED CONCEPTS" ornament="⚜" />
@@ -161,7 +193,9 @@ export const FlashcardDetailScreen: React.FC<FlashcardDetailScreenProps> = ({
                         onPress={() => handleRelatedCardPress(relatedId)}
                         activeOpacity={0.85}
                       >
-                        <Text style={styles.chipText}>{getTermFromId(relatedId)}</Text>
+                        <Text style={styles.chipText}>
+                          {getTermFromId(relatedId)}
+                        </Text>
                       </TouchableOpacity>
                     ))}
                   </View>
@@ -190,44 +224,44 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     flex: 1,
-    width: '100%',
+    width: "100%",
   },
   scrollContent: {
     flexGrow: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.xl,
     minWidth: 0,
   },
   cardContainer: {
-    width: '100%',
+    width: "100%",
     maxWidth: 600,
     backgroundColor: colors.parchment.primary,
     borderRadius: borderRadius.lg,
     ...shadows.parchment,
     borderWidth: 1.5,
     borderColor: colors.gold.main,
-    overflow: 'hidden',
-    position: 'relative',
-    alignSelf: 'center',
+    overflow: "hidden",
+    position: "relative",
+    alignSelf: "center",
     minWidth: 0,
   },
   content: {
     padding: spacing.xl,
   },
   closeButton: {
-    position: 'absolute',
+    position: "absolute",
     width: 40,
     height: 40,
     borderRadius: borderRadius.round,
     backgroundColor: colors.parchment.light,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     borderWidth: 1.5,
     borderColor: colors.gold.main,
     zIndex: 10,
-    shadowColor: '#FFFFFF',
+    shadowColor: "#FFFFFF",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.8,
     shadowRadius: 1,
@@ -249,7 +283,7 @@ const styles = StyleSheet.create({
     fontFamily: fontFamily.title,
     color: colors.iron.dark,
     marginBottom: spacing.xs,
-    textShadowColor: 'rgba(255, 255, 255, 0.8)',
+    textShadowColor: "rgba(255, 255, 255, 0.8)",
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 1,
   },
@@ -257,15 +291,15 @@ const styles = StyleSheet.create({
     fontSize: fontSize.xl,
     fontFamily: fontFamily.bodyMediumItalic,
     color: colors.iron.main,
-    textShadowColor: 'rgba(255, 255, 255, 0.5)',
+    textShadowColor: "rgba(255, 255, 255, 0.5)",
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 0.5,
   },
   badgeContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: spacing.sm,
     marginTop: spacing.xs,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   categoryBadge: {
     backgroundColor: colors.parchment.light,
@@ -287,7 +321,7 @@ const styles = StyleSheet.create({
     color: colors.iron.main,
     fontSize: fontSize.xs,
     fontFamily: fontFamily.bodySemiBold,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
     letterSpacing: 0.5,
   },
   description: {
@@ -298,9 +332,9 @@ const styles = StyleSheet.create({
     marginBottom: spacing.md,
   },
   chipContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
   },
   chip: {
     backgroundColor: colors.gold.light,
@@ -311,7 +345,7 @@ const styles = StyleSheet.create({
     marginBottom: spacing.sm,
     borderWidth: 1,
     borderColor: colors.gold.dark,
-    shadowColor: '#FFFFFF',
+    shadowColor: "#FFFFFF",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.8,
     shadowRadius: 1,
@@ -321,7 +355,7 @@ const styles = StyleSheet.create({
     color: colors.iron.dark,
     fontSize: fontSize.sm,
     fontFamily: fontFamily.bodySemiBold,
-    textTransform: 'capitalize',
+    textTransform: "capitalize",
   },
   errorText: {
     fontSize: fontSize.lg,
@@ -341,7 +375,7 @@ const styles = StyleSheet.create({
     fontSize: fontSize.md,
     fontFamily: fontFamily.bodySemiBold,
     color: colors.iron.dark,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
     letterSpacing: 0.5,
   },
 });

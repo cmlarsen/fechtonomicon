@@ -1,4 +1,3 @@
-import React, { memo, useCallback } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import {
   borderRadius,
@@ -8,6 +7,7 @@ import {
   shadows,
   spacing,
 } from "../theme/tokens";
+import { memo, useCallback } from "react";
 
 import { CornerBrackets } from "./CornerBrackets";
 import { DisciplineBadge } from "./DisciplineBadge";
@@ -59,6 +59,8 @@ export const Flashcard = memo<FlashcardProps>(
                 allCards={allCards}
                 onTermPress={handleTermPress}
                 style={styles.description}
+                card={card}
+                fieldName="Description"
               />
             </>
           )}
@@ -71,18 +73,11 @@ export const Flashcard = memo<FlashcardProps>(
                 allCards={allCards}
                 onTermPress={handleTermPress}
                 style={styles.description}
+                card={card}
+                fieldName="Application"
               />
             </>
           )}
-
-          {/* <View style={styles.badgeContainer}>
-          <View style={styles.categoryBadge}>
-            <Text style={styles.badgeText}>{card.category}</Text>
-          </View>
-          <View style={styles.weaponBadge}>
-            <Text style={styles.badgeText}>{card.weapon}</Text>
-          </View>
-        </View> */}
         </View>
         {onOpenDetails && (
           <View style={styles.detailsButtonContainer}>
@@ -131,7 +126,7 @@ const styles = StyleSheet.create({
     lineHeight: fontSize.xxxl * 1.2,
     fontFamily: fontFamily.title,
     color: colors.iron.dark,
-    marginBottom: spacing.xs,
+    // marginBottom: spacing.xs,
     textShadowColor: "rgba(255, 255, 255, 0.8)",
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 1,
@@ -140,9 +135,6 @@ const styles = StyleSheet.create({
     fontSize: fontSize.xl,
     fontFamily: fontFamily.bodyMediumItalic,
     color: colors.iron.main,
-    textShadowColor: "rgba(255, 255, 255, 0.5)",
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 0.5,
   },
   badgeContainer: {
     flexDirection: "row",

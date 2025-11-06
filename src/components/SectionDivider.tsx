@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { colors, fontFamily, fontSize, spacing } from "../theme/tokens";
 
 import React from "react";
@@ -6,11 +6,13 @@ import React from "react";
 interface SectionDividerProps {
   label?: string;
   ornament?: string; // Unicode character like ⚔ 🗡 ❧ ⚜
+  onEdit?: () => void;
 }
 
 export const SectionDivider: React.FC<SectionDividerProps> = ({
   label,
   ornament = "⚔",
+  onEdit,
 }) => {
   return (
     <View style={styles.container}>
@@ -19,7 +21,21 @@ export const SectionDivider: React.FC<SectionDividerProps> = ({
         <Text style={styles.ornament}>{ornament}</Text>
         <View style={styles.line} />
       </View>
-      {label && <Text style={styles.label}>{label}</Text>}
+      {label && (
+        <View style={styles.labelContainer}>
+          <Text style={styles.label}>{label}</Text>
+          {onEdit && (
+            <TouchableOpacity
+              style={styles.editButton}
+              onPress={onEdit}
+              activeOpacity={0.7}
+              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+            >
+              <Text style={styles.editIcon}>✏️</Text>
+            </TouchableOpacity>
+          )}
+        </View>
+      )}
     </View>
   );
 };
@@ -46,12 +62,25 @@ const styles = StyleSheet.create({
     color: colors.gold.main,
     opacity: 0.6,
   },
-  label: {
+  labelContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
     marginTop: spacing.xs,
+    gap: spacing.xs,
+  },
+  label: {
     fontSize: fontSize.xs,
     fontFamily: fontFamily.bodySemiBold,
     color: colors.text.light,
     textTransform: "uppercase",
     letterSpacing: 1.5,
+  },
+  editButton: {
+    padding: spacing.xs,
+  },
+  editIcon: {
+    fontSize: fontSize.xs,
+    opacity: 0.7,
   },
 });

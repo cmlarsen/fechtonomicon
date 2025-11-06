@@ -12,7 +12,7 @@ A React Native app for learning HEMA (Historical European Martial Arts) vocabula
 - 📲 **iOS Widget**: Display a random flashcard on your home screen (updates hourly)
 - 🌐 **Web Support**: Run the app in any modern web browser with localStorage persistence
 - 🔗 **Shareable URLs**: Deep link to specific cards via URL parameters
-- 💾 **Offline Storage**: All data stored locally (MMKV on mobile, localStorage on web)
+- 💾 **Offline Storage**: All data stored locally with AsyncStorage (works on both mobile and web)
 - 🧪 **Test-Driven**: Built with TDD practices
 
 ## Tech Stack
@@ -20,9 +20,8 @@ A React Native app for learning HEMA (Historical European Martial Arts) vocabula
 - **React Native** (via Expo)
 - **React Native Web** - Web platform support
 - **TypeScript**
-- **Zustand** - State management
-- **MMKV** - Fast local storage (mobile)
-- **localStorage** - Web persistence
+- **Zustand** - State management with persistence
+- **AsyncStorage** - Cross-platform local storage (mobile & web)
 - **React Navigation** - Navigation with deep linking
 - **React Native Gesture Handler** - Smooth swipe animations
 - **Jest & Testing Library** - Unit and integration tests
@@ -114,7 +113,7 @@ fechtonomicon/
 │   │   ├── CardScreen.tsx            # Main card viewing screen
 │   │   └── DisciplineSelectionScreen.tsx
 │   ├── services/
-│   │   ├── storage.ts                # MMKV wrapper
+│   │   ├── storage.ts                # AsyncStorage wrapper
 │   │   └── widgetService.ts          # Widget communication
 │   ├── store/
 │   │   └── flashcardStore.ts         # Zustand state management
@@ -172,7 +171,7 @@ Edit `assets/data/flashcards.json`:
 
 ### State Management
 
-The app uses Zustand for global state management with MMKV for persistence:
+The app uses Zustand for global state management with AsyncStorage persistence via Zustand's persist middleware:
 
 - Current card being displayed
 - Viewed card history

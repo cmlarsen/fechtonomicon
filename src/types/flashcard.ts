@@ -32,6 +32,11 @@ export interface SourcePrimary {
   folio_or_marker: string;
 }
 
+export interface VideoLink {
+  title: string;
+  url: string;
+}
+
 export interface Flashcard {
   id: string;
   category: string;
@@ -46,6 +51,7 @@ export interface Flashcard {
   source_primary?: SourcePrimary;
   citations?: Citation[];
   status?: string;
+  videoLinks?: VideoLink[];
   // Computed property for backwards compatibility
   discipline?: Discipline;
 }

@@ -1,7 +1,8 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { StyleSheet, Text } from "react-native";
-import { colors, fontFamily } from "../theme/tokens";
+import { colors, fontFamily, fontSize, spacing } from "../theme/tokens";
 
+import { CorrectionModal } from "./CorrectionModal";
 import type { Flashcard } from "../types/flashcard";
 
 interface LinkedTextProps {
@@ -9,6 +10,9 @@ interface LinkedTextProps {
   allCards: Flashcard[];
   onTermPress: (cardId: string) => void;
   style?: any;
+  card?: Flashcard;
+  fieldName?: string;
+  disableEdit?: boolean;
 }
 
 export const LinkedText: React.FC<LinkedTextProps> = ({
@@ -16,7 +20,26 @@ export const LinkedText: React.FC<LinkedTextProps> = ({
   allCards,
   onTermPress,
   style,
+  card,
+  fieldName,
+  disableEdit = false,
 }) => {
+  const [showCorrectionModal, setShowCorrectionModal] = useState(false);
+  const [correctionData, setCorrectionData] = useState<{
+    fieldName: string;
+    fieldValue: string;
+  } | null>(null);
+
+  const handleEdit = () => {
+    if (!card || !fieldName || disableEdit) return;
+    setCorrectionData({ fieldName, fieldValue: text });
+    setShowCorrectionModal(true);
+  };
+
+  const handleCloseCorrectionModal = () => {
+    setShowCorrectionModal(false);
+    setCorrectionData(null);
+  };
   const termMap = useMemo(() => {
     const map = new Map<string, string>();
 
@@ -89,22 +112,38 @@ export const LinkedText: React.FC<LinkedTextProps> = ({
   }, [text, termMap]);
 
   return (
-    <Text style={style}>
-      {parseText.map((part, index) => {
-        if (part.isLink && part.cardId) {
-          return (
-            <Text
-              key={index}
-              onPress={() => onTermPress(part.cardId!)}
-              style={styles.link}
-            >
-              {part.text}
-            </Text>
-          );
-        }
-        return <Text key={index}>{part.text}</Text>;
-      })}
-    </Text>
+    <>
+      <Text style={style}>
+        {parseText.map((part, index) => {
+          if (part.isLink && part.cardId) {
+            return (
+              <Text
+                key={index}
+                onPress={() => onTermPress(part.cardId!)}
+                style={styles.link}
+              >
+                {part.text}
+              </Text>
+            );
+          }
+          return <Text key={index}>{part.text}</Text>;
+        })}
+        {!disableEdit && card && fieldName && (
+          <Text onPress={handleEdit} style={styles.editIcon}>
+            {" ✏️"}
+          </Text>
+        )}
+      </Text>
+      {card && correctionData && (
+        <CorrectionModal
+          visible={showCorrectionModal}
+          card={card}
+          fieldName={correctionData.fieldName}
+          fieldValue={correctionData.fieldValue}
+          onClose={handleCloseCorrectionModal}
+        />
+      )}
+    </>
   );
 };
 
@@ -113,5 +152,11 @@ const styles = StyleSheet.create({
     color: colors.gold.dark,
     textDecorationLine: "underline",
     fontFamily: fontFamily.bodySemiBold,
+  },
+  editIcon: {
+    fontSize: 10,
+    opacity: 1,
+    paddingLeft: spacing.xs,
+    color: colors.gold.dark,
   },
 });
