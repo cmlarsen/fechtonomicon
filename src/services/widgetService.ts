@@ -20,7 +20,7 @@ export const widgetService = {
       const widgetData = JSON.stringify({
         id: card.id,
         title: `${card.originalTerm} (${card.englishTerm})`,
-        description: card.description,
+        description: card.briefDescription || '',
         discipline: card.weapon,
       });
 

@@ -22,6 +22,8 @@
     "check": "biome check .",
     "check:fix": "biome check --write --unsafe . || true",
     "typecheck": "tsc --noEmit",
+    "typecheck:watch": "tsc --noEmit --watch",
+    "typecheck:verbose": "tsc --noEmit --pretty",
     "validate": "yarn format:check && yarn lint && yarn typecheck",
     "validate:fix": "yarn format && yarn lint:fix && yarn check:fix; yarn typecheck || echo '⚠️  Some type errors remain - these require manual fixes'",
     "precommit": "yarn validate"

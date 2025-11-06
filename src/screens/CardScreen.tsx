@@ -16,8 +16,21 @@ import { borderRadius, colors, fontSize, shadows, spacing } from '../theme/token
 import type { Flashcard as FlashcardType } from '../types/flashcard';
 import { getDisciplineFromCardId } from '../utils/disciplineMapper';
 
+interface DataFileRecord {
+  id: string;
+  originalTerm: string;
+  englishTerm: string;
+  category: string;
+  weapon?: string;
+  briefDescription?: string;
+  fullDescription?: string;
+  briefApplication?: string;
+  fullApplication?: string;
+  [key: string]: unknown;
+}
+
 interface DataFile {
-  records: FlashcardType[];
+  records: DataFileRecord[];
 }
 
 interface CardScreenProps {
@@ -55,8 +68,10 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => 
       const germanRecords = (germanData as DataFile).records;
       const allRecords = [...italianRecords, ...germanRecords];
 
-      const cardsWithDiscipline = allRecords.map((card) => ({
+      const cardsWithDiscipline: FlashcardType[] = allRecords.map((card) => ({
         ...card,
+        weapon: card.weapon || 'longsword',
+        briefDescription: card.briefDescription || '',
         discipline: getDisciplineFromCardId(card.id),
       }));
 

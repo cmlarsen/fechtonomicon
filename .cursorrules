@@ -23,6 +23,9 @@
 ## TypeScript Requirements
 - **CRITICAL**: After every change, you MUST run the TypeScript compiler to check for type errors
 - Use `yarn typecheck` or `tsc --noEmit` to check for TypeScript errors
+- Use `yarn typecheck:watch` for continuous type checking in watch mode
+- Use `yarn typecheck:verbose` for formatted, colorized error output
+- Use `./scripts/check-types.sh` for enhanced error reporting with summary
 - If TypeScript errors are found, fix them before marking the task as complete
 - Never commit or complete work with TypeScript errors present
 - TypeScript strict mode is enabled - ensure all types are properly defined
@@ -60,7 +63,11 @@
 - Run `yarn check` or `biome check .` to verify formatting and linting
 - Use `yarn check:fix` or `biome check --apply .` to automatically fix issues
 - Always ensure code passes all linting checks before task completion
-- Run `yarn typecheck` or `tsc --noEmit` to verify TypeScript type checking
+- TypeScript Checking Commands:
+  - `yarn typecheck` - Run once and exit
+  - `yarn typecheck:watch` - Watch mode for continuous checking
+  - `yarn typecheck:verbose` - Pretty-formatted output with colors
+  - `./scripts/check-types.sh` - Enhanced output with summary
 - Always ensure code passes all TypeScript checks before task completion
 
 ## Testing Requirements

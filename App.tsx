@@ -18,7 +18,7 @@ import {
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import React from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View, type ViewStyle } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { AppNavigator } from './src/navigation/AppNavigator';
 import { colors } from './src/theme/tokens';
@@ -94,5 +94,5 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)',
     borderRadius: 12,
-  } as View['style'],
+  } as ViewStyle,
 });
