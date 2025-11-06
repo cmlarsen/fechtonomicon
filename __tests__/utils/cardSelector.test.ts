@@ -57,7 +57,8 @@ describe('Card Selector', () => {
     });
 
     it('should return null when no cards match selected disciplines', () => {
-      const result = selectRandomCard(mockCards, ['german-longsword'], []);
+      const onlyItalianCards = mockCards.filter((c) => c.discipline === 'italian-longsword');
+      const result = selectRandomCard(onlyItalianCards, ['german-longsword'], []);
       expect(result).toBeNull();
     });
 
@@ -90,13 +91,13 @@ describe('Card Selector', () => {
     });
 
     it('should reset and return a viewed card when all cards have been viewed', () => {
-      const viewedCards = ['card1', 'card2'];
+      const viewedCards = ['card1', 'card2', 'card5'];
       const italianCards = mockCards.filter((c) => c.discipline === 'italian-longsword');
 
       const result = selectRandomCard(italianCards, ['italian-longsword'], viewedCards);
 
       expect(result).not.toBeNull();
-      expect(['card1', 'card2']).toContain(result?.id);
+      expect(['card1', 'card2', 'card5']).toContain(result?.id);
     });
 
     it('should return different cards on multiple calls', () => {

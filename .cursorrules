@@ -12,6 +12,7 @@
 - The validate script runs: formatting check, linting, and type checking
 - Use `yarn validate:fix` to automatically fix formatting and linting issues
 - Never commit code that fails validation - fix issues first
+- **CRITICAL**: All tests must pass before committing (use `yarn test:ci`)
 
 ## Linting Requirements
 - **CRITICAL**: Before completing any task, you MUST run the linter to check for errors
@@ -71,9 +72,15 @@
 - Always ensure code passes all TypeScript checks before task completion
 
 ## Testing Requirements
+- **CRITICAL**: All tests must pass before completing any task
+- **IMPORTANT**: Use `yarn test:ci` to run tests as a one-shot (non-watch mode)
+- **WARNING**: `yarn test` runs in watch mode and will keep running - use `yarn test:ci` for one-shot test runs
+- Use `yarn test` for watch mode during development (only when you want continuous testing)
+- If a test fails, fix it before marking the task as complete
+- **Exception**: Tests may be updated or removed only when deliberately changing the core functionality that the test covers
+- When updating tests due to functionality changes, ensure the new tests accurately reflect the new behavior
 - Write tests for new functionality when appropriate
 - Ensure existing tests pass before completing tasks
-- Use `yarn test:ci` to run tests in CI mode (non-watch)
 
 ## Git Workflow
 - Always run `yarn validate` before committing

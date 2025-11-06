@@ -6,7 +6,7 @@ const mockCard: FlashcardType = {
   id: 'test-card',
   category: 'guard',
   weapon: 'longsword',
-  originalTerm: 'Test Guard',
+  originalTerm: 'Test Guard Original',
   englishTerm: 'Test Guard',
   briefDescription: 'This is a test description for the flashcard.',
   discipline: 'italian-longsword',
@@ -15,7 +15,7 @@ const mockCard: FlashcardType = {
 describe('Flashcard Component', () => {
   it('should render card original term', () => {
     render(<Flashcard card={mockCard} />);
-    expect(screen.getByText('Test Guard')).toBeTruthy();
+    expect(screen.getByText('Test Guard Original')).toBeTruthy();
   });
 
   it('should render card description', () => {

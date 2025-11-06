@@ -98,8 +98,8 @@ function AppLifecycleTracker() {
 
 export const AppNavigator: React.FC = () => {
   return (
-    <DrawerProvider>
-      <NavigationContainer linking={linking as LinkingOptions<RootStackParamList>}>
+    <NavigationContainer linking={linking as LinkingOptions<RootStackParamList>}>
+      <DrawerProvider>
         <PostHogProvider
           apiKey="phc_ViNvLkNIZ1xrvw99zorMROwBFCW3yrJ1QWELgql08MZ"
           options={{
@@ -132,7 +132,7 @@ export const AppNavigator: React.FC = () => {
             />
           </Stack.Navigator>
         </PostHogProvider>
-      </NavigationContainer>
-    </DrawerProvider>
+      </DrawerProvider>
+    </NavigationContainer>
   );
 };

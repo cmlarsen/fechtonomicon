@@ -1,5 +1,3 @@
-import '@testing-library/react-native/extend-expect';
-
 jest.mock('@react-native-async-storage/async-storage', () => {
   const storage: Record<string, string> = {};
   return {
@@ -38,3 +36,28 @@ jest.mock('react-native-gesture-handler', () => {
     },
   };
 });
+
+jest.mock('react-native-webview', () => {
+  const View = require('react-native').View;
+  return {
+    __esModule: true,
+    default: View,
+    WebView: View,
+  };
+});
+
+jest.mock('react-native-youtube-iframe', () => {
+  const View = require('react-native').View;
+  return {
+    __esModule: true,
+    default: View,
+    YoutubeIframe: View,
+  };
+});
+
+jest.mock('posthog-react-native', () => ({
+  usePostHog: () => ({
+    capture: jest.fn(),
+  }),
+  PostHogProvider: ({ children }: { children: React.ReactNode }) => children,
+}));

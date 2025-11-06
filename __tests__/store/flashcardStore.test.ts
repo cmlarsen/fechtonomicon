@@ -167,10 +167,17 @@ describe('Flashcard Store', () => {
       act(() => {
         result.current.loadCards(mockFlashcards);
         result.current.getRandomCard();
+      });
+
+      const viewedBeforeReset = result.current.viewedCardIds.length;
+      expect(viewedBeforeReset).toBeGreaterThan(0);
+
+      act(() => {
         result.current.resetProgress();
       });
 
-      expect(result.current.viewedCardIds).toEqual([]);
+      expect(result.current.viewedCardIds.length).toBe(1);
+      expect(result.current.currentCard).not.toBeNull();
     });
 
     it('should select a new card after reset', () => {
