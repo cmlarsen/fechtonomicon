@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { act, renderHook, waitFor } from '@testing-library/react-native';
 import { useFlashcardStore } from '../../src/store/flashcardStore';
-import { Discipline } from '../../src/types/flashcard';
+import type { Discipline, Flashcard } from '../../src/types/flashcard';
 
 jest.mock('@react-native-async-storage/async-storage');
 
@@ -33,7 +33,7 @@ const mockFlashcards = [
     briefDescription: 'Description 3',
     discipline: 'german-longsword' as Discipline,
   },
-] as const;
+] as Flashcard[];
 
 describe('Flashcard Store', () => {
   beforeEach(() => {
@@ -75,7 +75,7 @@ describe('Flashcard Store', () => {
       const { result } = renderHook(() => useFlashcardStore());
 
       act(() => {
-        result.current.loadCards(mockFlashcards as any);
+        result.current.loadCards(mockFlashcards);
       });
 
       expect(result.current.allCards).toEqual(mockFlashcards);
@@ -85,7 +85,7 @@ describe('Flashcard Store', () => {
       const { result } = renderHook(() => useFlashcardStore());
 
       act(() => {
-        result.current.loadCards(mockFlashcards as any);
+        result.current.loadCards(mockFlashcards);
       });
 
       expect(result.current.currentCard).not.toBeNull();
@@ -97,7 +97,7 @@ describe('Flashcard Store', () => {
       const { result } = renderHook(() => useFlashcardStore());
 
       act(() => {
-        result.current.loadCards(mockFlashcards as any);
+        result.current.loadCards(mockFlashcards);
         result.current.getRandomCard();
       });
 
@@ -111,7 +111,7 @@ describe('Flashcard Store', () => {
       const { result } = renderHook(() => useFlashcardStore());
 
       act(() => {
-        result.current.loadCards(mockFlashcards as any);
+        result.current.loadCards(mockFlashcards);
         result.current.getRandomCard();
       });
 
@@ -165,7 +165,7 @@ describe('Flashcard Store', () => {
       const { result } = renderHook(() => useFlashcardStore());
 
       act(() => {
-        result.current.loadCards(mockFlashcards as any);
+        result.current.loadCards(mockFlashcards);
         result.current.getRandomCard();
         result.current.resetProgress();
       });
@@ -177,7 +177,7 @@ describe('Flashcard Store', () => {
       const { result } = renderHook(() => useFlashcardStore());
 
       act(() => {
-        result.current.loadCards(mockFlashcards as any);
+        result.current.loadCards(mockFlashcards);
         result.current.getRandomCard();
         result.current.resetProgress();
       });

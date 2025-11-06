@@ -66,15 +66,18 @@ export const CitationSheet: React.FC<CitationSheetProps> = ({ visible, citations
 
             {/* Citation List */}
             <View style={styles.content}>
-              {citations.map((citation, index) => (
-                <View key={index} style={styles.citationItem}>
+              {citations.map((citation) => {
+                const citationKey = `${citation.type}-${citation.ref || ''}-${citation.locator || ''}`;
+                return (
+                  <View key={citationKey} style={styles.citationItem}>
                   <Text style={styles.citationType}>{citation.type}</Text>
                   {citation.locator && (
                     <Text style={styles.citationLocator}>{citation.locator}</Text>
                   )}
                   {citation.note && <Text style={styles.citationNote}>{citation.note}</Text>}
-                </View>
-              ))}
+                  </View>
+                );
+              })}
             </View>
 
             {/* Close Button */}

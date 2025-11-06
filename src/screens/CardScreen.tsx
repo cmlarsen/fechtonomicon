@@ -16,6 +16,10 @@ import { borderRadius, colors, fontSize, shadows, spacing } from '../theme/token
 import type { Flashcard as FlashcardType } from '../types/flashcard';
 import { getDisciplineFromCardId } from '../utils/disciplineMapper';
 
+interface DataFile {
+  records: FlashcardType[];
+}
+
 interface CardScreenProps {
   navigation: {
     navigate: (screen: string, params?: { cardId?: string }) => void;
@@ -47,8 +51,8 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => 
     setIsLoading(true);
 
     try {
-      const italianRecords = (italianData as any).records as FlashcardType[];
-      const germanRecords = (germanData as any).records as FlashcardType[];
+      const italianRecords = (italianData as DataFile).records;
+      const germanRecords = (germanData as DataFile).records;
       const allRecords = [...italianRecords, ...germanRecords];
 
       const cardsWithDiscipline = allRecords.map((card) => ({

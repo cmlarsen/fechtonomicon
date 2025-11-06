@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, type TextStyle } from 'react-native';
 import { colors, fontFamily, spacing } from '../theme/tokens';
 import type { Flashcard } from '../types/flashcard';
 import { CorrectionModal } from './CorrectionModal';
@@ -8,7 +8,7 @@ interface LinkedTextProps {
   text: string;
   allCards: Flashcard[];
   onTermPress: (cardId: string) => void;
-  style?: any;
+  style?: TextStyle;
   card?: Flashcard;
   fieldName?: string;
   disableEdit?: boolean;
@@ -55,59 +55,79 @@ export const LinkedText: React.FC<LinkedTextProps> = ({
   }, [allCards]);
 
   const parseText = useMemo(() => {
-    const parts: Array<{ text: string; isLink: boolean; cardId?: string }> = [];
+    type TextPart = { text: string; isLink: boolean; cardId?: string; key: string };
+    const parts: TextPart[] = [];
 
     if (!text || termMap.size === 0) {
-      return [{ text: text || '', isLink: false }];
+      return [{ text: text || '', isLink: false, key: `text-${text || ''}` }];
     }
 
-    const termKeys = Array.from(termMap.keys())
-      .sort((a, b) => b.length - a.length)
-      .map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    const buildRegex = (map: Map<string, string>): RegExp | null => {
+      const termKeys = Array.from(map.keys())
+        .sort((a, b) => b.length - a.length)
+        .map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
 
-    if (termKeys.length === 0) {
-      return [{ text, isLink: false }];
-    }
-
-    const regex = new RegExp(`\\b(${termKeys.join('|')})\\b`, 'gi');
-
-    let lastIndex = 0;
-    let match: RegExpExecArray | null = null;
-
-    match = regex.exec(text);
-    while (match !== null) {
-      const matchedTerm = match[0].toLowerCase();
-      const cardId = termMap.get(matchedTerm);
-
-      if (cardId) {
-        if (match.index > lastIndex) {
-          parts.push({
-            text: text.substring(lastIndex, match.index),
-            isLink: false,
-          });
-        }
-
-        parts.push({
-          text: match[0],
-          isLink: true,
-          cardId,
-        });
-
-        lastIndex = match.index + match[0].length;
+      if (termKeys.length === 0) {
+        return null;
       }
 
-      match = regex.exec(text);
+      return new RegExp(`\\b(${termKeys.join('|')})\\b`, 'gi');
+    };
+
+    const addTextPart = (textPart: string, index: number): void => {
+      if (textPart.length > 0) {
+        parts.push({
+          text: textPart,
+          isLink: false,
+          key: `text-${index}-${textPart.substring(0, 20)}`,
+        });
+      }
+    };
+
+    const addLinkPart = (matchedText: string, cardId: string, index: number): void => {
+      parts.push({
+        text: matchedText,
+        isLink: true,
+        cardId,
+        key: `link-${cardId}-${index}`,
+      });
+    };
+
+    const processMatches = (regex: RegExp, inputText: string): void => {
+      let lastIndex = 0;
+      let match: RegExpExecArray | null = null;
+
+      match = regex.exec(inputText);
+      while (match !== null) {
+        const matchedTerm = match[0].toLowerCase();
+        const cardId = termMap.get(matchedTerm);
+
+        if (cardId) {
+          if (match.index > lastIndex) {
+            addTextPart(inputText.substring(lastIndex, match.index), lastIndex);
+          }
+
+          addLinkPart(match[0], cardId, match.index);
+          lastIndex = match.index + match[0].length;
+        }
+
+        match = regex.exec(inputText);
+      }
+
+      if (lastIndex < inputText.length) {
+        addTextPart(inputText.substring(lastIndex), lastIndex);
+      }
+    };
+
+    const regex = buildRegex(termMap);
+    if (!regex) {
+      return [{ text, isLink: false, key: `text-${text}` }];
     }
 
-    if (lastIndex < text.length) {
-      parts.push({
-        text: text.substring(lastIndex),
-        isLink: false,
-      });
-    }
+    processMatches(regex, text);
 
     if (parts.length === 0) {
-      return [{ text, isLink: false }];
+      return [{ text, isLink: false, key: `text-${text}` }];
     }
 
     return parts;
@@ -116,16 +136,16 @@ export const LinkedText: React.FC<LinkedTextProps> = ({
   return (
     <>
       <Text style={style}>
-        {parseText.map((part, index) => {
+        {parseText.map((part) => {
           if (part.isLink && part.cardId) {
             const cardId = part.cardId;
             return (
-              <Text key={index} onPress={() => onTermPress(cardId)} style={styles.link}>
+              <Text key={part.key} onPress={() => onTermPress(cardId)} style={styles.link}>
                 {part.text}
               </Text>
             );
           }
-          return <Text key={index}>{part.text}</Text>;
+          return <Text key={part.key}>{part.text}</Text>;
         })}
         {!disableEdit && card && fieldName && (
           <Text onPress={handleEdit} style={styles.editIcon}>

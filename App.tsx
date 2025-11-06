@@ -94,5 +94,5 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)',
     borderRadius: 12,
-  } as any,
+  } as View['style'],
 });
