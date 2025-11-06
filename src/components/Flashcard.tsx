@@ -1,11 +1,10 @@
 import { usePostHog } from 'posthog-react-native';
 import { memo, useCallback } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { useFlashcardStore } from '../store/flashcardStore';
-import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../theme/tokens';
+import { borderRadius, colors, fontFamily, fontSize, spacing } from '../theme/tokens';
 import type { Flashcard as FlashcardType } from '../types/flashcard';
-import { CornerBrackets } from './CornerBrackets';
-import { DisciplineBadge } from './DisciplineBadge';
+import { SecondaryButton } from './buttons';
 import { LinkedText } from './LinkedText';
 import { SectionDivider } from './SectionDivider';
 
@@ -40,12 +39,6 @@ export const Flashcard = memo<FlashcardProps>(({ card, onOpenDetails, onTermPres
 
   return (
     <View style={styles.container} testID="flashcard-container">
-      <CornerBrackets />
-      {card.discipline && (
-        <View style={styles.badgeContainer}>
-          <DisciplineBadge discipline={card.discipline} size="small" />
-        </View>
-      )}
       <View style={styles.content}>
         <View style={styles.header}>
           <View style={styles.titleContainer}>
@@ -84,13 +77,12 @@ export const Flashcard = memo<FlashcardProps>(({ card, onOpenDetails, onTermPres
       </View>
       {onOpenDetails && (
         <View style={styles.detailsButtonContainer}>
-          <TouchableOpacity
-            style={styles.detailsButton}
+          <SecondaryButton
+            title="More"
             onPress={handleDetailsPress}
-            activeOpacity={0.85}
-          >
-            <Text style={styles.detailsButtonText}>View Full Details</Text>
-          </TouchableOpacity>
+            size="small"
+            style={styles.detailsButton}
+          />
         </View>
       )}
     </View>
@@ -103,11 +95,7 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
-    backgroundColor: colors.parchment.primary,
-    borderRadius: borderRadius.lg,
-    ...shadows.parchment,
-    borderWidth: 1.5,
-    borderColor: colors.gold.main,
+
     overflow: 'hidden',
     position: 'relative',
     justifyContent: 'space-between',
@@ -115,17 +103,14 @@ const styles = StyleSheet.create({
 
   content: {
     flex: 1,
-    padding: spacing.xl,
-    paddingTop: spacing.lg,
+    padding: spacing.md,
+    paddingTop: spacing.xs,
     justifyContent: 'flex-start',
   },
-  header: {
-    marginBottom: spacing.md,
-  },
+  header: {},
   titleContainer: {},
   originalTerm: {
-    fontSize: fontSize.xxxl,
-    lineHeight: fontSize.xxxl * 1.2,
+    fontSize: fontSize.xl,
     fontFamily: fontFamily.title,
     color: colors.iron.dark,
     // marginBottom: spacing.xs,
@@ -134,7 +119,7 @@ const styles = StyleSheet.create({
     textShadowRadius: 1,
   },
   englishTerm: {
-    fontSize: fontSize.xl,
+    fontSize: fontSize.lg,
     fontFamily: fontFamily.bodyMediumItalic,
     color: colors.iron.main,
   },
@@ -168,10 +153,10 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   description: {
-    fontSize: fontSize.md,
+    fontSize: fontSize.sm,
     fontFamily: fontFamily.body,
     color: colors.iron.main,
-    lineHeight: fontSize.md * 1.4,
+
     marginBottom: spacing.md,
   },
   detailsButton: {
@@ -198,8 +183,7 @@ const styles = StyleSheet.create({
   },
   detailsButtonContainer: {
     justifyContent: 'flex-end',
-
-    paddingHorizontal: spacing.xl,
-    paddingBottom: spacing.xl,
+    paddingHorizontal: spacing.xs,
+    paddingBottom: spacing.md,
   },
 });

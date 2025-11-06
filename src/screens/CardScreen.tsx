@@ -1,18 +1,14 @@
-import { DrawerActions } from '@react-navigation/native';
 import { usePostHog } from 'posthog-react-native';
 import React, { useCallback, useEffect, useMemo } from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { StyleSheet, View } from 'react-native';
 import germanData from '../../assets/data/german-longsword-data.json';
 import italianData from '../../assets/data/italian-longsword-data.json';
 import { BackgroundPattern } from '../components/BackgroundPattern';
-import { Flashcard } from '../components/Flashcard';
-import { FlashcardSwiper } from '../components/FlashcardSwiper';
 import { LoadingState } from '../components/LoadingState';
-import { useDrawerContext } from '../contexts/DrawerContext';
+import { TermsListDetail } from '../components/TermsListDetail';
+import { useTermsSearch } from '../contexts/TermsSearchContext';
 import { widgetService } from '../services/widgetService';
 import { useFlashcardStore } from '../store/flashcardStore';
-import { spacing } from '../theme/tokens';
 import type { Flashcard as FlashcardType } from '../types/flashcard';
 import { getDisciplineFromCardId } from '../utils/disciplineMapper';
 
@@ -50,8 +46,7 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => 
   const loadCards = useFlashcardStore((state) => state.loadCards);
   const allCards = useFlashcardStore((state) => state.allCards);
   const selectedDisciplines = useFlashcardStore((state) => state.selectedDisciplines);
-  const { setCards, setOnCardPress } = useDrawerContext();
-  const insets = useSafeAreaInsets();
+  const { searchQuery } = useTermsSearch();
   const [currentCardIndex, setCurrentCardIndex] = React.useState(0);
   const [isLoading, setIsLoading] = React.useState(true);
   const prevCardsLengthRef = React.useRef(0);
@@ -94,11 +89,6 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => 
 
     return [...filtered].sort((a, b) => a.originalTerm.localeCompare(b.originalTerm));
   }, [allCards, selectedDisciplines]);
-
-  // Update drawer context only when sortedCards changes
-  useEffect(() => {
-    setCards(sortedCards);
-  }, [sortedCards, setCards]);
 
   // Preserve current card index when cards list changes
   useEffect(() => {
@@ -178,70 +168,36 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => 
     [navigation]
   );
 
-  const handleCardChange = useCallback((card: FlashcardType, index: number) => {
-    setCurrentCardIndex(index);
-    useFlashcardStore.setState({ currentCard: card });
-    widgetService.updateWidget(card);
-  }, []);
-
-  const handleRelatedCardPress = useCallback(
-    (cardId: string) => {
-      const relatedCardIndex = sortedCards.findIndex((card) => card.id === cardId);
-      if (relatedCardIndex !== -1) {
-        setCurrentCardIndex(relatedCardIndex);
-        if (Platform.OS === 'web') {
-          navigation.navigate('Card', { cardId });
-        }
+  const handleCardSelect = useCallback(
+    (index: number) => {
+      setCurrentCardIndex(index);
+      const card = sortedCards[index];
+      if (card) {
+        useFlashcardStore.setState({ currentCard: card });
+        widgetService.updateWidget(card);
       }
     },
-    [sortedCards, navigation]
+    [sortedCards]
   );
-
-  const handleCardIndexPress = useCallback(
-    (_cardId: string, index: number) => {
-      setCurrentCardIndex(index);
-      navigation.dispatch(DrawerActions.closeDrawer());
-    },
-    [navigation]
-  );
-
-  // Set the card press callback in the drawer context
-  useEffect(() => {
-    setOnCardPress(() => handleCardIndexPress);
-  }, [handleCardIndexPress, setOnCardPress]);
 
   const currentCard = sortedCards[currentCardIndex];
   const showLoading = isLoading || sortedCards.length === 0;
 
   return (
     <BackgroundPattern>
-      <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
+      <View style={styles.container}>
         {showLoading ? (
-          // Loading state
           <LoadingState />
-        ) : Platform.OS === 'web' ? (
-          // Web: Single card with prev/next buttons
-          <View style={styles.webCardContainer}>
-            {currentCard && (
-              <Flashcard
-                card={currentCard}
-                onOpenDetails={() => handleOpenDetails(currentCard)}
-                onTermPress={handleTermPress}
-              />
-            )}
-          </View>
         ) : (
-          // Mobile: Swipeable carousel
-          <View style={[styles.swiperContainer]}>
-            <FlashcardSwiper
-              cards={sortedCards}
-              initialIndex={currentCardIndex}
-              onCardChange={handleCardChange}
-              onRelatedCardPress={handleRelatedCardPress}
-              onOpenDetails={handleOpenDetails}
-              onTermPress={handleTermPress}
-            />
-          </View>
+          <TermsListDetail
+            cards={sortedCards}
+            currentCardIndex={currentCardIndex}
+            selectedCardId={currentCard?.id}
+            searchQuery={searchQuery}
+            onCardSelect={handleCardSelect}
+            onOpenDetails={handleOpenDetails}
+            onTermPress={handleTermPress}
+          />
         )}
       </View>
     </BackgroundPattern>
@@ -251,17 +207,5 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  swiperContainer: {
-    flex: 1,
-  },
-  webCardContainer: {
-    flex: 1,
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: spacing.md,
   },
 });

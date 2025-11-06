@@ -1,18 +1,16 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import { LinkingOptions, NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { PostHogProvider, usePostHog } from 'posthog-react-native';
 import React from 'react';
-import { AppState, StyleSheet } from 'react-native';
-import { DrawerContent } from '../components/DrawerContent';
+import { AppState } from 'react-native';
+import { CustomTabBar } from '../components/CustomTabBar';
 import { TabIcon } from '../components/TabIcon';
-import { DrawerProvider } from '../contexts/DrawerContext';
+import { TermsSearchProvider } from '../contexts/TermsSearchContext';
 import { CardScreen } from '../screens/CardScreen';
 import { FlashcardDetailScreen } from '../screens/FlashcardDetailScreen';
 import { QuizScreen } from '../screens/QuizScreen';
 import { SettingsScreen } from '../screens/SettingsScreen';
-import { colors, fontFamily, fontSize } from '../theme/tokens';
 import { blacksmithingIcon, swordsIcon, tomeIcon } from '../utils/tabIcons';
 
 export type RootStackParamList = {
@@ -26,11 +24,6 @@ export type RootTabParamList = {
   Settings: undefined;
 };
 
-export type RootDrawerParamList = {
-  Card: { cardId?: string } | undefined;
-};
-
-const Drawer = createDrawerNavigator<RootDrawerParamList>();
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
@@ -41,13 +34,9 @@ const linking = {
       Main: {
         screens: {
           Terms: {
-            screens: {
-              Card: {
-                path: 'card/:cardId?',
-                parse: {
-                  cardId: (cardId: string) => cardId,
-                },
-              },
+            path: 'card/:cardId?',
+            parse: {
+              cardId: (cardId: string) => cardId,
             },
           },
         },
@@ -62,41 +51,17 @@ const linking = {
   },
 };
 
-const DrawerNavigator = () => {
-  return (
-    <Drawer.Navigator
-      initialRouteName="Card"
-      drawerContent={(props) => <DrawerContent {...props} />}
-      screenOptions={{
-        headerShown: false,
-        drawerPosition: 'left',
-        drawerType: 'front',
-        drawerStyle: {
-          width: 300,
-          backgroundColor: colors.background.card,
-        },
-      }}
-    >
-      <Drawer.Screen name="Card" component={CardScreen} />
-    </Drawer.Navigator>
-  );
-};
-
 const BottomTabNavigator = () => {
   return (
     <Tab.Navigator
+      tabBar={(props) => <CustomTabBar {...props} />}
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: colors.iron.dark,
-        tabBarInactiveTintColor: colors.gold.main,
-        tabBarStyle: styles.tabBar,
-        tabBarLabelStyle: styles.tabBarLabel,
-        tabBarIconStyle: styles.tabBarIcon,
       }}
     >
       <Tab.Screen
         name="Terms"
-        component={DrawerNavigator}
+        component={CardScreen}
         options={{
           tabBarIcon: ({ color }) => <TabIcon IconComponent={tomeIcon} color={color} size={24} />,
           tabBarLabel: 'Terms',
@@ -150,32 +115,16 @@ function AppLifecycleTracker() {
   return null;
 }
 
-const styles = StyleSheet.create({
-  tabBar: {
-    backgroundColor: colors.parchment.primary,
-    borderTopWidth: 1,
-    borderTopColor: colors.gold.main,
-  },
-  tabBarLabel: {
-    fontFamily: fontFamily.body,
-    fontSize: fontSize.xs,
-    marginTop: 4,
-  },
-  tabBarIcon: {
-    marginTop: 4,
-  },
-});
-
 export const AppNavigator: React.FC = () => {
   return (
     <NavigationContainer linking={linking as LinkingOptions<RootStackParamList>}>
-      <DrawerProvider>
-        <PostHogProvider
-          apiKey="phc_ViNvLkNIZ1xrvw99zorMROwBFCW3yrJ1QWELgql08MZ"
-          options={{
-            host: 'https://us.i.posthog.com',
-          }}
-        >
+      <PostHogProvider
+        apiKey="phc_ViNvLkNIZ1xrvw99zorMROwBFCW3yrJ1QWELgql08MZ"
+        options={{
+          host: 'https://us.i.posthog.com',
+        }}
+      >
+        <TermsSearchProvider>
           <AppLifecycleTracker />
           <Stack.Navigator
             screenOptions={{
@@ -194,8 +143,8 @@ export const AppNavigator: React.FC = () => {
               }}
             />
           </Stack.Navigator>
-        </PostHogProvider>
-      </DrawerProvider>
+        </TermsSearchProvider>
+      </PostHogProvider>
     </NavigationContainer>
   );
 };
