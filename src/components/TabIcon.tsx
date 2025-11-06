@@ -11,7 +11,7 @@ interface TabIconProps {
 export const TabIcon: React.FC<TabIconProps> = ({ IconComponent, color, size = 24 }) => {
   return (
     <View style={[styles.container, { width: size, height: size }]} pointerEvents="box-none">
-      <IconComponent width={size} height={size} fill={color} />
+      <IconComponent width={size} height={size} fill={color} color={color} stroke={color} />
     </View>
   );
 };

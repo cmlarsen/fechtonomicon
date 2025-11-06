@@ -88,7 +88,7 @@ const BottomTabNavigator = () => {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.iron.dark,
-        tabBarInactiveTintColor: colors.iron.light,
+        tabBarInactiveTintColor: colors.gold.main,
         tabBarStyle: styles.tabBar,
         tabBarLabelStyle: styles.tabBarLabel,
         tabBarIconStyle: styles.tabBarIcon,
