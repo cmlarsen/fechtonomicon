@@ -31,7 +31,7 @@ const CardListItem = memo<CardListItemProps>(({ card, onPress }) => {
 
 CardListItem.displayName = 'CardListItem';
 
-export const DrawerContent: React.FC<DrawerContentComponentProps> = ({ navigation }) => {
+export const DrawerContent: React.FC<DrawerContentComponentProps> = () => {
   const { cards, onCardPress } = useDrawerContext();
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -63,10 +63,6 @@ export const DrawerContent: React.FC<DrawerContentComponentProps> = ({ navigatio
     [cards, onCardPress]
   );
 
-  const handleSettingsPress = useCallback(() => {
-    navigation.navigate('DisciplineSelection');
-  }, [navigation]);
-
   const handleClearSearch = useCallback(() => {
     setSearchQuery('');
   }, []);
@@ -95,15 +91,6 @@ export const DrawerContent: React.FC<DrawerContentComponentProps> = ({ navigatio
       {/* Header with App Title */}
       <View style={styles.header}>
         <Text style={styles.appTitle}>Fechtonomicon</Text>
-        <View style={styles.settingsSection}>
-          <TouchableOpacity
-            style={styles.settingsItem}
-            onPress={handleSettingsPress}
-            activeOpacity={0.85}
-          >
-            <Text style={styles.settingsText}>Select Disciplines</Text>
-          </TouchableOpacity>
-        </View>
       </View>
 
       {/* Search Bar */}
@@ -218,29 +205,6 @@ const styles = StyleSheet.create({
     fontSize: fontSize.md,
     color: colors.text.secondary,
     fontFamily: fontFamily.bodySemiBold,
-  },
-  settingsSection: {
-    // backgroundColor: colors.parchment.primary,
-    // borderTopWidth: 1,
-    // borderTopColor: "rgba(201, 171, 106, 0.3)",
-  },
-  settingsItem: {
-    alignItems: 'center',
-    paddingVertical: spacing.sm,
-    paddingHorizontal: spacing.sm,
-    backgroundColor: colors.burgundy.main,
-    borderRadius: borderRadius.md,
-    alignSelf: 'flex-start',
-  },
-  settingsIcon: {
-    fontSize: fontSize.md,
-    color: colors.gold.main,
-    marginRight: spacing.sm,
-  },
-  settingsText: {
-    fontSize: fontSize.sm,
-    fontFamily: fontFamily.bodyBold,
-    color: colors.parchment.primary,
   },
   scrollView: {
     flex: 1,

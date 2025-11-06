@@ -1,7 +1,7 @@
 import { DrawerActions } from '@react-navigation/native';
 import { usePostHog } from 'posthog-react-native';
 import React, { useCallback, useEffect, useMemo } from 'react';
-import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import germanData from '../../assets/data/german-longsword-data.json';
 import italianData from '../../assets/data/italian-longsword-data.json';
@@ -12,7 +12,7 @@ import { LoadingState } from '../components/LoadingState';
 import { useDrawerContext } from '../contexts/DrawerContext';
 import { widgetService } from '../services/widgetService';
 import { useFlashcardStore } from '../store/flashcardStore';
-import { borderRadius, colors, fontSize, shadows, spacing } from '../theme/tokens';
+import { spacing } from '../theme/tokens';
 import type { Flashcard as FlashcardType } from '../types/flashcard';
 import { getDisciplineFromCardId } from '../utils/disciplineMapper';
 
@@ -197,26 +197,6 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => 
     [sortedCards, navigation]
   );
 
-  const handleNextCard = useCallback(() => {
-    const nextIndex = (currentCardIndex + 1) % sortedCards.length;
-    const nextCard = sortedCards[nextIndex];
-    setCurrentCardIndex(nextIndex);
-    handleCardChange(nextCard, nextIndex);
-    if (Platform.OS === 'web') {
-      navigation.navigate('Card', { cardId: nextCard.id });
-    }
-  }, [currentCardIndex, sortedCards, handleCardChange, navigation]);
-
-  const handlePrevCard = useCallback(() => {
-    const prevIndex = currentCardIndex === 0 ? sortedCards.length - 1 : currentCardIndex - 1;
-    const prevCard = sortedCards[prevIndex];
-    setCurrentCardIndex(prevIndex);
-    handleCardChange(prevCard, prevIndex);
-    if (Platform.OS === 'web') {
-      navigation.navigate('Card', { cardId: prevCard.id });
-    }
-  }, [currentCardIndex, sortedCards, handleCardChange, navigation]);
-
   const handleCardIndexPress = useCallback(
     (_cardId: string, index: number) => {
       setCurrentCardIndex(index);
@@ -229,11 +209,6 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => 
   useEffect(() => {
     setOnCardPress(() => handleCardIndexPress);
   }, [handleCardIndexPress, setOnCardPress]);
-
-  const toggleDrawer = useCallback(() => {
-    posthog?.capture('fab_tapped');
-    navigation.dispatch(DrawerActions.toggleDrawer());
-  }, [navigation, posthog]);
 
   const currentCard = sortedCards[currentCardIndex];
   const showLoading = isLoading || sortedCards.length === 0;
@@ -268,35 +243,6 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => 
             />
           </View>
         )}
-
-        {/* Navigation controls at bottom - only show when not loading */}
-        {!showLoading && (
-          <View style={[styles.bottomNav]}>
-            {Platform.OS === 'web' && (
-              <TouchableOpacity
-                style={styles.navButton}
-                onPress={handlePrevCard}
-                activeOpacity={0.85}
-              >
-                <Text style={styles.navButtonText}>←</Text>
-              </TouchableOpacity>
-            )}
-
-            <TouchableOpacity style={styles.fabButton} onPress={toggleDrawer} activeOpacity={0.85}>
-              <Text style={styles.fabIcon}>⚔</Text>
-            </TouchableOpacity>
-
-            {Platform.OS === 'web' && (
-              <TouchableOpacity
-                style={styles.navButton}
-                onPress={handleNextCard}
-                activeOpacity={0.85}
-              >
-                <Text style={styles.navButtonText}>→</Text>
-              </TouchableOpacity>
-            )}
-          </View>
-        )}
       </View>
     </BackgroundPattern>
   );
@@ -317,56 +263,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: spacing.md,
-  },
-  bottomNav: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: spacing.lg,
-    paddingVertical: spacing.sm,
-  },
-  fabButton: {
-    width: 56,
-    height: 56,
-    borderRadius: borderRadius.round,
-    backgroundColor: colors.parchment.light,
-    justifyContent: 'center',
-    alignItems: 'center',
-    ...shadows.parchment,
-    borderWidth: 3,
-    borderColor: colors.gold.main,
-    shadowColor: colors.gold.dark,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
-    elevation: 6,
-  },
-  fabIcon: {
-    fontSize: fontSize.xl,
-    color: colors.gold.dark,
-    textShadowColor: 'rgba(255, 255, 255, 0.6)',
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 1,
-  },
-  navButton: {
-    width: 48,
-    height: 48,
-    borderRadius: borderRadius.round,
-    backgroundColor: colors.parchment.light,
-    justifyContent: 'center',
-    alignItems: 'center',
-    ...shadows.parchment,
-    borderWidth: 2,
-    borderColor: colors.gold.main,
-    shadowColor: colors.gold.dark,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 4,
-  },
-  navButtonText: {
-    fontSize: fontSize.xxl,
-    color: colors.gold.dark,
-    fontWeight: 'bold',
   },
 });

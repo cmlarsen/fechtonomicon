@@ -24,6 +24,13 @@ export const colors = {
     light: '#9B4A54', // Light burgundy
     lighter: '#C1707A', // Pale burgundy
   },
+  // Verdigris green for accents and highlights
+  green: {
+    dark: '#2D4A2D', // Deep verdigris
+    main: '#5A7A5A', // Rich verdigris
+    light: '#8BA68B', // Muted sage
+    lighter: '#B8C9B8', // Pale sage
+  },
   // Keep legacy for compatibility
   primary: {
     dark: '#3D2817',
@@ -53,6 +60,8 @@ export const colors = {
     goldLight: '#E8D4A0',
     burgundy: '#722F37',
     burgundyLight: '#9B4A54',
+    green: '#5A7A5A', // Verdigris green
+    greenLight: '#8BA68B', // Muted sage
   },
   border: {
     light: '#D4C4B0',

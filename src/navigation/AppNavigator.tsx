@@ -1,29 +1,38 @@
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { LinkingOptions, NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { PostHogProvider, usePostHog } from 'posthog-react-native';
 import React from 'react';
-import { AppState } from 'react-native';
+import { AppState, StyleSheet } from 'react-native';
 import { DrawerContent } from '../components/DrawerContent';
+import { TabIcon } from '../components/TabIcon';
 import { DrawerProvider } from '../contexts/DrawerContext';
 import { CardScreen } from '../screens/CardScreen';
-import { DisciplineSelectionScreen } from '../screens/DisciplineSelectionScreen';
 import { FlashcardDetailScreen } from '../screens/FlashcardDetailScreen';
-import { colors } from '../theme/tokens';
+import { QuizScreen } from '../screens/QuizScreen';
+import { SettingsScreen } from '../screens/SettingsScreen';
+import { colors, fontFamily, fontSize } from '../theme/tokens';
+import { blacksmithingIcon, swordsIcon, tomeIcon } from '../utils/tabIcons';
 
 export type RootStackParamList = {
   Main: undefined;
-  DisciplineSelection: undefined;
   FlashcardDetail: { cardId: string };
+};
+
+export type RootTabParamList = {
+  Terms: undefined;
+  Quiz: undefined;
+  Settings: undefined;
 };
 
 export type RootDrawerParamList = {
   Card: { cardId?: string } | undefined;
-  DisciplineSelection: undefined;
 };
 
 const Drawer = createDrawerNavigator<RootDrawerParamList>();
 const Stack = createStackNavigator<RootStackParamList>();
+const Tab = createBottomTabNavigator<RootTabParamList>();
 
 const linking = {
   prefixes: ['hemaflashcards://', 'https://hemaflashcards.app', 'http://localhost:8081'],
@@ -31,15 +40,18 @@ const linking = {
     screens: {
       Main: {
         screens: {
-          Card: {
-            path: 'card/:cardId?',
-            parse: {
-              cardId: (cardId: string) => cardId,
+          Terms: {
+            screens: {
+              Card: {
+                path: 'card/:cardId?',
+                parse: {
+                  cardId: (cardId: string) => cardId,
+                },
+              },
             },
           },
         },
       },
-      DisciplineSelection: 'disciplines',
       FlashcardDetail: {
         path: 'card/:cardId/detail',
         parse: {
@@ -70,6 +82,48 @@ const DrawerNavigator = () => {
   );
 };
 
+const BottomTabNavigator = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: colors.iron.dark,
+        tabBarInactiveTintColor: colors.iron.light,
+        tabBarStyle: styles.tabBar,
+        tabBarLabelStyle: styles.tabBarLabel,
+        tabBarIconStyle: styles.tabBarIcon,
+      }}
+    >
+      <Tab.Screen
+        name="Terms"
+        component={DrawerNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabIcon IconComponent={tomeIcon} color={color} size={24} />,
+          tabBarLabel: 'Terms',
+        }}
+      />
+      <Tab.Screen
+        name="Quiz"
+        component={QuizScreen}
+        options={{
+          tabBarIcon: ({ color }) => <TabIcon IconComponent={swordsIcon} color={color} size={24} />,
+          tabBarLabel: 'Quiz',
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <TabIcon IconComponent={blacksmithingIcon} color={color} size={24} />
+          ),
+          tabBarLabel: 'Settings',
+        }}
+      />
+    </Tab.Navigator>
+  );
+};
+
 function AppLifecycleTracker() {
   const posthog = usePostHog();
 
@@ -96,6 +150,22 @@ function AppLifecycleTracker() {
   return null;
 }
 
+const styles = StyleSheet.create({
+  tabBar: {
+    backgroundColor: colors.parchment.primary,
+    borderTopWidth: 1,
+    borderTopColor: colors.gold.main,
+  },
+  tabBarLabel: {
+    fontFamily: fontFamily.body,
+    fontSize: fontSize.xs,
+    marginTop: 4,
+  },
+  tabBarIcon: {
+    marginTop: 4,
+  },
+});
+
 export const AppNavigator: React.FC = () => {
   return (
     <NavigationContainer linking={linking as LinkingOptions<RootStackParamList>}>
@@ -112,14 +182,7 @@ export const AppNavigator: React.FC = () => {
               headerShown: false,
             }}
           >
-            <Stack.Screen name="Main" component={DrawerNavigator} />
-            <Stack.Screen
-              name="DisciplineSelection"
-              component={DisciplineSelectionScreen}
-              options={{
-                presentation: 'modal',
-              }}
-            />
+            <Stack.Screen name="Main" component={BottomTabNavigator} />
             <Stack.Screen
               name="FlashcardDetail"
               component={FlashcardDetailScreen}
