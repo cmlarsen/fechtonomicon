@@ -1,15 +1,9 @@
-import React, { useEffect, useRef, useCallback, memo, useMemo } from "react";
-import { Dimensions, StyleSheet, View, Text } from "react-native";
-import Animated, {
-  interpolate,
-  type SharedValue,
-  useAnimatedStyle,
-} from "react-native-reanimated";
-import Carousel, {
-  type ICarouselInstance,
-} from "react-native-reanimated-carousel";
-import type { Flashcard as FlashcardType } from "../types/flashcard";
-import { Flashcard } from "./Flashcard";
+import React, { memo, useCallback, useEffect, useMemo, useRef } from 'react';
+import { Dimensions, StyleSheet, View } from 'react-native';
+import Animated, { interpolate, type SharedValue, useAnimatedStyle } from 'react-native-reanimated';
+import Carousel, { type ICarouselInstance } from 'react-native-reanimated-carousel';
+import type { Flashcard as FlashcardType } from '../types/flashcard';
+import { Flashcard } from './Flashcard';
 
 interface FlashcardSwiperProps {
   cards: FlashcardType[];
@@ -21,7 +15,7 @@ interface FlashcardSwiperProps {
   onScrollProgress?: (offsetProgress: number, absoluteProgress: number) => void;
 }
 
-const { width: SCREEN_WIDTH } = Dimensions.get("window");
+const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const CARD_WIDTH = SCREEN_WIDTH * 1; // Cards take 92% of screen width for subtle peek effect
 
 interface AnimatedCardProps {
@@ -34,16 +28,8 @@ interface AnimatedCardProps {
 const AnimatedCard = memo<AnimatedCardProps>(
   ({ item, animationValue, onOpenDetails, onTermPress }) => {
     const animatedStyle = useAnimatedStyle(() => {
-      const opacity = interpolate(
-        animationValue.value,
-        [-1, 0, 1],
-        [0.8, 1, 0.8]
-      );
-      const shadowOpacity = interpolate(
-        animationValue.value,
-        [-0.5, 0, 0.5],
-        [0, 0.6, 0]
-      );
+      const opacity = interpolate(animationValue.value, [-1, 0, 1], [0.8, 1, 0.8]);
+      const shadowOpacity = interpolate(animationValue.value, [-0.5, 0, 0.5], [0, 0.6, 0]);
 
       return {
         opacity,
@@ -69,7 +55,7 @@ const AnimatedCard = memo<AnimatedCardProps>(
   }
 );
 
-AnimatedCard.displayName = "AnimatedCard";
+AnimatedCard.displayName = 'AnimatedCard';
 
 // Custom comparison function for memo to prevent unnecessary re-renders
 const arePropsEqual = (
@@ -87,8 +73,8 @@ const arePropsEqual = (
   }
 
   // Check if card IDs are the same (reference equality for callbacks)
-  const prevCardIds = prevProps.cards.map((c) => c.id).join(",");
-  const nextCardIds = nextProps.cards.map((c) => c.id).join(",");
+  const prevCardIds = prevProps.cards.map((c) => c.id).join(',');
+  const nextCardIds = nextProps.cards.map((c) => c.id).join(',');
   if (prevCardIds !== nextCardIds) {
     return false;
   }
@@ -110,7 +96,6 @@ const FlashcardSwiperComponent: React.FC<FlashcardSwiperProps> = ({
   cards,
   initialIndex = 0,
   onCardChange,
-  onRelatedCardPress,
   onOpenDetails,
   onTermPress,
 }) => {
@@ -119,7 +104,7 @@ const FlashcardSwiperComponent: React.FC<FlashcardSwiperProps> = ({
 
   // Create a stable key based on card IDs to force remount only when cards actually change
   const carouselKey = useMemo(() => {
-    return cards.map((c) => c.id).join("-");
+    return cards.map((c) => c.id).join('-');
   }, [cards]);
 
   // Clamp initialIndex to valid range to prevent out-of-bounds errors
@@ -149,13 +134,7 @@ const FlashcardSwiperComponent: React.FC<FlashcardSwiperProps> = ({
   );
 
   const renderItem = useCallback(
-    ({
-      item,
-      animationValue,
-    }: {
-      item: FlashcardType;
-      animationValue: SharedValue<number>;
-    }) => {
+    ({ item, animationValue }: { item: FlashcardType; animationValue: SharedValue<number> }) => {
       return (
         <AnimatedCard
           item={item}
@@ -210,19 +189,19 @@ const FlashcardSwiperComponent: React.FC<FlashcardSwiperProps> = ({
 };
 
 export const FlashcardSwiper = memo(FlashcardSwiperComponent, arePropsEqual);
-FlashcardSwiper.displayName = "FlashcardSwiper";
+FlashcardSwiper.displayName = 'FlashcardSwiper';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   cardWrapper: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    shadowColor: "#000",
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 4,

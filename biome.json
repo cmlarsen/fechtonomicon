@@ -32,14 +32,28 @@
     "rules": {
       "recommended": true,
       "correctness": {
-        "noUnusedVariables": "error"
+        "noUnusedVariables": "error",
+        "noUnusedImports": "error",
+        "noUnusedFunctionParameters": "error"
       },
       "style": {
         "useImportType": "off",
-        "useConst": "error"
+        "useConst": "error",
+        "noParameterAssign": "error",
+        "useTemplate": "error"
       },
       "suspicious": {
-        "noExplicitAny": "warn"
+        "noExplicitAny": "warn",
+        "noArrayIndexKey": "warn",
+        "noAssignInExpressions": "error",
+        "noImplicitAnyLet": "error",
+        "noExtraNonNullAssertion": "error"
+      },
+      "complexity": {
+        "noExcessiveCognitiveComplexity": "warn"
+      },
+      "performance": {
+        "noDelete": "error"
       }
     }
   },

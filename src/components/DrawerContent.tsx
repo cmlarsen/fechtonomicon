@@ -1,24 +1,10 @@
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import React, { memo, useCallback, useMemo, useState } from "react";
-import {
-  borderRadius,
-  colors,
-  fontFamily,
-  fontSize,
-  spacing,
-} from "../theme/tokens";
-
-import { DisciplineBadge } from "./DisciplineBadge";
-import type { DrawerContentComponentProps } from "@react-navigation/drawer";
-import type { Flashcard } from "../types/flashcard";
-import { useDrawerContext } from "../contexts/DrawerContext";
+import type { DrawerContentComponentProps } from '@react-navigation/drawer';
+import React, { memo, useCallback, useMemo, useState } from 'react';
+import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { useDrawerContext } from '../contexts/DrawerContext';
+import { borderRadius, colors, fontFamily, fontSize, spacing } from '../theme/tokens';
+import type { Flashcard } from '../types/flashcard';
+import { DisciplineBadge } from './DisciplineBadge';
 
 interface CardListItemProps {
   card: Flashcard;
@@ -31,31 +17,23 @@ const CardListItem = memo<CardListItemProps>(({ card, onPress }) => {
   }, [card, onPress]);
 
   return (
-    <TouchableOpacity
-      style={styles.cardItem}
-      onPress={handlePress}
-      activeOpacity={0.85}
-    >
+    <TouchableOpacity style={styles.cardItem} onPress={handlePress} activeOpacity={0.85}>
       <View style={styles.cardContent}>
         <View style={styles.cardTextContainer}>
           <Text style={styles.originalTerm}>{card.originalTerm}</Text>
           <Text style={styles.englishTerm}>({card.englishTerm})</Text>
         </View>
-        {card.discipline && (
-          <DisciplineBadge discipline={card.discipline} size="small" />
-        )}
+        {card.discipline && <DisciplineBadge discipline={card.discipline} size="small" />}
       </View>
     </TouchableOpacity>
   );
 });
 
-CardListItem.displayName = "CardListItem";
+CardListItem.displayName = 'CardListItem';
 
-export const DrawerContent: React.FC<DrawerContentComponentProps> = ({
-  navigation,
-}) => {
+export const DrawerContent: React.FC<DrawerContentComponentProps> = ({ navigation }) => {
   const { cards, onCardPress } = useDrawerContext();
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Filter and sort cards
   const filteredAndSortedCards = useMemo(() => {
@@ -73,9 +51,7 @@ export const DrawerContent: React.FC<DrawerContentComponentProps> = ({
       });
     }
 
-    return [...filtered].sort((a, b) =>
-      a.originalTerm.localeCompare(b.originalTerm)
-    );
+    return [...filtered].sort((a, b) => a.originalTerm.localeCompare(b.originalTerm));
   }, [cards, searchQuery]);
 
   const handleCardPress = useCallback(
@@ -88,11 +64,11 @@ export const DrawerContent: React.FC<DrawerContentComponentProps> = ({
   );
 
   const handleSettingsPress = useCallback(() => {
-    navigation.navigate("DisciplineSelection");
+    navigation.navigate('DisciplineSelection');
   }, [navigation]);
 
   const handleClearSearch = useCallback(() => {
-    setSearchQuery("");
+    setSearchQuery('');
   }, []);
 
   const renderCardItem = useCallback(
@@ -108,9 +84,7 @@ export const DrawerContent: React.FC<DrawerContentComponentProps> = ({
     return (
       <View style={styles.emptyState}>
         <Text style={styles.emptyText}>
-          {searchQuery.trim()
-            ? "No cards match your search"
-            : "Loading cards..."}
+          {searchQuery.trim() ? 'No cards match your search' : 'Loading cards...'}
         </Text>
       </View>
     );
@@ -193,14 +167,14 @@ const styles = StyleSheet.create({
     marginBottom: spacing.xs,
     lineHeight: fontSize.xxl * 1.2,
     // Embossed title
-    textShadowColor: "rgba(255, 255, 255, 0.8)",
+    textShadowColor: 'rgba(255, 255, 255, 0.8)',
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 1,
   },
   flourish: {
     fontSize: fontSize.lg,
     color: colors.gold.main,
-    textAlign: "center",
+    textAlign: 'center',
     marginBottom: spacing.md,
     opacity: 0.6,
   },
@@ -218,11 +192,11 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.md,
     backgroundColor: colors.parchment.primary,
     borderBottomWidth: 1,
-    borderBottomColor: "rgba(201, 171, 106, 0.3)",
+    borderBottomColor: 'rgba(201, 171, 106, 0.3)',
   },
   searchInputContainer: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     backgroundColor: colors.parchment.light,
     borderRadius: borderRadius.md,
     borderWidth: 1,
@@ -251,12 +225,12 @@ const styles = StyleSheet.create({
     // borderTopColor: "rgba(201, 171, 106, 0.3)",
   },
   settingsItem: {
-    alignItems: "center",
+    alignItems: 'center',
     paddingVertical: spacing.sm,
     paddingHorizontal: spacing.sm,
     backgroundColor: colors.burgundy.main,
     borderRadius: borderRadius.md,
-    alignSelf: "flex-start",
+    alignSelf: 'flex-start',
   },
   settingsIcon: {
     fontSize: fontSize.md,
@@ -281,13 +255,13 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.md,
     paddingHorizontal: spacing.lg,
     borderBottomWidth: 1,
-    borderBottomColor: "rgba(201, 171, 106, 0.3)", // colors.gold.main with 30% opacity
+    borderBottomColor: 'rgba(201, 171, 106, 0.3)', // colors.gold.main with 30% opacity
     backgroundColor: colors.parchment.primary,
   },
   cardContent: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   cardTextContainer: {
     flex: 1,
@@ -306,7 +280,7 @@ const styles = StyleSheet.create({
   },
   emptyState: {
     padding: spacing.xl,
-    alignItems: "center",
+    alignItems: 'center',
   },
   emptyText: {
     fontSize: fontSize.md,

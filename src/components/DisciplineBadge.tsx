@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { borderRadius, colors, fontFamily, fontSize, spacing } from '../theme/tokens';
 import { DISCIPLINE_INFO, type Discipline } from '../types/flashcard';
@@ -8,10 +8,7 @@ interface DisciplineBadgeProps {
   size?: 'small' | 'medium';
 }
 
-export const DisciplineBadge = memo<DisciplineBadgeProps>(({
-  discipline,
-  size = 'small',
-}) => {
+export const DisciplineBadge = memo<DisciplineBadgeProps>(({ discipline, size = 'small' }) => {
   const info = DISCIPLINE_INFO[discipline];
   const isSmall = size === 'small';
 

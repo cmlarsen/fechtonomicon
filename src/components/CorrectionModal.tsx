@@ -1,3 +1,5 @@
+import { usePostHog } from 'posthog-react-native';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Animated,
   Dimensions,
@@ -11,18 +13,9 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-} from "react-native";
-import React, { useEffect, useRef, useState } from "react";
-import {
-  borderRadius,
-  colors,
-  fontFamily,
-  fontSize,
-  shadows,
-  spacing,
-} from "../theme/tokens";
-
-import type { Flashcard } from "../types/flashcard";
+} from 'react-native';
+import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../theme/tokens';
+import type { Flashcard } from '../types/flashcard';
 
 interface CorrectionModalProps {
   visible: boolean;
@@ -32,8 +25,8 @@ interface CorrectionModalProps {
   onClose: () => void;
 }
 
-const SCREEN_HEIGHT = Dimensions.get("window").height;
-const EMAIL_ADDRESS = "cmlarsen+fechtonomicon@gmail.com";
+const SCREEN_HEIGHT = Dimensions.get('window').height;
+const EMAIL_ADDRESS = 'cmlarsen+fechtonomicon@gmail.com';
 
 export const CorrectionModal: React.FC<CorrectionModalProps> = ({
   visible,
@@ -42,6 +35,7 @@ export const CorrectionModal: React.FC<CorrectionModalProps> = ({
   fieldValue,
   onClose,
 }) => {
+  const posthog = usePostHog();
   const slideAnim = useRef(new Animated.Value(SCREEN_HEIGHT)).current;
   const [editedText, setEditedText] = useState(fieldValue);
   const textInputRef = useRef<TextInput>(null);
@@ -80,9 +74,14 @@ export const CorrectionModal: React.FC<CorrectionModalProps> = ({
   const handleSendEmail = async () => {
     if (!card) return;
 
-    const subject = encodeURIComponent(
-      `Suggested Edit: ${card.originalTerm} - ${fieldName}`
-    );
+    posthog?.capture('submit_edit_tapped', {
+      cardId: card.id,
+      cardTerm: card.originalTerm,
+      fieldName,
+      hasChanges: editedText !== fieldValue,
+    });
+
+    const subject = encodeURIComponent(`Suggested Edit: ${card.originalTerm} - ${fieldName}`);
     const body = encodeURIComponent(`Card ID: ${card.id}
 Term: ${card.originalTerm} / ${card.englishTerm}
 Field: ${fieldName}
@@ -109,21 +108,12 @@ Additional notes:
   if (!card) return null;
 
   return (
-    <Modal
-      visible={visible}
-      transparent
-      animationType="none"
-      onRequestClose={onClose}
-    >
-      <TouchableOpacity
-        style={styles.overlay}
-        activeOpacity={1}
-        onPress={onClose}
-      >
+    <Modal visible={visible} transparent animationType="none" onRequestClose={onClose}>
+      <TouchableOpacity style={styles.overlay} activeOpacity={1} onPress={onClose}>
         <KeyboardAvoidingView
-          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           style={styles.keyboardAvoidingView}
-          keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 0}
+          keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}
         >
           <Animated.View
             style={[
@@ -133,10 +123,7 @@ Additional notes:
               },
             ]}
           >
-            <TouchableOpacity
-              activeOpacity={1}
-              onPress={(e) => e.stopPropagation()}
-            >
+            <TouchableOpacity activeOpacity={1} onPress={(e) => e.stopPropagation()}>
               {/* Close button in upper right */}
               <TouchableOpacity
                 style={styles.closeIconButton}
@@ -168,10 +155,7 @@ Additional notes:
               </ScrollView>
 
               <View style={styles.buttonContainer}>
-                <TouchableOpacity
-                  style={styles.emailButton}
-                  onPress={handleSendEmail}
-                >
+                <TouchableOpacity style={styles.emailButton} onPress={handleSendEmail}>
                   <Text style={styles.buttonText}>Send Email</Text>
                 </TouchableOpacity>
               </View>
@@ -186,12 +170,12 @@ Additional notes:
 const styles = StyleSheet.create({
   overlay: {
     flex: 1,
-    backgroundColor: "rgba(42, 24, 16, 0.6)",
-    justifyContent: "flex-end",
+    backgroundColor: 'rgba(42, 24, 16, 0.6)',
+    justifyContent: 'flex-end',
   },
   keyboardAvoidingView: {
     flex: 1,
-    justifyContent: "flex-end",
+    justifyContent: 'flex-end',
   },
   sheet: {
     backgroundColor: colors.parchment.primary,
@@ -207,24 +191,24 @@ const styles = StyleSheet.create({
     borderRightWidth: 4,
     borderBottomWidth: 4,
     borderColor: colors.gold.main,
-    position: "relative",
+    position: 'relative',
     marginBottom: spacing.md,
     marginHorizontal: spacing.sm,
   },
   closeIconButton: {
-    position: "absolute",
+    position: 'absolute',
     top: spacing.md,
     right: spacing.md,
     width: 32,
     height: 32,
     borderRadius: borderRadius.round,
     backgroundColor: colors.parchment.light,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     borderWidth: 1.5,
     borderColor: colors.gold.main,
     zIndex: 10,
-    shadowColor: "#FFFFFF",
+    shadowColor: '#FFFFFF',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.8,
     shadowRadius: 1,
@@ -240,11 +224,11 @@ const styles = StyleSheet.create({
     fontSize: fontSize.xl,
     fontFamily: fontFamily.title,
     color: colors.iron.dark,
-    textAlign: "center",
+    textAlign: 'center',
     marginTop: spacing.md,
     marginBottom: spacing.md,
     paddingHorizontal: spacing.xl,
-    textShadowColor: "rgba(255, 255, 255, 0.8)",
+    textShadowColor: 'rgba(255, 255, 255, 0.8)',
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 1,
   },
@@ -274,15 +258,15 @@ const styles = StyleSheet.create({
     paddingBottom: spacing.sm,
   },
   emailButton: {
-    width: "100%",
+    width: '100%',
     backgroundColor: colors.gold.light,
     paddingVertical: spacing.md,
     paddingHorizontal: spacing.lg,
     borderRadius: borderRadius.md,
     borderWidth: 1.5,
     borderColor: colors.gold.dark,
-    alignItems: "center",
-    shadowColor: "#FFFFFF",
+    alignItems: 'center',
+    shadowColor: '#FFFFFF',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.8,
     shadowRadius: 1,
@@ -292,7 +276,7 @@ const styles = StyleSheet.create({
     fontSize: fontSize.md,
     fontFamily: fontFamily.bodySemiBold,
     color: colors.iron.dark,
-    textTransform: "uppercase",
+    textTransform: 'uppercase',
     letterSpacing: 0.5,
   },
 });

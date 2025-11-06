@@ -1,0 +1,75 @@
+# Code Quality and Hygiene Rules
+
+## Zero Tolerance Policy
+- **ABSOLUTE RULE**: Never ignore, suppress, or disable Biome or TypeScript errors and warnings
+- Do not use `// biome-ignore`, `// @ts-ignore`, `// @ts-expect-error`, `// eslint-disable`, or any other suppression comments
+- Do not disable rules in biome.json or tsconfig.json to work around errors
+- All errors and warnings must be fixed properly by addressing the root cause
+- If an error seems unfixable, discuss alternatives rather than suppressing it
+
+## Pre-Commit Validation
+- **CRITICAL**: Before committing, always run `yarn validate` to ensure all checks pass
+- The validate script runs: formatting check, linting, and type checking
+- Use `yarn validate:fix` to automatically fix formatting and linting issues
+- Never commit code that fails validation - fix issues first
+
+## Linting Requirements
+- **CRITICAL**: Before completing any task, you MUST run the linter to check for errors
+- Use `yarn lint` or `biome lint .` to check for linting errors
+- If linting errors are found, fix them before marking the task as complete
+- Never commit or complete work with linting errors present
+- Both errors AND warnings must be addressed - no exceptions
+
+## TypeScript Requirements
+- **CRITICAL**: After every change, you MUST run the TypeScript compiler to check for type errors
+- Use `yarn typecheck` or `tsc --noEmit` to check for TypeScript errors
+- If TypeScript errors are found, fix them before marking the task as complete
+- Never commit or complete work with TypeScript errors present
+- TypeScript strict mode is enabled - ensure all types are properly defined
+- Both errors AND warnings must be addressed - no exceptions
+
+## Formatting and Import Sorting
+- All code must be formatted using Biome (configured in biome.json)
+- Biome is set as the default formatter in VS Code settings
+- Import sorting and organization is handled automatically by Biome
+- Format on save is enabled - ensure all code follows Biome's formatting rules
+
+## Code Style
+- Follow the Biome configuration in biome.json:
+  - 2 spaces indentation
+  - Single quotes for strings
+  - Double quotes for JSX attributes
+  - Semicolons always
+  - ES5 trailing commas
+  - Line width: 100 characters
+  - LF line endings
+
+## Code Quality Best Practices
+- **No unused variables, imports, or function parameters** - All must be removed or used
+- **No array index keys** - Use stable, unique identifiers instead
+- **No non-null assertions** - Handle null/undefined cases properly
+- **No assignments in expressions** - Keep assignments separate from expressions
+- **Use const** - Prefer const over let, avoid var entirely
+- **Use template literals** - Prefer template strings over string concatenation
+- **Avoid excessive complexity** - Keep functions simple and focused
+- **Proper error handling** - Handle errors explicitly, don't silently fail
+
+## Quality Checks
+- Run `yarn validate` to run all checks (formatting, linting, type checking)
+- Run `yarn validate:fix` to automatically fix formatting and linting issues
+- Run `yarn check` or `biome check .` to verify formatting and linting
+- Use `yarn check:fix` or `biome check --apply .` to automatically fix issues
+- Always ensure code passes all linting checks before task completion
+- Run `yarn typecheck` or `tsc --noEmit` to verify TypeScript type checking
+- Always ensure code passes all TypeScript checks before task completion
+
+## Testing Requirements
+- Write tests for new functionality when appropriate
+- Ensure existing tests pass before completing tasks
+- Use `yarn test:ci` to run tests in CI mode (non-watch)
+
+## Git Workflow
+- Always run `yarn validate` before committing
+- Commit messages should be clear and descriptive
+- Keep commits focused - one logical change per commit
+- Ensure CI checks pass before merging PRs

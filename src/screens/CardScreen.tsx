@@ -1,32 +1,20 @@
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import React, { useCallback, useEffect, useMemo } from "react";
-import {
-  borderRadius,
-  colors,
-  fontSize,
-  shadows,
-  spacing,
-} from "../theme/tokens";
-
-import { BackgroundPattern } from "../components/BackgroundPattern";
-import { DrawerActions } from "@react-navigation/native";
-import { Flashcard } from "../components/Flashcard";
-import { FlashcardSwiper } from "../components/FlashcardSwiper";
-import type { Flashcard as FlashcardType } from "../types/flashcard";
-import { LoadingState } from "../components/LoadingState";
-import germanData from "../../assets/data/german-longsword-data.json";
-import { getDisciplineFromCardId } from "../utils/disciplineMapper";
-import italianData from "../../assets/data/italian-longsword-data.json";
-import { useDrawerContext } from "../contexts/DrawerContext";
-import { useFlashcardStore } from "../store/flashcardStore";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { widgetService } from "../services/widgetService";
+import { DrawerActions } from '@react-navigation/native';
+import { usePostHog } from 'posthog-react-native';
+import React, { useCallback, useEffect, useMemo } from 'react';
+import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import germanData from '../../assets/data/german-longsword-data.json';
+import italianData from '../../assets/data/italian-longsword-data.json';
+import { BackgroundPattern } from '../components/BackgroundPattern';
+import { Flashcard } from '../components/Flashcard';
+import { FlashcardSwiper } from '../components/FlashcardSwiper';
+import { LoadingState } from '../components/LoadingState';
+import { useDrawerContext } from '../contexts/DrawerContext';
+import { widgetService } from '../services/widgetService';
+import { useFlashcardStore } from '../store/flashcardStore';
+import { borderRadius, colors, fontSize, shadows, spacing } from '../theme/tokens';
+import type { Flashcard as FlashcardType } from '../types/flashcard';
+import { getDisciplineFromCardId } from '../utils/disciplineMapper';
 
 interface CardScreenProps {
   navigation: {
@@ -40,15 +28,11 @@ interface CardScreenProps {
   };
 }
 
-export const CardScreen: React.FC<CardScreenProps> = ({
-  navigation,
-  route,
-}) => {
+export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => {
+  const posthog = usePostHog();
   const loadCards = useFlashcardStore((state) => state.loadCards);
   const allCards = useFlashcardStore((state) => state.allCards);
-  const selectedDisciplines = useFlashcardStore(
-    (state) => state.selectedDisciplines
-  );
+  const selectedDisciplines = useFlashcardStore((state) => state.selectedDisciplines);
   const { setCards, setOnCardPress } = useDrawerContext();
   const insets = useSafeAreaInsets();
   const [currentCardIndex, setCurrentCardIndex] = React.useState(0);
@@ -75,23 +59,21 @@ export const CardScreen: React.FC<CardScreenProps> = ({
       loadCards(cardsWithDiscipline);
       setIsLoading(false);
     } catch (error) {
-      console.error("Error loading cards:", error);
+      console.error('Error loading cards:', error);
       setIsLoading(false);
     }
   }, [loadCards]);
 
   // Memoize filtered and sorted cards
   const sortedCards = useMemo(() => {
-    console.log("sortedCards re-render");
+    console.log('sortedCards re-render');
     if (allCards.length === 0) return [];
 
     const filtered = allCards.filter((card) => {
       return card.discipline && selectedDisciplines.includes(card.discipline);
     });
 
-    return [...filtered].sort((a, b) =>
-      a.originalTerm.localeCompare(b.originalTerm)
-    );
+    return [...filtered].sort((a, b) => a.originalTerm.localeCompare(b.originalTerm));
   }, [allCards, selectedDisciplines]);
 
   // Update drawer context only when sortedCards changes
@@ -112,9 +94,7 @@ export const CardScreen: React.FC<CardScreenProps> = ({
 
     if (currentCardId) {
       // Try to find the current card in the new list
-      const newIndex = sortedCards.findIndex(
-        (card) => card.id === currentCardId
-      );
+      const newIndex = sortedCards.findIndex((card) => card.id === currentCardId);
       if (newIndex !== -1) {
         // Current card still exists, preserve its position
         prevCardsLengthRef.current = sortedCards.length;
@@ -152,9 +132,7 @@ export const CardScreen: React.FC<CardScreenProps> = ({
     const cardIdFromRoute = route?.params?.cardId;
     if (!cardIdFromRoute) return;
 
-    const foundIndex = sortedCards.findIndex(
-      (card) => card.id === cardIdFromRoute
-    );
+    const foundIndex = sortedCards.findIndex((card) => card.id === cardIdFromRoute);
     if (foundIndex !== -1) {
       setCurrentCardIndex(foundIndex);
       const cardToShow = sortedCards[foundIndex];
@@ -165,14 +143,18 @@ export const CardScreen: React.FC<CardScreenProps> = ({
 
   const handleOpenDetails = useCallback(
     (card: FlashcardType) => {
-      navigation.navigate("FlashcardDetail", { cardId: card.id });
+      posthog?.capture('details_button_tapped', {
+        cardId: card.id,
+        cardTerm: card.originalTerm,
+      });
+      navigation.navigate('FlashcardDetail', { cardId: card.id });
     },
-    [navigation]
+    [navigation, posthog]
   );
 
   const handleTermPress = useCallback(
     (cardId: string) => {
-      navigation.navigate("FlashcardDetail", { cardId });
+      navigation.navigate('FlashcardDetail', { cardId });
     },
     [navigation]
   );
@@ -185,13 +167,11 @@ export const CardScreen: React.FC<CardScreenProps> = ({
 
   const handleRelatedCardPress = useCallback(
     (cardId: string) => {
-      const relatedCardIndex = sortedCards.findIndex(
-        (card) => card.id === cardId
-      );
+      const relatedCardIndex = sortedCards.findIndex((card) => card.id === cardId);
       if (relatedCardIndex !== -1) {
         setCurrentCardIndex(relatedCardIndex);
-        if (Platform.OS === "web") {
-          navigation.navigate("Card", { cardId });
+        if (Platform.OS === 'web') {
+          navigation.navigate('Card', { cardId });
         }
       }
     },
@@ -203,19 +183,18 @@ export const CardScreen: React.FC<CardScreenProps> = ({
     const nextCard = sortedCards[nextIndex];
     setCurrentCardIndex(nextIndex);
     handleCardChange(nextCard, nextIndex);
-    if (Platform.OS === "web") {
-      navigation.navigate("Card", { cardId: nextCard.id });
+    if (Platform.OS === 'web') {
+      navigation.navigate('Card', { cardId: nextCard.id });
     }
   }, [currentCardIndex, sortedCards, handleCardChange, navigation]);
 
   const handlePrevCard = useCallback(() => {
-    const prevIndex =
-      currentCardIndex === 0 ? sortedCards.length - 1 : currentCardIndex - 1;
+    const prevIndex = currentCardIndex === 0 ? sortedCards.length - 1 : currentCardIndex - 1;
     const prevCard = sortedCards[prevIndex];
     setCurrentCardIndex(prevIndex);
     handleCardChange(prevCard, prevIndex);
-    if (Platform.OS === "web") {
-      navigation.navigate("Card", { cardId: prevCard.id });
+    if (Platform.OS === 'web') {
+      navigation.navigate('Card', { cardId: prevCard.id });
     }
   }, [currentCardIndex, sortedCards, handleCardChange, navigation]);
 
@@ -233,24 +212,20 @@ export const CardScreen: React.FC<CardScreenProps> = ({
   }, [handleCardIndexPress, setOnCardPress]);
 
   const toggleDrawer = useCallback(() => {
+    posthog?.capture('fab_tapped');
     navigation.dispatch(DrawerActions.toggleDrawer());
-  }, [navigation]);
+  }, [navigation, posthog]);
 
   const currentCard = sortedCards[currentCardIndex];
   const showLoading = isLoading || sortedCards.length === 0;
 
   return (
     <BackgroundPattern>
-      <View
-        style={[
-          styles.container,
-          { paddingTop: insets.top, paddingBottom: insets.bottom },
-        ]}
-      >
+      <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
         {showLoading ? (
           // Loading state
           <LoadingState />
-        ) : Platform.OS === "web" ? (
+        ) : Platform.OS === 'web' ? (
           // Web: Single card with prev/next buttons
           <View style={styles.webCardContainer}>
             {currentCard && (
@@ -278,7 +253,7 @@ export const CardScreen: React.FC<CardScreenProps> = ({
         {/* Navigation controls at bottom - only show when not loading */}
         {!showLoading && (
           <View style={[styles.bottomNav]}>
-            {Platform.OS === "web" && (
+            {Platform.OS === 'web' && (
               <TouchableOpacity
                 style={styles.navButton}
                 onPress={handlePrevCard}
@@ -288,15 +263,11 @@ export const CardScreen: React.FC<CardScreenProps> = ({
               </TouchableOpacity>
             )}
 
-            <TouchableOpacity
-              style={styles.fabButton}
-              onPress={toggleDrawer}
-              activeOpacity={0.85}
-            >
+            <TouchableOpacity style={styles.fabButton} onPress={toggleDrawer} activeOpacity={0.85}>
               <Text style={styles.fabIcon}>⚔</Text>
             </TouchableOpacity>
 
-            {Platform.OS === "web" && (
+            {Platform.OS === 'web' && (
               <TouchableOpacity
                 style={styles.navButton}
                 onPress={handleNextCard}
@@ -315,23 +286,23 @@ export const CardScreen: React.FC<CardScreenProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-between",
-    alignItems: "center",
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   swiperContainer: {
     flex: 1,
   },
   webCardContainer: {
     flex: 1,
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: spacing.md,
   },
   bottomNav: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     gap: spacing.lg,
     paddingVertical: spacing.sm,
   },
@@ -340,8 +311,8 @@ const styles = StyleSheet.create({
     height: 56,
     borderRadius: borderRadius.round,
     backgroundColor: colors.parchment.light,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     ...shadows.parchment,
     borderWidth: 3,
     borderColor: colors.gold.main,
@@ -354,7 +325,7 @@ const styles = StyleSheet.create({
   fabIcon: {
     fontSize: fontSize.xl,
     color: colors.gold.dark,
-    textShadowColor: "rgba(255, 255, 255, 0.6)",
+    textShadowColor: 'rgba(255, 255, 255, 0.6)',
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 1,
   },
@@ -363,8 +334,8 @@ const styles = StyleSheet.create({
     height: 48,
     borderRadius: borderRadius.round,
     backgroundColor: colors.parchment.light,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     ...shadows.parchment,
     borderWidth: 2,
     borderColor: colors.gold.main,
@@ -377,6 +348,6 @@ const styles = StyleSheet.create({
   navButtonText: {
     fontSize: fontSize.xxl,
     color: colors.gold.dark,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
 });

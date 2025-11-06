@@ -26,7 +26,7 @@ import { colors } from './src/theme/tokens';
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
 
-export default function App() {
+function AppContent() {
   const [fontsLoaded, fontError] = useFonts({
     'CormorantGaramond-Light': CormorantGaramond_300Light,
     'CormorantGaramond-LightItalic': CormorantGaramond_300Light_Italic,
@@ -69,6 +69,10 @@ export default function App() {
   }
 
   return content;
+}
+
+export default function App() {
+  return <AppContent />;
 }
 
 const styles = StyleSheet.create({

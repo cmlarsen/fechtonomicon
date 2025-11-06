@@ -7,9 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
-    "assetBundlePatterns": [
-      "assets/**/*"
-    ],
+    "assetBundlePatterns": ["assets/**/*"],
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "cover",
@@ -50,6 +48,7 @@
         "projectId": "4750fe71-fb15-4fd9-ab2a-9647609aa50a"
       }
     },
-    "owner": "yetanothersidequest"
+    "owner": "yetanothersidequest",
+    "plugins": ["expo-localization"]
   }
 }

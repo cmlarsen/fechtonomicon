@@ -1,5 +1,5 @@
-import { act, renderHook, waitFor } from '@testing-library/react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { act, renderHook, waitFor } from '@testing-library/react-native';
 import { useFlashcardStore } from '../../src/store/flashcardStore';
 import { Discipline } from '../../src/types/flashcard';
 
@@ -54,10 +54,7 @@ describe('Flashcard Store', () => {
       expect(result.current.currentCard).toBeNull();
       expect(result.current.allCards).toEqual([]);
       expect(result.current.viewedCardIds).toEqual([]);
-      expect(result.current.selectedDisciplines).toEqual([
-        'italian-longsword',
-        'german-longsword',
-      ]);
+      expect(result.current.selectedDisciplines).toEqual(['italian-longsword', 'german-longsword']);
     });
 
     it('should persist selected disciplines', async () => {
@@ -141,10 +138,7 @@ describe('Flashcard Store', () => {
       const { result } = renderHook(() => useFlashcardStore());
 
       act(() => {
-        result.current.setSelectedDisciplines([
-          'italian-longsword',
-          'german-longsword',
-        ]);
+        result.current.setSelectedDisciplines(['italian-longsword', 'german-longsword']);
         result.current.toggleDiscipline('german-longsword');
       });
 

@@ -1,23 +1,16 @@
+import React from 'react';
 import {
   Linking,
   Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
   useWindowDimensions,
-} from "react-native";
-import {
-  borderRadius,
-  colors,
-  fontFamily,
-  fontSize,
-  spacing,
-} from "../theme/tokens";
-
-import React from "react";
-import type { VideoLink } from "../types/flashcard";
-import YoutubePlayer from "react-native-youtube-iframe";
+  View,
+} from 'react-native';
+import YoutubePlayer from 'react-native-youtube-iframe';
+import { borderRadius, colors, fontFamily, fontSize, spacing } from '../theme/tokens';
+import type { VideoLink } from '../types/flashcard';
 
 interface VideoEmbedProps {
   videoLink: VideoLink;
@@ -31,12 +24,12 @@ const extractYouTubeVideoId = (url: string): string | null => {
 
 export const VideoEmbed: React.FC<VideoEmbedProps> = ({ videoLink }) => {
   const { width } = useWindowDimensions();
-  const videoHeight = Math.round(width * (9 / 16));
+  const _videoHeight = Math.round(width * (9 / 16));
   const [playing, setPlaying] = React.useState(false);
 
   const handleOpenVideo = React.useCallback(() => {
     Linking.openURL(videoLink.url).catch((err) => {
-      console.error("Failed to open video URL:", err);
+      console.error('Failed to open video URL:', err);
     });
   }, [videoLink.url]);
 
@@ -51,24 +44,22 @@ export const VideoEmbed: React.FC<VideoEmbedProps> = ({ videoLink }) => {
   }
 
   const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0`;
-  const iframeTitle = videoLink.title || "YouTube video";
+  const iframeTitle = videoLink.title || 'YouTube video';
 
   // For web platform, use native iframe
-  if (Platform.OS === "web") {
+  if (Platform.OS === 'web') {
     return (
       <View style={styles.container}>
-        {videoLink.title && (
-          <Text style={styles.videoTitle}>{videoLink.title}</Text>
-        )}
+        {videoLink.title && <Text style={styles.videoTitle}>{videoLink.title}</Text>}
         <View style={styles.videoContainer}>
           {/* @ts-ignore - web-specific iframe */}
           <iframe
             src={embedUrl}
             title={iframeTitle}
             style={{
-              width: "100%",
-              height: "100%",
-              border: "none",
+              width: '100%',
+              height: '100%',
+              border: 'none',
               borderRadius: borderRadius.md,
             }}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -93,9 +84,7 @@ export const VideoEmbed: React.FC<VideoEmbedProps> = ({ videoLink }) => {
   // For native platforms, use react-native-youtube-iframe
   return (
     <View style={styles.container}>
-      {videoLink.title && (
-        <Text style={styles.videoTitle}>{videoLink.title}</Text>
-      )}
+      {videoLink.title && <Text style={styles.videoTitle}>{videoLink.title}</Text>}
       <View style={[styles.videoContainer, styles.nativeVideoContainer]}>
         <YoutubePlayer
           width={302}
@@ -103,12 +92,12 @@ export const VideoEmbed: React.FC<VideoEmbedProps> = ({ videoLink }) => {
           videoId={videoId}
           play={playing}
           onChangeState={(state: string) => {
-            if (state === "ended") {
+            if (state === 'ended') {
               setPlaying(false);
             }
           }}
           onError={(error: string) => {
-            console.error("YouTube player error:", error);
+            console.error('YouTube player error:', error);
             handleOpenVideo();
           }}
         />
@@ -147,29 +136,29 @@ const styles = StyleSheet.create({
     fontFamily: fontFamily.bodySemiBold,
     color: colors.iron.main,
     marginBottom: spacing.sm,
-    textAlign: "center",
+    textAlign: 'center',
   },
   videoContainer: {
-    width: "100%",
+    width: '100%',
     borderRadius: borderRadius.md,
-    overflow: "hidden",
+    overflow: 'hidden',
     // backgroundColor: colors.parchment.dark,
     borderWidth: 1,
     borderColor: colors.gold.main,
-    position: "relative",
+    position: 'relative',
   },
   nativeVideoContainer: {
     aspectRatio: undefined,
     height: undefined,
   },
   fallbackOverlay: {
-    position: "absolute",
+    position: 'absolute',
     bottom: spacing.sm,
     left: 0,
     right: 0,
-    alignItems: "center",
-    justifyContent: "center",
-    pointerEvents: "box-none",
+    alignItems: 'center',
+    justifyContent: 'center',
+    pointerEvents: 'box-none',
   },
   fallbackButton: {
     backgroundColor: colors.burgundy.main,
@@ -178,7 +167,7 @@ const styles = StyleSheet.create({
     borderRadius: borderRadius.md,
     borderWidth: 1,
     borderColor: colors.gold.main,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 4,
@@ -188,7 +177,7 @@ const styles = StyleSheet.create({
     fontSize: fontSize.xs,
     fontFamily: fontFamily.bodySemiBold,
     color: colors.parchment.primary,
-    textAlign: "center",
+    textAlign: 'center',
   },
   errorContainer: {
     padding: spacing.md,
@@ -201,6 +190,6 @@ const styles = StyleSheet.create({
     fontSize: fontSize.sm,
     fontFamily: fontFamily.body,
     color: colors.iron.main,
-    textAlign: "center",
+    textAlign: 'center',
   },
 });

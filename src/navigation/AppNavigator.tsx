@@ -1,7 +1,9 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
+import { LinkingOptions, NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import type React from 'react';
+import { PostHogProvider, usePostHog } from 'posthog-react-native';
+import React from 'react';
+import { AppState } from 'react-native';
 import { DrawerContent } from '../components/DrawerContent';
 import { DrawerProvider } from '../contexts/DrawerContext';
 import { CardScreen } from '../screens/CardScreen';
@@ -68,34 +70,68 @@ const DrawerNavigator = () => {
   );
 };
 
+function AppLifecycleTracker() {
+  const posthog = usePostHog();
+
+  React.useEffect(() => {
+    if (posthog) {
+      posthog.capture('app_opened');
+    }
+  }, [posthog]);
+
+  React.useEffect(() => {
+    if (!posthog) return;
+
+    const subscription = AppState.addEventListener('change', (nextAppState) => {
+      if (nextAppState === 'background' || nextAppState === 'inactive') {
+        posthog.capture('app_closed');
+      }
+    });
+
+    return () => {
+      subscription.remove();
+    };
+  }, [posthog]);
+
+  return null;
+}
+
 export const AppNavigator: React.FC = () => {
   return (
     <DrawerProvider>
-      <NavigationContainer linking={linking as any}>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
+      <NavigationContainer linking={linking as LinkingOptions<RootStackParamList>}>
+        <PostHogProvider
+          apiKey="phc_ViNvLkNIZ1xrvw99zorMROwBFCW3yrJ1QWELgql08MZ"
+          options={{
+            host: 'https://us.i.posthog.com',
           }}
         >
-          <Stack.Screen name="Main" component={DrawerNavigator} />
-          <Stack.Screen
-            name="DisciplineSelection"
-            component={DisciplineSelectionScreen}
-            options={{
-              presentation: 'modal',
+          <AppLifecycleTracker />
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false,
             }}
-          />
-          <Stack.Screen
-            name="FlashcardDetail"
-            component={FlashcardDetailScreen}
-            options={{
-              presentation: 'modal',
-              gestureEnabled: true,
-              gestureDirection: 'vertical',
-              animationTypeForReplace: 'push',
-            }}
-          />
-        </Stack.Navigator>
+          >
+            <Stack.Screen name="Main" component={DrawerNavigator} />
+            <Stack.Screen
+              name="DisciplineSelection"
+              component={DisciplineSelectionScreen}
+              options={{
+                presentation: 'modal',
+              }}
+            />
+            <Stack.Screen
+              name="FlashcardDetail"
+              component={FlashcardDetailScreen}
+              options={{
+                presentation: 'modal',
+                gestureEnabled: true,
+                gestureDirection: 'vertical',
+                animationTypeForReplace: 'push',
+              }}
+            />
+          </Stack.Navigator>
+        </PostHogProvider>
       </NavigationContainer>
     </DrawerProvider>
   );
