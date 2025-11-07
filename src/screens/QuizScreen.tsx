@@ -1,5 +1,5 @@
 import { usePostHog } from 'posthog-react-native';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { Alert, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BackgroundPattern } from '../components/BackgroundPattern';
@@ -12,7 +12,7 @@ import { QuizFinalScore } from '../components/quiz/QuizFinalScore';
 import { QuizProgressBar } from '../components/quiz/QuizProgressBar';
 import { QuizQuestionCard } from '../components/quiz/QuizQuestionCard';
 import { useFlashcardStore } from '../store/flashcardStore';
-import { colors, fontSize, spacing } from '../theme/tokens';
+import { colors, fontFamily, fontSize, spacing } from '../theme/tokens';
 import type { Flashcard } from '../types/flashcard';
 import { generateQuestion, prepareQuizCards, type QuestionData } from '../utils/quizUtils';
 
@@ -36,20 +36,26 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ navigation }) => {
   const [showFeedback, setShowFeedback] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const [showNextButton, setShowNextButton] = useState(false);
+  const [quizStarted, setQuizStarted] = useState(false);
 
   const scoreScaleAnim = useRef(1);
 
-  // Initialize quiz
-  useEffect(() => {
+  const handleStartQuiz = useCallback(() => {
     const prepared = prepareQuizCards(allCards, selectedDisciplines);
     if (prepared.length === 0) {
-      Alert.alert('No Cards Available', 'Please select at least one discipline with cards.', [
-        { text: 'OK', onPress: () => navigation.goBack() },
-      ]);
+      Alert.alert('No Cards Available', 'Please select at least one discipline with cards.');
       return;
     }
 
     setQuizCards(prepared);
+    setQuizStarted(true);
+    setCurrentIndex(0);
+    setScore({ correct: 0, total: 0 });
+    setSelectedAnswer(null);
+    setShowFeedback(false);
+    setShowNextButton(false);
+    setIsComplete(false);
+
     const firstQuestion = generateQuestion(prepared[0], allCards, selectedDisciplines);
     if (firstQuestion) {
       setCurrentQuestion(firstQuestion);
@@ -59,7 +65,7 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ navigation }) => {
       cardCount: prepared.length,
       disciplines: selectedDisciplines,
     });
-  }, [allCards, selectedDisciplines, navigation, posthog]);
+  }, [allCards, selectedDisciplines, posthog]);
 
   const handleAnswerSelect = useCallback(
     (index: number) => {
@@ -133,13 +139,25 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ navigation }) => {
       return;
     }
 
-    posthog?.capture('quiz_exited', {
-      score: score.correct,
-      total: score.total,
-      progress: currentIndex,
-    });
+    if (quizStarted) {
+      posthog?.capture('quiz_exited', {
+        score: score.correct,
+        total: score.total,
+        progress: currentIndex,
+      });
+      setQuizStarted(false);
+      setQuizCards([]);
+      setCurrentQuestion(null);
+      setCurrentIndex(0);
+      setScore({ correct: 0, total: 0 });
+      setSelectedAnswer(null);
+      setShowFeedback(false);
+      setShowNextButton(false);
+      return;
+    }
+
     navigation.goBack();
-  }, [isComplete, navigation, score, currentIndex, posthog]);
+  }, [isComplete, quizStarted, navigation, score, currentIndex, posthog]);
 
   const handleRestart = useCallback(() => {
     const prepared = prepareQuizCards(allCards, selectedDisciplines);
@@ -150,6 +168,7 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ navigation }) => {
     setShowFeedback(false);
     setShowNextButton(false);
     setIsComplete(false);
+    setQuizStarted(true);
 
     const firstQuestion = generateQuestion(prepared[0], allCards, selectedDisciplines);
     if (firstQuestion) {
@@ -158,6 +177,27 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ navigation }) => {
 
     posthog?.capture('quiz_restarted');
   }, [allCards, selectedDisciplines, posthog]);
+
+  // Show start screen if quiz hasn't started
+  if (!quizStarted) {
+    return (
+      <BackgroundPattern>
+        <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
+          <View style={styles.header}>
+            <QuizExitButton onPress={handleExit} />
+          </View>
+          <View style={styles.startContainer}>
+            <Text style={styles.startTitle}>Ready to Test Your Knowledge?</Text>
+            <Text style={styles.startDescription}>
+              Answer questions about HEMA terms and concepts. You'll be quizzed on translations,
+              definitions, and applications.
+            </Text>
+            <PrimaryButton title="Start Quiz" onPress={handleStartQuiz} size="large" />
+          </View>
+        </View>
+      </BackgroundPattern>
+    );
+  }
 
   if (isComplete) {
     return (
@@ -291,5 +331,27 @@ const styles = StyleSheet.create({
     fontSize: fontSize.lg,
     fontFamily: 'CormorantGaramond-Medium',
     color: colors.iron.main,
+  },
+  startContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: spacing.xl,
+    gap: spacing.xl,
+  },
+  startTitle: {
+    fontSize: fontSize.xxl,
+    fontFamily: fontFamily.title,
+    color: colors.iron.dark,
+    textAlign: 'center',
+    marginBottom: spacing.md,
+  },
+  startDescription: {
+    fontSize: fontSize.md,
+    fontFamily: fontFamily.body,
+    color: colors.iron.main,
+    textAlign: 'center',
+    lineHeight: fontSize.md * 1.6,
+    marginBottom: spacing.lg,
   },
 });

@@ -8,9 +8,9 @@ import { CustomTabBar } from '../components/CustomTabBar';
 import { TabIcon } from '../components/TabIcon';
 import { TermsSearchProvider } from '../contexts/TermsSearchContext';
 import { CardScreen } from '../screens/CardScreen';
-import { FlashcardDetailScreen } from '../screens/FlashcardDetailScreen';
 import { QuizScreen } from '../screens/QuizScreen';
 import { SettingsScreen } from '../screens/SettingsScreen';
+import { TermDetailScreen } from '../screens/TermDetailScreen';
 import { blacksmithingIcon, swordsIcon, tomeIcon } from '../utils/tabIcons';
 
 export type RootStackParamList = {
@@ -134,7 +134,7 @@ export const AppNavigator: React.FC = () => {
             <Stack.Screen name="Main" component={BottomTabNavigator} />
             <Stack.Screen
               name="FlashcardDetail"
-              component={FlashcardDetailScreen}
+              component={TermDetailScreen}
               options={{
                 presentation: 'modal',
                 gestureEnabled: true,

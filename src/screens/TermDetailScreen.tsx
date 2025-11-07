@@ -11,7 +11,7 @@ import { useFlashcardStore } from '../store/flashcardStore';
 import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../theme/tokens';
 import type { Flashcard as FlashcardType } from '../types/flashcard';
 
-interface FlashcardDetailScreenProps {
+interface TermDetailScreenProps {
   navigation: {
     goBack: () => void;
     navigate: (screen: string, params?: { cardId?: string }) => void;
@@ -23,10 +23,7 @@ interface FlashcardDetailScreenProps {
   };
 }
 
-export const FlashcardDetailScreen: React.FC<FlashcardDetailScreenProps> = ({
-  navigation,
-  route,
-}) => {
+export const TermDetailScreen: React.FC<TermDetailScreenProps> = ({ navigation, route }) => {
   const { allCards } = useFlashcardStore();
   const insets = useSafeAreaInsets();
   const scrollViewRef = React.useRef<ScrollView>(null);

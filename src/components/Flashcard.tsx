@@ -5,7 +5,6 @@ import { useFlashcardStore } from '../store/flashcardStore';
 import { borderRadius, colors, fontFamily, fontSize, spacing } from '../theme/tokens';
 import type { Flashcard as FlashcardType } from '../types/flashcard';
 import { SecondaryButton } from './buttons';
-import { TAB_BAR_HEIGHT } from './FloatingSearchBar';
 import { LinkedText } from './LinkedText';
 import { SectionDivider } from './SectionDivider';
 

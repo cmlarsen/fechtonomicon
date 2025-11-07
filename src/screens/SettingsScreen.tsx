@@ -26,12 +26,13 @@ export const SettingsScreen: React.FC = () => {
   const selectedDisciplines = useFlashcardStore((state) => state.selectedDisciplines);
   const toggleDiscipline = useFlashcardStore((state) => state.toggleDiscipline);
 
-  const handleDisciplineToggle = (discipline: Discipline) => {
-    const wasEnabled = selectedDisciplines.includes(discipline);
-    toggleDiscipline(discipline);
-    posthog?.capture(wasEnabled ? 'discipline_disabled' : 'discipline_enabled', {
-      discipline,
-    });
+  const handleDisciplineSelect = (discipline: Discipline) => {
+    if (!selectedDisciplines.includes(discipline)) {
+      toggleDiscipline(discipline);
+      posthog?.capture('discipline_selected', {
+        discipline,
+      });
+    }
   };
 
   const appVersion = '1.0.0';
@@ -60,8 +61,8 @@ export const SettingsScreen: React.FC = () => {
 
           {/* Discipline Selection Section */}
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Select Disciplines</Text>
-            <Text style={styles.sectionDescription}>Choose which disciplines to study</Text>
+            <Text style={styles.sectionTitle}>Select Discipline</Text>
+            <Text style={styles.sectionDescription}>Choose which discipline to study</Text>
             {DISCIPLINES.map((discipline) => {
               const isSelected = selectedDisciplines.includes(discipline.id);
 
@@ -69,7 +70,7 @@ export const SettingsScreen: React.FC = () => {
                 <TouchableOpacity
                   key={discipline.id}
                   style={[styles.disciplineCard, isSelected && styles.disciplineCardSelected]}
-                  onPress={() => handleDisciplineToggle(discipline.id)}
+                  onPress={() => handleDisciplineSelect(discipline.id)}
                   activeOpacity={0.7}
                 >
                   <View style={styles.disciplineContent}>
@@ -79,8 +80,8 @@ export const SettingsScreen: React.FC = () => {
                       >
                         {discipline.name}
                       </Text>
-                      <View style={[styles.checkbox, isSelected && styles.checkboxSelected]}>
-                        {isSelected && <Text style={styles.checkmark}>✓</Text>}
+                      <View style={[styles.radioButton, isSelected && styles.radioButtonSelected]}>
+                        {isSelected && <View style={styles.radioButtonInner} />}
                       </View>
                     </View>
                     <Text
@@ -205,24 +206,24 @@ const styles = StyleSheet.create({
     color: colors.iron.main,
     fontFamily: fontFamily.bodyMediumItalic,
   },
-  checkbox: {
-    width: 28,
-    height: 28,
-    borderRadius: borderRadius.sm,
+  radioButton: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
     borderWidth: 2,
     borderColor: colors.border.dark,
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: spacing.md,
   },
-  checkboxSelected: {
-    backgroundColor: colors.accent.gold,
+  radioButtonSelected: {
     borderColor: colors.accent.gold,
   },
-  checkmark: {
-    color: colors.iron.dark,
-    fontSize: fontSize.md,
-    fontFamily: fontFamily.bodyBold,
+  radioButtonInner: {
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    backgroundColor: colors.accent.gold,
   },
   infoCard: {
     backgroundColor: colors.background.card,

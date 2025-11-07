@@ -24,7 +24,7 @@ export const useFlashcardStore = create<FlashcardStore>()(
     (set, get) => ({
       currentCard: null,
       viewedCardIds: [],
-      selectedDisciplines: ['italian-longsword', 'german-longsword'],
+      selectedDisciplines: ['italian-longsword'],
       allCards: [],
 
       loadCards: (cards: Flashcard[]) => {
@@ -50,19 +50,7 @@ export const useFlashcardStore = create<FlashcardStore>()(
       },
 
       toggleDiscipline: (discipline: Discipline) => {
-        const { selectedDisciplines } = get();
-        let newDisciplines: Discipline[];
-
-        if (selectedDisciplines.includes(discipline)) {
-          if (selectedDisciplines.length === 1) {
-            return;
-          }
-          newDisciplines = selectedDisciplines.filter((d) => d !== discipline);
-        } else {
-          newDisciplines = [...selectedDisciplines, discipline];
-        }
-
-        set({ selectedDisciplines: newDisciplines });
+        set({ selectedDisciplines: [discipline] });
       },
 
       setSelectedDisciplines: (disciplines: Discipline[]) => {
@@ -78,7 +66,7 @@ export const useFlashcardStore = create<FlashcardStore>()(
         set({
           currentCard: null,
           viewedCardIds: [],
-          selectedDisciplines: ['italian-longsword', 'german-longsword'],
+          selectedDisciplines: ['italian-longsword'],
           allCards: [],
         });
       },
