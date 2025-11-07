@@ -10,7 +10,6 @@ interface FlashcardSwiperProps {
   initialIndex?: number;
   onCardChange?: (card: FlashcardType, index: number) => void;
   onRelatedCardPress?: (cardId: string) => void;
-  onOpenDetails?: (card: FlashcardType) => void;
   onTermPress?: (cardId: string) => void;
   onScrollProgress?: (offsetProgress: number, absoluteProgress: number) => void;
 }
@@ -21,39 +20,26 @@ const CARD_WIDTH = SCREEN_WIDTH * 1; // Cards take 92% of screen width for subtl
 interface AnimatedCardProps {
   item: FlashcardType;
   animationValue: SharedValue<number>;
-  onOpenDetails?: (card: FlashcardType) => void;
   onTermPress?: (cardId: string) => void;
 }
 
-const AnimatedCard = memo<AnimatedCardProps>(
-  ({ item, animationValue, onOpenDetails, onTermPress }) => {
-    const animatedStyle = useAnimatedStyle(() => {
-      const opacity = interpolate(animationValue.value, [-1, 0, 1], [0.8, 1, 0.8]);
-      const shadowOpacity = interpolate(animationValue.value, [-0.5, 0, 0.5], [0, 0.6, 0]);
+const AnimatedCard = memo<AnimatedCardProps>(({ item, animationValue, onTermPress }) => {
+  const animatedStyle = useAnimatedStyle(() => {
+    const opacity = interpolate(animationValue.value, [-1, 0, 1], [0.8, 1, 0.8]);
+    const shadowOpacity = interpolate(animationValue.value, [-0.5, 0, 0.5], [0, 0.6, 0]);
 
-      return {
-        opacity,
-        shadowOpacity,
-      };
-    }, [animationValue]);
+    return {
+      opacity,
+      shadowOpacity,
+    };
+  }, [animationValue]);
 
-    const handleOpenDetails = useCallback(() => {
-      if (onOpenDetails) {
-        onOpenDetails(item);
-      }
-    }, [item, onOpenDetails]);
-
-    return (
-      <Animated.View style={[styles.cardWrapper, animatedStyle]}>
-        <Flashcard
-          card={item}
-          onOpenDetails={onOpenDetails ? handleOpenDetails : undefined}
-          onTermPress={onTermPress}
-        />
-      </Animated.View>
-    );
-  }
-);
+  return (
+    <Animated.View style={[styles.cardWrapper, animatedStyle]}>
+      <Flashcard card={item} onTermPress={onTermPress} />
+    </Animated.View>
+  );
+});
 
 AnimatedCard.displayName = 'AnimatedCard';
 
@@ -83,7 +69,6 @@ const arePropsEqual = (
   if (
     prevProps.onCardChange !== nextProps.onCardChange ||
     prevProps.onRelatedCardPress !== nextProps.onRelatedCardPress ||
-    prevProps.onOpenDetails !== nextProps.onOpenDetails ||
     prevProps.onTermPress !== nextProps.onTermPress
   ) {
     return false;
@@ -96,7 +81,6 @@ const FlashcardSwiperComponent: React.FC<FlashcardSwiperProps> = ({
   cards,
   initialIndex = 0,
   onCardChange,
-  onOpenDetails,
   onTermPress,
 }) => {
   const carouselRef = useRef<ICarouselInstance>(null);
@@ -135,16 +119,9 @@ const FlashcardSwiperComponent: React.FC<FlashcardSwiperProps> = ({
 
   const renderItem = useCallback(
     ({ item, animationValue }: { item: FlashcardType; animationValue: SharedValue<number> }) => {
-      return (
-        <AnimatedCard
-          item={item}
-          animationValue={animationValue}
-          onOpenDetails={onOpenDetails}
-          onTermPress={onTermPress}
-        />
-      );
+      return <AnimatedCard item={item} animationValue={animationValue} onTermPress={onTermPress} />;
     },
-    [onOpenDetails, onTermPress]
+    [onTermPress]
   );
   // const renderItem = useCallback(
   //   ({

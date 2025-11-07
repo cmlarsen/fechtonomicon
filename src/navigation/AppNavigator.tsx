@@ -9,17 +9,19 @@ import { TabIcon } from '../components/TabIcon';
 import { TermsSearchProvider } from '../contexts/TermsSearchContext';
 import { CardScreen } from '../screens/CardScreen';
 import { QuizScreen } from '../screens/QuizScreen';
+import { SearchScreen } from '../screens/SearchScreen';
 import { SettingsScreen } from '../screens/SettingsScreen';
 import { TermDetailScreen } from '../screens/TermDetailScreen';
 import { blacksmithingIcon, swordsIcon, tomeIcon } from '../utils/tabIcons';
 
 export type RootStackParamList = {
-  Main: undefined;
+  Main: { screen: keyof RootTabParamList; params?: { cardId?: string } } | undefined;
   FlashcardDetail: { cardId: string };
+  Search: undefined;
 };
 
 export type RootTabParamList = {
-  Terms: undefined;
+  Terms: { cardId?: string } | undefined;
   Quiz: undefined;
   Settings: undefined;
 };
@@ -135,6 +137,16 @@ export const AppNavigator: React.FC = () => {
             <Stack.Screen
               name="FlashcardDetail"
               component={TermDetailScreen}
+              options={{
+                presentation: 'modal',
+                gestureEnabled: true,
+                gestureDirection: 'vertical',
+                animationTypeForReplace: 'push',
+              }}
+            />
+            <Stack.Screen
+              name="Search"
+              component={SearchScreen}
               options={{
                 presentation: 'modal',
                 gestureEnabled: true,

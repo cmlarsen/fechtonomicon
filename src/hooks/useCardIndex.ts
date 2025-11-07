@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { widgetService } from '../services/widgetService';
 import { useFlashcardStore } from '../store/flashcardStore';
 import type { Flashcard } from '../types/flashcard';
-import { widgetService } from '../services/widgetService';
 
 const updateCardInStoreAndWidget = (card: Flashcard) => {
   useFlashcardStore.setState({ currentCard: card });
@@ -16,6 +16,7 @@ interface UseCardIndexOptions {
 export const useCardIndex = ({ cards, routeCardId }: UseCardIndexOptions) => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const prevCardsLengthRef = useRef(0);
+  const hasInitializedFromRoute = useRef(false);
 
   const handleCardSelect = useCallback(
     (index: number) => {
@@ -28,28 +29,22 @@ export const useCardIndex = ({ cards, routeCardId }: UseCardIndexOptions) => {
     [cards]
   );
 
+  // Handle initial load from route params (highest priority)
   useEffect(() => {
-    if (cards.length === 0) {
-      prevCardsLengthRef.current = 0;
-      setCurrentCardIndex(0);
-      return;
-    }
+    if (cards.length === 0) return;
 
-    const currentCardId = useFlashcardStore.getState().currentCard?.id;
-
-    if (currentCardId) {
-      const newIndex = cards.findIndex((card) => card.id === currentCardId);
-      if (newIndex !== -1) {
+    if (routeCardId && !hasInitializedFromRoute.current) {
+      const foundIndex = cards.findIndex((card) => card.id === routeCardId);
+      if (foundIndex !== -1) {
+        hasInitializedFromRoute.current = true;
+        setCurrentCardIndex(foundIndex);
+        updateCardInStoreAndWidget(cards[foundIndex]);
         prevCardsLengthRef.current = cards.length;
-        setCurrentCardIndex(newIndex);
-        const cardToShow = cards[newIndex];
-        if (cardToShow) {
-          updateCardInStoreAndWidget(cardToShow);
-        }
         return;
       }
     }
 
+    // Handle cards array changes (e.g., discipline filter changes)
     if (prevCardsLengthRef.current !== cards.length) {
       setCurrentCardIndex((prevIndex) => {
         const safeIndex = prevIndex >= cards.length ? 0 : prevIndex;
@@ -61,20 +56,23 @@ export const useCardIndex = ({ cards, routeCardId }: UseCardIndexOptions) => {
         return safeIndex;
       });
     }
-  }, [cards]);
+  }, [cards, routeCardId]);
 
+  // Reset the route initialization flag when routeCardId changes
   useEffect(() => {
-    if (cards.length === 0 || !routeCardId) return;
-
-    const foundIndex = cards.findIndex((card) => card.id === routeCardId);
-    if (foundIndex !== -1) {
-      setCurrentCardIndex(foundIndex);
-      const cardToShow = cards[foundIndex];
-      updateCardInStoreAndWidget(cardToShow);
+    if (routeCardId) {
+      hasInitializedFromRoute.current = false;
     }
-  }, [routeCardId, cards]);
+  }, [routeCardId]);
 
   const currentCard = cards[currentCardIndex];
+
+  // Sync current card to widget whenever it changes
+  useEffect(() => {
+    if (currentCard) {
+      updateCardInStoreAndWidget(currentCard);
+    }
+  }, [currentCard]);
 
   return {
     currentCardIndex,

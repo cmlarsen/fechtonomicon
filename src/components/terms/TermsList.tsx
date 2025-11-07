@@ -9,6 +9,8 @@ interface TermsListProps {
   selectedCardId: string | undefined;
   onCardPress: (card: Flashcard) => void;
   searchQuery?: string;
+  showSelected?: boolean;
+  scrollToSelected?: boolean;
 }
 
 export const TermsList: React.FC<TermsListProps> = ({
@@ -16,15 +18,17 @@ export const TermsList: React.FC<TermsListProps> = ({
   selectedCardId,
   onCardPress,
   searchQuery = '',
+  showSelected = true,
+  scrollToSelected = true,
 }) => {
   const listRef = useRef<FlatList<Flashcard>>(null);
 
   const renderCardItem = useCallback(
     ({ item: card }: { item: Flashcard }) => {
-      const isSelected = card.id === selectedCardId;
+      const isSelected = showSelected && card.id === selectedCardId;
       return <CardListItem card={card} isSelected={isSelected} onPress={onCardPress} />;
     },
-    [onCardPress, selectedCardId]
+    [onCardPress, selectedCardId, showSelected]
   );
 
   const keyExtractor = useCallback((card: Flashcard) => card.id, []);
@@ -40,7 +44,7 @@ export const TermsList: React.FC<TermsListProps> = ({
   }, [searchQuery]);
 
   useEffect(() => {
-    if (selectedCardId && cards.length > 0) {
+    if (scrollToSelected && selectedCardId && cards.length > 0) {
       const selectedIndex = cards.findIndex((c) => c.id === selectedCardId);
       if (selectedIndex !== -1 && listRef.current) {
         listRef.current.scrollToIndex({
@@ -50,7 +54,7 @@ export const TermsList: React.FC<TermsListProps> = ({
         });
       }
     }
-  }, [selectedCardId, cards]);
+  }, [selectedCardId, cards, scrollToSelected]);
 
   return (
     <FlatList

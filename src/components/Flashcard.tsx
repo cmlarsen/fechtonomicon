@@ -1,22 +1,21 @@
-import { usePostHog } from 'posthog-react-native';
 import { memo, useCallback } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useFlashcardStore } from '../store/flashcardStore';
 import { borderRadius, colors, fontFamily, fontSize, spacing } from '../theme/tokens';
 import type { Flashcard as FlashcardType } from '../types/flashcard';
-import { SecondaryButton } from './buttons';
+import { rgba } from '../utils/colorUtils';
 import { LinkedText } from './LinkedText';
 import { SectionDivider } from './SectionDivider';
 
 interface FlashcardProps {
-  card: FlashcardType;
-  onOpenDetails?: () => void;
+  card: FlashcardType | undefined;
   onTermPress?: (cardId: string) => void;
 }
 
-export const Flashcard = memo<FlashcardProps>(({ card, onOpenDetails, onTermPress }) => {
-  const posthog = usePostHog();
+export const Flashcard = memo<FlashcardProps>(({ card, onTermPress }) => {
   const allCards = useFlashcardStore((state) => state.allCards);
+  const insets = useSafeAreaInsets();
 
   const handleTermPress = useCallback(
     (cardId: string) => {
@@ -27,18 +26,12 @@ export const Flashcard = memo<FlashcardProps>(({ card, onOpenDetails, onTermPres
     [onTermPress]
   );
 
-  const handleDetailsPress = useCallback(() => {
-    posthog?.capture('details_button_tapped', {
-      cardId: card.id,
-      cardTerm: card.originalTerm,
-    });
-    if (onOpenDetails) {
-      onOpenDetails();
-    }
-  }, [onOpenDetails, posthog, card.id, card.originalTerm]);
+  if (!card) {
+    return null;
+  }
 
   return (
-    <View style={styles.container} testID="flashcard-container">
+    <View style={[styles.container, { paddingTop: insets.top }]} testID="flashcard-container">
       <View style={styles.content}>
         <View style={styles.header}>
           <View style={styles.titleContainer}>
@@ -75,16 +68,6 @@ export const Flashcard = memo<FlashcardProps>(({ card, onOpenDetails, onTermPres
           </>
         )}
       </View>
-      {onOpenDetails && (
-        <View style={styles.detailsButtonContainer}>
-          <SecondaryButton
-            title="More"
-            onPress={handleDetailsPress}
-            size="small"
-            style={styles.detailsButton}
-          />
-        </View>
-      )}
     </View>
   );
 });
@@ -98,6 +81,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     position: 'relative',
     justifyContent: 'space-between',
+    backgroundColor: rgba(colors.parchment.light, 0.6),
   },
 
   content: {

@@ -1,40 +1,40 @@
+import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import type { CompositeNavigationProp, RouteProp } from '@react-navigation/native';
+import type { StackNavigationProp } from '@react-navigation/stack';
 import { usePostHog } from 'posthog-react-native';
 import React, { useCallback } from 'react';
-import { Keyboard, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import { Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BackgroundPattern } from '../components/BackgroundPattern';
-import { FloatingSearchBar } from '../components/FloatingSearchBar';
+import { CommandBar } from '../components/CommandBar';
+import { Flashcard } from '../components/Flashcard';
 import { LoadingState } from '../components/LoadingState';
-import { TermsCardDisplay } from '../components/terms/TermsCardDisplay';
-import { TermsList } from '../components/terms/TermsList';
-import { TermsListHeader } from '../components/terms/TermsListHeader';
-import { useTermsSearch } from '../contexts/TermsSearchContext';
 import { useCardIndex } from '../hooks/useCardIndex';
 import { useCardLoader } from '../hooks/useCardLoader';
 import { useFilteredCards } from '../hooks/useFilteredCards';
-import { colors } from '../theme/tokens';
+import type { RootStackParamList, RootTabParamList } from '../navigation/AppNavigator';
+import { colors, fontFamily, fontSize, spacing } from '../theme/tokens';
 import type { Flashcard as FlashcardType } from '../types/flashcard';
 
+type CardScreenNavigationProp = CompositeNavigationProp<
+  BottomTabNavigationProp<RootTabParamList, 'Terms'>,
+  StackNavigationProp<RootStackParamList>
+>;
+
+type CardScreenRouteProp = RouteProp<RootTabParamList, 'Terms'>;
+
 interface CardScreenProps {
-  navigation: {
-    navigate: (screen: string, params?: { cardId?: string }) => void;
-    dispatch: (action: unknown) => void;
-  };
-  route?: {
-    params?: {
-      cardId?: string;
-    };
-  };
+  navigation: CardScreenNavigationProp;
+  route: CardScreenRouteProp;
 }
 
 export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => {
   const posthog = usePostHog();
-  const { searchQuery } = useTermsSearch();
   const { isLoading } = useCardLoader();
-  const { disciplineFilteredCards, filteredAndSortedCards } = useFilteredCards();
-  const { currentCard, handleCardSelect } = useCardIndex({
+  const { disciplineFilteredCards } = useFilteredCards();
+  const { currentCard, currentCardIndex, handleCardSelect } = useCardIndex({
     cards: disciplineFilteredCards,
-    routeCardId: route?.params?.cardId,
+    routeCardId: route.params?.cardId,
   });
 
   const handleOpenDetails = useCallback(
@@ -50,27 +50,36 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => 
 
   const handleTermPress = useCallback(
     (cardId: string) => {
-      navigation.navigate('FlashcardDetail', { cardId });
+      // Navigate to the Terms screen with the cardId param to display that card
+      navigation.navigate('Terms', { cardId });
     },
     [navigation]
   );
 
-  const handleCardPress = useCallback(
-    (card: FlashcardType) => {
-      Keyboard.dismiss();
-      const index = disciplineFilteredCards.findIndex((c) => c.id === card.id);
-      if (index !== -1) {
-        handleCardSelect(index);
-      }
-    },
-    [disciplineFilteredCards, handleCardSelect]
-  );
+  const handlePrev = useCallback(() => {
+    if (currentCardIndex > 0) {
+      posthog?.capture('prev_button_tapped');
+      handleCardSelect(currentCardIndex - 1);
+    }
+  }, [currentCardIndex, handleCardSelect, posthog]);
+
+  const handleNext = useCallback(() => {
+    if (currentCardIndex < disciplineFilteredCards.length - 1) {
+      posthog?.capture('next_button_tapped');
+      handleCardSelect(currentCardIndex + 1);
+    }
+  }, [currentCardIndex, disciplineFilteredCards.length, handleCardSelect, posthog]);
+
+  const handleDetails = useCallback(() => {
+    if (currentCard) {
+      handleOpenDetails(currentCard);
+    }
+  }, [currentCard, handleOpenDetails]);
 
   const handleDismissKeyboard = useCallback(() => {
     Keyboard.dismiss();
   }, []);
 
-  const insets = useSafeAreaInsets();
   const showLoading = isLoading || disciplineFilteredCards.length === 0;
 
   return (
@@ -80,31 +89,23 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => 
           <LoadingState />
         ) : (
           <TouchableWithoutFeedback onPress={handleDismissKeyboard}>
-            <View style={[styles.detailContainer, { paddingBottom: insets.bottom }]}>
-              {/* Left Column - Term List */}
-              <View style={styles.leftColumn}>
-                <TermsListHeader />
-                <TermsList
-                  cards={filteredAndSortedCards}
-                  selectedCardId={currentCard?.id}
-                  onCardPress={handleCardPress}
-                  searchQuery={searchQuery}
-                />
-              </View>
-
-              {/* Right Column - Card Display */}
-              <View style={styles.rightColumn}>
-                <TermsCardDisplay
-                  card={currentCard}
-                  onOpenDetails={handleOpenDetails}
-                  onTermPress={handleTermPress}
-                />
-              </View>
+            <View style={styles.detailContainer}>
+              <Flashcard card={currentCard} onTermPress={handleTermPress} />
             </View>
           </TouchableWithoutFeedback>
         )}
       </View>
-      <FloatingSearchBar />
+
+      {!showLoading && (
+        <CommandBar
+          currentCard={currentCard}
+          canGoPrev={currentCardIndex > 0}
+          canGoNext={currentCardIndex < disciplineFilteredCards.length - 1}
+          onPrev={handlePrev}
+          onNext={handleNext}
+          onDetails={handleDetails}
+        />
+      )}
     </BackgroundPattern>
   );
 };
@@ -115,16 +116,5 @@ const styles = StyleSheet.create({
   },
   detailContainer: {
     flex: 1,
-    flexDirection: 'row',
-  },
-  leftColumn: {
-    flex: 1 / 3,
-    backgroundColor: colors.parchment.primary,
-    borderRightWidth: 2,
-    borderRightColor: colors.gold.main,
-  },
-  rightColumn: {
-    flex: 2 / 3,
-    position: 'relative',
   },
 });
