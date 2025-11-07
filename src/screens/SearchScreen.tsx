@@ -59,8 +59,6 @@ export const SearchScreen: React.FC<SearchScreenProps> = ({ navigation }) => {
         </View>
 
         <View style={styles.content}>
-          <DisciplineSelector />
-
           <View style={styles.listContainer}>
             <TermsList
               cards={filteredAndSortedCards}

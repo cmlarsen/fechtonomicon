@@ -90,8 +90,13 @@ const styles = StyleSheet.create({
     paddingTop: spacing.xs,
     justifyContent: 'flex-start',
   },
-  header: {},
-  titleContainer: {},
+  header: {
+    marginTop: spacing.md,
+    marginBottom: spacing.md,
+  },
+  titleContainer: {
+    alignItems: 'center',
+  },
   originalTerm: {
     fontSize: fontSize.xl,
     fontFamily: fontFamily.title,
@@ -136,7 +141,8 @@ const styles = StyleSheet.create({
     letterSpacing: 0.5,
   },
   description: {
-    fontSize: fontSize.sm,
+    fontSize: fontSize.md,
+    lineHeight: fontSize.md * 1.4,
     fontFamily: fontFamily.body,
     color: colors.iron.main,
 
