@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
   },
   cardWrapper: {
     width: '100%',
-    minHeight: Dimensions.get('window').height - 200,
+    flex: 1,
   },
   scrollToTopContainer: {
     position: 'absolute',

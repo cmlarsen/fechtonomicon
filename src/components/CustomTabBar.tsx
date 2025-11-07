@@ -1,37 +1,29 @@
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { TermsSearchBar } from './terms/TermsSearchBar';
-import { useTermsSearch } from '../contexts/TermsSearchContext';
+import { Keyboard, Pressable, StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, fontFamily, fontSize } from '../theme/tokens';
 
 export const CustomTabBar: React.FC<BottomTabBarProps> = (props) => {
   const { state, descriptors, navigation } = props;
-  const { searchQuery, setSearchQuery } = useTermsSearch();
-  const activeRoute = state.routes[state.index];
-  const isTermsTab = activeRoute.name === 'Terms';
-
-  const handleClearSearch = () => {
-    setSearchQuery('');
-  };
+  const insets = useSafeAreaInsets();
 
   return (
-    <View style={styles.container}>
-      {isTermsTab && (
-        <View style={styles.searchContainer}>
-          <TermsSearchBar
-            searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
-            onClearSearch={handleClearSearch}
-          />
-        </View>
-      )}
+    <View
+      style={[
+        styles.container,
+        {
+          paddingBottom: insets.bottom,
+        },
+      ]}
+    >
       <View style={styles.tabBar}>
         {state.routes.map((route, index) => {
           const { options } = descriptors[route.key];
           const isFocused = state.index === index;
 
           const onPress = () => {
+            Keyboard.dismiss();
             const event = navigation.emit({
               type: 'tabPress',
               target: route.key,
@@ -98,10 +90,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.parchment.primary,
     borderTopWidth: 1,
     borderTopColor: colors.gold.main,
-  },
-  searchContainer: {
-    borderBottomWidth: 1,
-    borderBottomColor: 'rgba(201, 171, 106, 0.3)',
   },
   tabBar: {
     flexDirection: 'row',

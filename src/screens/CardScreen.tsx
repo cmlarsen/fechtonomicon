@@ -4,6 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import germanData from '../../assets/data/german-longsword-data.json';
 import italianData from '../../assets/data/italian-longsword-data.json';
 import { BackgroundPattern } from '../components/BackgroundPattern';
+import { FloatingSearchBar } from '../components/FloatingSearchBar';
 import { LoadingState } from '../components/LoadingState';
 import { TermsListDetail } from '../components/TermsListDetail';
 import { useTermsSearch } from '../contexts/TermsSearchContext';
@@ -200,6 +201,7 @@ export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => 
           />
         )}
       </View>
+      <FloatingSearchBar />
     </BackgroundPattern>
   );
 };

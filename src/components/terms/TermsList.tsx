@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import type { Flashcard } from '../../types/flashcard';
 import { colors, fontFamily, fontSize, spacing } from '../../theme/tokens';
+import type { Flashcard } from '../../types/flashcard';
 import { CardListItem } from './CardListItem';
 
 interface TermsListProps {
@@ -67,6 +67,7 @@ export const TermsList: React.FC<TermsListProps> = ({
       updateCellsBatchingPeriod={50}
       initialNumToRender={10}
       windowSize={10}
+      keyboardShouldPersistTaps="handled"
       onScrollToIndexFailed={(info) => {
         const wait = new Promise((resolve) => setTimeout(resolve, 500));
         wait.then(() => {

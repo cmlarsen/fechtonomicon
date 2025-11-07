@@ -5,6 +5,7 @@ import { useFlashcardStore } from '../store/flashcardStore';
 import { borderRadius, colors, fontFamily, fontSize, spacing } from '../theme/tokens';
 import type { Flashcard as FlashcardType } from '../types/flashcard';
 import { SecondaryButton } from './buttons';
+import { TAB_BAR_HEIGHT } from './FloatingSearchBar';
 import { LinkedText } from './LinkedText';
 import { SectionDivider } from './SectionDivider';
 
@@ -93,9 +94,8 @@ Flashcard.displayName = 'Flashcard';
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     width: '100%',
-    height: '100%',
-
     overflow: 'hidden',
     position: 'relative',
     justifyContent: 'space-between',

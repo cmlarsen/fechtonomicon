@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React, { useCallback, useRef } from 'react';
+import { Keyboard, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { borderRadius, colors, fontFamily, fontSize, spacing } from '../../theme/tokens';
 
 interface TermsSearchBarProps {
@@ -13,19 +13,33 @@ export const TermsSearchBar: React.FC<TermsSearchBarProps> = ({
   onSearchChange,
   onClearSearch,
 }) => {
+  const inputRef = useRef<TextInput>(null);
+
   const handleClearSearch = useCallback(() => {
     onClearSearch();
+    inputRef.current?.blur();
+    Keyboard.dismiss();
   }, [onClearSearch]);
+
+  const handleInputFocus = useCallback(() => {
+    inputRef.current?.focus();
+  }, []);
 
   return (
     <View style={styles.container}>
       <View style={styles.searchInputContainer}>
         <TextInput
+          ref={inputRef}
           style={styles.searchInput}
           placeholder="Search terms..."
           placeholderTextColor={colors.text.secondary}
           value={searchQuery}
           onChangeText={onSearchChange}
+          onFocus={handleInputFocus}
+          autoCorrect={false}
+          autoCapitalize="none"
+          autoComplete="off"
+          returnKeyType="search"
         />
         {searchQuery.length > 0 && (
           <TouchableOpacity
@@ -47,7 +61,9 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.md,
     backgroundColor: colors.parchment.primary,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(201, 171, 106, 0.3)',
+    borderBottomColor: colors.gold.main,
+    borderTopWidth: 1,
+    borderTopColor: colors.gold.main,
   },
   searchInputContainer: {
     flexDirection: 'row',
