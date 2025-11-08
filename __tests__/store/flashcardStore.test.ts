@@ -54,7 +54,7 @@ describe('Flashcard Store', () => {
       expect(result.current.currentCard).toBeNull();
       expect(result.current.allCards).toEqual([]);
       expect(result.current.viewedCardIds).toEqual([]);
-      expect(result.current.selectedDisciplines).toEqual(['italian-longsword', 'german-longsword']);
+      expect(result.current.selectedDisciplines).toEqual(['italian-longsword']);
     });
 
     it('should persist selected disciplines', async () => {
@@ -134,7 +134,7 @@ describe('Flashcard Store', () => {
       });
     });
 
-    it('should remove discipline when already selected', async () => {
+    it('should set discipline to only the selected one', async () => {
       const { result } = renderHook(() => useFlashcardStore());
 
       act(() => {
@@ -142,7 +142,7 @@ describe('Flashcard Store', () => {
         result.current.toggleDiscipline('german-longsword');
       });
 
-      expect(result.current.selectedDisciplines).not.toContain('german-longsword');
+      expect(result.current.selectedDisciplines).toEqual(['german-longsword']);
       await waitFor(() => {
         expect(AsyncStorage.setItem).toHaveBeenCalled();
       });

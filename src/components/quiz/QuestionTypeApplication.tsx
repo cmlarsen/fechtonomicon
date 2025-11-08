@@ -9,6 +9,7 @@ interface QuestionTypeApplicationProps {
   correctIndex: number;
   showFeedback: boolean;
   onSelect: (index: number) => void;
+  isChecked?: boolean;
 }
 
 export const QuestionTypeApplication: React.FC<QuestionTypeApplicationProps> = ({
@@ -17,6 +18,7 @@ export const QuestionTypeApplication: React.FC<QuestionTypeApplicationProps> = (
   correctIndex,
   showFeedback,
   onSelect,
+  isChecked = false,
 }) => {
   return (
     <View style={styles.container}>
@@ -29,6 +31,7 @@ export const QuestionTypeApplication: React.FC<QuestionTypeApplicationProps> = (
           correctIndex={correctIndex}
           showFeedback={showFeedback}
           onSelect={onSelect}
+          isChecked={isChecked}
         />
       ))}
     </View>

@@ -1,9 +1,10 @@
 import { usePostHog } from 'posthog-react-native';
-import React, { useCallback, useRef, useState } from 'react';
-import { Alert, StyleSheet, Text, View } from 'react-native';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { Animated, Modal, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BackgroundPattern } from '../components/BackgroundPattern';
 import { PrimaryButton } from '../components/buttons';
+import { FeedbackPanel } from '../components/quiz/FeedbackPanel';
 import { QuestionTypeApplication } from '../components/quiz/QuestionTypeApplication';
 import { QuestionTypeDefinition } from '../components/quiz/QuestionTypeDefinition';
 import { QuestionTypeTranslate } from '../components/quiz/QuestionTypeTranslate';
@@ -11,10 +12,16 @@ import { QuizExitButton } from '../components/quiz/QuizExitButton';
 import { QuizFinalScore } from '../components/quiz/QuizFinalScore';
 import { QuizProgressBar } from '../components/quiz/QuizProgressBar';
 import { QuizQuestionCard } from '../components/quiz/QuizQuestionCard';
+import { QuizSelectionCard } from '../components/quiz/QuizSelectionCard';
 import { useFlashcardStore } from '../store/flashcardStore';
-import { colors, fontFamily, fontSize, spacing } from '../theme/tokens';
-import type { Flashcard } from '../types/flashcard';
-import { generateQuestion, prepareQuizCards, type QuestionData } from '../utils/quizUtils';
+import { animation, colors, fontFamily, fontSize, spacing } from '../theme/tokens';
+import type { Discipline, Flashcard } from '../types/flashcard';
+import {
+  generateQuestion,
+  prepareFullQuiz,
+  prepareQuickQuiz,
+  type QuestionData,
+} from '../utils/quizUtils';
 
 interface QuizScreenProps {
   navigation: {
@@ -22,88 +29,113 @@ interface QuizScreenProps {
   };
 }
 
+type QuizMode = 'quick' | 'full';
+
 export const QuizScreen: React.FC<QuizScreenProps> = ({ navigation }) => {
   const posthog = usePostHog();
   const allCards = useFlashcardStore((state) => state.allCards);
-  const selectedDisciplines = useFlashcardStore((state) => state.selectedDisciplines);
   const insets = useSafeAreaInsets();
+
+  const [selectedDiscipline, setSelectedDiscipline] = useState<Discipline | null>(null);
+  const [quizMode, setQuizMode] = useState<QuizMode | null>(null);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const [quizCards, setQuizCards] = useState<Flashcard[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState({ correct: 0, total: 0 });
   const [currentQuestion, setCurrentQuestion] = useState<QuestionData | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [showFeedback, setShowFeedback] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+  const [showFeedbackPanel, setShowFeedbackPanel] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
-  const [showNextButton, setShowNextButton] = useState(false);
-  const [quizStarted, setQuizStarted] = useState(false);
+  const [isCorrectAnswer, setIsCorrectAnswer] = useState(false);
 
-  const scoreScaleAnim = useRef(1);
+  const checkButtonOpacity = useRef(new Animated.Value(0.5)).current;
 
-  const handleStartQuiz = useCallback(() => {
-    const prepared = prepareQuizCards(allCards, selectedDisciplines);
-    if (prepared.length === 0) {
-      Alert.alert('No Cards Available', 'Please select at least one discipline with cards.');
-      return;
+  useEffect(() => {
+    if (selectedAnswer !== null && !isChecked) {
+      Animated.timing(checkButtonOpacity, {
+        toValue: 1,
+        duration: animation.fast,
+        useNativeDriver: true,
+      }).start();
+    } else if (selectedAnswer === null) {
+      Animated.timing(checkButtonOpacity, {
+        toValue: 0.5,
+        duration: animation.fast,
+        useNativeDriver: true,
+      }).start();
     }
+  }, [selectedAnswer, isChecked, checkButtonOpacity]);
 
-    setQuizCards(prepared);
-    setQuizStarted(true);
-    setCurrentIndex(0);
-    setScore({ correct: 0, total: 0 });
-    setSelectedAnswer(null);
-    setShowFeedback(false);
-    setShowNextButton(false);
-    setIsComplete(false);
+  const handleSelectQuiz = useCallback(
+    (discipline: Discipline, mode: QuizMode) => {
+      setSelectedDiscipline(discipline);
+      setQuizMode(mode);
 
-    const firstQuestion = generateQuestion(prepared[0], allCards, selectedDisciplines);
-    if (firstQuestion) {
-      setCurrentQuestion(firstQuestion);
-    }
+      const prepared =
+        mode === 'quick'
+          ? prepareQuickQuiz(allCards, [discipline])
+          : prepareFullQuiz(allCards, [discipline]);
 
-    posthog?.capture('quiz_started', {
-      cardCount: prepared.length,
-      disciplines: selectedDisciplines,
-    });
-  }, [allCards, selectedDisciplines, posthog]);
+      if (prepared.length === 0) {
+        return;
+      }
+
+      setQuizCards(prepared);
+      setCurrentIndex(0);
+      setScore({ correct: 0, total: 0 });
+      setSelectedAnswer(null);
+      setIsChecked(false);
+      setShowFeedbackPanel(false);
+      setIsComplete(false);
+
+      const firstQuestion = generateQuestion(prepared[0], allCards, [discipline]);
+      if (firstQuestion) {
+        setCurrentQuestion(firstQuestion);
+      }
+
+      setModalVisible(true);
+
+      posthog?.capture('quiz_started', {
+        discipline,
+        mode,
+        cardCount: prepared.length,
+      });
+    },
+    [allCards, posthog]
+  );
 
   const handleAnswerSelect = useCallback(
     (index: number) => {
-      if (showFeedback || selectedAnswer !== null || !currentQuestion) return;
-
+      if (isChecked || selectedAnswer !== null) return;
       setSelectedAnswer(index);
-      const isCorrect = index === currentQuestion.correctIndex;
-
-      // Short delay before showing feedback
-      setTimeout(() => {
-        setShowFeedback(true);
-        setShowNextButton(true);
-
-        const newTotal = score.total + 1;
-        const newCorrect = isCorrect ? score.correct + 1 : score.correct;
-
-        setScore({ correct: newCorrect, total: newTotal });
-
-        if (isCorrect) {
-          // Success animation trigger
-          scoreScaleAnim.current = 1.2;
-          setTimeout(() => {
-            scoreScaleAnim.current = 1;
-          }, 300);
-        }
-
-        posthog?.capture('quiz_answer_selected', {
-          isCorrect,
-          questionType: currentQuestion.type,
-          cardId: currentQuestion.card.id,
-        });
-      }, 400);
     },
-    [showFeedback, selectedAnswer, currentQuestion, score, posthog]
+    [isChecked, selectedAnswer]
   );
 
-  const handleNext = useCallback(() => {
-    if (!showNextButton) return;
+  const handleCheck = useCallback(() => {
+    if (selectedAnswer === null || !currentQuestion || isChecked) return;
+
+    setIsChecked(true);
+    const correct = selectedAnswer === currentQuestion.correctIndex;
+    setIsCorrectAnswer(correct);
+
+    const newTotal = score.total + 1;
+    const newCorrect = correct ? score.correct + 1 : score.correct;
+    setScore({ correct: newCorrect, total: newTotal });
+
+    setShowFeedbackPanel(true);
+
+    posthog?.capture('quiz_answer_checked', {
+      isCorrect: correct,
+      questionType: currentQuestion.type,
+      cardId: currentQuestion.card.id,
+    });
+  }, [selectedAnswer, currentQuestion, isChecked, score, posthog]);
+
+  const handleContinue = useCallback(() => {
+    setShowFeedbackPanel(false);
 
     const nextIndex = currentIndex + 1;
 
@@ -111,184 +143,256 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ navigation }) => {
       setIsComplete(true);
       posthog?.capture('quiz_completed', {
         score: score.correct,
-        total: score.total + 1,
+        total: score.total,
+        discipline: selectedDiscipline,
+        mode: quizMode,
       });
       return;
     }
 
-    // Reset state for next question
     setCurrentIndex(nextIndex);
     setSelectedAnswer(null);
-    setShowFeedback(false);
-    setShowNextButton(false);
+    setIsChecked(false);
+
+    if (!selectedDiscipline) return;
 
     const nextCard = quizCards[nextIndex];
-    const nextQuestion = generateQuestion(nextCard, allCards, selectedDisciplines);
+    const nextQuestion = generateQuestion(nextCard, allCards, [selectedDiscipline]);
 
     if (nextQuestion) {
       setCurrentQuestion(nextQuestion);
     } else {
-      // Skip cards that can't generate questions
-      handleNext();
+      handleContinue();
     }
-  }, [showNextButton, currentIndex, quizCards, allCards, selectedDisciplines, score, posthog]);
+  }, [currentIndex, quizCards, allCards, selectedDiscipline, score, quizMode, posthog]);
 
   const handleExit = useCallback(() => {
     if (isComplete) {
-      navigation.goBack();
-      return;
-    }
-
-    if (quizStarted) {
-      posthog?.capture('quiz_exited', {
-        score: score.correct,
-        total: score.total,
-        progress: currentIndex,
-      });
-      setQuizStarted(false);
+      setModalVisible(false);
+      setSelectedDiscipline(null);
+      setQuizMode(null);
       setQuizCards([]);
       setCurrentQuestion(null);
       setCurrentIndex(0);
       setScore({ correct: 0, total: 0 });
       setSelectedAnswer(null);
-      setShowFeedback(false);
-      setShowNextButton(false);
+      setIsChecked(false);
+      setShowFeedbackPanel(false);
+      setIsComplete(false);
+      return;
+    }
+
+    if (modalVisible) {
+      posthog?.capture('quiz_exited', {
+        score: score.correct,
+        total: score.total,
+        progress: currentIndex,
+        discipline: selectedDiscipline,
+        mode: quizMode,
+      });
+      setModalVisible(false);
+      setSelectedDiscipline(null);
+      setQuizMode(null);
+      setQuizCards([]);
+      setCurrentQuestion(null);
+      setCurrentIndex(0);
+      setScore({ correct: 0, total: 0 });
+      setSelectedAnswer(null);
+      setIsChecked(false);
+      setShowFeedbackPanel(false);
       return;
     }
 
     navigation.goBack();
-  }, [isComplete, quizStarted, navigation, score, currentIndex, posthog]);
+  }, [
+    isComplete,
+    modalVisible,
+    navigation,
+    score,
+    currentIndex,
+    selectedDiscipline,
+    quizMode,
+    posthog,
+  ]);
 
   const handleRestart = useCallback(() => {
-    const prepared = prepareQuizCards(allCards, selectedDisciplines);
+    if (!selectedDiscipline || !quizMode) return;
+
+    const prepared =
+      quizMode === 'quick'
+        ? prepareQuickQuiz(allCards, [selectedDiscipline])
+        : prepareFullQuiz(allCards, [selectedDiscipline]);
+
     setQuizCards(prepared);
     setCurrentIndex(0);
     setScore({ correct: 0, total: 0 });
     setSelectedAnswer(null);
-    setShowFeedback(false);
-    setShowNextButton(false);
+    setIsChecked(false);
+    setShowFeedbackPanel(false);
     setIsComplete(false);
-    setQuizStarted(true);
 
-    const firstQuestion = generateQuestion(prepared[0], allCards, selectedDisciplines);
+    const firstQuestion = generateQuestion(prepared[0], allCards, [selectedDiscipline]);
     if (firstQuestion) {
       setCurrentQuestion(firstQuestion);
     }
 
-    posthog?.capture('quiz_restarted');
-  }, [allCards, selectedDisciplines, posthog]);
+    posthog?.capture('quiz_restarted', {
+      discipline: selectedDiscipline,
+      mode: quizMode,
+    });
+  }, [allCards, selectedDiscipline, quizMode, posthog]);
 
-  // Show start screen if quiz hasn't started
-  if (!quizStarted) {
-    return (
-      <BackgroundPattern>
-        <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
-          <View style={styles.header}>
-            <QuizExitButton onPress={handleExit} />
-          </View>
-          <View style={styles.startContainer}>
-            <Text style={styles.startTitle}>Ready to Test Your Knowledge?</Text>
-            <Text style={styles.startDescription}>
-              Answer questions about HEMA terms and concepts. You'll be quizzed on translations,
-              definitions, and applications.
-            </Text>
-            <PrimaryButton title="Start Quiz" onPress={handleStartQuiz} size="large" />
-          </View>
-        </View>
-      </BackgroundPattern>
-    );
-  }
+  const renderQuizModal = () => {
+    if (isComplete) {
+      return (
+        <Modal visible={modalVisible} animationType="slide" presentationStyle="pageSheet">
+          <BackgroundPattern>
+            <View style={[styles.modalContainer, { paddingTop: insets.top }]}>
+              <View style={styles.header}>
+                <QuizExitButton onPress={handleExit} />
+              </View>
+              <QuizFinalScore
+                correct={score.correct}
+                total={score.total}
+                onRestart={handleRestart}
+                onExit={handleExit}
+              />
+            </View>
+          </BackgroundPattern>
+        </Modal>
+      );
+    }
 
-  if (isComplete) {
-    return (
-      <BackgroundPattern>
-        <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
-          <View style={styles.header}>
-            <QuizExitButton onPress={handleExit} />
-          </View>
-          <QuizFinalScore
-            correct={score.correct}
-            total={score.total}
-            onRestart={handleRestart}
-            onExit={handleExit}
-          />
-        </View>
-      </BackgroundPattern>
-    );
-  }
+    if (!currentQuestion || quizCards.length === 0) {
+      return (
+        <Modal visible={modalVisible} animationType="slide" presentationStyle="pageSheet">
+          <BackgroundPattern>
+            <View style={[styles.modalContainer, { paddingTop: insets.top }]}>
+              <View style={styles.header}>
+                <QuizExitButton onPress={handleExit} />
+              </View>
+              <View style={styles.loadingContainer}>
+                <Text style={styles.loadingText}>Preparing quiz...</Text>
+              </View>
+            </View>
+          </BackgroundPattern>
+        </Modal>
+      );
+    }
 
-  if (!currentQuestion || quizCards.length === 0) {
     return (
-      <BackgroundPattern>
-        <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
-          <View style={styles.header}>
-            <QuizExitButton onPress={handleExit} />
+      <Modal visible={modalVisible} animationType="slide" presentationStyle="pageSheet">
+        <BackgroundPattern>
+          <View style={[styles.modalContainer, { paddingTop: insets.top }]}>
+            <View style={styles.header}>
+              <QuizProgressBar
+                current={score.total + 1}
+                total={quizCards.length}
+                correct={score.correct}
+              />
+              <QuizExitButton onPress={handleExit} />
+            </View>
+
+            <ScrollView
+              style={styles.scrollView}
+              contentContainerStyle={styles.scrollContent}
+              showsVerticalScrollIndicator={false}
+            >
+              <View style={styles.questionContainer}>
+                <QuizQuestionCard
+                  card={currentQuestion.card}
+                  questionText={currentQuestion.questionText}
+                />
+
+                <View style={styles.optionsContainer}>
+                  {currentQuestion.type === 'translate' && (
+                    <QuestionTypeTranslate
+                      options={currentQuestion.options}
+                      selectedIndex={selectedAnswer}
+                      correctIndex={currentQuestion.correctIndex}
+                      showFeedback={isChecked}
+                      onSelect={handleAnswerSelect}
+                      isChecked={isChecked}
+                    />
+                  )}
+                  {currentQuestion.type === 'definition' && (
+                    <QuestionTypeDefinition
+                      options={currentQuestion.options}
+                      selectedIndex={selectedAnswer}
+                      correctIndex={currentQuestion.correctIndex}
+                      showFeedback={isChecked}
+                      onSelect={handleAnswerSelect}
+                      isChecked={isChecked}
+                    />
+                  )}
+                  {currentQuestion.type === 'application' && (
+                    <QuestionTypeApplication
+                      options={currentQuestion.options}
+                      selectedIndex={selectedAnswer}
+                      correctIndex={currentQuestion.correctIndex}
+                      showFeedback={isChecked}
+                      onSelect={handleAnswerSelect}
+                      isChecked={isChecked}
+                    />
+                  )}
+                </View>
+              </View>
+            </ScrollView>
+
+            {!isChecked && (
+              <Animated.View style={[styles.footer, { opacity: checkButtonOpacity }]}>
+                <PrimaryButton
+                  title="Check"
+                  onPress={handleCheck}
+                  size="large"
+                  disabled={selectedAnswer === null}
+                />
+              </Animated.View>
+            )}
+
+            <FeedbackPanel
+              visible={showFeedbackPanel}
+              isCorrect={isCorrectAnswer}
+              onContinue={handleContinue}
+            />
           </View>
-          <View style={styles.loadingContainer}>
-            <Text style={styles.loadingText}>Preparing quiz...</Text>
-          </View>
-        </View>
-      </BackgroundPattern>
+        </BackgroundPattern>
+      </Modal>
     );
-  }
+  };
 
   return (
     <BackgroundPattern>
       <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
         <View style={styles.header}>
-          <QuizProgressBar
-            current={score.total + 1}
-            total={quizCards.length}
-            correct={score.correct}
-          />
           <QuizExitButton onPress={handleExit} />
         </View>
-
-        <View style={styles.content}>
-          <View style={styles.questionContainer}>
-            <QuizQuestionCard
-              card={currentQuestion.card}
-              questionText={currentQuestion.questionText}
-            />
-
-            <View style={styles.optionsContainer}>
-              {currentQuestion.type === 'translate' && (
-                <QuestionTypeTranslate
-                  options={currentQuestion.options}
-                  selectedIndex={selectedAnswer}
-                  correctIndex={currentQuestion.correctIndex}
-                  showFeedback={showFeedback}
-                  onSelect={handleAnswerSelect}
-                />
-              )}
-              {currentQuestion.type === 'definition' && (
-                <QuestionTypeDefinition
-                  options={currentQuestion.options}
-                  selectedIndex={selectedAnswer}
-                  correctIndex={currentQuestion.correctIndex}
-                  showFeedback={showFeedback}
-                  onSelect={handleAnswerSelect}
-                />
-              )}
-              {currentQuestion.type === 'application' && (
-                <QuestionTypeApplication
-                  options={currentQuestion.options}
-                  selectedIndex={selectedAnswer}
-                  correctIndex={currentQuestion.correctIndex}
-                  showFeedback={showFeedback}
-                  onSelect={handleAnswerSelect}
-                />
-              )}
+        <ScrollView
+          style={styles.selectionScrollView}
+          contentContainerStyle={styles.selectionContent}
+          showsVerticalScrollIndicator={false}
+        >
+          <View style={styles.selectionContainer}>
+            <Text style={styles.selectionTitle}>Choose Your Challenge</Text>
+            <Text style={styles.selectionDescription}>
+              Select a discipline and quiz type to test your knowledge of HEMA terms and concepts.
+            </Text>
+            <View style={styles.cardsContainer}>
+              <QuizSelectionCard
+                discipline="italian-longsword"
+                onQuickQuiz={() => handleSelectQuiz('italian-longsword', 'quick')}
+                onFullQuiz={() => handleSelectQuiz('italian-longsword', 'full')}
+              />
+              <QuizSelectionCard
+                discipline="german-longsword"
+                onQuickQuiz={() => handleSelectQuiz('german-longsword', 'quick')}
+                onFullQuiz={() => handleSelectQuiz('german-longsword', 'full')}
+              />
             </View>
           </View>
-        </View>
-
-        {showNextButton && (
-          <View style={styles.footer}>
-            <PrimaryButton title="Next" onPress={handleNext} size="large" />
-          </View>
-        )}
+        </ScrollView>
       </View>
+      {renderQuizModal()}
     </BackgroundPattern>
   );
 };
@@ -296,6 +400,10 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  modalContainer: {
+    flex: 1,
+    paddingBottom: spacing.md,
   },
   header: {
     flexDirection: 'row',
@@ -305,11 +413,13 @@ const styles = StyleSheet.create({
     paddingTop: spacing.md,
     paddingBottom: spacing.md,
   },
-  content: {
+  scrollView: {
     flex: 1,
+  },
+  scrollContent: {
     paddingTop: spacing.md,
     paddingHorizontal: spacing.lg,
-    justifyContent: 'flex-start',
+    paddingBottom: spacing.xxl,
   },
   questionContainer: {
     gap: spacing.lg,
@@ -332,26 +442,34 @@ const styles = StyleSheet.create({
     fontFamily: 'CormorantGaramond-Medium',
     color: colors.iron.main,
   },
-  startContainer: {
+  selectionScrollView: {
+    flex: 1,
+  },
+  selectionContent: {
+    flexGrow: 1,
+    paddingHorizontal: spacing.xl,
+    paddingBottom: spacing.xxl,
+  },
+  selectionContainer: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: spacing.xl,
     gap: spacing.xl,
+    paddingVertical: spacing.xl,
   },
-  startTitle: {
-    fontSize: fontSize.xxl,
+  selectionTitle: {
+    fontSize: fontSize.xxxl,
     fontFamily: fontFamily.title,
     color: colors.iron.dark,
     textAlign: 'center',
-    marginBottom: spacing.md,
   },
-  startDescription: {
+  selectionDescription: {
     fontSize: fontSize.md,
     fontFamily: fontFamily.body,
     color: colors.iron.main,
     textAlign: 'center',
     lineHeight: fontSize.md * 1.6,
-    marginBottom: spacing.lg,
+  },
+  cardsContainer: {
+    gap: spacing.xl,
   },
 });

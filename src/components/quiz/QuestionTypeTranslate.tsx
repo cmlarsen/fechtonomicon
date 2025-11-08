@@ -9,6 +9,7 @@ interface QuestionTypeTranslateProps {
   correctIndex: number;
   showFeedback: boolean;
   onSelect: (index: number) => void;
+  isChecked?: boolean;
 }
 
 export const QuestionTypeTranslate: React.FC<QuestionTypeTranslateProps> = ({
@@ -17,6 +18,7 @@ export const QuestionTypeTranslate: React.FC<QuestionTypeTranslateProps> = ({
   correctIndex,
   showFeedback,
   onSelect,
+  isChecked = false,
 }) => {
   return (
     <View style={styles.container}>
@@ -29,6 +31,7 @@ export const QuestionTypeTranslate: React.FC<QuestionTypeTranslateProps> = ({
           correctIndex={correctIndex}
           showFeedback={showFeedback}
           onSelect={onSelect}
+          isChecked={isChecked}
         />
       ))}
     </View>

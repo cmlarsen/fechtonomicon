@@ -9,6 +9,7 @@ interface QuizOptionButtonProps {
   correctIndex: number;
   showFeedback: boolean;
   onSelect: (index: number) => void;
+  isChecked?: boolean;
 }
 
 export const QuizOptionButton: React.FC<QuizOptionButtonProps> = ({
@@ -16,52 +17,73 @@ export const QuizOptionButton: React.FC<QuizOptionButtonProps> = ({
   index,
   selectedIndex,
   correctIndex,
-  showFeedback,
   onSelect,
+  isChecked = false,
 }) => {
+  const isSelected = selectedIndex === index;
+  const isCorrect = index === correctIndex;
+  const isIncorrect = isSelected && !isCorrect;
+
   const getButtonStyle = () => {
-    if (!showFeedback) {
-      return [styles.optionButton, selectedIndex === index && styles.optionButtonSelected];
+    if (!isChecked) {
+      return [styles.optionButton, isSelected && styles.optionButtonSelected];
     }
 
-    if (index === correctIndex) {
+    if (isCorrect && isSelected) {
       return [styles.optionButton, styles.optionButtonCorrect];
     }
 
-    if (index === selectedIndex && index !== correctIndex) {
+    if (isIncorrect) {
       return [styles.optionButton, styles.optionButtonIncorrect];
+    }
+
+    if (isCorrect) {
+      return [styles.optionButton, styles.optionButtonCorrectUnselected];
     }
 
     return styles.optionButton;
   };
 
-  const getTextStyle = () => {
-    if (!showFeedback) {
-      return styles.optionText;
+  const renderIndicator = () => {
+    if (!isChecked) return null;
+
+    if (isCorrect && isSelected) {
+      return (
+        <View style={[styles.indicator, styles.indicatorCorrect]}>
+          <Text style={styles.indicatorIcon}>✓</Text>
+        </View>
+      );
     }
 
-    if (index === correctIndex) {
-      return [styles.optionText, styles.optionTextCorrect];
+    if (isIncorrect) {
+      return (
+        <View style={[styles.indicator, styles.indicatorIncorrect]}>
+          <Text style={styles.indicatorIcon}>✕</Text>
+        </View>
+      );
     }
 
-    if (index === selectedIndex && index !== correctIndex) {
-      return [styles.optionText, styles.optionTextIncorrect];
+    if (isCorrect) {
+      return (
+        <View style={[styles.indicator, styles.indicatorCorrectUnselected]}>
+          <Text style={styles.indicatorIcon}>✓</Text>
+        </View>
+      );
     }
 
-    return styles.optionText;
+    return null;
   };
-
-  const _showCheckmark = showFeedback && index === correctIndex;
 
   return (
     <TouchableOpacity
       style={getButtonStyle()}
       onPress={() => onSelect(index)}
-      disabled={showFeedback || selectedIndex !== null}
+      disabled={isChecked || selectedIndex !== null}
       activeOpacity={0.8}
     >
       <View style={styles.optionContent}>
-        <Text style={getTextStyle()}>{option}</Text>
+        <Text style={styles.optionText}>{option}</Text>
+        {renderIndicator()}
       </View>
     </TouchableOpacity>
   );
@@ -73,8 +95,8 @@ const styles = StyleSheet.create({
     borderRadius: borderRadius.lg,
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.sm,
-    borderWidth: 2,
-    borderColor: colors.gold.main,
+    borderWidth: 3,
+    borderColor: colors.parchment.dark,
     minHeight: 48,
     justifyContent: 'center',
     alignItems: 'stretch',
@@ -88,22 +110,29 @@ const styles = StyleSheet.create({
   },
   optionButtonSelected: {
     borderColor: colors.gold.dark,
-    borderWidth: 2,
-    transform: [{ scale: 1.02 }],
+    borderWidth: 3,
+    backgroundColor: colors.parchment.light,
   },
   optionButtonCorrect: {
-    borderColor: colors.green.light,
-    borderWidth: 2,
+    borderColor: colors.green.main,
+    borderWidth: 3,
+    backgroundColor: colors.parchment.light,
   },
   optionButtonIncorrect: {
-    borderColor: colors.burgundy.light,
-    borderWidth: 2,
+    borderColor: colors.burgundy.main,
+    borderWidth: 3,
+    backgroundColor: colors.parchment.primary,
+  },
+  optionButtonCorrectUnselected: {
+    borderColor: colors.iron.light,
+    borderWidth: 3,
+    backgroundColor: colors.parchment.primary,
   },
   optionContent: {
     flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-    gap: spacing.xs,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: spacing.sm,
     width: '100%',
     padding: spacing.xs,
   },
@@ -114,17 +143,29 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     flex: 1,
   },
-  optionTextCorrect: {
-    color: colors.iron.dark,
-    fontFamily: fontFamily.bodySemiBold,
+  indicator: {
+    width: 28,
+    height: 28,
+    borderRadius: borderRadius.round,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 2,
   },
-  optionTextIncorrect: {
-    color: colors.iron.dark,
+  indicatorCorrect: {
+    backgroundColor: colors.green.main,
+    borderColor: colors.green.dark,
   },
-  checkmark: {
-    fontSize: fontSize.xl,
-    color: colors.green.light,
+  indicatorIncorrect: {
+    backgroundColor: colors.burgundy.main,
+    borderColor: colors.burgundy.dark,
+  },
+  indicatorCorrectUnselected: {
+    backgroundColor: colors.iron.light,
+    borderColor: colors.iron.main,
+  },
+  indicatorIcon: {
+    fontSize: fontSize.md,
     fontFamily: fontFamily.bodyBold,
-    flexShrink: 0,
+    color: colors.parchment.light,
   },
 });

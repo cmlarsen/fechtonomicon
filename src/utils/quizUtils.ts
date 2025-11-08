@@ -67,15 +67,11 @@ export function filterOutTermReferences(
   originalTerm: string,
   englishTerm: string
 ): boolean {
-  const commonWordsToAllow = ['point', 'vor', 'nach'];
   const lowerText = text.toLowerCase();
   const lowerOriginal = originalTerm.toLowerCase();
   const lowerEnglish = englishTerm.toLowerCase();
 
-  return (
-    !lowerText.includes(lowerOriginal || lowerEnglish) && !commonWordsToAllow.includes(lowerText)
-  );
-  // return !lowerText.includes(lowerOriginal) && !lowerText.includes(lowerEnglish);
+  return !lowerText.includes(lowerOriginal) && !lowerText.includes(lowerEnglish);
 }
 
 /**
@@ -240,6 +236,34 @@ export function prepareQuizCards(
     (card) => card.discipline && selectedDisciplines.includes(card.discipline)
   );
   return shuffleArray(filtered);
+}
+
+/**
+ * Prepares a quick quiz with 10 random cards from specified discipline(s)
+ */
+export function prepareQuickQuiz(
+  allCards: Flashcard[],
+  selectedDisciplines: Discipline[]
+): Flashcard[] {
+  const filtered = allCards.filter(
+    (card) => card.discipline && selectedDisciplines.includes(card.discipline)
+  );
+  const shuffled = shuffleArray(filtered);
+  return shuffled.slice(0, Math.min(10, shuffled.length));
+}
+
+/**
+ * Prepares a full quiz with up to 50 cards from specified discipline(s)
+ */
+export function prepareFullQuiz(
+  allCards: Flashcard[],
+  selectedDisciplines: Discipline[]
+): Flashcard[] {
+  const filtered = allCards.filter(
+    (card) => card.discipline && selectedDisciplines.includes(card.discipline)
+  );
+  const shuffled = shuffleArray(filtered);
+  return shuffled.slice(0, Math.min(50, shuffled.length));
 }
 
 /**

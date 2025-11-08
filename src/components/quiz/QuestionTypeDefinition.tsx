@@ -9,6 +9,7 @@ interface QuestionTypeDefinitionProps {
   correctIndex: number;
   showFeedback: boolean;
   onSelect: (index: number) => void;
+  isChecked?: boolean;
 }
 
 export const QuestionTypeDefinition: React.FC<QuestionTypeDefinitionProps> = ({
@@ -17,6 +18,7 @@ export const QuestionTypeDefinition: React.FC<QuestionTypeDefinitionProps> = ({
   correctIndex,
   showFeedback,
   onSelect,
+  isChecked = false,
 }) => {
   return (
     <View style={styles.container}>
@@ -29,6 +31,7 @@ export const QuestionTypeDefinition: React.FC<QuestionTypeDefinitionProps> = ({
           correctIndex={correctIndex}
           showFeedback={showFeedback}
           onSelect={onSelect}
+          isChecked={isChecked}
         />
       ))}
     </View>
