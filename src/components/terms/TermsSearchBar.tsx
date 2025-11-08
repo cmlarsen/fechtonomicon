@@ -57,13 +57,10 @@ export const TermsSearchBar: React.FC<TermsSearchBarProps> = ({
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     paddingHorizontal: spacing.lg,
-    paddingVertical: spacing.md,
+    paddingVertical: spacing.sm,
     backgroundColor: colors.parchment.primary,
-    borderBottomWidth: 1,
-    borderBottomColor: colors.gold.main,
-    borderTopWidth: 1,
-    borderTopColor: colors.gold.main,
   },
   searchInputContainer: {
     flexDirection: 'row',

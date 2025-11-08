@@ -12,6 +12,7 @@ interface LinkedTextProps {
   card?: Flashcard;
   fieldName?: string;
   disableEdit?: boolean;
+  ignoreWords?: string[];
 }
 
 export const LinkedText: React.FC<LinkedTextProps> = ({
@@ -22,6 +23,7 @@ export const LinkedText: React.FC<LinkedTextProps> = ({
   card,
   fieldName,
   disableEdit = false,
+  ignoreWords = [],
 }) => {
   const [showCorrectionModal, setShowCorrectionModal] = useState(false);
   const [correctionData, setCorrectionData] = useState<{
@@ -41,18 +43,16 @@ export const LinkedText: React.FC<LinkedTextProps> = ({
   };
   const termMap = useMemo(() => {
     const map = new Map<string, string>();
+    const ignoreSet = new Set(ignoreWords.map((word) => word.toLowerCase()));
 
     allCards.forEach((card) => {
-      if (card.originalTerm) {
+      if (card.originalTerm && !ignoreSet.has(card.originalTerm.toLowerCase())) {
         map.set(card.originalTerm.toLowerCase(), card.id);
-      }
-      if (card.englishTerm) {
-        map.set(card.englishTerm.toLowerCase(), card.id);
       }
     });
 
     return map;
-  }, [allCards]);
+  }, [allCards, ignoreWords]);
 
   const parseText = useMemo(() => {
     type TextPart = { text: string; isLink: boolean; cardId?: string; key: string };
@@ -135,20 +135,34 @@ export const LinkedText: React.FC<LinkedTextProps> = ({
 
   return (
     <>
-      <Text style={style}>
+      <Text selectable selectionColor={colors.gold.dark} style={style}>
         {parseText.map((part) => {
           if (part.isLink && part.cardId) {
             const cardId = part.cardId;
             return (
-              <Text key={part.key} onPress={() => onTermPress(cardId)} style={styles.link}>
+              <Text
+                key={part.key}
+                selectable
+                onPress={() => onTermPress(cardId)}
+                style={styles.link}
+              >
                 {part.text}
               </Text>
             );
           }
-          return <Text key={part.key}>{part.text}</Text>;
+          return (
+            <Text key={part.key} selectable>
+              {part.text}
+            </Text>
+          );
         })}
         {!disableEdit && card && fieldName && (
-          <Text onPress={handleEdit} style={styles.editIcon}>
+          <Text
+            selectable
+            selectionColor={colors.gold.dark}
+            onPress={handleEdit}
+            style={styles.editIcon}
+          >
             {' ✏️'}
           </Text>
         )}

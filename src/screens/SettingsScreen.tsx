@@ -1,11 +1,20 @@
+import type { StackNavigationProp } from '@react-navigation/stack';
 import { usePostHog } from 'posthog-react-native';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BackgroundPattern } from '../components/BackgroundPattern';
+import { IconButton } from '../components/buttons';
 import { useFlashcardStore } from '../store/flashcardStore';
+import type { RootStackParamList } from '../navigation/AppNavigator';
 import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../theme/tokens';
 import type { Discipline } from '../types/flashcard';
+
+type SettingsScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Settings'>;
+
+interface SettingsScreenProps {
+  navigation: SettingsScreenNavigationProp;
+}
 
 const DISCIPLINES: { id: Discipline; name: string; description: string }[] = [
   {
@@ -20,22 +29,25 @@ const DISCIPLINES: { id: Discipline; name: string; description: string }[] = [
   },
 ];
 
-export const SettingsScreen: React.FC = () => {
+export const SettingsScreen: React.FC<SettingsScreenProps> = ({ navigation }) => {
   const posthog = usePostHog();
   const insets = useSafeAreaInsets();
   const selectedDisciplines = useFlashcardStore((state) => state.selectedDisciplines);
   const toggleDiscipline = useFlashcardStore((state) => state.toggleDiscipline);
 
-  const handleDisciplineSelect = (discipline: Discipline) => {
-    if (!selectedDisciplines.includes(discipline)) {
+  const handleDisciplineSelect = useCallback(
+    (discipline: Discipline) => {
       toggleDiscipline(discipline);
       posthog?.capture('discipline_selected', {
         discipline,
       });
-    }
-  };
+    },
+    [toggleDiscipline, posthog]
+  );
 
-  const appVersion = '1.0.0';
+  const handleClose = useCallback(() => {
+    navigation.goBack();
+  }, [navigation]);
 
   return (
     <BackgroundPattern>
@@ -48,21 +60,17 @@ export const SettingsScreen: React.FC = () => {
           },
         ]}
       >
+        <View style={styles.closeButtonContainer}>
+          <IconButton icon="✕" onPress={handleClose} size="small" variant="gold" />
+        </View>
+
         <ScrollView
           style={styles.scrollView}
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
         >
-          {/* Header */}
-          <View style={styles.header}>
-            <Text style={styles.title}>Settings</Text>
-            <Text style={styles.subtitle}>Customize your study experience</Text>
-          </View>
-
-          {/* Discipline Selection Section */}
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Select Discipline</Text>
-            <Text style={styles.sectionDescription}>Choose which discipline to study</Text>
             {DISCIPLINES.map((discipline) => {
               const isSelected = selectedDisciplines.includes(discipline.id);
 
@@ -97,25 +105,6 @@ export const SettingsScreen: React.FC = () => {
               );
             })}
           </View>
-
-          {/* App Info Section */}
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>About</Text>
-            <View style={styles.infoCard}>
-              <Text style={styles.infoLabel}>App Name</Text>
-              <Text style={styles.infoValue}>Fechtonomicon</Text>
-            </View>
-            <View style={styles.infoCard}>
-              <Text style={styles.infoLabel}>Version</Text>
-              <Text style={styles.infoValue}>{appVersion}</Text>
-            </View>
-            <View style={styles.infoCard}>
-              <Text style={styles.infoLabel}>Description</Text>
-              <Text style={styles.infoValue}>
-                Study Historical European Martial Arts with interactive flashcards
-              </Text>
-            </View>
-          </View>
         </ScrollView>
       </View>
     </BackgroundPattern>
@@ -125,58 +114,44 @@ export const SettingsScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    position: 'relative',
+  },
+  closeButtonContainer: {
+    position: 'absolute',
+    top: spacing.md,
+    right: spacing.md,
+    zIndex: 10,
   },
   scrollView: {
     flex: 1,
   },
   scrollContent: {
-    paddingBottom: spacing.xl,
-  },
-  header: {
-    paddingHorizontal: spacing.lg,
     paddingTop: spacing.xl,
-    paddingBottom: spacing.lg,
-  },
-  title: {
-    fontSize: fontSize.xxl,
-    fontFamily: fontFamily.title,
-    color: colors.text.primary,
-    marginBottom: spacing.xs,
-    lineHeight: fontSize.xxl * 1.2,
-  },
-  subtitle: {
-    fontSize: fontSize.md,
-    fontFamily: fontFamily.body,
-    color: colors.text.secondary,
+    paddingBottom: spacing.xl,
   },
   section: {
     paddingHorizontal: spacing.lg,
-    marginTop: spacing.xl,
+    paddingTop: spacing.xl,
   },
   sectionTitle: {
     fontSize: fontSize.xl,
     fontFamily: fontFamily.titleSemiBold,
-    color: colors.text.primary,
-    marginBottom: spacing.xs,
-  },
-  sectionDescription: {
-    fontSize: fontSize.sm,
-    fontFamily: fontFamily.bodyItalic,
-    color: colors.text.secondary,
+    color: colors.iron.dark,
     marginBottom: spacing.md,
+    textAlign: 'center',
   },
   disciplineCard: {
-    backgroundColor: colors.background.card,
+    backgroundColor: colors.parchment.light,
     borderRadius: borderRadius.lg,
     padding: spacing.lg,
     marginBottom: spacing.md,
     borderWidth: 2,
-    borderColor: colors.border.light,
+    borderColor: colors.gold.main,
     ...shadows.sm,
   },
   disciplineCardSelected: {
-    borderColor: colors.accent.gold,
-    backgroundColor: colors.background.secondary,
+    borderColor: colors.gold.dark,
+    backgroundColor: colors.gold.light,
   },
   disciplineContent: {
     flex: 1,
@@ -190,7 +165,7 @@ const styles = StyleSheet.create({
   disciplineName: {
     fontSize: fontSize.lg,
     fontFamily: fontFamily.bodySemiBold,
-    color: colors.text.primary,
+    color: colors.iron.dark,
     flex: 1,
   },
   disciplineNameSelected: {
@@ -199,11 +174,11 @@ const styles = StyleSheet.create({
   disciplineDescription: {
     fontSize: fontSize.md,
     fontFamily: fontFamily.bodyItalic,
-    color: colors.text.secondary,
+    color: colors.iron.main,
     lineHeight: fontSize.md * 1.4,
   },
   disciplineDescriptionSelected: {
-    color: colors.iron.main,
+    color: colors.iron.dark,
     fontFamily: fontFamily.bodyMediumItalic,
   },
   radioButton: {
@@ -211,37 +186,18 @@ const styles = StyleSheet.create({
     height: 24,
     borderRadius: 12,
     borderWidth: 2,
-    borderColor: colors.border.dark,
+    borderColor: colors.gold.main,
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: spacing.md,
   },
   radioButtonSelected: {
-    borderColor: colors.accent.gold,
+    borderColor: colors.gold.dark,
   },
   radioButtonInner: {
     width: 12,
     height: 12,
     borderRadius: 6,
-    backgroundColor: colors.accent.gold,
-  },
-  infoCard: {
-    backgroundColor: colors.background.card,
-    borderRadius: borderRadius.lg,
-    padding: spacing.md,
-    marginBottom: spacing.sm,
-    borderWidth: 1,
-    borderColor: colors.border.light,
-  },
-  infoLabel: {
-    fontSize: fontSize.sm,
-    fontFamily: fontFamily.bodySemiBold,
-    color: colors.text.secondary,
-    marginBottom: spacing.xs,
-  },
-  infoValue: {
-    fontSize: fontSize.md,
-    fontFamily: fontFamily.body,
-    color: colors.text.primary,
+    backgroundColor: colors.gold.dark,
   },
 });

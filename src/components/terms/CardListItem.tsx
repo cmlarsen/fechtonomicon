@@ -39,12 +39,12 @@ CardListItem.displayName = 'CardListItem';
 
 const styles = StyleSheet.create({
   cardItem: {
-    paddingVertical: spacing.sm,
-    paddingHorizontal: spacing.sm,
+    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.md,
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(201, 171, 106, 0.3)',
     backgroundColor: colors.parchment.primary,
-    minHeight: 44,
+    minHeight: 64,
     justifyContent: 'center',
   },
   cardItemSelected: {
@@ -62,17 +62,17 @@ const styles = StyleSheet.create({
     marginRight: spacing.sm,
   },
   originalTerm: {
-    fontSize: fontSize.sm,
+    fontSize: fontSize.md,
     fontFamily: fontFamily.bodySemiBold,
     color: colors.text.primary,
-    marginBottom: spacing.xs / 2,
+    marginBottom: spacing.xs,
   },
   originalTermSelected: {
     color: colors.iron.dark,
     fontFamily: fontFamily.bodyBold,
   },
   englishTerm: {
-    fontSize: fontSize.xs,
+    fontSize: fontSize.sm,
     fontFamily: fontFamily.bodyItalic,
     color: colors.text.secondary,
   },

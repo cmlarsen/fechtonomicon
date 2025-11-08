@@ -11,19 +11,17 @@ import { CardScreen } from '../screens/CardScreen';
 import { QuizScreen } from '../screens/QuizScreen';
 import { SearchScreen } from '../screens/SearchScreen';
 import { SettingsScreen } from '../screens/SettingsScreen';
-import { TermDetailScreen } from '../screens/TermDetailScreen';
-import { blacksmithingIcon, swordsIcon, tomeIcon } from '../utils/tabIcons';
+import { swordsIcon, tomeIcon } from '../utils/tabIcons';
 
 export type RootStackParamList = {
   Main: { screen: keyof RootTabParamList; params?: { cardId?: string } } | undefined;
-  FlashcardDetail: { cardId: string };
   Search: undefined;
+  Settings: undefined;
 };
 
 export type RootTabParamList = {
   Terms: { cardId?: string } | undefined;
   Quiz: undefined;
-  Settings: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -41,12 +39,6 @@ const linking = {
               cardId: (cardId: string) => cardId,
             },
           },
-        },
-      },
-      FlashcardDetail: {
-        path: 'card/:cardId/detail',
-        parse: {
-          cardId: (cardId: string) => cardId,
         },
       },
     },
@@ -75,16 +67,6 @@ const BottomTabNavigator = () => {
         options={{
           tabBarIcon: ({ color }) => <TabIcon IconComponent={swordsIcon} color={color} size={24} />,
           tabBarLabel: 'Quiz',
-        }}
-      />
-      <Tab.Screen
-        name="Settings"
-        component={SettingsScreen}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <TabIcon IconComponent={blacksmithingIcon} color={color} size={24} />
-          ),
-          tabBarLabel: 'Settings',
         }}
       />
     </Tab.Navigator>
@@ -135,8 +117,8 @@ export const AppNavigator: React.FC = () => {
           >
             <Stack.Screen name="Main" component={BottomTabNavigator} />
             <Stack.Screen
-              name="FlashcardDetail"
-              component={TermDetailScreen}
+              name="Search"
+              component={SearchScreen}
               options={{
                 presentation: 'modal',
                 gestureEnabled: true,
@@ -145,8 +127,8 @@ export const AppNavigator: React.FC = () => {
               }}
             />
             <Stack.Screen
-              name="Search"
-              component={SearchScreen}
+              name="Settings"
+              component={SettingsScreen}
               options={{
                 presentation: 'modal',
                 gestureEnabled: true,
