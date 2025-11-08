@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     padding: spacing.xs,
   },
   optionText: {
-    fontSize: fontSize.sm,
+    fontSize: fontSize.md,
     fontFamily: fontFamily.bodyMedium,
     color: colors.iron.dark,
     textAlign: 'left',

@@ -19,20 +19,10 @@ export const QuizQuestionCard: React.FC<QuizQuestionCardProps> = ({ card, questi
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.parchment.light,
-    borderRadius: 24,
-    padding: spacing.md,
-    borderWidth: 3,
-    borderColor: colors.gold.main,
     alignItems: 'center',
-    shadowColor: colors.gold.dark,
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.25,
-    shadowRadius: 12,
-    elevation: 8,
   },
   originalTerm: {
-    fontSize: fontSize.xl,
+    fontSize: fontSize.xxxl,
     fontFamily: fontFamily.title,
     color: colors.iron.dark,
     marginBottom: spacing.xs,
@@ -43,7 +33,8 @@ const styles = StyleSheet.create({
   },
   questionText: {
     fontSize: fontSize.md,
-    fontFamily: fontFamily.bodyMedium,
+    fontFamily: fontFamily.bodyBoldItalic,
+
     color: colors.iron.main,
     textAlign: 'center',
     lineHeight: fontSize.md * 1.2,

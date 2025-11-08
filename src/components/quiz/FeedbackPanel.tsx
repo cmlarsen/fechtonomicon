@@ -1,7 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import { Animated, StyleSheet, Text, View } from 'react-native';
+import {
+  animation,
+  borderRadius,
+  colors,
+  fontFamily,
+  fontSize,
+  shadows,
+  spacing,
+} from '../../theme/tokens';
 import { PrimaryButton, SecondaryButton } from '../buttons';
-import { animation, borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../../theme/tokens';
 
 interface FeedbackPanelProps {
   visible: boolean;
@@ -38,7 +46,7 @@ export const FeedbackPanel: React.FC<FeedbackPanelProps> = ({ visible, isCorrect
 
   return (
     <>
-      <Animated.View style={[styles.backdrop, { opacity: opacityAnim }]} />
+      {/* <Animated.View style={[styles.backdrop, { opacity: opacityAnim }]} /> */}
       <Animated.View
         style={[
           styles.panel,
@@ -55,14 +63,14 @@ export const FeedbackPanel: React.FC<FeedbackPanelProps> = ({ visible, isCorrect
             <PrimaryButton
               title="Continue"
               onPress={onContinue}
-              size="large"
+              size="medium"
               style={styles.continueButton}
             />
           ) : (
             <SecondaryButton
               title="Continue"
               onPress={onContinue}
-              size="large"
+              size="medium"
               variant="burgundy"
               style={styles.continueButton}
             />

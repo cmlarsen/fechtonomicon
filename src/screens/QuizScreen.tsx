@@ -283,14 +283,16 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ navigation }) => {
     return (
       <Modal visible={modalVisible} animationType="slide" presentationStyle="pageSheet">
         <BackgroundPattern>
-          <View style={[styles.modalContainer, { paddingTop: insets.top }]}>
+          <View style={[styles.modalContainer]}>
             <View style={styles.header}>
+              <QuizExitButton onPress={handleExit} />
+            </View>
+            <View style={styles.progressBarContainer}>
               <QuizProgressBar
                 current={score.total + 1}
                 total={quizCards.length}
                 correct={score.correct}
               />
-              <QuizExitButton onPress={handleExit} />
             </View>
 
             <ScrollView
@@ -344,7 +346,7 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ navigation }) => {
                 <PrimaryButton
                   title="Check"
                   onPress={handleCheck}
-                  size="large"
+                  size="medium"
                   disabled={selectedAnswer === null}
                 />
               </Animated.View>
@@ -363,10 +365,7 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ navigation }) => {
 
   return (
     <BackgroundPattern>
-      <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
-        <View style={styles.header}>
-          <QuizExitButton onPress={handleExit} />
-        </View>
+      <View style={[styles.container, { paddingTop: insets.top }]}>
         <ScrollView
           style={styles.selectionScrollView}
           contentContainerStyle={styles.selectionContent}
@@ -374,9 +373,7 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ navigation }) => {
         >
           <View style={styles.selectionContainer}>
             <Text style={styles.selectionTitle}>Choose Your Challenge</Text>
-            <Text style={styles.selectionDescription}>
-              Select a discipline and quiz type to test your knowledge of HEMA terms and concepts.
-            </Text>
+
             <View style={styles.cardsContainer}>
               <QuizSelectionCard
                 discipline="italian-longsword"
@@ -408,10 +405,9 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     paddingHorizontal: spacing.lg,
     paddingTop: spacing.md,
-    paddingBottom: spacing.md,
   },
   scrollView: {
     flex: 1,
@@ -447,7 +443,7 @@ const styles = StyleSheet.create({
   },
   selectionContent: {
     flexGrow: 1,
-    paddingHorizontal: spacing.xl,
+    paddingHorizontal: spacing.md,
     paddingBottom: spacing.xxl,
   },
   selectionContainer: {
@@ -457,7 +453,7 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.xl,
   },
   selectionTitle: {
-    fontSize: fontSize.xxxl,
+    fontSize: fontSize.xxl,
     fontFamily: fontFamily.title,
     color: colors.iron.dark,
     textAlign: 'center',
@@ -471,5 +467,13 @@ const styles = StyleSheet.create({
   },
   cardsContainer: {
     gap: spacing.xl,
+  },
+  progressBarContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: spacing.lg,
+
+    paddingBottom: spacing.md,
   },
 });

@@ -27,12 +27,7 @@ export const QuizProgressBar: React.FC<QuizProgressBarProps> = ({ current, total
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
-        <Text style={styles.scoreText}>
-          {correct} / {current}
-        </Text>
-        <Text style={styles.progressText}>
-          Question {current} of {total}
-        </Text>
+        <Text style={styles.scoreText}>Score: {Math.round((correct / current) * 100)}%</Text>
       </View>
       <View style={styles.barContainer}>
         <Animated.View style={[styles.progressBar, { width: progressWidth }]} />
@@ -48,13 +43,13 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     marginBottom: spacing.xs,
   },
   scoreText: {
-    fontSize: fontSize.md,
-    fontFamily: fontFamily.bodySemiBold,
+    fontSize: fontSize.xl,
+    fontFamily: fontFamily.titleBold,
     color: colors.iron.dark,
   },
   progressText: {
