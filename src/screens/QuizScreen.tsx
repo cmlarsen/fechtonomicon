@@ -108,14 +108,14 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ navigation }) => {
 
   const handleAnswerSelect = useCallback(
     (index: number) => {
-      if (isChecked || selectedAnswer !== null) return;
+      if (isChecked) return;
       setSelectedAnswer(index);
     },
-    [isChecked, selectedAnswer]
+    [isChecked]
   );
 
   const handleCheck = useCallback(() => {
-    if (selectedAnswer === null || !currentQuestion || isChecked) return;
+    if (selectedAnswer === null || !currentQuestion) return;
 
     setIsChecked(true);
     const correct = selectedAnswer === currentQuestion.correctIndex;
@@ -132,7 +132,7 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ navigation }) => {
       questionType: currentQuestion.type,
       cardId: currentQuestion.card.id,
     });
-  }, [selectedAnswer, currentQuestion, isChecked, score, posthog]);
+  }, [selectedAnswer, currentQuestion, score, posthog]);
 
   const handleContinue = useCallback(() => {
     setShowFeedbackPanel(false);

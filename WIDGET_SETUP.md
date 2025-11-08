@@ -12,7 +12,7 @@ This app includes an iOS widget that displays a random flashcard. Due to Expo/Re
 ### 1. Open the Project in Xcode
 
 ```bash
-open ios/hemaflashcardsapp.xcworkspace
+open ios/fechtonomicon.xcworkspace
 ```
 
 ### 2. Add Widget Extension Target
@@ -21,7 +21,7 @@ open ios/hemaflashcardsapp.xcworkspace
 2. Click the "+" button at the bottom of the Targets list
 3. Select "Widget Extension"
 4. Name it "FlashcardWidget"
-5. Set the Product Bundle Identifier to: `com.hemaflashcards.app.FlashcardWidget`
+5. Set the Product Bundle Identifier to: `com.yetanothersidequest.fechtonomicon.FlashcardWidget`
 6. Uncheck "Include Configuration Intent"
 7. Click "Finish"
 8. When asked "Activate FlashcardWidget scheme?", click "Activate"
@@ -36,11 +36,11 @@ open ios/hemaflashcardsapp.xcworkspace
 
 #### For Main App Target:
 
-1. Select the main app target (hemaflashcardsapp)
+1. Select the main app target (fechtonomicon)
 2. Go to "Signing & Capabilities"
 3. Click "+ Capability"
 4. Add "App Groups"
-5. Click "+" and add: `group.com.hemaflashcards.shared`
+5. Click "+" and add: `group.com.yetanothersidequest.fechtonomicon.shared`
 
 #### For Widget Target:
 
@@ -48,14 +48,14 @@ open ios/hemaflashcardsapp.xcworkspace
 2. Go to "Signing & Capabilities"
 3. Click "+ Capability"
 4. Add "App Groups"
-5. Click "+" and add: `group.com.hemaflashcards.shared` (same as main app)
+5. Click "+" and add: `group.com.yetanothersidequest.fechtonomicon.shared` (same as main app)
 
 ### 5. Configure Bridging Header
 
-1. Select the main app target (hemaflashcardsapp)
+1. Select the main app target (fechtonomicon)
 2. Go to Build Settings
 3. Search for "Objective-C Bridging Header"
-4. Set the value to: `hemaflashcardsapp/hemaflashcardsapp-Bridging-Header.h`
+4. Set the value to: `fechtonomicon/fechtonomicon-Bridging-Header.h`
 
 ### 6. Add Swift Files to Build
 

@@ -27,7 +27,7 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>com.hemaflashcards.app</string>
+          <string>com.yetanothersidequest.fechtonomicon</string>
         </array>
       </dict>
     </array>

@@ -78,7 +78,7 @@ export const QuizOptionButton: React.FC<QuizOptionButtonProps> = ({
     <TouchableOpacity
       style={getButtonStyle()}
       onPress={() => onSelect(index)}
-      disabled={isChecked || selectedIndex !== null}
+      disabled={isChecked}
       activeOpacity={0.8}
     >
       <View style={styles.optionContent}>

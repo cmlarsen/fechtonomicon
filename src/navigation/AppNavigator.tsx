@@ -28,7 +28,7 @@ const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
 const linking = {
-  prefixes: ['hemaflashcards://', 'https://hemaflashcards.app', 'http://localhost:8081'],
+  prefixes: ['fechtonomicon://', 'https://hemaflashcards.app', 'http://localhost:8081'],
   config: {
     screens: {
       Main: {

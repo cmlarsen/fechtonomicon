@@ -77,7 +77,7 @@ describe('Quiz Components', () => {
       });
     });
 
-    it('should prevent selection after an answer is selected', () => {
+    it('should allow changing selection before checking answer', () => {
       const { getByText } = render(
         <QuestionTypeTranslate
           options={options}
@@ -85,6 +85,27 @@ describe('Quiz Components', () => {
           correctIndex={0}
           showFeedback={false}
           onSelect={mockOnSelect}
+          isChecked={false}
+        />
+      );
+
+      const optionText = getByText(options[0]);
+      const touchable = optionText.parent;
+      if (touchable) {
+        fireEvent.press(touchable);
+      }
+      expect(mockOnSelect).toHaveBeenCalledWith(0);
+    });
+
+    it('should prevent selection after answer is checked', () => {
+      const { getByText } = render(
+        <QuestionTypeTranslate
+          options={options}
+          selectedIndex={1}
+          correctIndex={0}
+          showFeedback={true}
+          onSelect={mockOnSelect}
+          isChecked={true}
         />
       );
 
@@ -136,7 +157,7 @@ describe('Quiz Components', () => {
       });
     });
 
-    it('should prevent selection after an answer is selected', () => {
+    it('should allow changing selection before checking answer', () => {
       render(
         <QuestionTypeDefinition
           options={options}
@@ -144,6 +165,27 @@ describe('Quiz Components', () => {
           correctIndex={0}
           showFeedback={false}
           onSelect={mockOnSelect}
+          isChecked={false}
+        />
+      );
+
+      const optionText = screen.getByText(options[0]);
+      const touchable = optionText.parent;
+      if (touchable) {
+        fireEvent.press(touchable);
+      }
+      expect(mockOnSelect).toHaveBeenCalledWith(0);
+    });
+
+    it('should prevent selection after answer is checked', () => {
+      render(
+        <QuestionTypeDefinition
+          options={options}
+          selectedIndex={1}
+          correctIndex={0}
+          showFeedback={true}
+          onSelect={mockOnSelect}
+          isChecked={true}
         />
       );
 
@@ -180,7 +222,7 @@ describe('Quiz Components', () => {
       });
     });
 
-    it('should prevent selection after an answer is selected', () => {
+    it('should allow changing selection before checking answer', () => {
       render(
         <QuestionTypeApplication
           options={options}
@@ -188,6 +230,27 @@ describe('Quiz Components', () => {
           correctIndex={0}
           showFeedback={false}
           onSelect={mockOnSelect}
+          isChecked={false}
+        />
+      );
+
+      const optionText = screen.getByText(options[0]);
+      const touchable = optionText.parent;
+      if (touchable) {
+        fireEvent.press(touchable);
+      }
+      expect(mockOnSelect).toHaveBeenCalledWith(0);
+    });
+
+    it('should prevent selection after answer is checked', () => {
+      render(
+        <QuestionTypeApplication
+          options={options}
+          selectedIndex={1}
+          correctIndex={0}
+          showFeedback={true}
+          onSelect={mockOnSelect}
+          isChecked={true}
         />
       );
 
