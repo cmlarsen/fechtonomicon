@@ -9,11 +9,33 @@ interface EditRequest {
   term: string;
 }
 
+/**
+ * Data set registry for the Netlify function
+ * Keep this in sync with src/config/dataRegistry.ts
+ *
+ * To add a new data set:
+ * 1. Add an entry here with the idPrefix and dataFile path
+ * 2. The system will automatically use it
+ */
+const DATA_SETS = [
+  {
+    idPrefix: 'italian.long.',
+    dataFile: 'assets/data/italian-longsword-data.json',
+  },
+  {
+    idPrefix: 'meyer1570.long.',
+    dataFile: 'assets/data/german-longsword-data.json',
+  },
+  // Add more data sets here...
+  // {
+  //   idPrefix: 'vadi.long.',
+  //   dataFile: 'assets/data/vadi-longsword-data.json',
+  // },
+] as const;
+
 const getDataFilePath = (cardId: string): string => {
-  if (cardId.startsWith('italian.long.')) {
-    return 'assets/data/italian-longsword-data.json';
-  }
-  return 'assets/data/german-longsword-data.json';
+  const dataSet = DATA_SETS.find((ds) => cardId.startsWith(ds.idPrefix));
+  return dataSet?.dataFile ?? 'assets/data/german-longsword-data.json'; // fallback
 };
 
 const updateCardField = (

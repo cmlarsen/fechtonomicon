@@ -1,3 +1,8 @@
+/**
+ * This file now derives discipline information from the central data registry.
+ * To add a new discipline, update src/config/dataRegistry.ts instead.
+ */
+import { getAllDisciplines } from '../config/dataRegistry';
 import type { Discipline } from '../types/term';
 
 export interface DisciplineInfo {
@@ -6,15 +11,8 @@ export interface DisciplineInfo {
   description: string;
 }
 
-export const DISCIPLINES: DisciplineInfo[] = [
-  {
-    id: 'italian-longsword',
-    name: 'Italian Longsword',
-    description: "Fiore dei Liberi and Filippo Vadi's Italian longsword systems",
-  },
-  {
-    id: 'german-longsword',
-    name: 'German Longsword',
-    description: "Joachim Meyer's German longsword system",
-  },
-];
+/**
+ * All available disciplines, derived from the data registry.
+ * This ensures discipline info stays in sync with available data sets.
+ */
+export const DISCIPLINES: DisciplineInfo[] = getAllDisciplines();

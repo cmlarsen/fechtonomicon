@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import germanData from '../../assets/data/german-longsword-data.json';
 import italianData from '../../assets/data/italian-longsword-data.json';
+import { DATA_REGISTRY, getDisciplineFromRecordId } from '../config/dataRegistry';
 import { useTermStore } from '../store/termStore';
 import type { Term } from '../types/term';
-import { getDisciplineFromCardId } from '../utils/disciplineMapper';
 
 interface DataFileRecord {
   id: string;
@@ -22,6 +22,17 @@ interface DataFile {
   records: DataFileRecord[];
 }
 
+/**
+ * Map of data file names to their imported data
+ * When adding a new data set, add the import at the top and include it here
+ */
+const DATA_FILE_MAP: Record<string, DataFile> = {
+  'italian-longsword-data.json': italianData as DataFile,
+  'german-longsword-data.json': germanData as DataFile,
+  // Add new data imports here...
+  // 'vadi-longsword-data.json': vadiData as DataFile,
+};
+
 export const useCardLoader = () => {
   const loadCards = useTermStore((state) => state.loadCards);
   const [isLoading, setIsLoading] = useState(true);
@@ -33,15 +44,23 @@ export const useCardLoader = () => {
     setIsLoading(true);
 
     try {
-      const italianRecords = (italianData as DataFile).records;
-      const germanRecords = (germanData as DataFile).records;
-      const allRecords = [...italianRecords, ...germanRecords];
+      // Load all records from all registered data sets
+      const allRecords: DataFileRecord[] = [];
+
+      for (const dataSetConfig of DATA_REGISTRY) {
+        const dataFile = DATA_FILE_MAP[dataSetConfig.dataFile];
+        if (dataFile) {
+          allRecords.push(...dataFile.records);
+        } else {
+          console.warn(`Data file not found: ${dataSetConfig.dataFile}`);
+        }
+      }
 
       const cardsWithDiscipline: Term[] = allRecords.map((card) => ({
         ...card,
         weapon: card.weapon || 'longsword',
         briefDescription: card.briefDescription || '',
-        discipline: getDisciplineFromCardId(card.id),
+        discipline: getDisciplineFromRecordId(card.id),
       }));
 
       loadCards(cardsWithDiscipline);

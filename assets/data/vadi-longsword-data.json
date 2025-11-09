@@ -1,0 +1,717 @@
+{
+  "meta": {
+    "title": "Vadi Longsword"
+  },
+  "records": [
+    {
+      "id": "italian.long.posta_di_donna",
+      "originalTerm": "Posta di Donna",
+      "englishTerm": "Guard of the Lady",
+      "category": "guard",
+      "briefDescription": "The highest-regarded guard in Vadi's system, held with the sword vertical over the lead foot.",
+      "fullDescription": "Posta di Donna is described by its practitioner as 'the lady, without any doubt, of all the guards, and I fear none.' This versatile guard positions the sword vertically over the lead foot with a narrower stance than Fiore's version, with the point held more forward. The guard hides the sword's length from opponents while enabling powerful attacks to the opposite side. Vadi's version differs radically from Fiore dei Liberi's guard of the same name, representing a significant evolution in Italian longsword technique.",
+      "briefApplication": "Use as a primary ready position that conceals sword length while maintaining offensive and defensive capability.",
+      "fullApplication": "Posta di Donna serves as the cornerstone guard of Vadi's system, providing excellent versatility for both offense and defense. Its vertical sword position makes it difficult for opponents to judge distance and timing. From this guard, you can deliver powerful attacks to the opposite side with minimal telegraphing. The narrower stance compared to earlier Italian systems allows for quicker footwork transitions. Use this guard when you want to maintain a strong defensive posture while keeping offensive options open, particularly when facing uncertain opponent actions. The guard's high regard in Vadi's system makes it an essential position to master for any practitioner of his longsword method."
+    },
+    {
+      "id": "italian.long.posta_di_falcon",
+      "originalTerm": "Posta di Falcon",
+      "englishTerm": "Falcon Guard",
+      "category": "guard",
+      "briefDescription": "A high guard unique to Vadi's system with the point held aloft like a predatory bird.",
+      "fullDescription": "Posta di Falcon represents Vadi's unique contribution to Italian longsword guards, absent from earlier systems like Fiore dei Liberi's. This high position holds the point aloft, with the practitioner resembling 'the Falcon' in their movements. The elevated sword position provides excellent leverage for both parrying incoming attacks and beating down opponent weapons. The guard's bird-of-prey imagery reflects its aggressive potential and commanding position over the combat space.",
+      "briefApplication": "Use for beating down attacks from above and controlling the high line against opponents.",
+      "fullApplication": "Posta di Falcon excels when you need to control the high line and threaten descending attacks. The elevated position allows you to parry incoming strikes with gravity assistance and beat down opponent guards effectively. This guard works particularly well against opponents who favor low guards or who commit to attacks that expose their upper body. The falcon imagery isn't merely poetic—like the bird striking from above, this guard enables swift, decisive descending actions. Use it when you want to establish dominance in the high line or when facing opponents with weak upper defenses. The guard's unique presence in Vadi's system suggests it addressed tactical needs he identified in his era's combat context."
+    },
+    {
+      "id": "italian.long.porta_di_ferro_forte",
+      "originalTerm": "Porta di Ferro Forte",
+      "englishTerm": "Strong Iron Gate",
+      "category": "guard",
+      "briefDescription": "A low guard positioning the sword over the lead leg with the handle near the right thigh.",
+      "fullDescription": "Porta di Ferro Forte is one of several iron gate variations in Vadi's system. This low guard positions the sword over the lead leg with the handle resting near the right thigh and blade angled downward. The 'strong' designation indicates this version's emphasis on solid defensive positioning. Iron gate guards excel at defending against both cuts and thrusts while preparing powerful rising counterattacks. The low position invites opponents to attack high, creating opportunities for the defender to exploit.",
+      "briefApplication": "Use to defend low while preparing rising counterattacks, especially against aggressive opponents.",
+      "fullApplication": "Porta di Ferro Forte provides exceptional defensive coverage while baiting opponents into attacking your apparently open high lines. When opponents commit to high attacks, you can parry with rising actions that naturally flow into powerful counterstrikes. The guard's low position also protects against low attacks and thrusts to the legs while maintaining readiness to thrust upward into the opponent's face or chest. Use this guard when facing aggressive opponents who favor descending cuts, as it allows you to receive their attacks with structural advantage and immediately counter. The 'strong' nature of this variant suggests maintaining firm structure and weight commitment, making it difficult for opponents to displace your sword without significant effort."
+    },
+    {
+      "id": "italian.long.porta_di_ferro_piena_terrena",
+      "originalTerm": "Porta di Ferro Piena Terrena",
+      "englishTerm": "Flat Ground Iron Gate",
+      "category": "guard",
+      "briefDescription": "A low iron gate variant positioned close to the ground.",
+      "fullDescription": "Porta di Ferro Piena Terrena represents a particularly low variant of the iron gate family of guards. The term 'piena terrena' (flat ground) indicates the sword is held very close to the ground level, even lower than the standard iron gate positions. Like other iron gate guards, the sword rests over the lead leg with blade angled downward, but this version emphasizes maximum lowness. This creates an extremely defensive posture that forces opponents to commit to high attacks or risk attacking into a well-protected low line.",
+      "briefApplication": "Use when maximum defensive coverage is needed, particularly against multiple attack angles.",
+      "fullApplication": "Porta di Ferro Piena Terrena serves best in situations requiring maximum defensive security. The extremely low position makes it nearly impossible for opponents to attack your lower openings while forcing them to telegraph high attacks. This guard works exceptionally well when you're uncertain of opponent intentions and need time to observe and analyze their patterns. The low position also fatigues opponents less experienced with proper guard structure, as they may feel pressured to attack immediately against what appears to be a passive position. However, you must maintain readiness to respond with rising parries or thrusts, as the low position requires more movement to defend high attacks compared to middle guards. Use this when playing defensively or when you want to frustrate aggressive opponents into making hasty, exploitable attacks."
+    },
+    {
+      "id": "italian.long.posta_di_vera_finestra",
+      "originalTerm": "Posta di Vera Finestra",
+      "englishTerm": "Guard of the True Window",
+      "category": "guard",
+      "briefDescription": "A guard with the weak leg forward, sword over the strong side with crossed wrists.",
+      "fullDescription": "Posta di Vera Finestra holds the weak leg forward with the sword positioned over the strong side, point slightly raised, and wrists crossed in a distinctive configuration. Vadi describes this guard as 'crimson at thrusting from guard,' indicating its particular excellence for launching thrusts. The 'window' terminology suggests the opening created for thrusting attacks, while 'true' distinguishes it from false or deceptive variants. The crossed wrist position creates mechanical advantage for delivering powerful, accurate thrusts while maintaining defensive coverage.",
+      "briefApplication": "Use primarily for delivering powerful thrusts while maintaining defensive structure.",
+      "fullApplication": "Posta di Vera Finestra excels when thrust offense is your primary tactical goal. The crossed wrist configuration and forward weak leg create optimal biomechanics for delivering thrusts with maximum power and control. The guard's structure naturally conceals your thrust preparation while maintaining defensive coverage of your centerline. Use this guard when you've identified thrust opportunities or when facing opponents with weak thrust defense. The 'crimson' description suggests the lethal effectiveness of thrusts from this position—properly delivered, they can end exchanges decisively. The guard also works well in combination with feints, as the crossed wrist position allows quick transitions to cuts if opponents overcommit to defending thrusts. Master this guard to develop a strong thrusting game within Vadi's system."
+    },
+    {
+      "id": "italian.long.posta_sagitaria",
+      "originalTerm": "Posta Sagitaria",
+      "englishTerm": "Archer's Guard",
+      "category": "guard",
+      "briefDescription": "A guard adapted from armored combat, held on the right side with threatening intent.",
+      "fullDescription": "Posta Sagitaria adapts Fiore dei Liberi's armored sword guard to Vadi's narrower unarmored stance. Held on the right side, Vadi describes it with 'much malice in its reign,' suggesting aggressive and threatening potential. The 'archer' terminology may reference the drawn bow position or the precision and deadliness associated with archery. This guard maintains offensive threat while providing defensive coverage, embodying the principle that guards should simultaneously attack and defend.",
+      "briefApplication": "Use for aggressive offense from the right side with deceptive and malicious intent.",
+      "fullApplication": "Posta Sagitaria serves practitioners who favor aggressive, forward-pressure tactics. The 'much malice' description indicates this guard's primary purpose is threatening offense rather than passive defense. From this position, you can launch attacks with minimal preparation while maintaining enough defensive structure to parry incoming strikes. The archer reference suggests precision—like an archer drawing and releasing in one smooth motion, attacks from this guard should be coordinated and decisive. Use this guard when you want to pressure opponents psychologically with aggressive posture while maintaining tactical flexibility. The adaptation from armored to unarmored context shows Vadi's systematic approach to transferring principles across combat contexts. This guard works particularly well against defensive opponents who need prodding to commit to actions you can exploit."
+    },
+    {
+      "id": "italian.long.posta_longa",
+      "originalTerm": "Posta Longa",
+      "englishTerm": "Long Guard",
+      "category": "guard",
+      "briefDescription": "An extended guard with the blade fully directed toward the opponent's face.",
+      "fullDescription": "Posta Longa extends the blade fully toward the adversary with the point directed at the opponent's face. This 'long' guard emphasizes maintaining constant presence in the opponent's line of attack, making it difficult for them to initiate offense without first addressing your point. The extended nature creates maximum threat distance while maintaining defensive capability through point presence. This guard embodies Vadi's principle that 'the point should always face the opponent, especially the face,' making it a fundamental position in his system.",
+      "briefApplication": "Use to maintain constant threat with your point while controlling the centerline.",
+      "fullApplication": "Posta Longa serves as an excellent controlling guard that forces opponents to deal with your point before they can attack effectively. The extended position means any opponent movement toward you immediately brings them into threat range, requiring them to parry or evade your point before launching their own offense. This guard works particularly well against aggressive opponents, as it disrupts their timing and forces them to solve the problem of your threatening point. Use Posta Longa when you want to fight cautiously and force opponents to commit first, or when you need to control distance and prevent opponents from closing freely. The guard also excels in measure control—by extending and withdrawing while maintaining the point online, you can manipulate distance to your advantage. Master this guard to develop strong defensive counterattacking tactics within Vadi's framework."
+    },
+    {
+      "id": "italian.long.posta_breve",
+      "originalTerm": "Posta Breve",
+      "englishTerm": "Short Guard",
+      "category": "guard",
+      "briefDescription": "A more compact guard that maintains point presence despite shorter extension.",
+      "fullDescription": "Posta Breve maintains the point directed at the opponent's face but in a more compact configuration than Posta Longa. Despite the 'short' designation, this guard covers similar range through different body mechanics and positioning. The more compact nature allows for quicker transitions and less commitment than the long guard while maintaining the critical principle of keeping the point in the opponent's line. This guard represents Vadi's emphasis on efficiency and economy of motion.",
+      "briefApplication": "Use when you need point threat with more mobility and quicker transition potential.",
+      "fullApplication": "Posta Breve provides the point control of Posta Longa but with enhanced mobility and transition speed. The more compact position allows you to change guards or respond to opponent actions more quickly than from the extended long guard. Use this guard when facing unpredictable opponents or when you need to maintain defensive flexibility while keeping your point threatening. The shorter extension also reduces fatigue compared to holding full extension, making it suitable for longer exchanges. Despite covering similar range, the different mechanics mean you can surprise opponents who expect one guard by transitioning to the other. This guard works well in combination tactics—establish control with Posta Longa, then transition to Breve for quicker counterattack options. The distinction between these guards shows Vadi's sophisticated understanding of subtle positional advantages."
+    },
+    {
+      "id": "italian.long.dente_di_cinghiaro",
+      "originalTerm": "Dente di Cinghiaro",
+      "englishTerm": "Boar's Tooth",
+      "category": "guard",
+      "briefDescription": "An aggressive low guard named after the wild boar, with point threatening toward the opponent.",
+      "fullDescription": "Dente di Cinghiaro takes its name from the wild boar that 'lowers his face and always covers against the blows.' This aggressive low guard positions the point toward the opponent in a threatening thrust-ready stance. The boar imagery evokes the animal's dangerous nature when cornered or provoked—defensive yet capable of devastating counterattacks. Like the boar's tusks, this guard's point creates constant threat while the low position provides defensive coverage. Variants include Dente di Cinghiaro di Fora (Outside Boar's Tooth).",
+      "briefApplication": "Use for aggressive thrust offense from a low position while maintaining defensive coverage.",
+      "fullApplication": "Dente di Cinghiaro combines the defensive advantages of low guards with immediate thrust threat. The boar imagery is tactically instructive—like the dangerous animal, you appear defensive but can unleash sudden, devastating attacks. The point directed at the opponent creates constant psychological pressure while the low body position protects against incoming strikes. Use this guard when you want to bait opponents into attacking while maintaining a loaded thrust ready to launch. The guard works exceptionally well against opponents who favor high attacks, as you can thrust under their strikes while their weapons are committed elsewhere. The 'tooth' terminology emphasizes the piercing, penetrating nature of attacks from this position. Master this guard to develop aggressive counterattacking tactics that turn defensive positions into offensive opportunities."
+    },
+    {
+      "id": "italian.long.posta_frontale",
+      "originalTerm": "Posta Frontale",
+      "englishTerm": "Frontal Guard",
+      "category": "guard",
+      "briefDescription": "A high guard held over the head in a frontal position.",
+      "fullDescription": "Posta Frontale occupies a high position over the head, with the sword held in a frontal orientation. This guard provides excellent coverage of the high line while maintaining readiness for descending attacks. The frontal nature suggests direct, straightforward tactical application rather than deceptive or oblique approaches. This guard shares the high-line territory with Corona but emphasizes different tactical applications and body mechanics.",
+      "briefApplication": "Use to control the high line and threaten descending attacks with direct, frontal orientation.",
+      "fullApplication": "Posta Frontale excels when you need straightforward high-line control without the complexity of binding-focused guards like Corona. The frontal orientation makes your intentions clearer than more deceptive guards, which can be advantageous when you want opponents to respect your position and act cautiously. Use this guard when facing opponents who favor low guards or when you want to threaten descending strikes that can split through their defenses. The high position allows you to parry with gravity assistance and deliver powerful downward cuts. This guard works well in combination with footwork—maintain the frontal position while circling to create angles for your descending attacks. The straightforward nature makes it easier to teach and learn than more subtle guards, making it valuable for developing fundamental high-guard tactics."
+    },
+    {
+      "id": "italian.long.corona",
+      "originalTerm": "Corona",
+      "englishTerm": "Crown",
+      "category": "guard",
+      "briefDescription": "A high crown-like guard over the head that excels at binding.",
+      "fullDescription": "Corona holds the sword high over the head in a crown-like configuration, with its practitioner claiming 'I am master in bindings I am skilled.' This guard emphasizes binding and controlling opponent weapons rather than pure striking offense. The crown imagery suggests both the elevated position and the commanding nature of the guard—like a crown commands respect, this guard commands the high line. The guard's structure facilitates catching and controlling opponent weapons through binding actions.",
+      "briefApplication": "Use primarily for binding opponent weapons and controlling engagements through high-line dominance.",
+      "fullApplication": "Corona serves practitioners who excel at binding tactics and want to control opponent weapons rather than simply parry them. The high crown position allows you to catch incoming strikes and establish bindings that control subsequent actions. Use this guard when you want to dictate the flow of engagement through weapon control rather than evasive defense. The 'master in bindings' claim reflects the guard's primary purpose—from Corona, you can establish strong bindings that prevent opponents from easily disengaging while creating opportunities for thrusts, cuts, or close-play transitions. This guard requires sensitivity to pressure and timing, as successful binding depends on feeling opponent intentions through blade contact. Master Corona to develop sophisticated binding tactics that turn opponent attacks into controlled situations where you maintain advantage. The guard works particularly well against opponents who commit to attacks without proper caution."
+    },
+    {
+      "id": "italian.long.coda_longa",
+      "originalTerm": "Coda Longa",
+      "englishTerm": "Long Tail",
+      "category": "guard",
+      "briefDescription": "A rear guard with the sword extended behind the body in a low position.",
+      "fullDescription": "Coda Longa extends the sword behind the body in a low rear guard, positioned opposite to forward-facing guards like Posta Longa. The 'long tail' imagery evokes both the extended rear position and the potential for whipping attacks that can come from this loading position. This guard creates maximum chamber for powerful attacks while concealing the sword from the opponent's view. The rear position requires commitment to attack once adopted, as defensive options are limited compared to forward guards.",
+      "briefApplication": "Use to load powerful attacks from concealment, particularly when committed to offense.",
+      "fullApplication": "Coda Longa serves best when you're committed to launching a major offensive action. The rear extension creates maximum potential energy for cuts that sweep forward with tremendous power—like a tail whipping forward, strikes from this guard carry significant force. However, the defensive limitations mean you should adopt this guard only when you've identified a clear attacking opportunity or when you're confident in your ability to complete your offense before opponents can exploit your exposed position. Use Coda Longa when transitioning between guards to load attacks or when you want to create psychological pressure through obvious offensive preparation. The concealment factor can also work to your advantage, as opponents cannot see your blade and may misjudge distance or timing. This guard teaches the principle of committed offense—once you load, you must follow through decisively."
+    },
+    {
+      "id": "italian.long.fendente",
+      "originalTerm": "Fendente",
+      "englishTerm": "Cleaving Blow",
+      "category": "strike",
+      "briefDescription": "A vertical or diagonal descending cut with the true edge that can cleave from head to knee.",
+      "fullDescription": "Fendente delivers vertical or diagonal descending cuts with the true edge, described as capable of cleaving 'from head to knee' and 'parting the teeth in a straight line.' This fundamental strike represents the most powerful cutting action in Vadi's system. Both Fendente Mandritto (forehand) and Fendente Roverso (backhand) exist, though Vadi notes that fendente uniquely employs the true edge regardless of direction—unlike other strikes where roverso typically indicates false edge use. This makes the fendente distinct in its mechanics and purpose.",
+      "briefApplication": "Use for maximum cutting power in descending attacks, particularly to split opponent defenses.",
+      "fullApplication": "Fendente represents your primary power cutting tool in Vadi's system. Use this strike when you need to cleave through opponent guards or deliver decisive finishing blows. The descending mechanics utilize gravity and full body rotation to generate maximum force. However, the power comes with commitment—fendenti take time to chamber and execute, making timing crucial. Use fendente after creating openings through feints or when opponents give you time through poor defensive positioning. The ability to deliver both mandritto and roverso fendenti with the true edge gives you options from either side while maintaining maximum cutting effectiveness. Against armored opponents, the fendente becomes primarily a setup for wrestling entries rather than a finishing strike. Master the fendente to develop powerful offense capable of overwhelming defensive guards through sheer force."
+    },
+    {
+      "id": "italian.long.mandritto",
+      "originalTerm": "Mandritto",
+      "englishTerm": "Forehand",
+      "category": "strike",
+      "briefDescription": "Any forehand strike from the right or strong side using the true edge.",
+      "fullDescription": "Mandritto indicates any forehand strike delivered from the right or strong side using the true edge (filo dritto). This directional foundation of Italian swordplay encompasses all attacks that travel from the swordsman's right to left across the body. Vadi's Chapter 5 establishes the principle: 'On one side you make defence, the forehand blows go on one side.' Mandritto can describe cuts at various angles—descending, horizontal, or rising—but all share the common element of traveling from the strong side with the true edge.",
+      "briefApplication": "Use for all offensive actions from your right side, establishing one half of your cutting vocabulary.",
+      "fullApplication": "Mandritto forms half of your fundamental cutting vocabulary in Vadi's system. Understanding mandritto as a directional concept rather than a specific cut allows you to coordinate defense and offense—when opponents attack mandritto, you defend with specific footwork and guards, then counter appropriately. Use mandritto strikes when your sword is positioned on your right side or when tactical situations favor right-side attacks. The true edge delivery ensures maximum cutting effectiveness. Mandritto strikes can be combined—a mandritto fendente followed by mandritto volante creates combination attacks on the same side. This directional organization helps structure your tactical thinking—you don't just throw random cuts, but coordinate attacks based on which side offers the best opportunity. Master the mandritto to develop consistent offense from your strong side."
+    },
+    {
+      "id": "italian.long.roverso",
+      "originalTerm": "Roverso",
+      "englishTerm": "Backhand",
+      "category": "strike",
+      "briefDescription": "Any backhand strike from the left or weak side, typically with the false edge.",
+      "fullDescription": "Roverso designates backhand strikes from the left or weak side, typically delivered with the false edge (filo falso). This complements the mandritto to create complete directional coverage. Vadi's Chapter 5 notes that 'the backhands attack from the other' side, establishing the systematic organization of Italian swordplay around these two fundamental directions. While most roversi employ the false edge, some variations like roverso fendente can use the true edge through particular mechanics.",
+      "briefApplication": "Use for offensive actions from your left side, completing your cutting vocabulary with mandritto.",
+      "fullApplication": "Roverso completes your cutting system alongside mandritto, giving you options from both sides of your body. False edge cuts often surprise opponents expecting true edge attacks, as the mechanics differ and can appear less telegraphed. Use roverso strikes when your sword is positioned on your left side or when combinations naturally flow to the weak side. The backhand mechanics of roverso cuts often generate power through different body mechanics than forehand strikes—emphasizing rotation and pull rather than push. Understanding the mandritto/roverso division helps you defend intelligently—when opponents attack roverso, specific footwork and defensive responses become optimal. Combinations alternating between mandritto and roverso keep opponents defending both sides, preventing them from settling into predictable defensive patterns. Master the roverso to develop ambidextrous offense that threatens from any position."
+    },
+    {
+      "id": "italian.long.volanti",
+      "originalTerm": "Volanti",
+      "englishTerm": "Flying Blows",
+      "category": "strike",
+      "briefDescription": "Horizontal or crosswise strikes that travel atraversando, from knee upward.",
+      "fullDescription": "Volanti replace Fiore dei Liberi's term 'mezani' for horizontal or crosswise strikes. These cuts travel atraversando (crosswise), with Vadi noting 'we are volanti and we always go crosswise, from knee upwards we wound.' The flying blows can come from either side (mandritto or roverso) and target mid-level heights. They occupy a contested position in Vadi's hierarchy, with the manuscript stating they are 'often banished by fendente and punte'—suggesting their vulnerability to vertical attacks and thrusts.",
+      "briefApplication": "Use for horizontal attacks at mid-level, particularly when targeting arms, ribs, or transitional moments.",
+      "fullApplication": "Volanti serve best as transitional strikes or opportunistic attacks during exchanges rather than primary offensive tools. The horizontal traveling nature makes them useful for targeting extended arms and hands, cutting through mid-level openings, or connecting attacks during guard transitions. However, Vadi's warning that they're 'often banished' by fendente and thrusts means you should use them judiciously—the horizontal path makes them vulnerable to interception by vertical or thrusting actions. Use volanti when opponents overcommit to high or low guards, leaving mid-level openings. The 'flying' terminology suggests speed and lightness—these shouldn't be slow, committed cuts but rather quick, opportunistic strikes. Volanti work well in combination with other strikes, creating unpredictable attack patterns. Against experienced opponents, use volanti as setups or feints rather than finishing blows, as skilled fencers can exploit their trajectory."
+    },
+    {
+      "id": "italian.long.rota",
+      "originalTerm": "Rota",
+      "englishTerm": "Wheel",
+      "category": "strike",
+      "briefDescription": "Rising cuts that follow the opposite path of fendenti, traveling upward.",
+      "fullDescription": "Rota designates Vadi's term for rising cuts, replacing Fiore's 'sottani.' These ascending strikes follow the opposite path of fendenti, traveling upward through the same planes and involving rotational body mechanics. The rota can target from knees to forehead. The manuscript presents a dialogue where 'the rota with the fendente and the volante say to the thrusts we will show that you are not so dangerous,' suggesting these cuts compete with thrusts for tactical primacy in certain situations.",
+      "briefApplication": "Use for rising attacks, particularly when counterattacking from low guards or targeting under opponent defenses.",
+      "fullApplication": "Rota serves as your primary rising attack tool, particularly effective when fighting from low guards like Porta di Ferro. The upward mechanics naturally counter descending attacks while threatening opponent's lower defenses. Use rota when opponents commit to high guards or descending strikes—your rising action can intercept their attack while simultaneously counterstriking. The wheel terminology reflects the rotational body mechanics required for powerful rising cuts. From low guards, the rota allows you to parry and strike in single tempo, embodying Vadi's principle of simultaneous attack and defense. Rising cuts also work well against opponent hands and arms extended for attacks. However, the upward path means you sacrifice the gravity advantage of descending cuts, so technique and timing become especially important. Master the rota to develop effective counterattacking from low positions."
+    },
+    {
+      "id": "italian.long.stramazzone",
+      "originalTerm": "Stramazzone",
+      "englishTerm": "Wheel Cut from the Wrist",
+      "category": "strike",
+      "briefDescription": "A wheel-like cut delivered from the wrist with minimal chamber—first appearance in fencing literature.",
+      "fullDescription": "Stramazzone makes its first appearance in fencing literature with Vadi's manuscript. This wheel-like cut delivered from the wrist employs rotational motion with minimal chamber. Vadi instructs: 'If you do any stramazzone, do it with little turn in front of the face.' The technique should be executed with the sword kept directly before the face, avoiding wide movements because 'any long time is lost.' This innovation prefigures later Renaissance cutting mechanics and represents one of Vadi's unique contributions to longsword technique.",
+      "briefApplication": "Use for quick cuts with minimal preparation, particularly in close measure or when time is limited.",
+      "fullApplication": "Stramazzone represents a significant innovation in cutting mechanics—rather than chambering through large movements, you generate power through wrist rotation while keeping the sword close to your body. This makes the cut faster and less telegraphed than traditional methods, though potentially less powerful. Use stramazzone when you need to strike quickly without time for full chambers, when fighting in closer measures where large movements are impractical, or when opponents are alert to traditional cutting preparations. The instruction to keep the sword 'in front of the face' emphasizes maintaining defensive coverage even while attacking. The stramazzone works particularly well as a follow-up to other actions or as an opportunistic strike during exchanges. Modern practitioners should study this technique carefully, as it represents early development of mechanics that become central to later Renaissance systems. Master the stramazzone to develop efficient, time-saving cutting methods."
+    },
+    {
+      "id": "italian.long.mezzo_tempo",
+      "originalTerm": "Mezzo Tempo",
+      "englishTerm": "Half-Time",
+      "category": "strike",
+      "briefDescription": "Shortened strikes thrown during opponent's attack motion, targeting advanced body parts like hands.",
+      "fullDescription": "Mezzo Tempo strikes occur during the opponent's attack motion, targeting advanced body parts like hands and arms as they enter measure. These shortened blows, thrown with wrist movement alone, require precise timing: 'must hit much before the attacking movement is completed.' Vadi describes half-tempo as 'the jewel of the art, because in one go it strikes and parries.' The technique represents one of Vadi's most sophisticated tactical concepts, discussed extensively in Chapter 14 and requiring mastery of both timing and distance.",
+      "briefApplication": "Use to intercept opponent attacks by striking their advanced targets before their attack completes.",
+      "fullApplication": "Mezzo Tempo represents the pinnacle of timing-based defense in Vadi's system. Rather than defending and then counterattacking separately, you strike incoming attacks—typically targeting the hands, arms, or weapon—simultaneously disrupting their offense while creating your own. This requires reading opponent intentions early and initiating your strike before they complete their movement. Use mezzo tempo when you recognize opponent attack preparations and can act into their tempo. The half-time nature means your strike needs less distance to travel, as you're targeting advanced body parts rather than their body core. The technique works particularly well from guards that maintain point presence like Posta Longa, as you're already threatening their line. However, mistiming means you'll be struck during your attempt, making this a high-risk, high-reward technique. Master mezzo tempo to develop sophisticated timing that transforms defense into simultaneous counteroffense."
+    },
+    {
+      "id": "italian.long.volarica",
+      "originalTerm": "Volarica",
+      "englishTerm": "The Best Jewel of Art",
+      "category": "strike",
+      "briefDescription": "A mysterious half-time blow to the head that simultaneously parries and wounds.",
+      "fullDescription": "Volarica represents what Vadi calls 'the best jewel of art'—a half-time blow to the head that simultaneously parries and wounds. The manuscript describes it as breaking 'with its good edge the other's brain,' though the specific mechanics remain debated among modern practitioners. This technique exemplifies Vadi's emphasis on simultaneous attack and defense, representing the highest level of tactical sophistication where a single action achieves multiple purposes. The mysterious nature and superlative description suggest exceptional technical difficulty.",
+      "briefApplication": "Use as the ultimate simultaneous defense and attack, though precise mechanics require careful study.",
+      "fullApplication": "Volarica represents an aspirational technique in Vadi's system—the 'best jewel' that combines parrying and attacking in single action with devastating effectiveness. While the exact mechanics are debated, the principle is clear: a properly executed volarica defeats opponent attacks while delivering a finishing blow to their head. This likely involves timing your strike to intercept their weapon while your blade continues to their target. Use this concept to develop your understanding of simultaneous actions—rather than thinking in sequence (defend, then attack), train yourself to find actions that accomplish both goals at once. The difficulty in interpreting volarica from the manuscript reminds modern practitioners that physical demonstration was always intended to accompany written instruction. Study this technique with training partners to explore various interpretations, focusing on the principle of simultaneity rather than dogmatic adherence to any single interpretation."
+    },
+    {
+      "id": "italian.long.colpi_mezani",
+      "originalTerm": "Colpi Mezani",
+      "englishTerm": "Middle Cuts",
+      "category": "strike",
+      "briefDescription": "Horizontal strikes at middle level targeting the body's center.",
+      "fullDescription": "Colpi Mezani designate horizontal strikes at middle level, similar in trajectory to volanti but with distinct tactical application. These middle cuts target the body's center mass—ribs, waist, and core—with horizontal or slightly diagonal paths. The term emphasizes the target zone rather than the flying quality of volanti, suggesting more committed, finishing-type strikes rather than quick opportunistic cuts.",
+      "briefApplication": "Use for horizontal attacks targeting the body core when you have clear openings at mid-level.",
+      "fullApplication": "Colpi Mezani serve as finishing strikes when you've created openings at middle height. Unlike volanti which may be lighter and more opportunistic, these middle cuts aim to deliver decisive force to the body's core. Use them when opponent guards leave mid-level openings or when you've displaced their weapon sufficiently to attack the body directly. The middle level targets—ribs and waist—can be fight-ending even against armored opponents if struck with sufficient force at armor gaps. However, these committed cuts require certainty of your opening, as mistiming leaves you vulnerable to counterattacks. Coordinate middle cuts with footwork to create proper angle and distance for maximum effectiveness. Against unarmored opponents, successful middle cuts can cause immediate incapacitation through trauma or loss of breath. Master these cuts to develop finishing offense that capitalizes on created opportunities."
+    },
+    {
+      "id": "italian.long.falso_dritto",
+      "originalTerm": "Falso Dritto",
+      "englishTerm": "False Forehand",
+      "category": "strike",
+      "briefDescription": "A forehand cut delivered with the false edge in an unorthodox direction.",
+      "fullDescription": "Falso Dritto employs the false edge for a forehand-direction cut, creating an unorthodox attack that violates the normal mandritto/roverso edge conventions. This strike delivers false edge cuts from the strong side, typically in rising or diagonal paths that would normally use the true edge. The 'false' designation indicates both the edge used and the deceptive nature of the technique—opponents expecting true edge attacks may misjudge timing and trajectory.",
+      "briefApplication": "Use to surprise opponents with unexpected edge and trajectory combinations from your strong side.",
+      "fullApplication": "Falso Dritto serves primarily as a deceptive and transitional strike. The false edge delivery from forehand direction creates timing and trajectory that differs from standard mandritto, potentially bypassing opponent defenses calibrated for true edge attacks. Use this strike when opponents have adapted to your standard cutting patterns and need surprise to create openings. The false edge also allows you to strike while maintaining certain defensive positions or transitioning between guards without rechambering. However, false edge cuts generally deliver less power than true edge equivalents due to biomechanics and edge geometry, so use them for disruption, hand-sniping, or setup rather than finishing blows. The technique works particularly well in combination sequences—a false forehand followed by true edge roverso keeps opponents defending multiple angles and edges. Master false cuts to develop complete offensive vocabulary that prevents opponents from predicting your attacks."
+    },
+    {
+      "id": "italian.long.falso_roverso",
+      "originalTerm": "Falso Roverso",
+      "englishTerm": "False Backhand",
+      "category": "strike",
+      "briefDescription": "A backhand cut with the false edge, often rising from below.",
+      "fullDescription": "Falso Roverso delivers backhand cuts with the false edge, often in rising trajectories from low positions. While roverso normally implies false edge use, this specific designation emphasizes the false edge employment in particular tactical contexts—typically rising actions from below opponent defenses. These cuts can surprise opponents and create unpredictable attack angles while transitioning between guards or positions.",
+      "briefApplication": "Use for deceptive rising backhand attacks that approach from unexpected angles.",
+      "fullApplication": "Falso Roverso excels when you need to attack from low positions with your backhand side. The false edge rising cut can approach under opponent defenses while your sword transitions from low to high guards. Use this strike when fighting from Porta di Ferro or other low guards on your weak side—the false edge allows you to strike rising without fully reversing your sword position. The deceptive nature comes from the unusual combination of backhand direction and rising path with false edge, creating timing opponents may struggle to read. These cuts work well as counter-actions when opponents commit to descending attacks on your weak side. However, like all false edge cuts, expect less power than true edge equivalents, so focus on disruption and opportunity creation. Master false roverso to develop complete guard-to-guard offensive transitions from any position."
+    },
+    {
+      "id": "italian.long.punta",
+      "originalTerm": "Punta",
+      "englishTerm": "Thrust/Point",
+      "category": "thrust",
+      "briefDescription": "The general term for all thrusting actions, described as velenosi (venomous).",
+      "fullDescription": "Punta encompasses all thrusting actions in Vadi's system. He describes thrusts as velenosi (venomous)—insidious and deadly weapons in the longswordsman's arsenal. The fundamental principle states that 'the point should always face the opponent, especially the face.' However, Vadi acknowledges limitations: weak parries can deflect thrusts easily, missed thrusts lose utility more than missed cuts, and thrusts become dangerous when fighting multiple opponents because they commit the sword forward.",
+      "briefApplication": "Use thrusts for precise, deadly attacks, particularly to the face, while maintaining point presence.",
+      "fullApplication": "Punta represents your most precise and potentially lethal offensive tool. Thrusts require less movement than cuts and can strike with deadly accuracy to small targets like the face and throat. The 'venomous' description reflects their insidious nature—a successful thrust often ends the fight immediately, while the threat of thrust forces opponents to maintain defensive awareness. Use thrusts when you've established point presence in opponent's line, when attacking through small openings, or when you need attacks that commit less movement than cuts. Maintain your point directed at opponent's face as Vadi instructs, forcing them to constantly address this threat. However, understand the limitations—if opponents parry your thrust, you're often more compromised than after a parried cut. Against multiple opponents, the forward commitment of thrusts becomes dangerous, making cuts more appropriate. Master the thrust to develop precise, efficient offense that threatens from any position maintaining point presence."
+    },
+    {
+      "id": "italian.long.punta_sopramano",
+      "originalTerm": "Punta Sopramano",
+      "englishTerm": "Overhand Thrust",
+      "category": "thrust",
+      "briefDescription": "A thrust delivered with knuckles up in pronation.",
+      "fullDescription": "Punta Sopramano delivers the point with knuckles up and hand in pronation. This overhand configuration represents the more natural thrusting position for many guards and provides structural strength through arm alignment. However, Vadi shows preference for the underhand thrust, describing the overhand as less sophisticated than its counterpart. The overhand thrust works well from high guards and provides power through skeletal alignment.",
+      "briefApplication": "Use for powerful, structurally sound thrusts from high positions.",
+      "fullApplication": "Punta Sopramano serves best when thrusting from high guards or when you need maximum structural strength in your thrust. The pronated hand position creates strong skeletal alignment that can push through weak parries or maintain pressure in bindings. Use this thrust when you need power over deception, when fighting from guards like Posta di Donna or Corona, or when opponent defenses require forcing rather than finessing. The overhand position also allows you to maintain certain defensive structures while thrusting. However, Vadi's preference for underhand thrusts suggests you should develop both but favor the more 'fencing-like' underhand variant when possible. The overhand thrust works well in combination with descending cuts, as the hand position remains similar between thrust and fendente. Master both thrust variants to maintain tactical flexibility across different guards and situations."
+    },
+    {
+      "id": "italian.long.punta_sottomano",
+      "originalTerm": "Punta Sottomano",
+      "englishTerm": "Underhand Thrust",
+      "category": "thrust",
+      "briefDescription": "A thrust delivered with palm up in supination—Vadi's preferred method.",
+      "fullDescription": "Punta Sottomano extends the point with palm up in supination. Vadi explicitly favors this underhand thrust as 'more insidious and fencing-like' than the overhand variant, reflecting his emphasis on deceptive, technically sophisticated actions over raw power. The supinated hand position creates different mechanics that can be harder for opponents to read and allows for particular guard transitions and defensive combinations.",
+      "briefApplication": "Use as your primary thrust—more deceptive and technically sophisticated than overhand.",
+      "fullApplication": "Punta Sottomano represents Vadi's preferred thrusting method, embodying his emphasis on technical sophistication over raw power. The supinated hand position makes the thrust more difficult for opponents to read in preparation, as the mechanics differ from the more common overhand variant. Use this thrust as your primary thrusting action, particularly when you want deception and inscrutability in your offense. The underhand position works exceptionally well from guards like Posta di Vera Finestra and lower positions, allowing you to maintain defensive structure while preparing the thrust. The 'insidious' nature means opponents may not recognize your thrust preparation until it's too late to defend effectively. The supinated position also facilitates certain guard transitions and allows you to thrust while maintaining crossed-hand defensive structures. Master the underhand thrust to align with Vadi's technical philosophy of sophistication over strength."
+    },
+    {
+      "id": "italian.long.punta_falsa",
+      "originalTerm": "Punta Falsa",
+      "englishTerm": "False Thrust",
+      "category": "thrust",
+      "briefDescription": "Feinting thrusts or deceptive point actions to mislead opponents.",
+      "fullDescription": "Punta Falsa indicates feinting thrusts or thrusts delivered deceptively to mislead opponents about true intent. These false actions create opportunities by causing opponent reactions to non-committal or misdirected threats. The false thrust embodies Vadi's emphasis on ingegno (cleverness) over force, using deception to create openings rather than forcing through opponent defenses.",
+      "briefApplication": "Use to create openings through deceptive threat, causing opponents to react to false attacks.",
+      "fullApplication": "Punta Falsa serves as a primary tool for creating opportunities through deception. Rather than committing fully to a thrust, you show intention toward one target, causing opponent defensive reactions, then exploit the openings their reactions create. Use false thrusts when opponents defend your point presence too eagerly—their overreaction to a false threat leaves them vulnerable to your real attack. The technique requires restraint—you must show enough threat to provoke reaction without committing so far you cannot recover for your real action. False thrusts work particularly well in combination: false thrust high, then thrust or cut low to the opening created. Against experienced opponents, layering multiple levels of false action can be necessary, as they won't react to simple feints. Master the false thrust to develop sophisticated offense based on ingegno rather than raw aggression. This technique exemplifies Vadi's philosophical emphasis on cleverness over strength."
+    },
+    {
+      "id": "italian.long.passeggiar",
+      "originalTerm": "Passeggiar",
+      "englishTerm": "Walking/Footwork",
+      "category": "footwork",
+      "briefDescription": "Vadi's innovative footwork involving knee flexion with extended rear leg—his claimed unique contribution.",
+      "fullDescription": "Passeggiar represents Vadi's claimed innovation in longsword mechanics. This distinctive footwork involves flexing the knee of the advanced leg while extending the rear leg, creating a lunge-like position shorter than modern Olympic fencing but longer than Fiore's compact steps. Vadi emphasizes this departure from earlier Italian tradition as his unique contribution, stating it creates more efficient, compact movement than previous methods.",
+      "briefApplication": "Use as your primary footwork method for attacks—more efficient than passing steps.",
+      "fullApplication": "Passeggiar forms the foundation of Vadi's movement system, representing his signature contribution to Italian longsword technique. Rather than taking full passing steps for every attack, you extend forward by flexing your lead knee and straightening your rear leg, creating a longer stance that delivers power while maintaining balance and recovery potential. Use this footwork for all attacks and aggressive movements—Vadi explicitly advocates 'attacking with acressimento rather than the pass,' suggesting passeggiar as the primary attacking motion. The extended rear leg provides stability and power generation while the flexed front leg maintains readiness to recover or advance further. This creates the narrower, more compact movement style that characterizes Vadi's system compared to predecessors. Practice passeggiar extensively to internalize Vadi's movement philosophy. The technique requires leg strength and flexibility but rewards practitioners with efficient, powerful attacks that don't overcommit."
+    },
+    {
+      "id": "italian.long.passare",
+      "originalTerm": "Passare",
+      "englishTerm": "Passing Step",
+      "category": "footwork",
+      "briefDescription": "A full step where the rear foot comes forward past the lead foot.",
+      "fullDescription": "Passare describes a full step where the rear foot comes forward past the lead foot, like normal walking. This represents complete weight transfer and stance reversal, used to cover significant distance or change stance orientation. However, Vadi de-emphasizes passing in favor of his acressimento (advancing) footwork, suggesting passing should be used selectively rather than as the primary attacking footwork.",
+      "briefApplication": "Use for covering significant distance or changing stance, but prefer acressimento for attacks.",
+      "fullApplication": "Passare serves specific tactical needs in Vadi's system, though it's not the primary attacking footwork. Use passing steps when you need to cover distance greater than acressimento allows, when changing stance orientation (switching lead legs), when transitioning between widely separated positions, or when pursuing retreating opponents. The full step commits more than passeggiar, making it appropriate when you're certain of your action. However, Vadi's de-emphasis suggests you should default to acressimento for most attacks, reserving passing for special circumstances. Passing steps can also be tactical—sometimes taking a full step creates the distance change needed to exploit opponent timing. In combinations, alternating passing with acressimento creates varied rhythms that prevent opponents from timing your attacks. Master passing as part of your complete footwork vocabulary, but remember Vadi's preference for more compact, efficient acressimento in typical attacking situations."
+    },
+    {
+      "id": "italian.long.acressimento",
+      "originalTerm": "Acressimento",
+      "englishTerm": "Advancing/Increment",
+      "category": "footwork",
+      "briefDescription": "Moving the lead foot forward while the back foot follows, maintaining stance relationship.",
+      "fullDescription": "Acressimento or Accrescere (Increasing/Advancing) moves the lead foot forward while the back foot follows, maintaining the same stance relationship. Vadi explicitly advocates 'attacking with acressimento rather than the pass,' promoting narrower stances and smaller, faster cuts than predecessors. This advancing footwork enables the compact, efficient movement that characterizes Vadi's system and coordinates perfectly with his passeggiar mechanics.",
+      "briefApplication": "Use as your primary advancing footwork, maintaining stance while closing distance.",
+      "fullApplication": "Acressimento represents Vadi's preferred method for advancing and attacking, emphasizing efficiency over large movements. Rather than taking full passing steps that reverse your stance, you advance by moving your lead foot forward and bringing your rear foot up, maintaining your stance orientation. This creates smooth, controlled advances that keep you balanced and ready to attack or defend at any moment. Use acressimento for all standard attacks and pressure applications—the maintained stance means you're always in proper position. The incremental nature allows you to modulate distance precisely, advancing just enough to reach targets without overcommitting. Combined with passeggiar (the extended rear leg position), acressimento creates the characteristic Vadi stance and movement style. Practice advancing with acressimento while maintaining proper guard structure—your sword should move with your body, not separately. Master this footwork to develop the compact, efficient movement Vadi advocates throughout his manuscript."
+    },
+    {
+      "id": "italian.long.tornare",
+      "originalTerm": "Tornare",
+      "englishTerm": "Return/Retreat",
+      "category": "footwork",
+      "briefDescription": "Stepping backward to increase distance or evade attacks.",
+      "fullDescription": "Tornare indicates stepping backward, essentially the reverse of advancing footwork. This defensive movement increases distance from opponents, evades attacks, or creates space for counterattacks. The term literally means 'return,' suggesting movement back to previous positions or away from engaged measure. Retreating footwork requires discipline to avoid becoming purely reactive.",
+      "briefApplication": "Use to evade attacks and create distance, but maintain offensive capability while retreating.",
+      "fullApplication": "Tornare serves critical defensive purposes but must be used with tactical awareness. Retreat to evade attacks you cannot parry safely, to draw opponents into overextending, to create distance for thrust actions, or to reset exchanges when disadvantaged. However, pure retreat without offensive intent allows opponents to control the engagement. Use tornare actively—retreat while maintaining your point online, threatening thrusts as opponents advance, or retreat to specific positions that offer tactical advantage. The 'return' terminology suggests purposeful retreat to positions you control rather than panicked flight. In combinations, retreating followed by sudden advance (tornare then acressimento) can catch opponents overcommitting to their pursuit. Practice retreating while maintaining proper guards and point presence—your sword should continue threatening even as you withdraw. Master tornare to develop complete tactical mobility that includes knowing when to give ground strategically."
+    },
+    {
+      "id": "italian.long.traversare",
+      "originalTerm": "Traversare",
+      "englishTerm": "Crossing Step/Lateral Movement",
+      "category": "footwork",
+      "briefDescription": "Crossing steps and lateral movements to change angle.",
+      "fullDescription": "Traversare designates crossing steps and lateral movements that change your angle relative to opponents without simply advancing or retreating. These sideways movements create new angles for attack and defense while maintaining or adjusting distance. Crossing steps can also refer to the physical act of one foot crossing past the other during certain movements.",
+      "briefApplication": "Use to create angles and flanking positions rather than simply advancing or retreating.",
+      "fullApplication": "Traversare provides the angular dimension of footwork, allowing you to circumvent opponent defenses rather than just pushing forward or backing away. Use lateral movements to circle around opponent strong positions, to create angles that expose their flanks, to evade linear attacks while maintaining offensive position, or to break out of unfavorable engagements. Crossing steps allow you to change position quickly while maintaining or closing distance. These movements work particularly well combined with attacks—traverse to create an angle, then strike to the opening your movement revealed. Against opponents who favor forward pressure, lateral movement can frustrate their tactics by removing the straight-line target they expect. Practice traversing in multiple directions, maintaining proper guard structure throughout the movement. Master traversare to develop three-dimensional footwork that doesn't just advance and retreat but commands the full fighting space."
+    },
+    {
+      "id": "italian.long.voltare",
+      "originalTerm": "Voltare",
+      "englishTerm": "Turning",
+      "category": "footwork",
+      "briefDescription": "Rotational footwork and body turning movements.",
+      "fullDescription": "Voltare encompasses rotational footwork and turning movements that change your facing and body orientation. These turns can range from small adjustments to complete about-faces, serving both offensive and defensive purposes. Turning movements appear in Vadi's system as tactical responses to opponent actions and as methods for generating power in strikes through body rotation.",
+      "briefApplication": "Use to change facing, evade attacks, or generate rotational power in strikes.",
+      "fullApplication": "Voltare serves multiple tactical purposes depending on the degree and context of turning. Small turns adjust your facing to track opponent movement or optimize striking angles. Larger turns (mezza volta or tutta volta) change your orientation significantly, useful for evading attacks, resetting position, or dealing with multiple opponents. Turning also generates power—many cuts rely on body rotation coordinated with arm movement. Use turning defensively to remove your body from attack lines while maintaining weapon control, or offensively to add rotational power to strikes. The instruction to 'face the side to which you turn, and enter there' suggests turns should be purposeful, moving you toward tactical advantage rather than away from opponents. Practice turning while maintaining guards and point control—your weapon should move with your body rotation in coordinated fashion. Master voltare to develop fluid transitions between positions and the ability to respond to attacks from any angle."
+    },
+    {
+      "id": "italian.long.mezza_volta",
+      "originalTerm": "Mezza Volta",
+      "englishTerm": "Half Turn",
+      "category": "footwork",
+      "briefDescription": "A 90-degree rotation to change facing direction.",
+      "fullDescription": "Mezza Volta executes a 90-degree rotation, changing your facing by a quarter circle. This moderate turn allows you to address opponents approaching from the side, to evade linear attacks while maintaining offensive position, or to transition between different tactical orientations. The half turn represents a common tactical adjustment in dynamic combat situations.",
+      "briefApplication": "Use to address flanking opponents or evade attacks while maintaining offensive capability.",
+      "fullApplication": "Mezza Volta provides the tactical flexibility to address threats from multiple angles without completely disengaging. Use the half turn when opponents circle to your flank—rather than pursuing them with footwork, turn to face them directly, maintaining optimal striking position. The 90-degree rotation also works defensively against linear attacks: as opponents commit forward, turn perpendicular to their line, evading while positioning for counterattacks to their now-exposed flank. In multiple opponent situations, half turns allow you to keep threats within your field of vision and striking range. The moderate degree means you maintain reasonable position relative to your original opponent while addressing new threats. Practice mezza volta in combination with strikes—turn and strike simultaneously to create powerful, unexpected attacks. The rotation can also add force to certain cuts through centrifugal effect. Master the half turn to develop tactical flexibility in complex fighting situations."
+    },
+    {
+      "id": "italian.long.tutta_volta",
+      "originalTerm": "Tutta Volta",
+      "englishTerm": "Whole Turn",
+      "category": "footwork",
+      "briefDescription": "A 180-degree about-face rotation.",
+      "fullDescription": "Tutta Volta completes a 180-degree about-face, reversing your facing direction completely. This full turn represents significant tactical repositioning, used to address threats from behind, to evade attacks by moving through larger angles, or to completely reset engagement orientation. The whole turn commits more than smaller rotations but provides maximum angular change.",
+      "briefApplication": "Use to address rear threats or completely reset engagement orientation.",
+      "fullApplication": "Tutta Volta serves situations requiring complete orientation reversal. Use the full turn when threats approach from behind—rather than awkward backward defense, complete the turn to face them properly. The 180-degree rotation also works as an extreme evasion: when opponents commit to powerful forward attacks, turning through the full rotation moves you far from their attack line while potentially positioning you at their flank or rear. In multiple opponent contexts, full turns become necessary to manage threats from all directions. However, the large angular change means momentary vulnerability during the turn, so time it carefully. Some techniques deliberately turn away from opponents as setup for follow-up actions—the apparent retreat draws them forward into counterattacks. Practice tutta volta maintaining weapon control throughout—your sword should provide protection even mid-turn. Master the whole turn to develop complete spatial mobility that can address threats from any direction."
+    },
+    {
+      "id": "italian.long.misura",
+      "originalTerm": "Misura",
+      "englishTerm": "Measure/Distance",
+      "category": "concept",
+      "briefDescription": "The distance between fencers, which changes tactical options and tempo.",
+      "fullDescription": "Misura describes the distance between fencers, which changes tactical options and available tempo. Vadi instructs practitioners to 'measure blows and steps together,' coordinating distance with action. Measure is not fixed or absolute but depends on the relative size and reach of both combatants. Chapter 3 establishes the principle: 'With your eye on the weapon that can attack you, seize both the tempo and the measure together,' insisting that timing and distance must be coordinated.",
+      "briefApplication": "Maintain constant awareness of distance and coordinate all actions with proper measure.",
+      "fullApplication": "Misura represents one half of Vadi's fundamental tactical framework (alongside tempo). You must constantly assess and adjust distance relative to opponents, understanding that different measures enable different actions. Too far, and your attacks cannot reach; too close, and you cannot use your weapon effectively. Proper measure means positioning where your attacks reach opponents while theirs fall short, or where you can defend effectively against their attacks. Use footwork to manipulate measure—advance to bring opponents into range, retreat to make their attacks fall short, or maintain measure to control engagement flow. The instruction to 'measure blows and steps together' means every attack must coordinate distance covered with weapon movement—don't swing at air or stop short of targets. Different opponents require different measures based on their size and weapon reach. Master measure awareness to develop precise distance control that enables your offense while frustrating opponent attacks."
+    },
+    {
+      "id": "italian.long.giocco_largo",
+      "originalTerm": "Giocco Largo",
+      "englishTerm": "Wide Play",
+      "category": "concept",
+      "briefDescription": "Long to medium distance where practitioners focus on cuts and thrusts with the last third of blade.",
+      "fullDescription": "Giocco Largo encompasses long to medium distance where practitioners focus on cuts and thrusts with the last third of the blade. No body-to-body contact or grips occur here, though the range can include kicks and sword grips. This is where fights begin and develop. The wide play represents the majority of longsword combat, where proper technique with the weapon's striking portion determines success.",
+      "briefApplication": "Use as the primary combat distance for most longsword exchanges with cuts and thrusts.",
+      "fullApplication": "Giocco Largo represents your primary tactical environment in longsword combat. At this distance, you use the sword as it's designed—cutting and thrusting with the last third of the blade where leverage and speed optimize effectiveness. Most exchanges begin and remain in wide play, making it essential to master. Use cuts and thrusts appropriate to the distance, maintaining proper guards, and controlling measure to keep opponents in your optimal range while staying outside theirs. Wide play emphasizes weapon technique over wrestling—your success depends on proper cutting mechanics, thrust precision, and guard transitions. However, always remain aware that exchanges can transition to closer play, requiring adaptation. The distance allows both defense and offense: you have space to parry and counter, time to read opponent intentions, and room to maneuver. Master giocco largo to develop fundamental longsword skills that form the basis of Vadi's system."
+    },
+    {
+      "id": "italian.long.mezza_spada",
+      "originalTerm": "Mezza Spada",
+      "englishTerm": "Half-Sword/Middle Sword",
+      "category": "concept",
+      "briefDescription": "The critical transitional distance where swords cross in the middle—bridge between largo and stretto.",
+      "fullDescription": "Mezza Spada represents the critical transitional distance where swords cross in the middle when both strike. This 'bridge between largo and stretto' constitutes the most important part of wide play. As Chapter 3 states: 'When he comes to the half sword, I begin my play.' At this distance, techniques from both wide and close play become available. The term also indicates the gripping technique of holding the sword blade with the left hand for close combat leverage.",
+      "briefApplication": "Recognize this critical distance where both wide and close techniques become available—the true battleground.",
+      "fullApplication": "Mezza Spada represents the most tactically complex distance in Vadi's system because both wide play and close play techniques become viable options. When swords cross at their middles, you face critical decisions: maintain distance and use cutting/thrusting, or close to grappling range and use wrestling techniques. This is 'where I begin my play' because both combatants must make tactical choices that determine how the exchange develops. Use this distance to control engagement flow—if you want to keep fighting with the sword, maintain mezza spada without closing; if you want to wrestle, use it as a launching point for entries to stretto. The crossing at this distance also creates binding opportunities where you can control opponent weapons. As a gripping technique, mezza spada (left hand on blade) provides leverage and control for thrusting into armor gaps or for wrestling actions. Master this distance to develop tactical sophistication in choosing when to maintain weapon range versus closing to grappling."
+    },
+    {
+      "id": "italian.long.giocco_stretto",
+      "originalTerm": "Giocco Stretto",
+      "englishTerm": "Close Play",
+      "category": "concept",
+      "briefDescription": "Grappling distance where grips, disarms, throws, and body contact dominate.",
+      "fullDescription": "Giocco Stretto brings combatants to grappling distance where grips, disarms, throws, and body contact dominate. At this range, practitioners can reach opponents with an extended arm, and the point is 'not divided at all' from the companion. Wrestling techniques and joint locks become primary tools. The sword becomes a lever for grappling rather than primarily a cutting weapon, with pommel strikes, crossguard hooks, and blade grips taking precedence.",
+      "briefApplication": "Use wrestling techniques, grips, and close-range sword applications when at body-to-body range.",
+      "fullApplication": "Giocco Stretto represents a fundamental shift in tactical approach—the sword becomes a tool for grappling rather than primarily for cutting. At this range, successful technique depends more on wrestling skill, leverage, and body mechanics than on proper cutting form. Use close play when exchanges naturally progress to this range, when you've successfully closed distance against opponents, or when fighting armored opponents where thrusting to gaps and wrestling are more effective than cutting. Techniques at this distance include arm locks, throws, disarms, pommel strikes to the head, crossguard hooks to trap limbs, and mezza spada (half-sword grip) for leverage. However, closing to stretto is risky—if your entry fails, you may be at disadvantage. The 'point not divided' description emphasizes the intimate, dangerous nature of this range. Master giocco stretto to become a complete fighter capable at all distances, not just at sword range."
+    },
+    {
+      "id": "italian.long.tempo",
+      "originalTerm": "Tempo",
+      "englishTerm": "Time/Timing/Opportunity",
+      "category": "concept",
+      "briefDescription": "The opportune moment to strike, timing of actions, and rhythm of combat.",
+      "fullDescription": "Tempo carries multiple meanings in Vadi's system: the opportune moment to strike, a complete action or movement, and the overall timing or rhythm of combat. Chapter 10 advises: 'Seize the opportunity (tempo) so that it does not cost you dearly,' while Chapter 13 instructs: 'Then use your strikes in the correct tempo.' Chapter 3 establishes: 'With your eye on the weapon that can attack you, seize both the tempo and the measure together,' linking timing inseparably with distance.",
+      "briefApplication": "Maintain constant awareness of timing—when to act, how long actions take, and combat rhythm.",
+      "fullApplication": "Tempo represents the temporal dimension of combat, as critical as measure (distance) to success. You must recognize opportune moments to strike—when opponents are vulnerable, when their weapons are displaced, when they transition between guards. Every action has tempo: some techniques take largo tempo (long time), others mezzo tempo (half-time). Understanding action tempo helps you choose appropriate techniques for available time. The combat rhythm aspect means recognizing patterns in exchanges—if opponents attack in predictable tempo, you can counter-time them. Vadi's insistence on seizing tempo and measure together means you cannot successfully attack with good distance but wrong timing, nor good timing with wrong distance. Both must align. Use feints and false actions to disrupt opponent tempo, making them react at wrong times. Master tempo awareness to develop timing that exploits opponent vulnerability while avoiding their tempo traps."
+    },
+    {
+      "id": "italian.long.ingegno",
+      "originalTerm": "Ingegno",
+      "englishTerm": "Cleverness/Ingenuity",
+      "category": "concept",
+      "briefDescription": "The cunning and cleverness that overcomes strength—core principle of Vadi's philosophy.",
+      "fullDescription": "Ingegno (Cleverness/Ingenuity) appears in Vadi's Latin maxim 'Ingenium superat vires' (Cleverness overcomes strength). Vadi insists that 'Ingegno ogni possanza sforza' (Cunning wins any strength), prioritizing technical sophistication over raw power. This core principle argues that intelligent application of technique, deception, and tactical awareness defeats pure physical strength and aggression.",
+      "briefApplication": "Prioritize clever technique and deception over raw strength in all combat applications.",
+      "fullApplication": "Ingegno represents Vadi's central philosophical principle—successful fencing depends more on cleverness than strength. Rather than trying to overpower opponents, use technique, timing, deception, and tactical awareness to create situations where their strength becomes irrelevant. This manifests in multiple ways: use feints to create openings rather than forcing through guards; use proper mechanics to generate power efficiently rather than muscling attacks; use timing to strike opponents during their vulnerable moments rather than engaging in strength contests. The principle also suggests studying opponents to identify weaknesses you can exploit through cleverness. Against stronger opponents, ingegno becomes essential—you cannot match their power, so you must exceed their tactical awareness. Even against weaker opponents, relying on strength rather than technique develops bad habits. Master the principle of ingegno to become a complete fighter whose success depends on skill and intelligence rather than physical gifts that may fade with age."
+    },
+    {
+      "id": "italian.long.parare",
+      "originalTerm": "Parare",
+      "englishTerm": "Parrying",
+      "category": "defensive",
+      "briefDescription": "Active defense that flows from guard to guard with movement rather than static blocking.",
+      "fullDescription": "Parare (Parrying) represents active defense rather than static blocking. Vadi instructs: 'Parries with a fendente so you are not caught,' suggesting defense should flow into counterattacks. Defense flows from guard to guard, with each position naturally transitioning into others as opponents attack. Successful parrying doesn't just stop attacks but creates opportunities for counteroffense.",
+      "briefApplication": "Use active parries that flow into counterattacks rather than stopping movement.",
+      "fullApplication": "Parare in Vadi's system emphasizes active, flowing defense rather than passive blocking. When opponents attack, don't simply stop their weapon—parry while moving into position for immediate counterattack. The instruction to 'parry with a fendente' means your defensive movement should be the beginning of your counteroffensive strike. This creates single-tempo defense where parrying and counterstriking occur in one flowing action. Use footwork with parries—don't stand still and block, but move offline while deflecting. Each guard has natural parrying strengths based on its structure, so parrying often means transitioning from your current guard to one that deflects the incoming attack while positioning for your counter. The flowing nature means you're never static—defense becomes part of continuous guard-to-guard movement. Master active parrying to eliminate the tempo loss of separate defensive and offensive actions, embodying Vadi's principle of simultaneity."
+    },
+    {
+      "id": "italian.long.incrosar",
+      "originalTerm": "Incrosar",
+      "englishTerm": "Crossing",
+      "category": "defensive",
+      "briefDescription": "Creating an X or cross with the swords, the fundamental defensive action.",
+      "fullDescription": "Incrosar or Incrossare (Crossing) forms the fundamental defensive action, creating an X or cross with the swords. Three types exist based on blade contact position: crossing at punta di spada (the point/weak), mezza spada (the middle), or tutta spada (the forte/strong). These crossing distinctions determine tactical responses and available techniques. La Croce (The Cross) represents both the cross-parry and cross guard positions.",
+      "briefApplication": "Use sword crossings to defend while establishing control of opponent weapons.",
+      "fullApplication": "Incrosar represents the fundamental mechanism of blade defense in Vadi's system. Rather than avoiding opponent weapons entirely, you cross your sword with theirs, creating the X formation that gives you leverage to redirect their force. The crossing position matters critically: crossing at the weak (point) gives you leverage advantage but requires precise timing; crossing at middle creates roughly equal leverage; crossing at your strong against their weak gives maximum control. Use crossings not just to deflect attacks but to establish control that prevents opponents from easily disengaging for follow-up attacks. From crossed positions, you can thrust, cut to openings, or transition to wrestling. One play advises: 'Play with the cross and you will not be conquered,' suggesting the crossing formation's fundamental importance. Practice feeling pressure through crossings to develop sensitivity that tells you when opponents are strong or weak in the bind. Master incrosar to develop sophisticated blade work that controls opponent weapons rather than just avoiding them."
+    },
+    {
+      "id": "italian.long.ligare",
+      "originalTerm": "Ligare",
+      "englishTerm": "Binding",
+      "category": "defensive",
+      "briefDescription": "Maintaining pressure and contact with opponent's blade to control their weapon.",
+      "fullDescription": "Ligare (Binding) describes maintaining pressure and contact with the opponent's blade. Blade pressure management becomes critical in bindings and crossings, with Corona claiming: 'In bindings I am skilled.' Winning or losing the bind determines follow-up actions—whether you can thrust, cut, or must defend. Bindings create situations where both weapons are engaged, requiring sensitivity to pressure to determine tactical advantage.",
+      "briefApplication": "Use bindings to maintain contact and control opponent weapons through pressure management.",
+      "fullApplication": "Ligare represents sophisticated blade control that goes beyond momentary parrying to sustained weapon contact. When you bind opponent weapons, you maintain pressure that prevents them from easily disengaging while you assess opportunities. Winning the bind means establishing superior leverage or pressure that controls their weapon despite their efforts to free it. Use bindings to create opportunities: from a won bind, you can thrust to openings while their weapon is controlled, cut to targets they cannot defend, or transition to wrestling. Losing the bind means opponents have gained control, requiring you to defend rather than attack. Develop pressure sensitivity through practice—you must feel through the sword whether opponents are strong or weak in the bind, whether they're pressing or releasing, whether they're preparing actions. Corona's claim to be 'master in bindings' suggests this guard's particular excellence at these techniques. Master ligare to develop binding skills that control engagements through sustained weapon contact."
+    },
+    {
+      "id": "italian.long.viste",
+      "originalTerm": "Viste",
+      "englishTerm": "Feints",
+      "category": "tactical",
+      "briefDescription": "Deceptive actions used to mislead opponents about true attack intentions.",
+      "fullDescription": "Viste (Feints) receive dedicated treatment in Chapter 12: 'Ragion de' viste de spada' (Discourse of Feints). 'Feints are used to deceive the opponent, not letting him understand to which part you want to throw your real attack.' Vadi insists feints 'must be quick and short' and practitioners should 'never bring the sword too far from the line, in order to be able to call it back to the defence without delay.' The verb form Visteggi (Feinting) appears uniquely in Vadi's manuscript.",
+      "briefApplication": "Use quick, short feints to create openings while maintaining defensive capability.",
+      "fullApplication": "Viste represent sophisticated offensive tactics based on deception rather than force. Rather than attacking directly, show intention toward one target, causing opponent defensive reactions that create openings elsewhere. Use feints when opponents defend too eagerly—their reactions to false threats leave them vulnerable to real attacks. Vadi's instruction that feints must be 'quick and short' means they should appear genuine enough to provoke reactions but commit little enough that you can immediately shift to your real action. The warning never to bring the sword 'too far from the line' emphasizes maintaining defensive coverage even during feinting—if opponents don't react to your feint but instead counterattack, you must be able to defend. Layer feints: false thrust high provokes high defense, then cut low; false cut right provokes right defense, then thrust center. Against experienced opponents, multiple levels of feinting may be necessary. Master viste to develop offense based on ingegno that creates openings through cleverness rather than forcing through superior strength or speed."
+    },
+    {
+      "id": "italian.long.inganno",
+      "originalTerm": "Inganno",
+      "englishTerm": "Deception/Trick",
+      "category": "tactical",
+      "briefDescription": "Broader tactical misdirection beyond simple feints.",
+      "fullDescription": "Inganno (Deception/Trick) encompasses broader tactical misdirection beyond simple feints. This includes false guards, deceptive movements, tactical misdirection, and psychological manipulation. While viste focuses specifically on false attacks, inganno represents the full spectrum of deceptive tactics available to clever fencers.",
+      "briefApplication": "Use all forms of deception to mislead opponents about your true capabilities and intentions.",
+      "fullApplication": "Inganno represents comprehensive deception extending beyond just feinting attacks. Use false guards that appear vulnerable but are actually traps; show apparent weaknesses that bait opponent attacks into your prepared counters; pretend fatigue or incompetence to encourage opponent overconfidence; use rhythm changes to disrupt opponent timing expectations. Deception can be strategic—hiding your true skill level until critical moments—or tactical—misleading about immediate intentions. Against skilled opponents, layered deception becomes necessary: they won't fall for simple tricks, so you must deceive about your deceptions. However, Vadi's emphasis on prudenza (prudence) suggests deception should be calculated rather than reckless. Failed deceptions can leave you vulnerable, so maintain defensive awareness even during deceptive actions. The principle of ingegno over force suggests that mastering inganno makes you dangerous even against stronger, faster opponents. Master comprehensive deception to develop tactical sophistication that controls opponent perceptions and reactions."
+    },
+    {
+      "id": "italian.long.ragione",
+      "originalTerm": "Ragione",
+      "englishTerm": "Reason/Theory/Discourse",
+      "category": "concept",
+      "briefDescription": "The theoretical and systematic framework governing fencing practice.",
+      "fullDescription": "Ragione (Reason/Theory/Discourse) appears throughout chapter titles: 'Ragion de spada' (Discourse of the Sword), 'Ragion de gioco' (Discourse of Play), 'Ragion de' viste de spada' (Discourse of Feints). This systematic approach to organizing knowledge represents unprecedented detail in 15th-century fencing literature. Ragione embodies the theoretical framework that governs practical application, reflecting Vadi's assertion that fencing is a science born from geometry.",
+      "briefApplication": "Study the theoretical principles underlying techniques to understand why they work, not just how.",
+      "fullApplication": "Ragione represents Vadi's systematic, theoretical approach to martial arts, distinguishing his work from purely practical manuals. Rather than just showing techniques, he provides theoretical frameworks explaining why they work. Use this approach in your own study: don't just memorize techniques, understand the principles governing their success. When you understand ragione—the geometric, biomechanical, and tactical principles—you can adapt techniques to new situations and even create new techniques that align with proven principles. Vadi's emphasis on ragione reflects Renaissance intellectual culture that valued systematic knowledge organization. The various 'ragion' chapter titles show his attempt to comprehensively explain different aspects of swordsmanship through reasoned discourse. Study theory alongside practice to develop deeper understanding that elevates you beyond mere technique collection to genuine systematic comprehension. This theoretical foundation allows you to teach effectively and troubleshoot problems in your own performance."
+    },
+    {
+      "id": "italian.long.geometria",
+      "originalTerm": "Geometria",
+      "englishTerm": "Geometry",
+      "category": "concept",
+      "briefDescription": "The mathematical foundation from which fencing is born according to Vadi's philosophy.",
+      "fullDescription": "Geometria (Geometry) provides the foundational structure: 'Geometry, which divides and separates, by infinite numbers and measures and fills her papers with science.' The relationship extends universally: 'From Geometry fencing is born, and under her it has no end.' Both geometry and fencing are infinite in nature—'In fencing there is no end, as every reverse finds his right, contrary by contrary without an end.' This mathematical foundation distinguishes Vadi's intellectual approach.",
+      "briefApplication": "Understand fencing as applied geometry—angles, distances, and spatial relationships govern success.",
+      "fullApplication": "Geometria represents Vadi's core philosophical claim that fencing constitutes a science based on mathematical principles rather than just an art learned through imitation. Every aspect of fencing has geometric foundations: measure is geometric distance; angles of attack and defense follow geometric principles; leverage in bindings obeys geometric laws; proper body mechanics align with geometric efficiency. Use this perspective to analyze techniques: why does this angle of attack work? How does this leverage create advantage? What geometric principles make this guard effective? Understanding the geometric foundations allows you to optimize technique beyond traditional forms. The 'infinite' nature suggests endless variation within geometric principles—you can never exhaust the possibilities because geometric principles allow infinite application. Modern practitioners should study actual geometry alongside fencing to understand Vadi's vision of martial arts as applied mathematics. This elevates fencing from mere brawling to intellectual pursuit worthy of educated nobility."
+    },
+    {
+      "id": "italian.long.musica",
+      "originalTerm": "Musica",
+      "englishTerm": "Music",
+      "category": "concept",
+      "briefDescription": "The temporal and rhythmic framework governing timing and tempo.",
+      "fullDescription": "Musica (Music) adds the temporal dimension: 'Music adorns her and chooses her as its subject, song and sound are added to the art, to make it a more perfect science.' The manuscript explains: 'So geometry and Music combine their scientific virtues in the sword, to adorn the great light of Mars.' Music provides the rhythmic framework governing tempo, while geometry provides spatial structure governing measure.",
+      "briefApplication": "Understand combat timing and rhythm as musical—tempo, rhythm, and pacing govern engagement flow.",
+      "fullApplication": "Musica represents the temporal complement to geometry's spatial dimension. Just as geometry governs measure (distance), music governs tempo (timing). Combat has rhythm: attacks come in patterns, defenses follow cadence, exchanges have flow. Understanding musical principles helps you develop timing awareness. Like music, combat has meter—regular patterns of strong and weak beats. Recognizing opponent rhythm allows you to syncopate against it, acting in their weak beats. Combat also has dynamics—loud and soft, aggressive and defensive passages. Use musical thinking to develop tactical sophistication: establish a rhythm, then break it to surprise opponents; maintain steady tempo to control engagement pace; accelerate or decelerate to disrupt opponent timing. The combination of geometry (space) and music (time) creates complete combat understanding. Modern practitioners might study actual music to develop rhythmic awareness applicable to fencing. This philosophical framework elevates fencing to an art form combining mathematics and aesthetics."
+    },
+    {
+      "id": "italian.long.arte",
+      "originalTerm": "Arte",
+      "englishTerm": "Art",
+      "category": "concept",
+      "briefDescription": "Practical skill taught through apprenticeship—embodied, human-centered martial activity.",
+      "fullDescription": "Arte (Art) represents practical skill taught by apprenticeship or rote copying of a master—embodied, human-centered activity dealing with combat's chaos and unpredictability. In Vadi's framework, art deals with the practical, physical execution of techniques, the craft learned through repetition and correction, and the embodied knowledge that cannot be fully captured in words or theory.",
+      "briefApplication": "Develop practical skill through repetition, physical practice, and embodied learning under guidance.",
+      "fullApplication": "Arte represents the practical dimension of martial arts—the physical skills that must be learned through doing rather than just understanding theoretically. While Vadi argues fencing is ultimately a science, he acknowledges the arte component: physical execution requires practice, body knowledge develops through repetition, and skilled performance emerges from apprenticeship under masters. Use this understanding to balance your training: theory (scientia) provides framework and principles, but art (arte) requires physical practice. You cannot learn fencing purely intellectually—you must develop embodied skills through drilling, sparring, and correction from experienced practitioners. Arte also encompasses the craft aspects: developing proper cutting mechanics, building muscle memory for guard transitions, training reflexes for defensive responses. The tension between arte and scientia in Vadi's work reflects his sophisticated understanding that both matter. Don't just study theory and neglect practice, but also don't just practice without understanding the governing principles."
+    },
+    {
+      "id": "italian.long.scientia",
+      "originalTerm": "Scientia",
+      "englishTerm": "Science",
+      "category": "concept",
+      "briefDescription": "Certain, absolute knowledge derived from first principles—fencing's theoretical foundation.",
+      "fullDescription": "Scientia (Science) represents certain, absolute knowledge derived from first principles, providing the theoretical framework governing practice. Vadi argues in Chapter 1: 'If you wish to truly know if fencing is an art or science hark my words, I say. Ponder this, my statement: it is a true science and not an art.' Science provides systematic understanding of why techniques work, deriving practical application from geometric and musical principles.",
+      "briefApplication": "Study systematic principles and theoretical frameworks to understand the science underlying practical techniques.",
+      "fullApplication": "Scientia represents Vadi's claim that fencing constitutes systematic, theoretical knowledge derived from mathematical principles rather than just craft learned through imitation. This scientific approach means understanding why techniques work, not just how to perform them. Use scientia to elevate your understanding: when you learn a technique, study the underlying principles—what geometric advantages does it create? What timing principles does it exploit? How does it align with biomechanical efficiency? Scientific understanding allows you to adapt techniques to new situations because you understand governing principles rather than just memorized forms. Vadi's assertion of fencing as science rather than art was ambitious for his era, claiming intellectual status for martial pursuits. Modern practitioners should embrace this scientific approach: test techniques systematically, analyze successes and failures to understand principles, and organize knowledge into coherent frameworks. However, remember Vadi's ultimate resolution: fencing is art governed by science—practical execution (arte) must align with theoretical understanding (scientia)."
+    },
+    {
+      "id": "italian.long.prudentia",
+      "originalTerm": "Prudentia",
+      "englishTerm": "Prudence/Foresight",
+      "category": "concept",
+      "briefDescription": "The foresight and careful judgment required to anticipate and control engagements.",
+      "fullDescription": "Prudentia or Providimento (Prudence/Foresight) enables practitioners to anticipate and control engagements. This intellectual virtue balances against audacia (audacity)—successful fencers need both courage to act and prudence to choose actions wisely. Prudence involves reading opponent intentions, anticipating likely actions, and making calculated tactical decisions rather than reckless gambles.",
+      "briefApplication": "Exercise careful judgment and foresight in tactical decisions rather than reckless aggression.",
+      "fullApplication": "Prudentia represents the intellectual virtue governing tactical decision-making. Rather than acting rashly or on pure instinct, prudent fencers carefully assess situations before committing to actions. Use prudence to evaluate opponent capabilities, identify likely attack patterns, recognize situations where defense is wiser than offense, and calculate risk versus reward for aggressive actions. Prudence doesn't mean timidity—it means taking calculated risks based on judgment rather than blind gambles. The balance between prudentia and audacia (audacity) creates effective fencing: too much prudence makes you passive and reactive; too much audacity makes you reckless and predictable. Develop prudence through experience and study: learn to recognize patterns that indicate opponent intentions, understand which situations favor attack versus defense, and know your own limitations. Prudent fencers survive longer and capitalize on opponent mistakes rather than creating their own through rash actions. Master prudentia to develop the judgment that separates expert fighters from merely aggressive ones."
+    },
+    {
+      "id": "italian.long.audacia",
+      "originalTerm": "Audacia",
+      "englishTerm": "Audacity/Courage",
+      "category": "concept",
+      "briefDescription": "The boldness and courage to act decisively when opportunities arise.",
+      "fullDescription": "Audacia (Audacity/Courage) provides the boldness to act decisively when opportunities arise. This virtue balances against prudentia (prudence)—while prudence provides careful judgment, audacity provides the will to execute aggressive actions when appropriate. Successful fencers need both: prudence to identify good opportunities, audacity to exploit them decisively.",
+      "briefApplication": "Act decisively and boldly when opportunities arise rather than hesitating from excessive caution.",
+      "fullApplication": "Audacia represents the martial virtue of decisive action. While prudentia helps you identify good opportunities, audacia gives you the courage to exploit them. Use audacity when you've identified clear advantages—commit fully to attacks rather than half-heartedly probing. Hesitation often proves more dangerous than bold action because it allows opponents to recognize and counter your intentions. However, audacity must be balanced with prudence: blind aggression leads to disaster, but well-calculated aggressive action wins exchanges. Develop audacity through training that builds confidence in your techniques and judgment. When you trust your skills and tactical assessment, you can commit to actions without second-guessing. The balance between audacia and prudentia creates complete fencers: prudent enough to avoid foolish risks, audacious enough to capitalize on opportunities. Against overly cautious opponents, audacity pressures them into mistakes. Master audacia to develop the decisiveness that wins exchanges even when multiple options might technically work."
+    },
+    {
+      "id": "italian.long.bon_occhio",
+      "originalTerm": "Bon Occhio",
+      "englishTerm": "Good Eye",
+      "category": "concept",
+      "briefDescription": "The perceptive judgment required to see opponent intentions and opportunities.",
+      "fullDescription": "Bon Occhio (Good Eye) designates the judgment required to perceive opponent intentions and opportunities. Chapter 3 instructs: 'With your eye on the weapon that can attack you, seize both the tempo and the measure together.' The good eye represents perceptual awareness that reads opponents through visual cues, recognizes patterns indicating likely actions, and identifies the opportune moments for attack or defense.",
+      "briefApplication": "Develop visual awareness to read opponent intentions and recognize tactical opportunities.",
+      "fullApplication": "Bon Occhio represents the perceptual skill separating effective fighters from those who react blindly. Good eye allows you to read opponent body language and weapon position to anticipate their actions before full commitment, recognize patterns in their attack timing that you can exploit, identify moments when they're vulnerable to your attacks, and perceive measure and tempo relationships that create opportunities. Develop bon occhio through focused observation during practice: don't just perform techniques mechanically, but actively watch opponents for telegraphing and patterns. The instruction to keep 'your eye on the weapon that can attack you' means maintaining visual focus on threats rather than being distracted. However, effective visual awareness uses peripheral vision to track multiple elements—opponent weapon, their body positioning, distance, and available space. With experience, pattern recognition becomes unconscious—your eye automatically identifies situations you've seen before. Master bon occhio to develop the perceptual awareness that enables anticipation and timing rather than purely reactive response."
+    },
+    {
+      "id": "italian.long.cuore",
+      "originalTerm": "Cuore",
+      "englishTerm": "Heart/Courage",
+      "category": "concept",
+      "briefDescription": "The inner courage and will that enables decisive action in combat.",
+      "fullDescription": "Cuore or Cor (Heart/Courage) provides the will to act decisively. Combined with bon occhio (good eye) in Vadi's anatomical diagram as 'L'ochio col cor' (Eye with Heart), this pairing emphasizes that perception without will to act is insufficient. Courage enables you to execute techniques even under pressure, to commit to actions despite fear, and to maintain composure in dangerous situations.",
+      "briefApplication": "Maintain courage and composure to execute techniques decisively even under pressure.",
+      "fullApplication": "Cuore represents the psychological foundation enabling martial effectiveness. Technical skill and tactical knowledge mean nothing if you cannot execute under pressure. Courage allows you to commit to attacks despite uncertainty about outcomes, maintain composure when opponents pressure you aggressively, execute defenses calmly rather than panicking, and continue fighting even when tired or slightly wounded. The pairing with good eye in Vadi's diagram suggests courage must combine with perception: seeing opportunities means nothing without courage to exploit them, while blind courage without perception leads to reckless failure. Develop cuore through progressive exposure to pressure: start with controlled drilling, advance to competitive sparring, and push yourself beyond comfort zones. Courage grows through experience—each successful execution under pressure builds confidence for future situations. However, distinguish courage from recklessness: true courage involves acting despite fear when action is appropriate, not ignoring danger through foolishness. Master cuore to develop the psychological resilience that enables performing your best technique even in stressful combat."
+    },
+    {
+      "id": "italian.long.prestezza",
+      "originalTerm": "Prestezza",
+      "englishTerm": "Speed/Quickness",
+      "category": "concept",
+      "briefDescription": "The speed and quickness required for effective technique, described as 'quick like a greyhound.'",
+      "fullDescription": "Prestezza and Presto (Speed/Quickness) describe the velocity required for effective technique. Vadi instructs practitioners to move 'quick like a greyhound' (levorero), emphasizing that proper timing requires appropriate speed. However, speed must be controlled and directed—Vadi's emphasis on compact movement suggests efficient quickness rather than wild haste. Speed applies to attacks, defenses, and guard transitions.",
+      "briefApplication": "Develop controlled speed in all actions while maintaining technical precision.",
+      "fullApplication": "Prestezza represents crucial speed that enables effective technique. Slow movements telegraph intentions, giving opponents time to defend or counter. Use appropriate speed for attacks—fast enough that opponents cannot easily react, but controlled enough to maintain accuracy and defensive coverage. Defensive actions particularly require speed, as you're responding to opponent initiatives with less preparation time. However, distinguish speed from haste: hasty movements become sloppy and lose effectiveness, while true speed maintains technical precision at high velocity. The greyhound metaphor emphasizes athletic quickness rather than frantic rushing. Develop prestezza through deliberate practice: master techniques slowly first to ensure correct form, then gradually increase speed while maintaining quality, and train specifically for explosive acceleration from static positions. Speed also has tactical dimensions—varying your tempo between quick and measured actions prevents opponents from timing you. Against slow opponents, your speed creates overwhelming advantage. Master prestezza to develop the athletic quickness that enables advanced technique."
+    },
+    {
+      "id": "italian.long.passeggiar_weight_connection",
+      "originalTerm": "Weight Connection",
+      "englishTerm": "Weight Connection",
+      "category": "concept",
+      "briefDescription": "The principle that the head is connected to the weighted foot through body alignment.",
+      "fullDescription": "Weight connection describes how the head is 'connected' (atacata) to the weighted foot in Vadi's passeggiar stance. The advanced leg's knee bends while the rear leg extends, creating the distinctive posture where body weight aligns from head through the forward leg. This detailed explanation of biomechanics was unprecedented in fencing literature of the period, showing Vadi's systematic approach to understanding body mechanics.",
+      "briefApplication": "Maintain proper body alignment with weight connected from head to lead foot through bent knee.",
+      "fullApplication": "Weight connection represents Vadi's sophisticated understanding of biomechanics in his distinctive stance. When you execute passeggiar, your head should align over your lead foot through your bent front knee, creating a connected line of weight transfer. This alignment provides stability, power generation through proper structure, and efficient weight transfer for attacks and footwork. Use weight connection to optimize your techniques: when attacking, drive power from the rear leg through your aligned structure into your strike; when defending, maintain the connection to stay balanced and ready to counter. Poor alignment disconnects your structure, reducing power and stability. The concept shows Vadi's analytical approach—rather than just describing what stance looks like, he explains the biomechanical principle that makes it effective. Practice maintaining weight connection through all movements, not just static positions. Modern practitioners should study biomechanics to understand how this principle optimizes force generation and balance. Master weight connection to develop the efficient power transfer that characterizes proper passeggiar."
+    },
+    {
+      "id": "italian.long.giramento",
+      "originalTerm": "Giramento",
+      "englishTerm": "Turning/Rotation",
+      "category": "wrestling",
+      "briefDescription": "Rotational throws and body mechanics used in close combat.",
+      "fullDescription": "Giramento (Turning/Rotation) indicates rotational throws and body mechanics in close combat. These turning techniques use rotational force to unbalance and throw opponents, leveraging circular motion rather than just linear force. Giramento appears in both wrestling contexts and in describing rotational body mechanics for generating power in strikes.",
+      "briefApplication": "Use rotational body mechanics for both throws in close play and power generation in strikes.",
+      "fullApplication": "Giramento represents rotational mechanics critical to both grappling and striking. In close play, use turning motions to unbalance and throw opponents—circular force is often more effective than trying to lift or push directly. Rotate your body while maintaining grips to create throwing force opponents cannot easily resist. The turning principle also applies to strikes: many powerful cuts rely on body rotation coordinated with arm movement. Don't just swing with your arms—rotate your torso and hips to add rotational power. The principle appears in Vadi's anatomical diagram with the Orso (Bear) representing turning function. Practice giramento in both contexts: drilling throws that use rotation, and cutting exercises that emphasize rotational body mechanics. The circular nature means you can redirect opponent force rather than opposing it directly—when they push or pull, turn to use their force against them. Master giramento to develop rotational mechanics that multiply your effective power in both striking and grappling."
+    },
+    {
+      "id": "italian.long.presa",
+      "originalTerm": "Presa",
+      "englishTerm": "Grip/Hold",
+      "category": "wrestling",
+      "briefDescription": "Arm grips, weapon grips, and body locks used in close combat.",
+      "fullDescription": "Presa or Prese (Grip/Grips/Holds) encompass arm grips, weapon grips, and body locks used in giocco stretto (close play). These grips control opponent movement, facilitate throws and locks, enable weapon disarms, and create leverage for joint manipulation. Proper gripping technique is essential for effective close combat.",
+      "briefApplication": "Use proper grips to control opponent body and weapon in close combat situations.",
+      "fullApplication": "Presa represents fundamental close combat control. Once at grappling range, proper grips determine who controls the engagement. Use weapon grips to control opponent swords—grabbing their blade, hilt, or crossguard prevents them from striking effectively while enabling your techniques. Body grips control opponent movement: arm controls restrict their striking and defend gripping options, while body locks immobilize for throws or strikes. Develop sensitivity in gripping—don't just grab and hold, but feel opponent resistance and intentions through contact. Strong grips combined with proper leverage defeat stronger opponents through technical advantage. However, establishing grips requires timing—attempting grips while opponents can counter freely is dangerous. Use sword actions to create opportunities: after parrying or crossing, grip their weapon before they recover; after striking, grip exposed limbs before they return to guard. The greyhound symbolism in Vadi's anatomical diagram emphasizes speed in gripping. Master presa to develop close combat control that enables throws, disarms, and strikes from grappling range."
+    },
+    {
+      "id": "italian.long.ligadura",
+      "originalTerm": "Ligadura",
+      "englishTerm": "Joint Lock/Bind",
+      "category": "wrestling",
+      "briefDescription": "Joint manipulation techniques and locks applied in close combat.",
+      "fullDescription": "Ligadura (Joint Lock/Bind) describes joint manipulation techniques used in close combat. These locks control opponents through pain compliance or mechanical advantage, forcing them to comply with your actions or risk injury. Ligadura can target arms, wrists, fingers, or other joints, using leverage to overcome resistance.",
+      "briefApplication": "Use joint locks to control opponents through mechanical advantage and pain compliance.",
+      "fullApplication": "Ligadura represents sophisticated close combat technique that controls opponents through mechanical advantage over their joints. Rather than relying purely on strength, joint locks use proper leverage to make opponent positions biomechanically weak. Use arm locks after successful weapon disarms or when grappling, wrist locks when you've gripped opponent hands or weapon, and finger locks for fine control when you've established contact. The 'lock' terminology indicates positions where opponent joints cannot move without injury—you've locked them into compliance. However, establishing locks requires proper setup: attempting locks from poor positions or against prepared opponents fails. Use combinations: strike to create opportunity, grip to control, then apply lock. Joint locks can force disarms by attacking weapon-holding hands or create throws by controlling arms while unbalancing. Practice with care—locks can injure training partners if applied too forcefully. Master ligadura to develop sophisticated control that defeats opponents through technical manipulation rather than strength."
+    },
+    {
+      "id": "italian.long.gettare",
+      "originalTerm": "Gettare",
+      "englishTerm": "Throwing",
+      "category": "wrestling",
+      "briefDescription": "Takedowns and body-to-body throws in close combat.",
+      "fullDescription": "Gettare (Throwing) encompasses takedowns and body-to-body throws used in giocco stretto. These techniques unbalance opponents and bring them to the ground where they're vulnerable to finishing strikes, pins, or submission. Effective throws combine proper grips, body positioning, and mechanical advantage to overcome opponent resistance.",
+      "briefApplication": "Use throws to bring opponents to ground where they're vulnerable to finishing techniques.",
+      "fullApplication": "Gettare represents finishing tactics in close combat—once you've successfully closed distance and established control, throws allow you to end exchanges decisively. Proper throws unbalance opponents so they cannot maintain footing, using mechanical advantage rather than just strength. Use throws after establishing good grips that control opponent balance, when you've unbalanced them through strikes or sword actions, or when you've created leverage advantage through positioning. Throws work through several principles: hip throws use your hip as fulcrum to lift and rotate opponents over; leg sweeps or trips remove supporting legs while upper body control maintains their fall direction; rotational throws use turning momentum to overwhelm their balance. Ground positions create extreme vulnerability in armed combat—the thrown fighter cannot use their weapon effectively while standing opponents can deliver finishing strikes. Practice throws with proper safety: controlled drilling with compliant partners before attempting against resistance. Master gettare to develop finishing capability that capitalizes on close combat success."
+    },
+    {
+      "id": "italian.long.rompere",
+      "originalTerm": "Rompere",
+      "englishTerm": "Breaking",
+      "category": "wrestling",
+      "briefDescription": "Arm breaks and joint destruction techniques.",
+      "fullDescription": "Rompere (Breaking) includes arm breaks and joint destruction techniques, with plays promising: 'With my skill I will break your arm.' These represent extreme close combat techniques used when control or pain compliance is insufficient. Breaking techniques target joints or bones to physically disable opponent limbs, removing their ability to continue fighting.",
+      "briefApplication": "Use breaking techniques in extreme circumstances when lesser control proves insufficient.",
+      "fullApplication": "Rompere represents the most severe close combat techniques—actual joint or bone destruction rather than just control or pain compliance. Use breaking techniques only in serious combat when lesser methods have failed or when immediate, decisive action is required. Breaking techniques require committing fully: half-hearted attempts fail while alerting opponents to your intent. Targets include elbow joints hyperextended beyond breaking point, finger joints bent backward past tolerance, and wrist joints torqued to failure. The manuscript's explicit mention of breaking indicates this was expected in serious combat, not just theoretical. However, modern practitioners must never practice actual breaking—drilling these techniques requires extreme control and understanding that they're simulation only. Study the mechanics to understand leverage and vulnerability, but never test to actual breaking point. The severity of breaking techniques shows Vadi's manuscript addressed real combat where permanent injury was acceptable outcome. Master the theory of rompere while maintaining ethical training practices that preserve partner safety."
+    },
+    {
+      "id": "italian.long.disarmare",
+      "originalTerm": "Disarmare",
+      "englishTerm": "To Disarm",
+      "category": "wrestling",
+      "briefDescription": "Techniques to strip opponents of their weapons.",
+      "fullDescription": "Disarmare (To Disarm) and Torre l'Arme (To Take the Weapon) describe techniques to strip opponents of their weapons. These represent decisive tactical victories in armed combat—unarmed opponents face extreme disadvantage against armed fencers. Disarms typically combine weapon control through crossing or binding, joint manipulation or pain compliance to force weapon release, and physical wrenching to tear weapons from grips.",
+      "briefApplication": "Use disarms to gain decisive tactical advantage by removing opponent weapons.",
+      "fullApplication": "Disarmare represents one of the most decisive actions in armed combat. Successfully disarming creates overwhelming tactical advantage—you remain armed while opponents have lost their weapon. Use disarms after establishing strong weapon binds that prevent opponent recovery, when you've established grips that control their weapon hand, after striking to disorient or weaken their grip, or through joint locks that force compliance. Disarms require commitment—half-hearted attempts alert opponents without succeeding. Combine techniques: cross their weapon to control it, grip their hand or hilt, then wrench using body rotation while applying joint pressure. The crossguard and pommel serve as tools for disarming—hook their blade with your cross, trap their hands between sword components. Against serious opponents, disarms rarely succeed through single techniques—create situations where multiple factors (pain, distraction, leverage) combine to overwhelm their grip. Practice disarms extensively but recognize they're high-difficulty techniques requiring setup. Master disarmare to develop tactical options that end exchanges decisively when grappling."
+    },
+    {
+      "id": "italian.long.mezza_spada_grip",
+      "originalTerm": "Mezza Spada (Grip)",
+      "englishTerm": "Half-Sword Grip",
+      "category": "wrestling",
+      "briefDescription": "Gripping the blade with the left hand for enhanced control and leverage.",
+      "fullDescription": "Mezza Spada grip (Half-Sword Grip) positions the left hand on the blade for enhanced control and leverage in close quarters. This technique enables precise thrusts into armor gaps, powerful wrenching actions for control and disarms, and improved leverage for binding and pushing opponent weapons. The shortened lever arm provides fine control that full-length gripping cannot match.",
+      "briefApplication": "Use half-sword grip for precision thrusts in armor and enhanced leverage in close combat.",
+      "fullApplication": "Mezza Spada grip transforms your sword from a cutting tool into a precision thrusting and leveraging instrument. Grip the blade with your left hand to shorten effective length, creating a rigid spike for thrusting into small armor gaps—armpits, visors, joints. The two-point control (right hand on hilt, left on blade) provides fine directional control that single-hand gripping cannot match. Use half-sword grip primarily in armored combat where cutting is ineffective but precise thrusting finds gaps, or in close unarmored combat for enhanced binding and control. The grip also provides powerful wrenching leverage—controlling the blade middle gives mechanical advantage for redirecting opponent weapons or forcing disarms. However, the grip commits you to close distance—you cannot cut effectively with shortened grip, and retreating requires releasing the blade grip. The right side of the blade is typically held (false edge side), protecting your hand from your own edge. Practice half-sword to develop comfort with this seemingly unnatural grip that proves essential in certain tactical contexts."
+    },
+    {
+      "id": "italian.long.colpi_di_pomo",
+      "originalTerm": "Colpi di Pomo",
+      "englishTerm": "Pommel Strikes",
+      "category": "wrestling",
+      "briefDescription": "Close-range impacts with the sword's pommel.",
+      "fullDescription": "Colpi di Pomo (Pommel Strikes) deliver close-range impacts with the sword's pommel, particularly effective against armored opponents. The pommel becomes a mace-like striking tool at grappling distance, targeting the head, face, and other exposed areas. These strikes use sword weight and short-distance acceleration to deliver concussive force.",
+      "briefApplication": "Use pommel strikes for close-range impacts when at grappling distance.",
+      "fullApplication": "Colpi di Pomo transforms your sword's pommel into an impact weapon at close distance. When you've closed to grappling range, cutting becomes difficult or impossible, but the pommel can deliver powerful short-range strikes. Target opponent heads with hooking blows, faces with upward strikes, or bodies with hammering impacts. Pommel strikes work particularly well against armored opponents where cutting is ineffective—the blunt impact can cause concussion even through helmets. Use pommel strikes after establishing control through grips or bindings, when you've unbalanced opponents making them unable to defend, or opportunistically during grappling exchanges. The short distance required means pommel strikes occur within wrestling range, often combined with grappling techniques. Practice pommel strikes with proper safety—even training pommels can cause injury if struck with full force. The round pommel shape specified by Vadi 'to fit in the fist' provides good striking surface. Master colpi di pomo to develop complete close combat offense that includes striking options when cutting is impractical."
+    },
+    {
+      "id": "italian.long.contrario",
+      "originalTerm": "Contrario",
+      "englishTerm": "Counter",
+      "category": "tactical",
+      "briefDescription": "Counter-techniques and responses when plays fail or are countered.",
+      "fullDescription": "Contrario (Counter) designates counter-techniques and responses when plays fail or are countered. Vadi's principle that 'every reverse finds his right, contrary by contrary without an end' suggests infinite counter and re-counter possibilities. These transitions between modes of play enable continuous adaptation as exchanges develop beyond initial techniques.",
+      "briefApplication": "Prepare counter-responses for when your techniques are defended or fail to complete.",
+      "fullApplication": "Contrario represents the principle that no technique is absolute—every action has potential counters, requiring prepared responses. When opponents counter your attacks, you must have ready follow-ups rather than simply failing. Develop contrario thinking: for each technique, identify likely opponent counters, and prepare your responses to those counters. This creates layered tactical awareness: your initial technique is actually a probe that forces opponent response, revealing their counter method, which you exploit with your prepared contrario. The 'contrary by contrary without an end' principle means exchanges can theoretically continue indefinitely as each counter is met with another counter. However, practical reality means most exchanges resolve within a few actions. Use contrario to develop fluid fighting that doesn't rely on single techniques working perfectly. If your thrust is parried, have a prepared counter-cut; if your cut is avoided, have a follow-up thrust. Master contrario to develop adaptable fighting that continues effectively even when initial techniques fail."
+    },
+    {
+      "id": "italian.long.bon_filo",
+      "originalTerm": "Bon Filo",
+      "englishTerm": "True Edge/Good Edge",
+      "category": "weapon",
+      "briefDescription": "The primary cutting edge on the knuckle side of the sword.",
+      "fullDescription": "Bon Filo or Filo Dritto (True Edge/Good Edge) designates the primary cutting edge on the knuckle side of the sword. This edge delivers most cutting attacks due to favorable biomechanics and edge alignment with natural striking motions. The 'true' or 'good' designation reflects its primacy over the false edge.",
+      "briefApplication": "Use the true edge for maximum cutting effectiveness in most strikes.",
+      "fullApplication": "Bon Filo represents your primary cutting tool, delivering most effective cuts due to biomechanical advantage and edge alignment. When you grip the sword naturally, this edge aligns with forehand striking motions, creating powerful, efficient cuts. Use true edge for all fendenti (descending cuts), for mandritto strikes generally, for finishing cuts requiring maximum power, and any time cutting effectiveness is paramount. The edge geometry and alignment mean true edge cuts generate more force with less effort than false edge equivalents. However, don't exclusively rely on true edge—tactical situations sometimes favor false edge strikes despite reduced power. The distinction between true and false edges structures Italian cutting vocabulary: mandritto typically uses true edge, roverso typically uses false edge. Maintain true edge through proper sword care—sharpen and align regularly. Practice cutting mechanics that optimize true edge impact: proper body rotation, correct edge alignment at impact, and follow-through that maintains edge-on contact. Master bon filo usage to develop powerful cutting offense."
+    },
+    {
+      "id": "italian.long.filo_falso",
+      "originalTerm": "Filo Falso",
+      "englishTerm": "False Edge",
+      "category": "weapon",
+      "briefDescription": "The secondary cutting edge on the thumb side of the sword.",
+      "fullDescription": "Filo Falso (False Edge) designates the secondary cutting edge on the thumb side of the sword. While less biomechanically optimal than the true edge for most cuts, the false edge enables certain techniques and strike angles impossible or awkward with the true edge. Roverso (backhand) strikes typically employ the false edge.",
+      "briefApplication": "Use the false edge for backhand strikes and situations where true edge is impractical.",
+      "fullApplication": "Filo Falso provides cutting capability from positions and angles where true edge cannot effectively reach. While generally less powerful than true edge cuts due to biomechanics, false edge strikes serve important tactical purposes: enabling backhand strikes without reversing sword position, allowing cuts during certain guard transitions, providing unexpected attack angles that surprise opponents, and facilitating specific techniques like falso dritto and falso roverso. Use false edge when your sword is positioned with true edge away from targets and reversing would take too long, when combinations flow naturally with false edge strikes, or when deceptive attack angles serve tactical purposes. Modern practitioners should not neglect false edge—while it may cut less powerfully, the tactical advantages often outweigh pure cutting force. Practice false edge mechanics: these cuts use different body rotation and muscle engagement than true edge equivalents. Master filo falso to develop complete cutting vocabulary that threatens from any sword position."
+    },
+    {
+      "id": "italian.long.elzo",
+      "originalTerm": "Elzo",
+      "englishTerm": "Crossguard/Hilt",
+      "category": "weapon",
+      "briefDescription": "The crossguard extending the same length as the handle, used for hooking and trapping.",
+      "fullDescription": "Elzo or Elso (Crossguard/Hilt) extends the same length as the handle plus pommel, described as 'strong and square' with 'wide and pointed end.' This ferro (iron/crossguard) serves multiple purposes: protecting the hands from sliding blades, providing hooking and trapping points for opponent weapons, and offering striking surfaces for close combat. Vadi specifies particular dimensions proportional to the handle and fighter size.",
+      "briefApplication": "Use the crossguard for hand protection and as a tool for hooking opponent weapons.",
+      "fullApplication": "Elzo serves critical functions beyond simple hand protection. The specified length (matching handle plus pommel) and pointed ends create effective tools for techniques: hook opponent blades with the cross arms during bindings and crossings, trap opponent hands or weapon components between cross and blade, strike with the cross ends at close distance, and block or deflect strikes using the cross as a barrier. The 'strong and square' description suggests robustness—the cross must withstand significant force during bindings and cannot bend or break under pressure. The proportional sizing to handle ensures balanced sword handling while providing adequate coverage. Use the cross actively in technique, not just as passive protection. During crossed positions, rotate your cross to hook under or over opponent blades for control. The cross also provides feedback during bindings—you can feel opponent pressure through contact with the cross. Modern practitioners should appreciate the cross as an integral technical tool, not just decorative guard. Master elzo usage to develop sophisticated binding and weapon control techniques."
+    },
+    {
+      "id": "italian.long.pomo",
+      "originalTerm": "Pomo",
+      "englishTerm": "Pommel",
+      "category": "weapon",
+      "briefDescription": "The round counterweight and striking tool at the sword's end.",
+      "fullDescription": "Pomo (Pommel) must be round 'in fist closed,' serving both as a counterweight and striking weapon. The pommel balances the blade weight, enabling proper handling characteristics and allowing one-handed technique when necessary. The round shape provides good striking surface for pommel strikes in close combat and ensures secure grip termination that won't snag or catch.",
+      "briefApplication": "Use the pommel as a counterweight for handling and as a close-range striking tool.",
+      "fullApplication": "Pomo serves dual functions essential to proper sword design and technique. As counterweight, the pommel balances blade weight, shifting the sword's center of balance closer to the hands for better control and reducing fatigue during extended use. The weight and position enable quick point recovery after cuts and proper leverage for binding pressure. As a striking tool, the pommel becomes a close-range weapon: deliver hooking strikes to opponent heads, hammering blows to faces or bodies, and short-range impacts when cutting is impractical. The specified round shape 'in fist closed' ensures secure grip—your hand wraps around the handle with the pommel preventing your grip from sliding off, while the round contour provides comfortable, secure termination. Use pommel strikes when at grappling distance or when you've established control but cannot cut effectively. The pommel also provides leverage for certain grips and manipulations. Modern practitioners should ensure pommels are properly secured—loose pommels compromise both handling and safety. Master pomo usage to develop complete sword control and close combat capabilities."
+    },
+    {
+      "id": "italian.long.manico",
+      "originalTerm": "Manico",
+      "englishTerm": "Handle/Grip",
+      "category": "weapon",
+      "briefDescription": "The square-shaped grip measuring one span long.",
+      "fullDescription": "Manico (Handle/Grip) measures one span long and features a square shape for consistent hand placement. The square cross-section provides tactile feedback about edge orientation—you can feel blade alignment without looking. Proper handle length enables comfortable two-handed grip while maintaining proportional balance with the blade.",
+      "briefApplication": "Use proper grip placement on the square handle for consistent edge alignment.",
+      "fullApplication": "Manico design reflects Vadi's attention to functional detail. The specified one-span length provides enough grip space for both hands without excessive length that would compromise handling. The square cross-section proves particularly important: unlike round handles, square grips provide instant tactile feedback about edge orientation. In the chaos of combat, you can feel whether true or false edge faces your target without looking at your sword. This allows maintaining visual focus on opponents while ensuring proper edge alignment. Grip the handle with both hands for two-handed techniques, or with just the dominant hand when using extended guards or single-hand actions. The square shape also prevents the sword from rotating in your grip during impact—the flat surfaces lock against your palm and fingers. Modern practitioners should appreciate this design detail: period-appropriate square or diamond-section grips provide significant functional advantage over cylindrical modern reproductions. Proper hand placement on the handle affects all technique. Master manico usage by developing consistent, proper grip that maximizes control and edge awareness."
+    }
+  ]
+}
