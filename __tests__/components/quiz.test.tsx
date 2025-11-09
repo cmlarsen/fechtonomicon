@@ -7,9 +7,9 @@ import { QuizExitButton } from '../../src/components/quiz/QuizExitButton';
 import { QuizFinalScore } from '../../src/components/quiz/QuizFinalScore';
 import { QuizQuestionCard } from '../../src/components/quiz/QuizQuestionCard';
 import { QuizScoreDisplay } from '../../src/components/quiz/QuizScoreDisplay';
-import type { Flashcard } from '../../src/types/flashcard';
+import type { Term } from '../../src/types/term';
 
-const mockCard: Flashcard = {
+const mockCard: Term = {
   id: 'test-card',
   category: 'guard',
   weapon: 'longsword',

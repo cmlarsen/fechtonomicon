@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { colors, fontFamily, fontSize, spacing } from '../../theme/tokens';
-import type { Flashcard } from '../../types/flashcard';
+import type { Term } from '../../types/term';
 
 interface QuizQuestionCardProps {
-  card: Flashcard;
+  card: Term;
   questionText: string;
 }
 

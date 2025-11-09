@@ -2,12 +2,12 @@ import React, { useCallback } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { colors, fontFamily, fontSize, spacing } from '../../theme/tokens';
 
-import type { Flashcard } from '../../types/flashcard';
+import type { Term } from '../../types/term';
 
 interface CardListItemProps {
-  card: Flashcard;
+  card: Term;
   isSelected: boolean;
-  onPress: (card: Flashcard) => void;
+  onPress: (card: Term) => void;
 }
 
 export const CardListItem = React.memo<CardListItemProps>(({ card, isSelected, onPress }) => {

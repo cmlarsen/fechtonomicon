@@ -1,4 +1,4 @@
-import type { Discipline } from '../types/flashcard';
+import type { Discipline } from '../types/term';
 
 export interface DisciplineInfo {
   id: Discipline;

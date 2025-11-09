@@ -1,13 +1,13 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { colors, fontFamily, fontSize, spacing } from '../../theme/tokens';
-import type { Flashcard } from '../../types/flashcard';
+import type { Term } from '../../types/term';
 import { CardListItem } from './CardListItem';
 
 interface TermsListProps {
-  cards: Flashcard[];
+  cards: Term[];
   selectedCardId: string | undefined;
-  onCardPress: (card: Flashcard) => void;
+  onCardPress: (card: Term) => void;
   searchQuery?: string;
   showSelected?: boolean;
   scrollToSelected?: boolean;
@@ -21,17 +21,17 @@ export const TermsList: React.FC<TermsListProps> = ({
   showSelected = true,
   scrollToSelected = true,
 }) => {
-  const listRef = useRef<FlatList<Flashcard>>(null);
+  const listRef = useRef<FlatList<Term>>(null);
 
   const renderCardItem = useCallback(
-    ({ item: card }: { item: Flashcard }) => {
+    ({ item: card }: { item: Term }) => {
       const isSelected = showSelected && card.id === selectedCardId;
       return <CardListItem card={card} isSelected={isSelected} onPress={onCardPress} />;
     },
     [onCardPress, selectedCardId, showSelected]
   );
 
-  const keyExtractor = useCallback((card: Flashcard) => card.id, []);
+  const keyExtractor = useCallback((card: Term) => card.id, []);
 
   const renderEmptyComponent = useCallback(() => {
     return (

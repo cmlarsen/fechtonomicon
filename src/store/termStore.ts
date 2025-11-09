@@ -1,24 +1,24 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import { Discipline, Flashcard } from '../types/flashcard';
+import { Discipline, Term } from '../types/term';
 
-interface FlashcardStore {
+interface TermStore {
   selectedDisciplines: Discipline[];
-  allCards: Flashcard[];
+  allCards: Term[];
 
-  loadCards: (cards: Flashcard[]) => void;
+  loadCards: (cards: Term[]) => void;
   toggleDiscipline: (discipline: Discipline) => void;
   setSelectedDisciplines: (disciplines: Discipline[]) => void;
 }
 
-export const useFlashcardStore = create<FlashcardStore>()(
+export const useTermStore = create<TermStore>()(
   persist(
     (set) => ({
       selectedDisciplines: ['italian-longsword'],
       allCards: [],
 
-      loadCards: (cards: Flashcard[]) => {
+      loadCards: (cards: Term[]) => {
         set({ allCards: cards });
       },
 
@@ -31,7 +31,7 @@ export const useFlashcardStore = create<FlashcardStore>()(
       },
     }),
     {
-      name: 'flashcard-storage',
+      name: 'term-storage',
       storage: createJSONStorage(() => AsyncStorage),
       partialize: (state) => ({
         selectedDisciplines: state.selectedDisciplines,

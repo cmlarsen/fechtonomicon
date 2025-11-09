@@ -1,16 +1,16 @@
 import { memo, useCallback, useEffect, useRef } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useFlashcardStore } from '../store/flashcardStore';
+import { useTermStore } from '../store/termStore';
 import { borderRadius, colors, fontFamily, fontSize, spacing } from '../theme/tokens';
-import type { Flashcard as FlashcardType } from '../types/flashcard';
+import type { Term } from '../types/term';
 import { rgba } from '../utils/colorUtils';
 import { LinkedText } from './LinkedText';
 import { Pager } from './Pager';
 import { SectionDivider } from './SectionDivider';
 import { VideoSection } from './VideoEmbed';
 
-interface FlashcardProps {
-  card: FlashcardType | undefined;
+interface TermCardProps {
+  card: Term | undefined;
   onTermPress?: (cardId: string) => void;
   onPrev?: () => void;
   onNext?: () => void;
@@ -18,9 +18,9 @@ interface FlashcardProps {
   canGoNext?: boolean;
 }
 
-export const Flashcard = memo<FlashcardProps>(
+export const TermCard = memo<TermCardProps>(
   ({ card, onTermPress, onPrev, onNext, canGoPrev = false, canGoNext = false }) => {
-    const allCards = useFlashcardStore((state) => state.allCards);
+    const allCards = useTermStore((state) => state.allCards);
     const scrollViewRef = useRef<ScrollView>(null);
 
     const handleTermPress = useCallback(
@@ -164,7 +164,7 @@ export const Flashcard = memo<FlashcardProps>(
   }
 );
 
-Flashcard.displayName = 'Flashcard';
+TermCard.displayName = 'TermCard';
 
 const styles = StyleSheet.create({
   container: {

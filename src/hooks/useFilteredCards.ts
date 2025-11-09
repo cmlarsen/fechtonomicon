@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 import { useTermsSearch } from '../contexts/TermsSearchContext';
-import { useFlashcardStore } from '../store/flashcardStore';
+import { useTermStore } from '../store/termStore';
 
 export const useFilteredCards = () => {
-  const allCards = useFlashcardStore((state) => state.allCards);
-  const selectedDisciplines = useFlashcardStore((state) => state.selectedDisciplines);
+  const allCards = useTermStore((state) => state.allCards);
+  const selectedDisciplines = useTermStore((state) => state.selectedDisciplines);
   const { searchQuery } = useTermsSearch();
 
   const disciplineFilteredCards = useMemo(() => {

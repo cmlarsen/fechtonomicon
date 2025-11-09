@@ -13,9 +13,9 @@ import { QuizProgressBar } from '../components/quiz/QuizProgressBar';
 import { QuizQuestionCard } from '../components/quiz/QuizQuestionCard';
 import { QuizSelectionCard } from '../components/quiz/QuizSelectionCard';
 import { TranslateQuestion } from '../components/quiz/TranslateQuestion';
-import { useFlashcardStore } from '../store/flashcardStore';
+import { useTermStore } from '../store/termStore';
 import { animation, colors, fontFamily, fontSize, spacing } from '../theme/tokens';
-import type { Discipline, Flashcard } from '../types/flashcard';
+import type { Discipline, Term } from '../types/term';
 import {
   generateQuestion,
   prepareFullQuiz,
@@ -33,14 +33,14 @@ type QuizMode = 'quick' | 'full';
 
 export const QuizScreen: React.FC<QuizScreenProps> = ({ navigation }) => {
   const posthog = usePostHog();
-  const allCards = useFlashcardStore((state) => state.allCards);
+  const allCards = useTermStore((state) => state.allCards);
   const insets = useSafeAreaInsets();
 
   const [selectedDiscipline, setSelectedDiscipline] = useState<Discipline | null>(null);
   const [quizMode, setQuizMode] = useState<QuizMode | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
 
-  const [quizCards, setQuizCards] = useState<Flashcard[]>([]);
+  const [quizCards, setQuizCards] = useState<Term[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState({ correct: 0, total: 0 });
   const [currentQuestion, setCurrentQuestion] = useState<QuestionData | null>(null);

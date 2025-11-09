@@ -1,15 +1,15 @@
 import React, { useMemo, useState } from 'react';
 import { StyleSheet, Text, type TextStyle } from 'react-native';
 import { colors, fontFamily, spacing } from '../theme/tokens';
-import type { Flashcard } from '../types/flashcard';
-import { CorrectionModal } from './CorrectionModal';
+import type { Term } from '../types/term';
+import { CorrectionModal } from './modals';
 
 interface LinkedTextProps {
   text: string;
-  allCards: Flashcard[];
+  allCards: Term[];
   onTermPress: (cardId: string) => void;
   style?: TextStyle;
-  card?: Flashcard;
+  card?: Term;
   fieldName?: string;
   disableEdit?: boolean;
   ignoreWords?: string[];

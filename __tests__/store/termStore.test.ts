@@ -1,11 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { act, renderHook, waitFor } from '@testing-library/react-native';
-import { useFlashcardStore } from '../../src/store/flashcardStore';
-import type { Discipline, Flashcard } from '../../src/types/flashcard';
+import { useTermStore } from '../../src/store/termStore';
+import type { Discipline, Term } from '../../src/types/term';
 
 jest.mock('@react-native-async-storage/async-storage');
 
-const mockFlashcards = [
+const mockTerms = [
   {
     id: 'card1',
     category: 'test',
@@ -33,9 +33,9 @@ const mockFlashcards = [
     briefDescription: 'Description 3',
     discipline: 'german-longsword' as Discipline,
   },
-] as Flashcard[];
+] as Term[];
 
-describe('Flashcard Store', () => {
+describe('Term Store', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     (AsyncStorage.getItem as jest.Mock).mockResolvedValue(null);
@@ -44,14 +44,14 @@ describe('Flashcard Store', () => {
 
   describe('initialization', () => {
     it('should initialize with empty state', () => {
-      const { result } = renderHook(() => useFlashcardStore());
+      const { result } = renderHook(() => useTermStore());
 
       expect(result.current.allCards).toEqual([]);
       expect(result.current.selectedDisciplines).toEqual(['italian-longsword']);
     });
 
     it('should persist selected disciplines', async () => {
-      const { result } = renderHook(() => useFlashcardStore());
+      const { result } = renderHook(() => useTermStore());
 
       act(() => {
         result.current.setSelectedDisciplines(['italian-longsword']);
@@ -65,19 +65,19 @@ describe('Flashcard Store', () => {
 
   describe('loadCards', () => {
     it('should load cards into store', () => {
-      const { result } = renderHook(() => useFlashcardStore());
+      const { result } = renderHook(() => useTermStore());
 
       act(() => {
-        result.current.loadCards(mockFlashcards);
+        result.current.loadCards(mockTerms);
       });
 
-      expect(result.current.allCards).toEqual(mockFlashcards);
+      expect(result.current.allCards).toEqual(mockTerms);
     });
   });
 
   describe('toggleDiscipline', () => {
     it('should set the selected discipline', () => {
-      const { result } = renderHook(() => useFlashcardStore());
+      const { result } = renderHook(() => useTermStore());
 
       act(() => {
         result.current.toggleDiscipline('german-longsword');
@@ -87,7 +87,7 @@ describe('Flashcard Store', () => {
     });
 
     it('should switch between disciplines', () => {
-      const { result } = renderHook(() => useFlashcardStore());
+      const { result } = renderHook(() => useTermStore());
 
       act(() => {
         result.current.toggleDiscipline('german-longsword');
@@ -103,7 +103,7 @@ describe('Flashcard Store', () => {
 
   describe('setSelectedDisciplines', () => {
     it('should set multiple disciplines', () => {
-      const { result } = renderHook(() => useFlashcardStore());
+      const { result } = renderHook(() => useTermStore());
 
       act(() => {
         result.current.setSelectedDisciplines(['italian-longsword', 'german-longsword']);
@@ -113,7 +113,7 @@ describe('Flashcard Store', () => {
     });
 
     it('should persist when changed', async () => {
-      const { result } = renderHook(() => useFlashcardStore());
+      const { result } = renderHook(() => useTermStore());
 
       act(() => {
         result.current.setSelectedDisciplines(['italian-longsword', 'german-longsword']);

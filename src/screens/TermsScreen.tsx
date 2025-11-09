@@ -4,13 +4,14 @@ import { useNavigation } from '@react-navigation/native';
 import type { StackNavigationProp } from '@react-navigation/stack';
 import { usePostHog } from 'posthog-react-native';
 import React, { useCallback } from 'react';
-import { Keyboard, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Keyboard, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import MagnifyingGlassIcon from '../../assets/icons/np_magnifying-glass.svg';
 import SwordsIcon from '../../assets/icons/np_swords.svg';
 import { BackgroundPattern } from '../components/BackgroundPattern';
-import { Flashcard } from '../components/Flashcard';
+import { IconButton } from '../components/buttons';
 import { LoadingState } from '../components/LoadingState';
+import { TermCard } from '../components/TermCard';
 import { useCardIndex } from '../hooks/useCardIndex';
 import { useCardLoader } from '../hooks/useCardLoader';
 import { useFilteredCards } from '../hooks/useFilteredCards';
@@ -81,33 +82,21 @@ export const TermsScreen: React.FC<TermsScreenProps> = ({ navigation, route }) =
         {!showLoading && (
           <View style={[styles.header, { paddingTop: insets.top }]}>
             <View style={styles.headerLeft}>
-              <TouchableOpacity
-                style={styles.settingsButton}
+              <IconButton
+                IconComponent={SwordsIcon}
                 onPress={handleSettings}
-                activeOpacity={0.7}
-              >
-                <SwordsIcon
-                  width={20}
-                  height={20}
-                  fill={colors.burgundy.main}
-                  color={colors.burgundy.main}
-                />
-              </TouchableOpacity>
+                size="small"
+                variant="burgundy"
+              />
             </View>
             <Text style={styles.title}>Fechtonomicon</Text>
             <View style={styles.headerRight}>
-              <TouchableOpacity
-                style={styles.searchButton}
+              <IconButton
+                IconComponent={MagnifyingGlassIcon}
                 onPress={handleSearch}
-                activeOpacity={0.7}
-              >
-                <MagnifyingGlassIcon
-                  width={20}
-                  height={20}
-                  fill={colors.burgundy.main}
-                  color={colors.burgundy.main}
-                />
-              </TouchableOpacity>
+                size="small"
+                variant="burgundy"
+              />
             </View>
           </View>
         )}
@@ -116,7 +105,7 @@ export const TermsScreen: React.FC<TermsScreenProps> = ({ navigation, route }) =
           <LoadingState />
         ) : (
           <View style={styles.detailContainer}>
-            <Flashcard
+            <TermCard
               card={currentCard}
               onTermPress={handleTermPress}
               onPrev={handlePrev}
@@ -158,32 +147,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   headerLeft: {
-    width: 32,
     alignItems: 'flex-start',
   },
   headerRight: {
-    width: 32,
     alignItems: 'flex-end',
-  },
-  settingsButton: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
-    backgroundColor: colors.parchment.light,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 1.5,
-    borderColor: colors.burgundy.main,
-  },
-  searchButton: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
-    backgroundColor: colors.parchment.light,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 1.5,
-    borderColor: colors.burgundy.main,
   },
   detailContainer: {
     flex: 1,

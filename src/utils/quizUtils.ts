@@ -1,8 +1,14 @@
-import type { Discipline, Flashcard } from '../types/flashcard';
+import type { Discipline, Term } from '../types/term';
+
+const QUICK_QUIZ_SIZE = 10;
+const FULL_QUIZ_SIZE = 50;
+const MAX_QUESTION_RETRIES = 10;
+const WRONG_ANSWER_OPTIONS_COUNT = 2;
+const TRANSLATE_OPTIONS_COUNT = 4;
 
 export interface QuestionData {
   type: 'translate' | 'definition' | 'application';
-  card: Flashcard;
+  card: Term;
   options: string[];
   correctIndex: number;
   questionText: string;
@@ -24,7 +30,7 @@ export function shuffleArray<T>(array: T[]): T[] {
  * Replaces term references in text with the target term
  * This is used to sanitize false answers so they don't give away clues
  */
-function replaceTermReferences(text: string, allCards: Flashcard[], targetTerm: string): string {
+function replaceTermReferences(text: string, allCards: Term[], targetTerm: string): string {
   // Build a map of all terms (originalTerm and englishTerm) from all cards
   const termSet = new Set<string>();
   allCards.forEach((card) => {
@@ -78,8 +84,8 @@ export function filterOutTermReferences(
  * Gets random englishTerms from the current discipline dataset
  */
 export function getRandomEnglishTerms(
-  card: Flashcard,
-  allCards: Flashcard[],
+  card: Term,
+  allCards: Term[],
   _selectedDisciplines: Discipline[],
   count: number
 ): string[] {
@@ -101,8 +107,8 @@ export function getRandomEnglishTerms(
  * Gets random descriptions from other disciplines, filtering out term references
  */
 export function getRandomDescriptions(
-  card: Flashcard,
-  allCards: Flashcard[],
+  card: Term,
+  allCards: Term[],
   selectedDisciplines: Discipline[],
   count: number
 ): string[] {
@@ -134,11 +140,7 @@ export function getRandomDescriptions(
 /**
  * Gets descriptions from the same discipline as fallback
  */
-function getSameDisciplineDescriptions(
-  card: Flashcard,
-  allCards: Flashcard[],
-  count: number
-): string[] {
+function getSameDisciplineDescriptions(card: Term, allCards: Term[], count: number): string[] {
   const sameDisciplineCards = allCards.filter(
     (c) =>
       c.discipline === card.discipline &&
@@ -164,11 +166,7 @@ function getSameDisciplineDescriptions(
 /**
  * Gets applications from the same discipline as fallback
  */
-function getSameDisciplineApplications(
-  card: Flashcard,
-  allCards: Flashcard[],
-  count: number
-): string[] {
+function getSameDisciplineApplications(card: Term, allCards: Term[], count: number): string[] {
   const sameDisciplineCards = allCards.filter(
     (c) =>
       c.discipline === card.discipline &&
@@ -195,8 +193,8 @@ function getSameDisciplineApplications(
  * Gets random applications from other disciplines, filtering out term references
  */
 export function getRandomApplications(
-  card: Flashcard,
-  allCards: Flashcard[],
+  card: Term,
+  allCards: Term[],
   selectedDisciplines: Discipline[],
   count: number
 ): string[] {
@@ -228,42 +226,41 @@ export function getRandomApplications(
 /**
  * Prepares a quick quiz with 10 random cards from specified discipline(s)
  */
-export function prepareQuickQuiz(
-  allCards: Flashcard[],
-  selectedDisciplines: Discipline[]
-): Flashcard[] {
+export function prepareQuickQuiz(allCards: Term[], selectedDisciplines: Discipline[]): Term[] {
   const filtered = allCards.filter(
     (card) => card.discipline && selectedDisciplines.includes(card.discipline)
   );
   const shuffled = shuffleArray(filtered);
-  return shuffled.slice(0, Math.min(10, shuffled.length));
+  return shuffled.slice(0, Math.min(QUICK_QUIZ_SIZE, shuffled.length));
 }
 
 /**
  * Prepares a full quiz with up to 50 cards from specified discipline(s)
  */
-export function prepareFullQuiz(
-  allCards: Flashcard[],
-  selectedDisciplines: Discipline[]
-): Flashcard[] {
+export function prepareFullQuiz(allCards: Term[], selectedDisciplines: Discipline[]): Term[] {
   const filtered = allCards.filter(
     (card) => card.discipline && selectedDisciplines.includes(card.discipline)
   );
   const shuffled = shuffleArray(filtered);
-  return shuffled.slice(0, Math.min(50, shuffled.length));
+  return shuffled.slice(0, Math.min(FULL_QUIZ_SIZE, shuffled.length));
 }
 
 /**
  * Generates a translate question (englishTerm)
  */
 function generateTranslateQuestion(
-  card: Flashcard,
-  allCards: Flashcard[],
+  card: Term,
+  allCards: Term[],
   selectedDisciplines: Discipline[]
 ): QuestionData | null {
   if (!card.englishTerm) return null;
 
-  const randomTerms = getRandomEnglishTerms(card, allCards, selectedDisciplines, 4);
+  const randomTerms = getRandomEnglishTerms(
+    card,
+    allCards,
+    selectedDisciplines,
+    TRANSLATE_OPTIONS_COUNT
+  );
   const allOptions = [card.englishTerm, ...randomTerms];
   const shuffled = shuffleArray(allOptions);
   const correctIndex = shuffled.indexOf(card.englishTerm);
@@ -281,18 +278,23 @@ function generateTranslateQuestion(
  * Generates a definition question (description)
  */
 function generateDefinitionQuestion(
-  card: Flashcard,
-  allCards: Flashcard[],
+  card: Term,
+  allCards: Term[],
   selectedDisciplines: Discipline[]
 ): QuestionData | null {
   if (!card.briefDescription) return null;
 
-  const randomDescriptions = getRandomDescriptions(card, allCards, selectedDisciplines, 2);
+  const randomDescriptions = getRandomDescriptions(
+    card,
+    allCards,
+    selectedDisciplines,
+    WRONG_ANSWER_OPTIONS_COUNT
+  );
   let descriptions = randomDescriptions;
 
-  if (descriptions.length < 2) {
-    descriptions = getSameDisciplineDescriptions(card, allCards, 2);
-    if (descriptions.length < 2) return null;
+  if (descriptions.length < WRONG_ANSWER_OPTIONS_COUNT) {
+    descriptions = getSameDisciplineDescriptions(card, allCards, WRONG_ANSWER_OPTIONS_COUNT);
+    if (descriptions.length < WRONG_ANSWER_OPTIONS_COUNT) return null;
   }
 
   const allOptions = [card.briefDescription, ...descriptions];
@@ -312,18 +314,23 @@ function generateDefinitionQuestion(
  * Generates an application question (application)
  */
 function generateApplicationQuestion(
-  card: Flashcard,
-  allCards: Flashcard[],
+  card: Term,
+  allCards: Term[],
   selectedDisciplines: Discipline[]
 ): QuestionData | null {
   if (!card.briefApplication) return null;
 
-  const randomApplications = getRandomApplications(card, allCards, selectedDisciplines, 2);
+  const randomApplications = getRandomApplications(
+    card,
+    allCards,
+    selectedDisciplines,
+    WRONG_ANSWER_OPTIONS_COUNT
+  );
   let applications = randomApplications;
 
-  if (applications.length < 2) {
-    applications = getSameDisciplineApplications(card, allCards, 2);
-    if (applications.length < 2) return null;
+  if (applications.length < WRONG_ANSWER_OPTIONS_COUNT) {
+    applications = getSameDisciplineApplications(card, allCards, WRONG_ANSWER_OPTIONS_COUNT);
+    if (applications.length < WRONG_ANSWER_OPTIONS_COUNT) return null;
   }
 
   const allOptions = [card.briefApplication, ...applications];
@@ -343,12 +350,12 @@ function generateApplicationQuestion(
  * Generates a random question for a given card
  */
 export function generateQuestion(
-  card: Flashcard,
-  allCards: Flashcard[],
+  card: Term,
+  allCards: Term[],
   selectedDisciplines: Discipline[],
   retryCount = 0
 ): QuestionData | null {
-  const maxRetries = 10;
+  const maxRetries = MAX_QUESTION_RETRIES;
   if (retryCount >= maxRetries) {
     return generateTranslateQuestion(card, allCards, selectedDisciplines);
   }

@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import { borderRadius, colors, fontFamily, fontSize, spacing } from '../theme/tokens';
-import type { VideoLink } from '../types/flashcard';
+import type { VideoLink } from '../types/term';
 
 interface VideoEmbedProps {
   videoLink: VideoLink;

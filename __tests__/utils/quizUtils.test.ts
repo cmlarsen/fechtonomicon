@@ -1,4 +1,4 @@
-import type { Flashcard } from '../../src/types/flashcard';
+import type { Term } from '../../src/types/term';
 import {
   filterOutTermReferences,
   generateQuestion,
@@ -10,7 +10,7 @@ import {
   shuffleArray,
 } from '../../src/utils/quizUtils';
 
-const mockCards: Flashcard[] = [
+const mockCards: Term[] = [
   {
     id: 'card1',
     category: 'guard',
@@ -177,7 +177,7 @@ describe('Quiz Utils', () => {
 
     it('should replace term references in descriptions with the current card term', () => {
       const card = mockCards[0];
-      const cardsWithReference: Flashcard[] = [
+      const cardsWithReference: Term[] = [
         ...mockCards,
         {
           id: 'card6',
@@ -233,7 +233,7 @@ describe('Quiz Utils', () => {
 
     it('should replace term references in applications with the current card term', () => {
       const card = mockCards[0];
-      const cardsWithReference: Flashcard[] = [
+      const cardsWithReference: Term[] = [
         ...mockCards,
         {
           id: 'card6',
@@ -276,7 +276,7 @@ describe('Quiz Utils', () => {
       const result = prepareQuickQuiz(mockCards, ['german-longsword']);
 
       expect(result.length).toBeLessThanOrEqual(10);
-      result.forEach((card: Flashcard) => {
+      result.forEach((card: Term) => {
         expect(card.discipline).toBe('german-longsword');
       });
     });
@@ -298,7 +298,7 @@ describe('Quiz Utils', () => {
     it('should filter cards by selected disciplines', () => {
       const result = prepareFullQuiz(mockCards, ['german-longsword']);
 
-      result.forEach((card: Flashcard) => {
+      result.forEach((card: Term) => {
         expect(card.discipline).toBe('german-longsword');
       });
     });
@@ -314,8 +314,8 @@ describe('Quiz Utils', () => {
       const result2 = prepareFullQuiz(mockCards, ['german-longsword', 'italian-longsword']);
 
       if (result1.length === result2.length && result1.length > 1) {
-        const ids1 = result1.map((c: Flashcard) => c.id);
-        const ids2 = result2.map((c: Flashcard) => c.id);
+        const ids1 = result1.map((c: Term) => c.id);
+        const ids2 = result2.map((c: Term) => c.id);
 
         const allSame = ids1.every((id: string, index: number) => id === ids2[index]);
         expect(allSame).toBe(false);
@@ -395,7 +395,7 @@ describe('Quiz Utils', () => {
     });
 
     it('should handle cards without englishTerm', () => {
-      const cardWithoutEnglish: Flashcard = {
+      const cardWithoutEnglish: Term = {
         id: 'test',
         category: 'guard',
         weapon: 'longsword',
@@ -417,7 +417,7 @@ describe('Quiz Utils', () => {
     });
 
     it('should handle cards with missing optional fields gracefully', () => {
-      const cardWithoutApp: Flashcard = {
+      const cardWithoutApp: Term = {
         id: 'test',
         category: 'guard',
         weapon: 'longsword',

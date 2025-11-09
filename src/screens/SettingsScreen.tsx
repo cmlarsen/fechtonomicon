@@ -7,9 +7,9 @@ import { BackgroundPattern } from '../components/BackgroundPattern';
 import { IconButton } from '../components/buttons';
 import { DISCIPLINES } from '../constants/disciplines';
 import type { RootStackParamList } from '../navigation/AppNavigator';
-import { useFlashcardStore } from '../store/flashcardStore';
+import { useTermStore } from '../store/termStore';
 import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../theme/tokens';
-import type { Discipline } from '../types/flashcard';
+import type { Discipline } from '../types/term';
 
 type SettingsScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Settings'>;
 
@@ -20,8 +20,8 @@ interface SettingsScreenProps {
 export const SettingsScreen: React.FC<SettingsScreenProps> = ({ navigation }) => {
   const posthog = usePostHog();
   const insets = useSafeAreaInsets();
-  const selectedDisciplines = useFlashcardStore((state) => state.selectedDisciplines);
-  const toggleDiscipline = useFlashcardStore((state) => state.toggleDiscipline);
+  const selectedDisciplines = useTermStore((state) => state.selectedDisciplines);
+  const toggleDiscipline = useTermStore((state) => state.toggleDiscipline);
 
   const handleDisciplineSelect = useCallback(
     (discipline: Discipline) => {

@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import germanData from '../../assets/data/german-longsword-data.json';
 import italianData from '../../assets/data/italian-longsword-data.json';
-import { useFlashcardStore } from '../store/flashcardStore';
-import type { Flashcard } from '../types/flashcard';
+import { useTermStore } from '../store/termStore';
+import type { Term } from '../types/term';
 import { getDisciplineFromCardId } from '../utils/disciplineMapper';
 
 interface DataFileRecord {
@@ -23,7 +23,7 @@ interface DataFile {
 }
 
 export const useCardLoader = () => {
-  const loadCards = useFlashcardStore((state) => state.loadCards);
+  const loadCards = useTermStore((state) => state.loadCards);
   const [isLoading, setIsLoading] = useState(true);
   const cardsLoadedRef = useRef(false);
 
@@ -37,7 +37,7 @@ export const useCardLoader = () => {
       const germanRecords = (germanData as DataFile).records;
       const allRecords = [...italianRecords, ...germanRecords];
 
-      const cardsWithDiscipline: Flashcard[] = allRecords.map((card) => ({
+      const cardsWithDiscipline: Term[] = allRecords.map((card) => ({
         ...card,
         weapon: card.weapon || 'longsword',
         briefDescription: card.briefDescription || '',

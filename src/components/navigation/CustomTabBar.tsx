@@ -2,7 +2,7 @@ import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { Keyboard, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { colors, fontFamily, fontSize, spacing } from '../theme/tokens';
+import { colors, fontFamily, fontSize, spacing } from '../../theme/tokens';
 
 export const CustomTabBar: React.FC<BottomTabBarProps> = (props) => {
   const { state, descriptors, navigation } = props;

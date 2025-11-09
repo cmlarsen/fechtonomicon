@@ -1,8 +1,9 @@
 import { memo } from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import SwordArrowIcon from '../../assets/icons/np_sword_arrow.svg';
-import { colors, spacing } from '../theme/tokens';
+import { spacing } from '../theme/tokens';
+import { IconButton } from './buttons';
 
 interface PagerButtonProps {
   onPress: () => void;
@@ -11,31 +12,17 @@ interface PagerButtonProps {
 }
 
 const PagerButton = memo<PagerButtonProps>(({ onPress, disabled, direction }) => {
-  const isLeft = direction === 'left';
-  const positionStyle = isLeft ? styles.floatingButtonLeft : styles.floatingButtonRight;
-  const rotationStyle = isLeft ? styles.arrowLeft : styles.arrowRight;
+  const rotation = direction === 'left' ? -90 : 90;
 
   return (
-    <TouchableOpacity
-      style={[
-        styles.arrowButton,
-        styles.burgundyVariant,
-        disabled && styles.disabledButton,
-        positionStyle,
-      ]}
+    <IconButton
+      IconComponent={SwordArrowIcon}
+      iconRotation={rotation}
       onPress={onPress}
       disabled={disabled}
-      activeOpacity={0.7}
-    >
-      <View style={[styles.arrowIconContainer, rotationStyle]}>
-        <SwordArrowIcon
-          width={24}
-          height={24}
-          fill={colors.burgundy.dark}
-          color={colors.burgundy.dark}
-        />
-      </View>
-    </TouchableOpacity>
+      size="medium"
+      variant="burgundy"
+    />
   );
 });
 
@@ -57,7 +44,7 @@ export const Pager = memo<PagerProps>(
     }
 
     return (
-      <View style={[styles.floatingButtons, { paddingBottom: insets.bottom }]}>
+      <View style={[styles.container, { paddingBottom: insets.bottom }]}>
         {onPrev && <PagerButton onPress={onPrev} disabled={!canGoPrev} direction="left" />}
         {onNext && <PagerButton onPress={onNext} disabled={!canGoNext} direction="right" />}
       </View>
@@ -68,7 +55,7 @@ export const Pager = memo<PagerProps>(
 Pager.displayName = 'Pager';
 
 const styles = StyleSheet.create({
-  floatingButtons: {
+  container: {
     position: 'absolute',
     bottom: 0,
     left: 0,
@@ -78,43 +65,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.lg,
     paddingTop: spacing.md,
     pointerEvents: 'box-none',
-  },
-  floatingButtonLeft: {
-    pointerEvents: 'auto',
-  },
-  floatingButtonRight: {
-    pointerEvents: 'auto',
-  },
-  arrowButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: colors.parchment.light,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 2,
-  },
-  burgundyVariant: {
-    borderColor: colors.burgundy.main,
-    shadowColor: colors.burgundy.dark,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 4,
-  },
-  disabledButton: {
-    opacity: 0.5,
-  },
-  arrowIconContainer: {
-    width: 24,
-    height: 24,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  arrowLeft: {
-    transform: [{ rotate: '-90deg' }],
-  },
-  arrowRight: {
-    transform: [{ rotate: '90deg' }],
   },
 });

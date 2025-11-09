@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Discipline, STORAGE_KEYS } from '../types/flashcard';
+import { Discipline, STORAGE_KEYS } from '../types/term';
 
 export const storage = {
   async getViewedCards(): Promise<string[]> {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../../theme/tokens';
-import { DISCIPLINE_INFO, type Discipline } from '../../types/flashcard';
+import { DISCIPLINE_INFO, type Discipline } from '../../types/term';
 import { PrimaryButton, SecondaryButton } from '../buttons';
 
 interface QuizSelectionCardProps {

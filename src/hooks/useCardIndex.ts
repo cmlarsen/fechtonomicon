@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { widgetService } from '../services/widgetService';
-import type { Flashcard } from '../types/flashcard';
+import type { Term } from '../types/term';
 
-const updateWidget = (card: Flashcard) => {
+const updateWidget = (card: Term) => {
   widgetService.updateWidget(card);
 };
 
 interface UseCardIndexOptions {
-  cards: Flashcard[];
+  cards: Term[];
   routeCardId?: string;
 }
 

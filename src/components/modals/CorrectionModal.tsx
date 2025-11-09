@@ -15,15 +15,15 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../theme/tokens';
+import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../../theme/tokens';
 
-import type { Flashcard } from '../types/flashcard';
-import { getNetlifyFunctionUrl } from '../utils/netlifyConfig';
-import { IconButton, PrimaryButton } from './buttons';
+import type { Term } from '../../types/term';
+import { getNetlifyFunctionUrl } from '../../utils/netlifyConfig';
+import { IconButton, PrimaryButton } from '../buttons';
 
 interface CorrectionModalProps {
   visible: boolean;
-  card: Flashcard | null;
+  card: Term | null;
   fieldName: string;
   fieldValue: string;
   onClose: () => void;

@@ -11,7 +11,7 @@ import { useTermsSearch } from '../contexts/TermsSearchContext';
 import { useFilteredCards } from '../hooks/useFilteredCards';
 import type { RootStackParamList } from '../navigation/AppNavigator';
 import { colors, spacing } from '../theme/tokens';
-import type { Flashcard } from '../types/flashcard';
+import type { Term } from '../types/term';
 
 type SearchScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootStackParamList, 'Search'>,
@@ -30,7 +30,7 @@ export const SearchScreen: React.FC<SearchScreenProps> = ({ navigation }) => {
   const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
 
   const handleCardPress = useCallback(
-    (card: Flashcard) => {
+    (card: Term) => {
       Keyboard.dismiss();
       // Store the cardId and close the modal
       pendingCardIdRef.current = card.id;

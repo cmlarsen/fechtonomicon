@@ -8,7 +8,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../theme/tokens';
+import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../../theme/tokens';
+
+import { SecondaryButton } from '../buttons';
 
 interface CitationSheetProps {
   visible: boolean;
@@ -81,9 +83,9 @@ export const CitationSheet: React.FC<CitationSheetProps> = ({ visible, citations
             </View>
 
             {/* Close Button */}
-            <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-              <Text style={styles.closeButtonText}>Close</Text>
-            </TouchableOpacity>
+            <View style={styles.closeButtonContainer}>
+              <SecondaryButton title="Close" onPress={onClose} size="medium" variant="parchment" />
+            </View>
           </TouchableOpacity>
         </Animated.View>
       </TouchableOpacity>
@@ -169,28 +171,8 @@ const styles = StyleSheet.create({
     color: colors.iron.main,
     opacity: 0.85,
   },
-  closeButton: {
+  closeButtonContainer: {
     marginTop: spacing.lg,
-    marginHorizontal: spacing.lg,
-    backgroundColor: colors.gold.light,
-    paddingVertical: spacing.md,
-    paddingHorizontal: spacing.xl,
-    borderRadius: borderRadius.md,
-    borderWidth: 1,
-    borderColor: colors.gold.dark,
-    alignItems: 'center',
-    // Embossed button
-    shadowColor: '#FFFFFF',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.8,
-    shadowRadius: 1,
-    elevation: 2,
-  },
-  closeButtonText: {
-    fontSize: fontSize.md,
-    fontFamily: fontFamily.bodySemiBold,
-    color: colors.iron.dark,
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
+    paddingHorizontal: spacing.lg,
   },
 });

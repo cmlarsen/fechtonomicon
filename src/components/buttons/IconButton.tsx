@@ -1,14 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, ViewStyle } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, ViewStyle } from 'react-native';
 import { colors, fontFamily, fontSize, shadows } from '../../theme/tokens';
 
 interface IconButtonProps {
-  icon: string;
+  icon?: string;
+  IconComponent?: React.ComponentType<{
+    width: number;
+    height: number;
+    fill: string;
+    color: string;
+  }>;
   onPress: () => void;
   disabled?: boolean;
   size?: 'small' | 'medium' | 'large';
   variant?: 'gold' | 'burgundy';
   style?: ViewStyle;
+  iconRotation?: number;
   testID?: string;
 }
 
@@ -32,16 +39,19 @@ const sizeConfig = {
 
 export const IconButton: React.FC<IconButtonProps> = ({
   icon,
+  IconComponent,
   onPress,
   disabled = false,
   size = 'medium',
   variant = 'gold',
   style,
+  iconRotation,
   testID,
 }) => {
   const sizeStyles = sizeConfig[size];
   const variantStyles = variant === 'burgundy' ? styles.burgundyVariant : styles.goldVariant;
   const textVariantStyles = variant === 'burgundy' ? styles.burgundyText : styles.goldText;
+  const iconColor = variant === 'burgundy' ? colors.burgundy.dark : colors.gold.dark;
 
   return (
     <TouchableOpacity
@@ -62,17 +72,33 @@ export const IconButton: React.FC<IconButtonProps> = ({
       activeOpacity={0.7}
       testID={testID}
     >
-      <Text
-        style={[
-          styles.text,
-          textVariantStyles,
-          {
-            fontSize: sizeStyles.fontSize,
-          },
-        ]}
-      >
-        {icon}
-      </Text>
+      {IconComponent ? (
+        <View
+          style={[
+            styles.iconContainer,
+            iconRotation ? { transform: [{ rotate: `${iconRotation}deg` }] } : undefined,
+          ]}
+        >
+          <IconComponent
+            width={sizeStyles.fontSize}
+            height={sizeStyles.fontSize}
+            fill={iconColor}
+            color={iconColor}
+          />
+        </View>
+      ) : (
+        <Text
+          style={[
+            styles.text,
+            textVariantStyles,
+            {
+              fontSize: sizeStyles.fontSize,
+            },
+          ]}
+        >
+          {icon}
+        </Text>
+      )}
     </TouchableOpacity>
   );
 };
@@ -94,6 +120,10 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 4,
     elevation: 4,
+  },
+  iconContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   text: {
     fontFamily: fontFamily.bodyBold,
