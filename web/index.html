@@ -37,6 +37,12 @@
   <!-- Web App Manifest -->
   <link rel="manifest" href="/manifest.json" />
 
+  <!-- Polyfill for import.meta used by zustand -->
+  <script>
+    // Define process.env for web builds (used by zustand devtools)
+    window.process = window.process || { env: { NODE_ENV: 'development' } };
+  </script>
+
   <style>
     /**
      * Disable body scrolling on web.
