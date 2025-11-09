@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { spacing } from '../../theme/tokens';
 import { QuizOptionButton } from './QuizOptionButton';
 
-interface QuestionTypeApplicationProps {
+interface TranslateQuestionProps {
   options: string[];
   selectedIndex: number | null;
   correctIndex: number;
@@ -12,7 +12,7 @@ interface QuestionTypeApplicationProps {
   isChecked?: boolean;
 }
 
-export const QuestionTypeApplication: React.FC<QuestionTypeApplicationProps> = ({
+export const TranslateQuestion: React.FC<TranslateQuestionProps> = ({
   options,
   selectedIndex,
   correctIndex,

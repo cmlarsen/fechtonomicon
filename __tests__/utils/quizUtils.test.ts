@@ -5,7 +5,8 @@ import {
   getRandomApplications,
   getRandomDescriptions,
   getRandomEnglishTerms,
-  prepareQuizCards,
+  prepareFullQuiz,
+  prepareQuickQuiz,
   shuffleArray,
 } from '../../src/utils/quizUtils';
 
@@ -270,33 +271,55 @@ describe('Quiz Utils', () => {
     });
   });
 
-  describe('prepareQuizCards', () => {
+  describe('prepareQuickQuiz', () => {
     it('should filter cards by selected disciplines', () => {
-      const result = prepareQuizCards(mockCards, ['german-longsword']);
+      const result = prepareQuickQuiz(mockCards, ['german-longsword']);
 
-      expect(result.length).toBe(3);
-      result.forEach((card) => {
+      expect(result.length).toBeLessThanOrEqual(10);
+      result.forEach((card: Flashcard) => {
         expect(card.discipline).toBe('german-longsword');
       });
     });
 
-    it('should shuffle the cards', () => {
-      const result1 = prepareQuizCards(mockCards, ['german-longsword', 'italian-longsword']);
-      const result2 = prepareQuizCards(mockCards, ['german-longsword', 'italian-longsword']);
+    it('should limit to 10 cards', () => {
+      const result = prepareQuickQuiz(mockCards, ['german-longsword', 'italian-longsword']);
 
-      if (result1.length === result2.length && result1.length > 1) {
-        const ids1 = result1.map((c) => c.id);
-        const ids2 = result2.map((c) => c.id);
-
-        const allSame = ids1.every((id, index) => id === ids2[index]);
-        expect(allSame).toBe(false);
-      }
+      expect(result.length).toBeLessThanOrEqual(10);
     });
 
     it('should return empty array if no cards match disciplines', () => {
-      const result = prepareQuizCards(mockCards, []);
+      const result = prepareQuickQuiz(mockCards, []);
 
       expect(result).toEqual([]);
+    });
+  });
+
+  describe('prepareFullQuiz', () => {
+    it('should filter cards by selected disciplines', () => {
+      const result = prepareFullQuiz(mockCards, ['german-longsword']);
+
+      result.forEach((card: Flashcard) => {
+        expect(card.discipline).toBe('german-longsword');
+      });
+    });
+
+    it('should limit to 50 cards', () => {
+      const result = prepareFullQuiz(mockCards, ['german-longsword', 'italian-longsword']);
+
+      expect(result.length).toBeLessThanOrEqual(50);
+    });
+
+    it('should shuffle the cards', () => {
+      const result1 = prepareFullQuiz(mockCards, ['german-longsword', 'italian-longsword']);
+      const result2 = prepareFullQuiz(mockCards, ['german-longsword', 'italian-longsword']);
+
+      if (result1.length === result2.length && result1.length > 1) {
+        const ids1 = result1.map((c: Flashcard) => c.id);
+        const ids2 = result2.map((c: Flashcard) => c.id);
+
+        const allSame = ids1.every((id: string, index: number) => id === ids2[index]);
+        expect(allSame).toBe(false);
+      }
     });
   });
 

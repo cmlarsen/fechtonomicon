@@ -7,10 +7,10 @@ import { AppState } from 'react-native';
 import { CustomTabBar } from '../components/CustomTabBar';
 import { TabIcon } from '../components/TabIcon';
 import { TermsSearchProvider } from '../contexts/TermsSearchContext';
-import { CardScreen } from '../screens/CardScreen';
 import { QuizScreen } from '../screens/QuizScreen';
 import { SearchScreen } from '../screens/SearchScreen';
 import { SettingsScreen } from '../screens/SettingsScreen';
+import { TermsScreen } from '../screens/TermsScreen';
 import { swordsIcon, tomeIcon } from '../utils/tabIcons';
 
 export type RootStackParamList = {
@@ -55,7 +55,7 @@ const BottomTabNavigator = () => {
     >
       <Tab.Screen
         name="Terms"
-        component={CardScreen}
+        component={TermsScreen}
         options={{
           tabBarIcon: ({ color }) => <TabIcon IconComponent={tomeIcon} color={color} size={24} />,
           tabBarLabel: 'Terms',

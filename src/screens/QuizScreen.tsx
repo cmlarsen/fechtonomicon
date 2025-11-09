@@ -4,15 +4,15 @@ import { Animated, Modal, ScrollView, StyleSheet, Text, View } from 'react-nativ
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BackgroundPattern } from '../components/BackgroundPattern';
 import { PrimaryButton } from '../components/buttons';
+import { ApplicationQuestion } from '../components/quiz/ApplicationQuestion';
+import { DefinitionQuestion } from '../components/quiz/DefinitionQuestion';
 import { FeedbackPanel } from '../components/quiz/FeedbackPanel';
-import { QuestionTypeApplication } from '../components/quiz/QuestionTypeApplication';
-import { QuestionTypeDefinition } from '../components/quiz/QuestionTypeDefinition';
-import { QuestionTypeTranslate } from '../components/quiz/QuestionTypeTranslate';
 import { QuizExitButton } from '../components/quiz/QuizExitButton';
 import { QuizFinalScore } from '../components/quiz/QuizFinalScore';
 import { QuizProgressBar } from '../components/quiz/QuizProgressBar';
 import { QuizQuestionCard } from '../components/quiz/QuizQuestionCard';
 import { QuizSelectionCard } from '../components/quiz/QuizSelectionCard';
+import { TranslateQuestion } from '../components/quiz/TranslateQuestion';
 import { useFlashcardStore } from '../store/flashcardStore';
 import { animation, colors, fontFamily, fontSize, spacing } from '../theme/tokens';
 import type { Discipline, Flashcard } from '../types/flashcard';
@@ -308,7 +308,7 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ navigation }) => {
 
                 <View style={styles.optionsContainer}>
                   {currentQuestion.type === 'translate' && (
-                    <QuestionTypeTranslate
+                    <TranslateQuestion
                       options={currentQuestion.options}
                       selectedIndex={selectedAnswer}
                       correctIndex={currentQuestion.correctIndex}
@@ -318,7 +318,7 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ navigation }) => {
                     />
                   )}
                   {currentQuestion.type === 'definition' && (
-                    <QuestionTypeDefinition
+                    <DefinitionQuestion
                       options={currentQuestion.options}
                       selectedIndex={selectedAnswer}
                       correctIndex={currentQuestion.correctIndex}
@@ -328,7 +328,7 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({ navigation }) => {
                     />
                   )}
                   {currentQuestion.type === 'application' && (
-                    <QuestionTypeApplication
+                    <ApplicationQuestion
                       options={currentQuestion.options}
                       selectedIndex={selectedAnswer}
                       correctIndex={currentQuestion.correctIndex}

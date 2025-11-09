@@ -226,19 +226,6 @@ export function getRandomApplications(
 }
 
 /**
- * Prepares and shuffles cards for the quiz
- */
-export function prepareQuizCards(
-  allCards: Flashcard[],
-  selectedDisciplines: Discipline[]
-): Flashcard[] {
-  const filtered = allCards.filter(
-    (card) => card.discipline && selectedDisciplines.includes(card.discipline)
-  );
-  return shuffleArray(filtered);
-}
-
-/**
  * Prepares a quick quiz with 10 random cards from specified discipline(s)
  */
 export function prepareQuickQuiz(
@@ -269,7 +256,7 @@ export function prepareFullQuiz(
 /**
  * Generates a translate question (englishTerm)
  */
-function generateType1Question(
+function generateTranslateQuestion(
   card: Flashcard,
   allCards: Flashcard[],
   selectedDisciplines: Discipline[]
@@ -293,7 +280,7 @@ function generateType1Question(
 /**
  * Generates a definition question (description)
  */
-function generateType2Question(
+function generateDefinitionQuestion(
   card: Flashcard,
   allCards: Flashcard[],
   selectedDisciplines: Discipline[]
@@ -324,7 +311,7 @@ function generateType2Question(
 /**
  * Generates an application question (application)
  */
-function generateType3Question(
+function generateApplicationQuestion(
   card: Flashcard,
   allCards: Flashcard[],
   selectedDisciplines: Discipline[]
@@ -363,7 +350,7 @@ export function generateQuestion(
 ): QuestionData | null {
   const maxRetries = 10;
   if (retryCount >= maxRetries) {
-    return generateType1Question(card, allCards, selectedDisciplines);
+    return generateTranslateQuestion(card, allCards, selectedDisciplines);
   }
 
   const questionTypes: Array<'translate' | 'definition' | 'application'> = [
@@ -374,17 +361,17 @@ export function generateQuestion(
   const questionType = questionTypes[Math.floor(Math.random() * questionTypes.length)];
 
   if (questionType === 'translate') {
-    const question = generateType1Question(card, allCards, selectedDisciplines);
+    const question = generateTranslateQuestion(card, allCards, selectedDisciplines);
     return question || generateQuestion(card, allCards, selectedDisciplines, retryCount + 1);
   }
 
   if (questionType === 'definition') {
-    const question = generateType2Question(card, allCards, selectedDisciplines);
+    const question = generateDefinitionQuestion(card, allCards, selectedDisciplines);
     return question || generateQuestion(card, allCards, selectedDisciplines, retryCount + 1);
   }
 
   if (questionType === 'application') {
-    const question = generateType3Question(card, allCards, selectedDisciplines);
+    const question = generateApplicationQuestion(card, allCards, selectedDisciplines);
     return question || generateQuestion(card, allCards, selectedDisciplines, retryCount + 1);
   }
 

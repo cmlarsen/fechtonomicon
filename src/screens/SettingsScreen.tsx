@@ -5,8 +5,9 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-nati
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BackgroundPattern } from '../components/BackgroundPattern';
 import { IconButton } from '../components/buttons';
-import { useFlashcardStore } from '../store/flashcardStore';
+import { DISCIPLINES } from '../constants/disciplines';
 import type { RootStackParamList } from '../navigation/AppNavigator';
+import { useFlashcardStore } from '../store/flashcardStore';
 import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../theme/tokens';
 import type { Discipline } from '../types/flashcard';
 
@@ -15,19 +16,6 @@ type SettingsScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Set
 interface SettingsScreenProps {
   navigation: SettingsScreenNavigationProp;
 }
-
-const DISCIPLINES: { id: Discipline; name: string; description: string }[] = [
-  {
-    id: 'italian-longsword',
-    name: 'Italian Longsword',
-    description: "Fiore dei Liberi and Filippo Vadi's Italian longsword systems",
-  },
-  {
-    id: 'german-longsword',
-    name: 'German Longsword',
-    description: "Joachim Meyer's German longsword system",
-  },
-];
 
 export const SettingsScreen: React.FC<SettingsScreenProps> = ({ navigation }) => {
   const posthog = usePostHog();

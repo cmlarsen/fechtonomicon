@@ -1,10 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { widgetService } from '../services/widgetService';
-import { useFlashcardStore } from '../store/flashcardStore';
 import type { Flashcard } from '../types/flashcard';
 
-const updateCardInStoreAndWidget = (card: Flashcard) => {
-  useFlashcardStore.setState({ currentCard: card });
+const updateWidget = (card: Flashcard) => {
   widgetService.updateWidget(card);
 };
 
@@ -23,7 +21,7 @@ export const useCardIndex = ({ cards, routeCardId }: UseCardIndexOptions) => {
       setCurrentCardIndex(index);
       const card = cards[index];
       if (card) {
-        updateCardInStoreAndWidget(card);
+        updateWidget(card);
       }
     },
     [cards]
@@ -38,7 +36,7 @@ export const useCardIndex = ({ cards, routeCardId }: UseCardIndexOptions) => {
       if (foundIndex !== -1) {
         hasInitializedFromRoute.current = true;
         setCurrentCardIndex(foundIndex);
-        updateCardInStoreAndWidget(cards[foundIndex]);
+        updateWidget(cards[foundIndex]);
         prevCardsLengthRef.current = cards.length;
         return;
       }
@@ -50,7 +48,7 @@ export const useCardIndex = ({ cards, routeCardId }: UseCardIndexOptions) => {
         const safeIndex = prevIndex >= cards.length ? 0 : prevIndex;
         const cardToShow = cards[safeIndex];
         if (cardToShow) {
-          updateCardInStoreAndWidget(cardToShow);
+          updateWidget(cardToShow);
         }
         prevCardsLengthRef.current = cards.length;
         return safeIndex;
@@ -70,7 +68,7 @@ export const useCardIndex = ({ cards, routeCardId }: UseCardIndexOptions) => {
   // Sync current card to widget whenever it changes
   useEffect(() => {
     if (currentCard) {
-      updateCardInStoreAndWidget(currentCard);
+      updateWidget(currentCard);
     }
   }, [currentCard]);
 

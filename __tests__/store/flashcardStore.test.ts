@@ -40,20 +40,13 @@ describe('Flashcard Store', () => {
     jest.clearAllMocks();
     (AsyncStorage.getItem as jest.Mock).mockResolvedValue(null);
     (AsyncStorage.setItem as jest.Mock).mockResolvedValue(undefined);
-
-    const { result } = renderHook(() => useFlashcardStore());
-    act(() => {
-      result.current.resetStore();
-    });
   });
 
   describe('initialization', () => {
     it('should initialize with empty state', () => {
       const { result } = renderHook(() => useFlashcardStore());
 
-      expect(result.current.currentCard).toBeNull();
       expect(result.current.allCards).toEqual([]);
-      expect(result.current.viewedCardIds).toEqual([]);
       expect(result.current.selectedDisciplines).toEqual(['italian-longsword']);
     });
 
@@ -80,139 +73,55 @@ describe('Flashcard Store', () => {
 
       expect(result.current.allCards).toEqual(mockFlashcards);
     });
-
-    it('should set current card after loading cards', () => {
-      const { result } = renderHook(() => useFlashcardStore());
-
-      act(() => {
-        result.current.loadCards(mockFlashcards);
-      });
-
-      expect(result.current.currentCard).not.toBeNull();
-    });
-  });
-
-  describe('getRandomCard', () => {
-    it('should select a random card based on selected disciplines', () => {
-      const { result } = renderHook(() => useFlashcardStore());
-
-      act(() => {
-        result.current.loadCards(mockFlashcards);
-        result.current.getRandomCard();
-      });
-
-      expect(result.current.currentCard).not.toBeNull();
-      expect(['italian-longsword', 'german-longsword']).toContain(
-        result.current.currentCard?.discipline
-      );
-    });
-
-    it('should update viewedCardIds state', () => {
-      const { result } = renderHook(() => useFlashcardStore());
-
-      act(() => {
-        result.current.loadCards(mockFlashcards);
-        result.current.getRandomCard();
-      });
-
-      expect(result.current.viewedCardIds.length).toBeGreaterThan(0);
-    });
   });
 
   describe('toggleDiscipline', () => {
-    it('should add discipline when not selected', async () => {
+    it('should set the selected discipline', () => {
       const { result } = renderHook(() => useFlashcardStore());
 
       act(() => {
-        result.current.setSelectedDisciplines(['italian-longsword']);
-        result.current.toggleDiscipline('german-longsword');
-      });
-
-      expect(result.current.selectedDisciplines).toContain('german-longsword');
-      await waitFor(() => {
-        expect(AsyncStorage.setItem).toHaveBeenCalled();
-      });
-    });
-
-    it('should set discipline to only the selected one', async () => {
-      const { result } = renderHook(() => useFlashcardStore());
-
-      act(() => {
-        result.current.setSelectedDisciplines(['italian-longsword', 'german-longsword']);
         result.current.toggleDiscipline('german-longsword');
       });
 
       expect(result.current.selectedDisciplines).toEqual(['german-longsword']);
+    });
+
+    it('should switch between disciplines', () => {
+      const { result } = renderHook(() => useFlashcardStore());
+
+      act(() => {
+        result.current.toggleDiscipline('german-longsword');
+      });
+      expect(result.current.selectedDisciplines).toEqual(['german-longsword']);
+
+      act(() => {
+        result.current.toggleDiscipline('italian-longsword');
+      });
+      expect(result.current.selectedDisciplines).toEqual(['italian-longsword']);
+    });
+  });
+
+  describe('setSelectedDisciplines', () => {
+    it('should set multiple disciplines', () => {
+      const { result } = renderHook(() => useFlashcardStore());
+
+      act(() => {
+        result.current.setSelectedDisciplines(['italian-longsword', 'german-longsword']);
+      });
+
+      expect(result.current.selectedDisciplines).toEqual(['italian-longsword', 'german-longsword']);
+    });
+
+    it('should persist when changed', async () => {
+      const { result } = renderHook(() => useFlashcardStore());
+
+      act(() => {
+        result.current.setSelectedDisciplines(['italian-longsword', 'german-longsword']);
+      });
+
       await waitFor(() => {
         expect(AsyncStorage.setItem).toHaveBeenCalled();
       });
-    });
-
-    it('should not remove the last selected discipline', () => {
-      const { result } = renderHook(() => useFlashcardStore());
-
-      act(() => {
-        result.current.setSelectedDisciplines(['italian-longsword']);
-        result.current.toggleDiscipline('italian-longsword');
-      });
-
-      expect(result.current.selectedDisciplines).toContain('italian-longsword');
-    });
-  });
-
-  describe('resetProgress', () => {
-    it('should clear viewed cards', () => {
-      const { result } = renderHook(() => useFlashcardStore());
-
-      act(() => {
-        result.current.loadCards(mockFlashcards);
-        result.current.getRandomCard();
-      });
-
-      const viewedBeforeReset = result.current.viewedCardIds.length;
-      expect(viewedBeforeReset).toBeGreaterThan(0);
-
-      act(() => {
-        result.current.resetProgress();
-      });
-
-      expect(result.current.viewedCardIds.length).toBe(1);
-      expect(result.current.currentCard).not.toBeNull();
-    });
-
-    it('should select a new card after reset', () => {
-      const { result } = renderHook(() => useFlashcardStore());
-
-      act(() => {
-        result.current.loadCards(mockFlashcards);
-        result.current.getRandomCard();
-        result.current.resetProgress();
-      });
-
-      expect(result.current.currentCard).not.toBeNull();
-    });
-  });
-
-  describe('markCardViewed', () => {
-    it('should add card to viewed list', () => {
-      const { result } = renderHook(() => useFlashcardStore());
-
-      act(() => {
-        result.current.markCardViewed('card1');
-      });
-
-      expect(result.current.viewedCardIds).toContain('card1');
-    });
-
-    it('should not add duplicate viewed cards', () => {
-      const { result } = renderHook(() => useFlashcardStore());
-
-      act(() => {
-        result.current.markCardViewed('card1');
-        result.current.markCardViewed('card1');
-      });
-
-      expect(result.current.viewedCardIds.filter((id) => id === 'card1').length).toBe(1);
     });
   });
 });

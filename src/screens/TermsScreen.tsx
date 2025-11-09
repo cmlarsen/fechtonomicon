@@ -18,19 +18,19 @@ import type { RootStackParamList, RootTabParamList } from '../navigation/AppNavi
 import { colors, fontFamily, fontSize, shadows, spacing } from '../theme/tokens';
 import { rgba } from '../utils/colorUtils';
 
-type CardScreenNavigationProp = CompositeNavigationProp<
+type TermsScreenNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<RootTabParamList, 'Terms'>,
   StackNavigationProp<RootStackParamList>
 >;
 
-type CardScreenRouteProp = RouteProp<RootTabParamList, 'Terms'>;
+type TermsScreenRouteProp = RouteProp<RootTabParamList, 'Terms'>;
 
-interface CardScreenProps {
-  navigation: CardScreenNavigationProp;
-  route: CardScreenRouteProp;
+interface TermsScreenProps {
+  navigation: TermsScreenNavigationProp;
+  route: TermsScreenRouteProp;
 }
 
-export const CardScreen: React.FC<CardScreenProps> = ({ navigation, route }) => {
+export const TermsScreen: React.FC<TermsScreenProps> = ({ navigation, route }) => {
   const posthog = usePostHog();
   const insets = useSafeAreaInsets();
   const stackNavigation = useNavigation<StackNavigationProp<RootStackParamList>>();

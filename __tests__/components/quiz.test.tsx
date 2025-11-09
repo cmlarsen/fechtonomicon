@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
-import { QuestionTypeApplication } from '../../src/components/quiz/QuestionTypeApplication';
-import { QuestionTypeDefinition } from '../../src/components/quiz/QuestionTypeDefinition';
-import { QuestionTypeTranslate } from '../../src/components/quiz/QuestionTypeTranslate';
+import { ApplicationQuestion } from '../../src/components/quiz/ApplicationQuestion';
+import { DefinitionQuestion } from '../../src/components/quiz/DefinitionQuestion';
+import { TranslateQuestion } from '../../src/components/quiz/TranslateQuestion';
 import { QuizAnswerFeedback } from '../../src/components/quiz/QuizAnswerFeedback';
 import { QuizExitButton } from '../../src/components/quiz/QuizExitButton';
 import { QuizFinalScore } from '../../src/components/quiz/QuizFinalScore';
@@ -53,7 +53,7 @@ describe('Quiz Components', () => {
     });
   });
 
-  describe('QuestionTypeTranslate', () => {
+  describe('TranslateQuestion', () => {
     const options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'];
     const mockOnSelect = jest.fn();
 
@@ -63,7 +63,7 @@ describe('Quiz Components', () => {
 
     it('should render all options', () => {
       render(
-        <QuestionTypeTranslate
+        <TranslateQuestion
           options={options}
           selectedIndex={null}
           correctIndex={0}
@@ -79,7 +79,7 @@ describe('Quiz Components', () => {
 
     it('should allow changing selection before checking answer', () => {
       const { getByText } = render(
-        <QuestionTypeTranslate
+        <TranslateQuestion
           options={options}
           selectedIndex={1}
           correctIndex={0}
@@ -99,7 +99,7 @@ describe('Quiz Components', () => {
 
     it('should prevent selection after answer is checked', () => {
       const { getByText } = render(
-        <QuestionTypeTranslate
+        <TranslateQuestion
           options={options}
           selectedIndex={1}
           correctIndex={0}
@@ -119,7 +119,7 @@ describe('Quiz Components', () => {
 
     it('should show correct answer when feedback is shown', () => {
       render(
-        <QuestionTypeTranslate
+        <TranslateQuestion
           options={options}
           selectedIndex={1}
           correctIndex={0}
@@ -133,7 +133,7 @@ describe('Quiz Components', () => {
     });
   });
 
-  describe('QuestionTypeDefinition', () => {
+  describe('DefinitionQuestion', () => {
     const options = ['Description 1', 'Description 2', 'Description 3'];
     const mockOnSelect = jest.fn();
 
@@ -143,7 +143,7 @@ describe('Quiz Components', () => {
 
     it('should render all options', () => {
       render(
-        <QuestionTypeDefinition
+        <DefinitionQuestion
           options={options}
           selectedIndex={null}
           correctIndex={0}
@@ -159,7 +159,7 @@ describe('Quiz Components', () => {
 
     it('should allow changing selection before checking answer', () => {
       render(
-        <QuestionTypeDefinition
+        <DefinitionQuestion
           options={options}
           selectedIndex={1}
           correctIndex={0}
@@ -179,7 +179,7 @@ describe('Quiz Components', () => {
 
     it('should prevent selection after answer is checked', () => {
       render(
-        <QuestionTypeDefinition
+        <DefinitionQuestion
           options={options}
           selectedIndex={1}
           correctIndex={0}
@@ -198,7 +198,7 @@ describe('Quiz Components', () => {
     });
   });
 
-  describe('QuestionTypeApplication', () => {
+  describe('ApplicationQuestion', () => {
     const options = ['Application 1', 'Application 2', 'Application 3'];
     const mockOnSelect = jest.fn();
 
@@ -208,7 +208,7 @@ describe('Quiz Components', () => {
 
     it('should render all options', () => {
       render(
-        <QuestionTypeApplication
+        <ApplicationQuestion
           options={options}
           selectedIndex={null}
           correctIndex={0}
@@ -224,7 +224,7 @@ describe('Quiz Components', () => {
 
     it('should allow changing selection before checking answer', () => {
       render(
-        <QuestionTypeApplication
+        <ApplicationQuestion
           options={options}
           selectedIndex={1}
           correctIndex={0}
@@ -244,7 +244,7 @@ describe('Quiz Components', () => {
 
     it('should prevent selection after answer is checked', () => {
       render(
-        <QuestionTypeApplication
+        <ApplicationQuestion
           options={options}
           selectedIndex={1}
           correctIndex={0}
