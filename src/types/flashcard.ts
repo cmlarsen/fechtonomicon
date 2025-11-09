@@ -1,4 +1,4 @@
-export type Discipline = 'italian-longsword' | 'german-longsword';
+export type Discipline = 'italian-longsword' | 'german-longsword' | 'vadi-longsword';
 
 export interface DisciplineInfo {
   name: string;
@@ -16,6 +16,11 @@ export const DISCIPLINE_INFO: Record<Discipline, DisciplineInfo> = {
     name: 'German Longsword',
     shortName: 'German LS',
     color: '#5C3D2E',
+  },
+  'vadi-longsword': {
+    name: 'Vadi Longsword',
+    shortName: 'Vadi LS',
+    color: '#6B4423',
   },
 };
 

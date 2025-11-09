@@ -26,11 +26,10 @@ const DATA_SETS = [
     idPrefix: 'meyer1570.long.',
     dataFile: 'assets/data/german-longsword-data.json',
   },
-  // Add more data sets here...
-  // {
-  //   idPrefix: 'vadi.long.',
-  //   dataFile: 'assets/data/vadi-longsword-data.json',
-  // },
+  {
+    idPrefix: 'italian.long.',
+    dataFile: 'assets/data/vadi-longsword-data.json',
+  },
 ] as const;
 
 const getDataFilePath = (cardId: string): string => {

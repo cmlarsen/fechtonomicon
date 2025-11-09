@@ -45,14 +45,13 @@ export const DATA_REGISTRY: readonly DataSetConfig[] = [
     dataFile: 'german-longsword-data.json',
     idPrefix: 'meyer1570.long.',
   },
-  // Add more data sets here...
-  // {
-  //   id: 'vadi-longsword',
-  //   name: 'Vadi Longsword',
-  //   description: "Filippo Vadi's longsword system",
-  //   dataFile: 'vadi-longsword-data.json',
-  //   idPrefix: 'vadi.long.',
-  // },
+  {
+    id: 'vadi-longsword',
+    name: 'Vadi Longsword',
+    description: "Filippo Vadi's unique longsword system with detailed guard work",
+    dataFile: 'vadi-longsword-data.json',
+    idPrefix: 'italian.long.',
+  },
 ] as const;
 
 /**

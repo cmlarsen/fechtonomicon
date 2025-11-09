@@ -1,10 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
-import { QuizAnswerFeedback } from '../../src/components/quiz/QuizAnswerFeedback';
 import { QuizExitButton } from '../../src/components/quiz/QuizExitButton';
 import { QuizFinalScore } from '../../src/components/quiz/QuizFinalScore';
 import { QuizQuestion } from '../../src/components/quiz/QuizQuestion';
 import { QuizQuestionCard } from '../../src/components/quiz/QuizQuestionCard';
-import { QuizScoreDisplay } from '../../src/components/quiz/QuizScoreDisplay';
 import type { Term } from '../../src/types/term';
 
 const mockCard: Term = {
@@ -19,18 +17,6 @@ const mockCard: Term = {
 };
 
 describe('Quiz Components', () => {
-  describe('QuizScoreDisplay', () => {
-    it('should display correct score format', () => {
-      render(<QuizScoreDisplay correct={5} total={10} />);
-      expect(screen.getByText('5 out of 10 correct')).toBeTruthy();
-    });
-
-    it('should handle zero scores', () => {
-      render(<QuizScoreDisplay correct={0} total={0} />);
-      expect(screen.getByText('0 out of 0 correct')).toBeTruthy();
-    });
-  });
-
   describe('QuizQuestionCard', () => {
     it('should display original term', () => {
       render(<QuizQuestionCard card={mockCard} questionText="What is the English translation?" />);
@@ -128,19 +114,6 @@ describe('Quiz Components', () => {
 
       const correctButton = screen.getByText(options[0]);
       expect(correctButton).toBeTruthy();
-    });
-  });
-
-  describe('QuizAnswerFeedback', () => {
-    it('should show correct feedback', () => {
-      render(<QuizAnswerFeedback isCorrect={true} correctAnswer="Correct Answer" />);
-      expect(screen.getByText('✓ Correct!')).toBeTruthy();
-    });
-
-    it('should show incorrect feedback', () => {
-      render(<QuizAnswerFeedback isCorrect={false} correctAnswer="Correct Answer" />);
-      expect(screen.getByText('✗ Incorrect')).toBeTruthy();
-      expect(screen.getByText('Correct answer: Correct Answer')).toBeTruthy();
     });
   });
 

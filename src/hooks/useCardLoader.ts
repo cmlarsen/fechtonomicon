@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import germanData from '../../assets/data/german-longsword-data.json';
 import italianData from '../../assets/data/italian-longsword-data.json';
+import vadiData from '../../assets/data/vadi-longsword-data.json';
 import { DATA_REGISTRY, getDisciplineFromRecordId } from '../config/dataRegistry';
 import { useTermStore } from '../store/termStore';
 import type { Term } from '../types/term';
@@ -29,8 +30,7 @@ interface DataFile {
 const DATA_FILE_MAP: Record<string, DataFile> = {
   'italian-longsword-data.json': italianData as DataFile,
   'german-longsword-data.json': germanData as DataFile,
-  // Add new data imports here...
-  // 'vadi-longsword-data.json': vadiData as DataFile,
+  'vadi-longsword-data.json': vadiData as DataFile,
 };
 
 export const useCardLoader = () => {
