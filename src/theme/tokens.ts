@@ -86,8 +86,8 @@ export const fontSize = {
   sm: 16,
   md: 18, // Increased from 16 for better readability
   lg: 20, // Increased from 18
-  xl: 26, // Increased from 24
-  xxl: 34, // Increased from 32
+  xl: 24, // Increased from 24
+  xxl: 32, // Increased from 32
   xxxl: 36, // Increased from 40
 };
 

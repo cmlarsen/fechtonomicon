@@ -1,12 +1,11 @@
-import { memo, useCallback, useEffect, useRef } from 'react';
+import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import SwordArrowIcon from '../../assets/icons/np_sword_arrow.svg';
 import { useFlashcardStore } from '../store/flashcardStore';
 import { borderRadius, colors, fontFamily, fontSize, spacing } from '../theme/tokens';
 import type { Flashcard as FlashcardType } from '../types/flashcard';
 import { rgba } from '../utils/colorUtils';
 import { LinkedText } from './LinkedText';
+import { Pager } from './Pager';
 import { SectionDivider } from './SectionDivider';
 import { VideoSection } from './VideoEmbed';
 
@@ -22,8 +21,10 @@ interface FlashcardProps {
 export const Flashcard = memo<FlashcardProps>(
   ({ card, onTermPress, onPrev, onNext, canGoPrev = false, canGoNext = false }) => {
     const allCards = useFlashcardStore((state) => state.allCards);
-    const insets = useSafeAreaInsets();
     const scrollViewRef = useRef<ScrollView>(null);
+    const [containerHeight, setContainerHeight] = useState(0);
+    const [hasScrolledToMore, setHasScrolledToMore] = useState(false);
+    const belowFoldContentRef = useRef<View>(null);
 
     const handleTermPress = useCallback(
       (cardId: string) => {
@@ -39,9 +40,29 @@ export const Flashcard = memo<FlashcardProps>(
       return parts[parts.length - 1].replace(/_/g, ' ');
     }, []);
 
+    const handleScrollToMore = useCallback(() => {
+      if (scrollViewRef.current && containerHeight > 0) {
+        scrollViewRef.current.scrollTo({ y: containerHeight - 60, animated: true });
+        setHasScrolledToMore(true);
+      }
+    }, [containerHeight]);
+
+    const handleScroll = useCallback(
+      (event: { nativeEvent: { contentOffset: { y: number } } }) => {
+        const scrollY = event.nativeEvent.contentOffset.y;
+        if (scrollY > containerHeight * 0.5) {
+          setHasScrolledToMore(true);
+        } else if (scrollY < 50) {
+          setHasScrolledToMore(false);
+        }
+      },
+      [containerHeight]
+    );
+
     useEffect(() => {
       if (card?.id && scrollViewRef.current) {
         scrollViewRef.current.scrollTo({ y: 0, animated: true });
+        setHasScrolledToMore(false);
       }
     }, [card?.id]);
 
@@ -49,14 +70,29 @@ export const Flashcard = memo<FlashcardProps>(
       return null;
     }
 
+    const hasMoreContent =
+      (card.videoLinks && card.videoLinks.length > 0) ||
+      card.fullDescription ||
+      card.fullApplication ||
+      (card.related && card.related.length > 0);
+
     return (
-      <View style={styles.container} testID="flashcard-container">
+      <View
+        style={styles.container}
+        testID="flashcard-container"
+        onLayout={(event) => {
+          const { height } = event.nativeEvent.layout;
+          setContainerHeight(height);
+        }}
+      >
         <ScrollView
           ref={scrollViewRef}
           style={styles.scrollView}
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={true}
           bounces={true}
+          onScroll={handleScroll}
+          scrollEventThrottle={16}
         >
           <View style={styles.content}>
             <View style={styles.header}>
@@ -78,7 +114,7 @@ export const Flashcard = memo<FlashcardProps>(
                     text={card.briefDescription}
                     allCards={allCards}
                     onTermPress={handleTermPress}
-                    style={styles.description}
+                    style={styles.briefDescription}
                     card={card}
                     fieldName="Description"
                     ignoreWords={[card.originalTerm]}
@@ -93,7 +129,7 @@ export const Flashcard = memo<FlashcardProps>(
                     text={card.briefApplication}
                     allCards={allCards}
                     onTermPress={handleTermPress}
-                    style={styles.description}
+                    style={styles.briefDescription}
                     card={card}
                     fieldName="Application"
                     ignoreWords={[card.originalTerm]}
@@ -102,126 +138,77 @@ export const Flashcard = memo<FlashcardProps>(
               )}
             </View>
 
-            {card.videoLinks && card.videoLinks.length > 0 && (
-              <>
-                <SectionDivider label="VIDEOS" ornament="▶" />
-                <VideoSection videoLinks={card.videoLinks} />
-              </>
+            {hasMoreContent && containerHeight > 0 && (
+              <View style={{ height: Math.max(containerHeight - 200, 100) }} />
             )}
 
-            {card.fullDescription && (
-              <>
-                <SectionDivider label="TECHNICAL DETAILS" ornament="⚙" />
-                <LinkedText
-                  text={card.fullDescription}
-                  allCards={allCards}
-                  onTermPress={handleTermPress}
-                  style={styles.description}
-                  card={card}
-                  fieldName="Technical Details"
-                  ignoreWords={[card.originalTerm]}
-                />
-              </>
-            )}
+            <View ref={belowFoldContentRef}>
+              {card.videoLinks && card.videoLinks.length > 0 && (
+                <>
+                  <SectionDivider label="VIDEOS" ornament="▶" />
+                  <VideoSection videoLinks={card.videoLinks} />
+                </>
+              )}
 
-            {card.fullApplication && (
-              <>
-                <SectionDivider label="DETAILED APPLICATION" ornament="📖" />
-                <LinkedText
-                  text={card.fullApplication}
-                  allCards={allCards}
-                  onTermPress={handleTermPress}
-                  style={styles.description}
-                  card={card}
-                  fieldName="Detailed Application"
-                  ignoreWords={[card.originalTerm]}
-                />
-              </>
-            )}
+              {card.fullDescription && (
+                <>
+                  <SectionDivider label="TECHNICAL DETAILS" ornament="⚙" />
+                  <LinkedText
+                    text={card.fullDescription}
+                    allCards={allCards}
+                    onTermPress={handleTermPress}
+                    style={styles.description}
+                    card={card}
+                    fieldName="Technical Details"
+                    ignoreWords={[card.originalTerm]}
+                  />
+                </>
+              )}
 
-            {card.related && card.related.length > 0 && (
-              <>
-                <SectionDivider label="RELATED CONCEPTS" ornament="⚜" />
-                <View style={styles.chipContainer}>
-                  {card.related.map((relatedId) => (
-                    <TouchableOpacity
-                      key={relatedId}
-                      style={styles.chip}
-                      onPress={() => handleTermPress(relatedId)}
-                      activeOpacity={0.85}
-                    >
-                      <Text selectable style={styles.chipText}>
-                        {getTermFromId(relatedId)}
-                      </Text>
-                    </TouchableOpacity>
-                  ))}
-                </View>
-              </>
-            )}
+              {card.fullApplication && (
+                <>
+                  <SectionDivider label="DETAILED APPLICATION" ornament="📖" />
+                  <LinkedText
+                    text={card.fullApplication}
+                    allCards={allCards}
+                    onTermPress={handleTermPress}
+                    style={styles.description}
+                    card={card}
+                    fieldName="Detailed Application"
+                    ignoreWords={[card.originalTerm]}
+                  />
+                </>
+              )}
 
-            <SectionDivider label="TAGS" ornament="⚜" />
-            <View style={styles.badgeContainer}>
-              <View style={styles.categoryBadge}>
-                <Text selectable style={styles.badgeText}>
-                  {card.category}
-                </Text>
-              </View>
-              <View style={styles.weaponBadge}>
-                <Text selectable style={styles.badgeText}>
-                  {card.weapon}
-                </Text>
-              </View>
+              {card.related && card.related.length > 0 && (
+                <>
+                  <SectionDivider label="RELATED CONCEPTS" ornament="⚜" />
+                  <View style={styles.chipContainer}>
+                    {card.related.map((relatedId) => (
+                      <TouchableOpacity
+                        key={relatedId}
+                        style={styles.chip}
+                        onPress={() => handleTermPress(relatedId)}
+                        activeOpacity={0.85}
+                      >
+                        <Text selectable style={styles.chipText}>
+                          {getTermFromId(relatedId)}
+                        </Text>
+                      </TouchableOpacity>
+                    ))}
+                  </View>
+                </>
+              )}
             </View>
           </View>
         </ScrollView>
-        {(onPrev || onNext) && (
-          <View style={[styles.floatingButtons, { paddingBottom: insets.bottom }]}>
-            {onPrev && (
-              <TouchableOpacity
-                style={[
-                  styles.arrowButton,
-                  styles.burgundyVariant,
-                  !canGoPrev && styles.disabledButton,
-                  styles.floatingButtonLeft,
-                ]}
-                onPress={onPrev}
-                disabled={!canGoPrev}
-                activeOpacity={0.7}
-              >
-                <View style={[styles.arrowIconContainer, styles.arrowLeft]}>
-                  <SwordArrowIcon
-                    width={24}
-                    height={24}
-                    fill={colors.burgundy.dark}
-                    color={colors.burgundy.dark}
-                  />
-                </View>
-              </TouchableOpacity>
-            )}
-            {onNext && (
-              <TouchableOpacity
-                style={[
-                  styles.arrowButton,
-                  styles.burgundyVariant,
-                  !canGoNext && styles.disabledButton,
-                  styles.floatingButtonRight,
-                ]}
-                onPress={onNext}
-                disabled={!canGoNext}
-                activeOpacity={0.7}
-              >
-                <View style={[styles.arrowIconContainer, styles.arrowRight]}>
-                  <SwordArrowIcon
-                    width={24}
-                    height={24}
-                    fill={colors.burgundy.dark}
-                    color={colors.burgundy.dark}
-                  />
-                </View>
-              </TouchableOpacity>
-            )}
-          </View>
-        )}
+        <Pager
+          onPrev={onPrev}
+          onNext={onNext}
+          canGoPrev={canGoPrev}
+          canGoNext={canGoNext}
+          onMore={hasMoreContent && !hasScrolledToMore ? handleScrollToMore : undefined}
+        />
       </View>
     );
   }
@@ -298,8 +285,15 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 0.5,
   },
+  briefDescription: {
+    fontSize: fontSize.xl,
+    lineHeight: fontSize.md * 1.4,
+    fontFamily: fontFamily.body,
+    color: colors.iron.main,
+    marginBottom: spacing.md,
+  },
   description: {
-    fontSize: fontSize.md,
+    fontSize: fontSize.lg,
     lineHeight: fontSize.md * 1.4,
     fontFamily: fontFamily.body,
     color: colors.iron.main,
@@ -331,54 +325,5 @@ const styles = StyleSheet.create({
     fontSize: fontSize.sm,
     fontFamily: fontFamily.bodySemiBold,
     textTransform: 'capitalize',
-  },
-  floatingButtons: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: spacing.lg,
-    paddingTop: spacing.md,
-    pointerEvents: 'box-none',
-  },
-  floatingButtonLeft: {
-    pointerEvents: 'auto',
-  },
-  floatingButtonRight: {
-    pointerEvents: 'auto',
-  },
-  arrowButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: colors.parchment.light,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 2,
-  },
-  burgundyVariant: {
-    borderColor: colors.burgundy.main,
-    shadowColor: colors.burgundy.dark,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 4,
-  },
-  disabledButton: {
-    opacity: 0.5,
-  },
-  arrowIconContainer: {
-    width: 24,
-    height: 24,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  arrowLeft: {
-    transform: [{ rotate: '-90deg' }],
-  },
-  arrowRight: {
-    transform: [{ rotate: '90deg' }],
   },
 });
