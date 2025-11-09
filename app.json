@@ -16,16 +16,29 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.yetanothersidequest.fechtonomicon",
+      "buildNumber": "1",
       "displayName": "The Fechto",
       "infoPlist": {
         "CFBundleDisplayName": "The Fechto",
         "NSAppTransportSecurity": {
-          "NSAllowsArbitraryLoads": true
+          "NSExceptionDomains": {
+            "youtube.com": {
+              "NSIncludesSubdomains": true,
+              "NSTemporaryExceptionAllowsInsecureHTTPLoads": true
+            },
+            "youtu.be": {
+              "NSIncludesSubdomains": true,
+              "NSTemporaryExceptionAllowsInsecureHTTPLoads": true
+            }
+          }
         }
       },
-      "appleTeamId": "YGFSEKK4H2"
+      "appleTeamId": "YGFSEKK4H2",
+      "usesAppleSignIn": false
     },
     "android": {
+      "package": "com.yetanothersidequest.fechtonomicon",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#F8F4E8"
