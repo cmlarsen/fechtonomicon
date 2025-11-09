@@ -1,8 +1,8 @@
 import { memo } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import SwordArrowIcon from '../../assets/icons/np_sword_arrow.svg';
-import { colors, fontFamily, fontSize, spacing } from '../theme/tokens';
+import { colors, spacing } from '../theme/tokens';
 
 interface PagerButtonProps {
   onPress: () => void;
@@ -46,11 +46,10 @@ interface PagerProps {
   onNext?: () => void;
   canGoPrev?: boolean;
   canGoNext?: boolean;
-  onMore?: () => void;
 }
 
 export const Pager = memo<PagerProps>(
-  ({ onPrev, onNext, canGoPrev = false, canGoNext = false, onMore }) => {
+  ({ onPrev, onNext, canGoPrev = false, canGoNext = false }) => {
     const insets = useSafeAreaInsets();
 
     if (!onPrev && !onNext) {
@@ -60,15 +59,6 @@ export const Pager = memo<PagerProps>(
     return (
       <View style={[styles.floatingButtons, { paddingBottom: insets.bottom }]}>
         {onPrev && <PagerButton onPress={onPrev} disabled={!canGoPrev} direction="left" />}
-        {onMore && (
-          <TouchableOpacity
-            style={[styles.moreButton, styles.burgundyVariant]}
-            onPress={onMore}
-            activeOpacity={0.7}
-          >
-            <Text style={styles.moreButtonText}>⌄</Text>
-          </TouchableOpacity>
-        )}
         {onNext && <PagerButton onPress={onNext} disabled={!canGoNext} direction="right" />}
       </View>
     );
@@ -126,21 +116,5 @@ const styles = StyleSheet.create({
   },
   arrowRight: {
     transform: [{ rotate: '90deg' }],
-  },
-  moreButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: colors.parchment.light,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 2,
-    pointerEvents: 'auto',
-  },
-  moreButtonText: {
-    fontSize: fontSize.xxl,
-    fontFamily: fontFamily.body,
-    color: colors.burgundy.dark,
-    marginTop: -4,
   },
 });

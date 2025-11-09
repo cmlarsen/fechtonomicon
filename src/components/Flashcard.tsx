@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useRef } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useFlashcardStore } from '../store/flashcardStore';
 import { borderRadius, colors, fontFamily, fontSize, spacing } from '../theme/tokens';
@@ -22,9 +22,6 @@ export const Flashcard = memo<FlashcardProps>(
   ({ card, onTermPress, onPrev, onNext, canGoPrev = false, canGoNext = false }) => {
     const allCards = useFlashcardStore((state) => state.allCards);
     const scrollViewRef = useRef<ScrollView>(null);
-    const [containerHeight, setContainerHeight] = useState(0);
-    const [hasScrolledToMore, setHasScrolledToMore] = useState(false);
-    const belowFoldContentRef = useRef<View>(null);
 
     const handleTermPress = useCallback(
       (cardId: string) => {
@@ -40,29 +37,9 @@ export const Flashcard = memo<FlashcardProps>(
       return parts[parts.length - 1].replace(/_/g, ' ');
     }, []);
 
-    const handleScrollToMore = useCallback(() => {
-      if (scrollViewRef.current && containerHeight > 0) {
-        scrollViewRef.current.scrollTo({ y: containerHeight - 60, animated: true });
-        setHasScrolledToMore(true);
-      }
-    }, [containerHeight]);
-
-    const handleScroll = useCallback(
-      (event: { nativeEvent: { contentOffset: { y: number } } }) => {
-        const scrollY = event.nativeEvent.contentOffset.y;
-        if (scrollY > containerHeight * 0.5) {
-          setHasScrolledToMore(true);
-        } else if (scrollY < 50) {
-          setHasScrolledToMore(false);
-        }
-      },
-      [containerHeight]
-    );
-
     useEffect(() => {
       if (card?.id && scrollViewRef.current) {
         scrollViewRef.current.scrollTo({ y: 0, animated: true });
-        setHasScrolledToMore(false);
       }
     }, [card?.id]);
 
@@ -70,29 +47,14 @@ export const Flashcard = memo<FlashcardProps>(
       return null;
     }
 
-    const hasMoreContent =
-      (card.videoLinks && card.videoLinks.length > 0) ||
-      card.fullDescription ||
-      card.fullApplication ||
-      (card.related && card.related.length > 0);
-
     return (
-      <View
-        style={styles.container}
-        testID="flashcard-container"
-        onLayout={(event) => {
-          const { height } = event.nativeEvent.layout;
-          setContainerHeight(height);
-        }}
-      >
+      <View style={styles.container} testID="flashcard-container">
         <ScrollView
           ref={scrollViewRef}
           style={styles.scrollView}
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={true}
           bounces={true}
-          onScroll={handleScroll}
-          scrollEventThrottle={16}
         >
           <View style={styles.content}>
             <View style={styles.header}>
@@ -138,77 +100,65 @@ export const Flashcard = memo<FlashcardProps>(
               )}
             </View>
 
-            {hasMoreContent && containerHeight > 0 && (
-              <View style={{ height: Math.max(containerHeight - 200, 100) }} />
+            {card.videoLinks && card.videoLinks.length > 0 && (
+              <>
+                <SectionDivider label="VIDEOS" ornament="▶" />
+                <VideoSection videoLinks={card.videoLinks} />
+              </>
             )}
 
-            <View ref={belowFoldContentRef}>
-              {card.videoLinks && card.videoLinks.length > 0 && (
-                <>
-                  <SectionDivider label="VIDEOS" ornament="▶" />
-                  <VideoSection videoLinks={card.videoLinks} />
-                </>
-              )}
+            {card.fullDescription && (
+              <>
+                <SectionDivider label="TECHNICAL DETAILS" ornament="⚙" />
+                <LinkedText
+                  text={card.fullDescription}
+                  allCards={allCards}
+                  onTermPress={handleTermPress}
+                  style={styles.description}
+                  card={card}
+                  fieldName="Technical Details"
+                  ignoreWords={[card.originalTerm]}
+                />
+              </>
+            )}
 
-              {card.fullDescription && (
-                <>
-                  <SectionDivider label="TECHNICAL DETAILS" ornament="⚙" />
-                  <LinkedText
-                    text={card.fullDescription}
-                    allCards={allCards}
-                    onTermPress={handleTermPress}
-                    style={styles.description}
-                    card={card}
-                    fieldName="Technical Details"
-                    ignoreWords={[card.originalTerm]}
-                  />
-                </>
-              )}
+            {card.fullApplication && (
+              <>
+                <SectionDivider label="DETAILED APPLICATION" ornament="📖" />
+                <LinkedText
+                  text={card.fullApplication}
+                  allCards={allCards}
+                  onTermPress={handleTermPress}
+                  style={styles.description}
+                  card={card}
+                  fieldName="Detailed Application"
+                  ignoreWords={[card.originalTerm]}
+                />
+              </>
+            )}
 
-              {card.fullApplication && (
-                <>
-                  <SectionDivider label="DETAILED APPLICATION" ornament="📖" />
-                  <LinkedText
-                    text={card.fullApplication}
-                    allCards={allCards}
-                    onTermPress={handleTermPress}
-                    style={styles.description}
-                    card={card}
-                    fieldName="Detailed Application"
-                    ignoreWords={[card.originalTerm]}
-                  />
-                </>
-              )}
-
-              {card.related && card.related.length > 0 && (
-                <>
-                  <SectionDivider label="RELATED CONCEPTS" ornament="⚜" />
-                  <View style={styles.chipContainer}>
-                    {card.related.map((relatedId) => (
-                      <TouchableOpacity
-                        key={relatedId}
-                        style={styles.chip}
-                        onPress={() => handleTermPress(relatedId)}
-                        activeOpacity={0.85}
-                      >
-                        <Text selectable style={styles.chipText}>
-                          {getTermFromId(relatedId)}
-                        </Text>
-                      </TouchableOpacity>
-                    ))}
-                  </View>
-                </>
-              )}
-            </View>
+            {card.related && card.related.length > 0 && (
+              <>
+                <SectionDivider label="RELATED CONCEPTS" ornament="⚜" />
+                <View style={styles.chipContainer}>
+                  {card.related.map((relatedId) => (
+                    <TouchableOpacity
+                      key={relatedId}
+                      style={styles.chip}
+                      onPress={() => handleTermPress(relatedId)}
+                      activeOpacity={0.85}
+                    >
+                      <Text selectable style={styles.chipText}>
+                        {getTermFromId(relatedId)}
+                      </Text>
+                    </TouchableOpacity>
+                  ))}
+                </View>
+              </>
+            )}
           </View>
         </ScrollView>
-        <Pager
-          onPrev={onPrev}
-          onNext={onNext}
-          canGoPrev={canGoPrev}
-          canGoNext={canGoNext}
-          onMore={hasMoreContent && !hasScrolledToMore ? handleScrollToMore : undefined}
-        />
+        <Pager onPrev={onPrev} onNext={onNext} canGoPrev={canGoPrev} canGoNext={canGoNext} />
       </View>
     );
   }
