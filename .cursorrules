@@ -88,6 +88,26 @@
 - Keep commits focused - one logical change per commit
 - Ensure CI checks pass before merging PRs
 
+## Metro and Babel Configuration
+- **CRITICAL**: Changes to `metro.config.js`, `metro.transformer.js`, or `babel.config.js` are high-risk and can break the app
+- **ABSOLUTE RULE**: When creating or modifying `metro.transformer.js`, ALWAYS delegate non-handled files to `@expo/metro-config/babel-transformer` (NOT `metro-babel-transformer`)
+- **CRITICAL**: After ANY changes to Metro or Babel configuration, test on ALL platforms (iOS, Android, and web) before committing
+- **REQUIRED**: When fixing platform-specific bundling issues (e.g., web `import.meta` errors), ensure the fix doesn't break other platforms
+- **Example of correct metro.transformer.js pattern**:
+  ```javascript
+  module.exports.transform = async ({ src, filename, options }) => {
+    if (filename.endsWith('.svg')) {
+      return customTransformer.transform({ src, filename, options });
+    }
+    // ALWAYS delegate to Expo transformer for React Native polyfills
+    const expoTransformer = require('@expo/metro-config/babel-transformer');
+    return expoTransformer.transform({ src, filename, options });
+  };
+  ```
+- Never use `metro-babel-transformer` directly - it lacks React Native polyfills (like `require`) that Expo provides
+- Clear Metro cache after configuration changes: `yarn start --clear`
+- If bundling errors occur after config changes, check that the transformer chain is correct
+
 ## Design and UI Components
 - **CRITICAL**: Our design aesthetic is **cozy medieval manuscript** with a **delightful modern UX**
 - **ALWAYS use existing button components** when creating new components that need buttons:

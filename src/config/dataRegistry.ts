@@ -50,7 +50,7 @@ export const DATA_REGISTRY: readonly DataSetConfig[] = [
     name: 'Vadi Longsword',
     description: "Filippo Vadi's unique longsword system with detailed guard work",
     dataFile: 'vadi-longsword-data.json',
-    idPrefix: 'italian.long.',
+    idPrefix: 'vadi.long.',
   },
 ] as const;
 

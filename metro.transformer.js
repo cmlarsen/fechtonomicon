@@ -1,25 +1,19 @@
 const svgTransformer = require('react-native-svg-transformer');
-const defaultTransformer = require('metro-babel-transformer');
 
-module.exports = {
-  transform({ src, filename, options }) {
-    if (filename.endsWith('.svg')) {
-      return svgTransformer.transform({ src, filename, options });
+module.exports.transform = async ({ src, filename, options }) => {
+  if (filename.endsWith('.svg')) {
+    return svgTransformer.transform({ src, filename, options });
+  }
+
+  // For non-SVG files, use the Expo transformer that's built into react-native-svg-transformer
+  const getExpoTransformer = () => {
+    try {
+      return require('@expo/metro-config/babel-transformer');
+    } catch (_error) {
+      return require('metro-babel-transformer');
     }
+  };
 
-    // For web platform, always transform zustand to handle import.meta
-    if (options.platform === 'web' && filename.includes('zustand')) {
-      return defaultTransformer.transform({
-        src,
-        filename,
-        options: {
-          ...options,
-          // Force Babel transformation for this file
-          enableBabelRuntime: true,
-        },
-      });
-    }
-
-    return defaultTransformer.transform({ src, filename, options });
-  },
+  const expoTransformer = getExpoTransformer();
+  return expoTransformer.transform({ src, filename, options });
 };

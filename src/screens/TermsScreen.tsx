@@ -74,7 +74,7 @@ export const TermsScreen: React.FC<TermsScreenProps> = ({ navigation, route }) =
     stackNavigation.navigate('Settings');
   }, [stackNavigation]);
 
-  const showLoading = isLoading || disciplineFilteredCards.length === 0;
+  const showLoading = isLoading;
 
   return (
     <BackgroundPattern>
@@ -103,6 +103,13 @@ export const TermsScreen: React.FC<TermsScreenProps> = ({ navigation, route }) =
 
         {showLoading ? (
           <LoadingState />
+        ) : disciplineFilteredCards.length === 0 ? (
+          <View style={styles.emptyState}>
+            <Text style={styles.emptyStateText}>No cards available for this discipline.</Text>
+            <Text style={styles.emptyStateSubtext}>
+              Try selecting a different discipline in settings.
+            </Text>
+          </View>
         ) : (
           <View style={styles.detailContainer}>
             <TermCard
@@ -154,5 +161,24 @@ const styles = StyleSheet.create({
   },
   detailContainer: {
     flex: 1,
+  },
+  emptyState: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: spacing.xl,
+  },
+  emptyStateText: {
+    fontSize: fontSize.lg,
+    fontFamily: fontFamily.bodySemiBold,
+    color: colors.iron.main,
+    textAlign: 'center',
+    marginBottom: spacing.md,
+  },
+  emptyStateSubtext: {
+    fontSize: fontSize.md,
+    fontFamily: fontFamily.bodyItalic,
+    color: colors.iron.main,
+    textAlign: 'center',
   },
 });
