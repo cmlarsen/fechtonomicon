@@ -18,7 +18,7 @@ import {
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import React from 'react';
-import { Platform, StyleSheet, View, type ViewStyle } from 'react-native';
+import { Platform, StyleSheet, useWindowDimensions, View, type ViewStyle } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { AppNavigator } from './src/navigation/AppNavigator';
 import { colors } from './src/theme/tokens';
@@ -27,6 +27,7 @@ import { colors } from './src/theme/tokens';
 SplashScreen.preventAutoHideAsync();
 
 function AppContent() {
+  const { width } = useWindowDimensions();
   const [fontsLoaded, fontError] = useFonts({
     'CormorantGaramond-Light': CormorantGaramond_300Light,
     'CormorantGaramond-LightItalic': CormorantGaramond_300Light_Italic,
@@ -59,11 +60,14 @@ function AppContent() {
     </GestureHandlerRootView>
   );
 
-  // On web, wrap content in a centered container with max-width
+  // On web, wrap content in a centered container with responsive max-width
   if (Platform.OS === 'web') {
+    const isWideLayout = width >= 768;
+    const containerStyle = isWideLayout ? styles.webInnerContainerWide : styles.webInnerContainer;
+
     return (
       <View style={styles.webOuterContainer}>
-        <View style={styles.webInnerContainer}>{content}</View>
+        <View style={containerStyle}>{content}</View>
       </View>
     );
   }
@@ -91,6 +95,14 @@ const styles = StyleSheet.create({
     maxWidth: 480,
     height: '100%',
     maxHeight: 900,
+    overflow: 'hidden',
+    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)',
+    borderRadius: 12,
+  } as ViewStyle,
+  webInnerContainerWide: {
+    width: '100%',
+    maxWidth: 1280,
+    height: '100%',
     overflow: 'hidden',
     boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)',
     borderRadius: 12,

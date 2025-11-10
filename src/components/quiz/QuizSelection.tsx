@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { DISCIPLINES } from '../../constants/disciplines';
 import { colors, fontFamily, fontSize, spacing } from '../../theme/tokens';
 import type { Discipline } from '../../types/term';
 import { BackgroundPattern } from '../BackgroundPattern';
@@ -25,16 +26,14 @@ export const QuizSelection: React.FC<QuizSelectionProps> = ({ onSelectQuiz }) =>
             <Text style={styles.title}>Choose Your Challenge</Text>
 
             <View style={styles.cardsContainer}>
-              <QuizSelectionCard
-                discipline="italian-longsword"
-                onQuickQuiz={() => onSelectQuiz('italian-longsword', 'quick')}
-                onFullQuiz={() => onSelectQuiz('italian-longsword', 'full')}
-              />
-              <QuizSelectionCard
-                discipline="german-longsword"
-                onQuickQuiz={() => onSelectQuiz('german-longsword', 'quick')}
-                onFullQuiz={() => onSelectQuiz('german-longsword', 'full')}
-              />
+              {DISCIPLINES.map((discipline) => (
+                <QuizSelectionCard
+                  key={discipline.id}
+                  discipline={discipline.id}
+                  onQuickQuiz={() => onSelectQuiz(discipline.id, 'quick')}
+                  onFullQuiz={() => onSelectQuiz(discipline.id, 'full')}
+                />
+              ))}
             </View>
           </View>
         </ScrollView>
@@ -57,7 +56,8 @@ const styles = StyleSheet.create({
   },
   selectionContainer: {
     flex: 1,
-    justifyContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
     gap: spacing.xl,
     paddingVertical: spacing.xl,
   },
@@ -68,6 +68,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   cardsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     gap: spacing.xl,
   },
 });

@@ -3,6 +3,7 @@
   "compilerOptions": {
     "strict": true,
     "pretty": true,
-    "noErrorTruncation": true
+    "noErrorTruncation": true,
+    "jsx": "react-native"
   }
 }

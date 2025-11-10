@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useRef } from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useTermStore } from '../store/termStore';
 import { borderRadius, colors, fontFamily, fontSize, spacing } from '../theme/tokens';
 import type { Term } from '../types/term';
@@ -158,7 +158,9 @@ export const TermCard = memo<TermCardProps>(
             )}
           </View>
         </ScrollView>
-        <Pager onPrev={onPrev} onNext={onNext} canGoPrev={canGoPrev} canGoNext={canGoNext} />
+        {Platform.OS !== 'web' && (
+          <Pager onPrev={onPrev} onNext={onNext} canGoPrev={canGoPrev} canGoNext={canGoNext} />
+        )}
       </View>
     );
   }

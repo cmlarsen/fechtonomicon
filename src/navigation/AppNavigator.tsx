@@ -21,6 +21,7 @@ export type RootStackParamList = {
 export type RootTabParamList = {
   Terms: { cardId?: string } | undefined;
   Quiz: undefined;
+  Settings: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -66,6 +67,14 @@ const BottomTabNavigator = () => {
         options={{
           tabBarIcon: ({ color }) => <TabIcon IconComponent={swordsIcon} color={color} size={24} />,
           tabBarLabel: 'Quiz',
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          tabBarIcon: ({ color }) => <TabIcon IconComponent={swordsIcon} color={color} size={24} />,
+          tabBarLabel: 'Settings',
         }}
       />
     </Tab.Navigator>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal } from 'react-native';
+import { Modal, StyleSheet, View } from 'react-native';
 import type { Term } from '../../types/term';
 import type { QuestionData } from '../../utils/quizUtils';
 import { BackgroundPattern } from '../BackgroundPattern';
@@ -37,20 +37,29 @@ export const QuizModalActive: React.FC<QuizModalActiveProps> = ({
   return (
     <Modal visible={visible} animationType="slide" presentationStyle="pageSheet">
       <BackgroundPattern>
-        <ActiveQuiz
-          currentQuestion={currentQuestion}
-          quizCards={quizCards}
-          score={score}
-          selectedAnswer={selectedAnswer}
-          isChecked={isChecked}
-          showFeedbackPanel={showFeedbackPanel}
-          isCorrectAnswer={isCorrectAnswer}
-          onAnswerSelect={onAnswerSelect}
-          onCheck={onCheck}
-          onContinue={onContinue}
-          onExit={onExit}
-        />
+        <View style={styles.container}>
+          <ActiveQuiz
+            currentQuestion={currentQuestion}
+            quizCards={quizCards}
+            score={score}
+            selectedAnswer={selectedAnswer}
+            isChecked={isChecked}
+            showFeedbackPanel={showFeedbackPanel}
+            isCorrectAnswer={isCorrectAnswer}
+            onAnswerSelect={onAnswerSelect}
+            onCheck={onCheck}
+            onContinue={onContinue}
+            onExit={onExit}
+          />
+        </View>
       </BackgroundPattern>
     </Modal>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    maxWidth: 450,
+  },
+});

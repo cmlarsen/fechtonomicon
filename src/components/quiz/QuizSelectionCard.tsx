@@ -32,6 +32,7 @@ export const QuizSelectionCard: React.FC<QuizSelectionCardProps> = ({
 
 const styles = StyleSheet.create({
   card: {
+    maxWidth: 450,
     backgroundColor: colors.parchment.light,
     borderRadius: borderRadius.xl,
     borderWidth: 3,

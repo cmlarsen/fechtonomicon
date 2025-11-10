@@ -1,17 +1,32 @@
+import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import type { CompositeNavigationProp } from '@react-navigation/native';
+import { useNavigationState } from '@react-navigation/native';
 import type { StackNavigationProp } from '@react-navigation/stack';
 import { usePostHog } from 'posthog-react-native';
 import React, { useCallback } from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  useWindowDimensions,
+  View,
+} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BackgroundPattern } from '../components/BackgroundPattern';
 import { IconButton } from '../components/buttons';
+import { WebTopNav } from '../components/navigation/WebTopNav';
 import { DISCIPLINES } from '../constants/disciplines';
-import type { RootStackParamList } from '../navigation/AppNavigator';
+import type { RootStackParamList, RootTabParamList } from '../navigation/AppNavigator';
 import { useTermStore } from '../store/termStore';
 import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../theme/tokens';
 import type { Discipline } from '../types/term';
 
-type SettingsScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Settings'>;
+type SettingsScreenNavigationProp = CompositeNavigationProp<
+  BottomTabNavigationProp<RootTabParamList, 'Settings'>,
+  StackNavigationProp<RootStackParamList>
+>;
 
 interface SettingsScreenProps {
   navigation: SettingsScreenNavigationProp;
@@ -20,8 +35,22 @@ interface SettingsScreenProps {
 export const SettingsScreen: React.FC<SettingsScreenProps> = ({ navigation }) => {
   const posthog = usePostHog();
   const insets = useSafeAreaInsets();
+  const { width } = useWindowDimensions();
   const selectedDisciplines = useTermStore((state) => state.selectedDisciplines);
   const toggleDiscipline = useTermStore((state) => state.toggleDiscipline);
+
+  const currentRouteName = useNavigationState((state) => {
+    const route = state.routes[state.index];
+    if (route.state) {
+      const tabState = route.state;
+      if (tabState.index !== undefined && tabState.routes[tabState.index]) {
+        return tabState.routes[tabState.index].name as keyof RootTabParamList | 'Settings';
+      }
+    }
+    return 'Settings';
+  });
+
+  const isWebWideLayout = Platform.OS === 'web' && width >= 768;
 
   const handleDisciplineSelect = useCallback(
     (discipline: Discipline) => {
@@ -37,63 +66,131 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({ navigation }) =>
     navigation.goBack();
   }, [navigation]);
 
+  const handleSettings = useCallback(() => {
+    // Already on settings, do nothing
+  }, []);
+
   return (
     <BackgroundPattern>
-      <View
-        style={[
-          styles.container,
-          {
-            paddingTop: insets.top,
-            paddingBottom: insets.bottom,
-          },
-        ]}
-      >
-        <View style={styles.closeButtonContainer}>
-          <IconButton icon="✕" onPress={handleClose} size="small" variant="gold" />
-        </View>
+      <View style={styles.container}>
+        {isWebWideLayout ? (
+          <>
+            <WebTopNav
+              navigation={navigation}
+              currentRoute={currentRouteName}
+              onSettings={handleSettings}
+            />
+            <ScrollView
+              style={styles.scrollView}
+              contentContainerStyle={styles.scrollContent}
+              showsVerticalScrollIndicator={false}
+            >
+              <View style={styles.section}>
+                <Text style={styles.sectionTitle}>Select Discipline</Text>
+                {DISCIPLINES.map((discipline) => {
+                  const isSelected = selectedDisciplines.includes(discipline.id);
 
-        <ScrollView
-          style={styles.scrollView}
-          contentContainerStyle={styles.scrollContent}
-          showsVerticalScrollIndicator={false}
-        >
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Select Discipline</Text>
-            {DISCIPLINES.map((discipline) => {
-              const isSelected = selectedDisciplines.includes(discipline.id);
-
-              return (
-                <TouchableOpacity
-                  key={discipline.id}
-                  style={[styles.disciplineCard, isSelected && styles.disciplineCardSelected]}
-                  onPress={() => handleDisciplineSelect(discipline.id)}
-                  activeOpacity={0.7}
-                >
-                  <View style={styles.disciplineContent}>
-                    <View style={styles.disciplineHeader}>
-                      <Text
-                        style={[styles.disciplineName, isSelected && styles.disciplineNameSelected]}
-                      >
-                        {discipline.name}
-                      </Text>
-                      <View style={[styles.radioButton, isSelected && styles.radioButtonSelected]}>
-                        {isSelected && <View style={styles.radioButtonInner} />}
-                      </View>
-                    </View>
-                    <Text
-                      style={[
-                        styles.disciplineDescription,
-                        isSelected && styles.disciplineDescriptionSelected,
-                      ]}
+                  return (
+                    <TouchableOpacity
+                      key={discipline.id}
+                      style={[styles.disciplineCard, isSelected && styles.disciplineCardSelected]}
+                      onPress={() => handleDisciplineSelect(discipline.id)}
+                      activeOpacity={0.7}
                     >
-                      {discipline.description}
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-              );
-            })}
+                      <View style={styles.disciplineContent}>
+                        <View style={styles.disciplineHeader}>
+                          <Text
+                            style={[
+                              styles.disciplineName,
+                              isSelected && styles.disciplineNameSelected,
+                            ]}
+                          >
+                            {discipline.name}
+                          </Text>
+                          <View
+                            style={[styles.radioButton, isSelected && styles.radioButtonSelected]}
+                          >
+                            {isSelected && <View style={styles.radioButtonInner} />}
+                          </View>
+                        </View>
+                        <Text
+                          style={[
+                            styles.disciplineDescription,
+                            isSelected && styles.disciplineDescriptionSelected,
+                          ]}
+                        >
+                          {discipline.description}
+                        </Text>
+                      </View>
+                    </TouchableOpacity>
+                  );
+                })}
+              </View>
+            </ScrollView>
+          </>
+        ) : (
+          <View
+            style={[
+              styles.modalContainer,
+              {
+                paddingTop: insets.top,
+                paddingBottom: insets.bottom,
+              },
+            ]}
+          >
+            <View style={styles.closeButtonContainer}>
+              <IconButton icon="✕" onPress={handleClose} size="small" variant="gold" />
+            </View>
+
+            <ScrollView
+              style={styles.scrollView}
+              contentContainerStyle={styles.scrollContent}
+              showsVerticalScrollIndicator={false}
+            >
+              <View style={styles.section}>
+                <Text style={styles.sectionTitle}>Select Discipline</Text>
+                {DISCIPLINES.map((discipline) => {
+                  const isSelected = selectedDisciplines.includes(discipline.id);
+
+                  return (
+                    <TouchableOpacity
+                      key={discipline.id}
+                      style={[styles.disciplineCard, isSelected && styles.disciplineCardSelected]}
+                      onPress={() => handleDisciplineSelect(discipline.id)}
+                      activeOpacity={0.7}
+                    >
+                      <View style={styles.disciplineContent}>
+                        <View style={styles.disciplineHeader}>
+                          <Text
+                            style={[
+                              styles.disciplineName,
+                              isSelected && styles.disciplineNameSelected,
+                            ]}
+                          >
+                            {discipline.name}
+                          </Text>
+                          <View
+                            style={[styles.radioButton, isSelected && styles.radioButtonSelected]}
+                          >
+                            {isSelected && <View style={styles.radioButtonInner} />}
+                          </View>
+                        </View>
+                        <Text
+                          style={[
+                            styles.disciplineDescription,
+                            isSelected && styles.disciplineDescriptionSelected,
+                          ]}
+                        >
+                          {discipline.description}
+                        </Text>
+                      </View>
+                    </TouchableOpacity>
+                  );
+                })}
+              </View>
+            </ScrollView>
           </View>
-        </ScrollView>
+        )}
       </View>
     </BackgroundPattern>
   );
@@ -101,6 +198,9 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({ navigation }) =>
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  modalContainer: {
     flex: 1,
     position: 'relative',
   },
