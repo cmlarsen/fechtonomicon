@@ -9,7 +9,7 @@ import { TermsList } from '../components/terms/TermsList';
 import { TermsSearchBar } from '../components/terms/TermsSearchBar';
 import { useTermsSearch } from '../contexts/TermsSearchContext';
 import { useFilteredCards } from '../hooks/useFilteredCards';
-import type { RootStackParamList } from '../navigation/AppNavigator';
+import type { RootStackParamList } from '../navigation/types';
 import { colors, spacing } from '../theme/tokens';
 import type { Term } from '../types/term';
 
@@ -32,7 +32,6 @@ export const SearchScreen: React.FC<SearchScreenProps> = ({ navigation }) => {
   const handleCardPress = useCallback(
     (card: Term) => {
       Keyboard.dismiss();
-      // Store the cardId and close the modal
       pendingCardIdRef.current = card.id;
       navigation.goBack();
       navigation.navigate('Main', {

@@ -1,26 +1,12 @@
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import {
-  Keyboard,
-  Platform,
-  Pressable,
-  StyleSheet,
-  Text,
-  useWindowDimensions,
-  View,
-} from 'react-native';
+import { Keyboard, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { colors, fontFamily, fontSize, spacing } from '../../theme/tokens';
+import { colors, fontFamily, fontSize, spacing } from '../theme/tokens';
 
 export const CustomTabBar: React.FC<BottomTabBarProps> = (props) => {
   const { state, descriptors, navigation } = props;
   const insets = useSafeAreaInsets();
-  const { width } = useWindowDimensions();
-
-  // Hide tab bar on web when screen is wide enough (768px+)
-  if (Platform.OS === 'web' && width >= 768) {
-    return null;
-  }
 
   return (
     <View
@@ -107,12 +93,9 @@ const styles = StyleSheet.create({
   },
   tabBar: {
     flexDirection: 'row',
-
     alignItems: 'center',
     justifyContent: 'space-around',
-
     paddingTop: spacing.md,
-    // backgroundColor: 'red',
   },
   tabItem: {
     flex: 1,

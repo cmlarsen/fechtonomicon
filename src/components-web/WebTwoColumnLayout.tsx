@@ -1,9 +1,9 @@
 import React from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
-import { colors } from '../../theme/tokens';
-import type { Term } from '../../types/term';
-import { TermCard } from '../TermCard';
-import { TermsList } from '../terms/TermsList';
+import { StyleSheet, View } from 'react-native';
+import { colors } from '../theme/tokens';
+import type { Term } from '../types/term';
+import { TermCard } from '../components/TermCard';
+import { TermsList } from '../components/terms/TermsList';
 
 interface WebTwoColumnLayoutProps {
   cards: Term[];
@@ -20,10 +20,6 @@ export const WebTwoColumnLayout: React.FC<WebTwoColumnLayoutProps> = ({
   onCardPress,
   onTermPress,
 }) => {
-  if (Platform.OS !== 'web') {
-    return null;
-  }
-
   return (
     <View style={styles.container}>
       <View style={styles.leftColumn}>

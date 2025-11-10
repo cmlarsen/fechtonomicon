@@ -1,1 +1,0 @@
-export { WebTwoColumnLayout } from './WebTwoColumnLayout';
