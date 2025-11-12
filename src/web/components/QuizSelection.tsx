@@ -32,7 +32,6 @@ export const QuizSelection: React.FC<QuizSelectionProps> = ({ onSelectQuiz }) =>
             {visibleDisciplines.map((discipline) => (
               <QuizSelectionCard
                 key={discipline.id}
-                discipline={discipline.id}
                 onQuickQuiz={() => onSelectQuiz(discipline.id, 'quick')}
                 onFullQuiz={() => onSelectQuiz(discipline.id, 'full')}
               />

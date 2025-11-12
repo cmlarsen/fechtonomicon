@@ -45,8 +45,10 @@ const DrawerNavigator = () => {
         headerShown: true,
         header: (props: DrawerHeaderProps) => <NativeHeader {...props} />,
         drawerPosition: 'left',
-        drawerType: 'front',
-        swipeEnabled: false,
+        drawerType: 'slide',
+        swipeEnabled: true,
+        swipeEdgeWidth: 50,
+        swipeMinDistance: 10,
         drawerStyle: {
           width: '85%',
         },

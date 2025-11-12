@@ -5,7 +5,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { TermsList } from '../../components/terms/TermsList';
 import { useTermsSearch } from '../../contexts/TermsSearchContext';
 import { useFilteredCards } from '../../hooks/useFilteredCards';
-import { colors, spacing } from '../../theme/tokens';
+import { colors } from '../../theme/tokens';
 import type { Term } from '../../types/term';
 import { DisciplineSelector } from './DisciplineSelector';
 
