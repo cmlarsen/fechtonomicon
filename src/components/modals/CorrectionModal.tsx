@@ -36,6 +36,11 @@ export const CorrectionModal: React.FC = () => {
   const fieldName = data?.fieldName ?? '';
   const fieldValue = data?.fieldValue ?? '';
 
+  const trimmedEditedText = editedText.trim();
+  const hasChanged = trimmedEditedText !== fieldValue.trim();
+  const isEmpty = trimmedEditedText.length === 0;
+  const canSubmit = hasChanged && !isEmpty && !isSubmitting;
+
   useEffect(() => {
     if (isOpen && fieldValue) {
       setEditedText(fieldValue);
@@ -95,6 +100,11 @@ Additional notes:
 
   const handleSubmitEdit = async () => {
     if (!card || isSubmitting) return;
+
+    const trimmedText = editedText.trim();
+    if (trimmedText.length === 0 || trimmedText === fieldValue.trim()) {
+      return;
+    }
 
     setIsSubmitting(true);
 
@@ -238,10 +248,11 @@ Additional notes:
 
               <View style={styles.buttonContainer}>
                 <PrimaryButton
-                  title={isSubmitting ? 'Submitting...' : 'Submit Edit'}
+                  title="Submit Edit"
                   onPress={handleSubmitEdit}
                   size="medium"
-                  disabled={isSubmitting}
+                  disabled={!canSubmit}
+                  showLoading={isSubmitting}
                 />
               </View>
             </TouchableOpacity>

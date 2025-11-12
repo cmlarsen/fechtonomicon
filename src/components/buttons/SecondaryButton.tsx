@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, ViewStyle } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, ViewStyle } from 'react-native';
 import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../../theme/tokens';
 
 interface SecondaryButtonProps {
@@ -10,6 +10,7 @@ interface SecondaryButtonProps {
   variant?: 'parchment' | 'burgundy';
   style?: ViewStyle;
   testID?: string;
+  showLoading?: boolean;
 }
 
 const sizeConfig = {
@@ -38,10 +39,12 @@ export const SecondaryButton: React.FC<SecondaryButtonProps> = ({
   variant = 'parchment',
   style,
   testID,
+  showLoading = false,
 }) => {
   const sizeStyles = sizeConfig[size];
   const variantStyles = variant === 'burgundy' ? styles.burgundyVariant : styles.parchmentVariant;
   const textVariantStyles = variant === 'burgundy' ? styles.burgundyText : styles.parchmentText;
+  const indicatorColor = variant === 'burgundy' ? colors.text.inverse : colors.burgundy.dark;
 
   return (
     <TouchableOpacity
@@ -60,6 +63,9 @@ export const SecondaryButton: React.FC<SecondaryButtonProps> = ({
       activeOpacity={0.8}
       testID={testID}
     >
+      {showLoading && (
+        <ActivityIndicator size="small" color={indicatorColor} style={styles.loadingIndicator} />
+      )}
       <Text
         style={[
           styles.text,
@@ -82,6 +88,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     minHeight: 48,
+    flexDirection: 'row',
   },
   parchmentVariant: {
     backgroundColor: colors.parchment.primary,
@@ -103,5 +110,8 @@ const styles = StyleSheet.create({
     color: colors.text.inverse,
     textTransform: 'uppercase',
     letterSpacing: 0.5,
+  },
+  loadingIndicator: {
+    marginRight: spacing.sm,
   },
 });

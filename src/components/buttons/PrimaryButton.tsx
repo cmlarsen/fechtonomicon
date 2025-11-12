@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, ViewStyle } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, ViewStyle } from 'react-native';
 import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../../theme/tokens';
 
 interface PrimaryButtonProps {
@@ -9,6 +9,7 @@ interface PrimaryButtonProps {
   size?: 'small' | 'medium' | 'large';
   style?: ViewStyle;
   testID?: string;
+  showLoading?: boolean;
 }
 
 const sizeConfig = {
@@ -36,6 +37,7 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   size = 'medium',
   style,
   testID,
+  showLoading = false,
 }) => {
   const sizeStyles = sizeConfig[size];
 
@@ -55,6 +57,9 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
       activeOpacity={0.8}
       testID={testID}
     >
+      {showLoading && (
+        <ActivityIndicator size="small" color={colors.iron.dark} style={styles.loadingIndicator} />
+      )}
       <Text
         style={[
           styles.text,
@@ -78,11 +83,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     minHeight: 48,
+    flexDirection: 'row',
     ...shadows.parchment,
   },
   text: {
     fontFamily: fontFamily.titleSemiBold,
     color: colors.iron.dark,
     textAlign: 'center',
+  },
+  loadingIndicator: {
+    marginRight: spacing.sm,
   },
 });
