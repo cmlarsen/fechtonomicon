@@ -4,16 +4,16 @@ import { useNavigationState } from '@react-navigation/native';
 import type { StackNavigationProp } from '@react-navigation/stack';
 import React, { useCallback } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { BackgroundPattern } from '../components/BackgroundPattern';
-import { LoadingState } from '../components/LoadingState';
-import { WebTwoColumnLayout } from '../components-web/WebTwoColumnLayout';
-import { WebTopNav } from '../components-web/WebTopNav';
-import { useCardIndex } from '../hooks/useCardIndex';
-import { useCardLoader } from '../hooks/useCardLoader';
-import { useFilteredCards } from '../hooks/useFilteredCards';
-import type { RootStackParamList, RootTabParamList } from '../navigation/types';
-import { colors, fontFamily, fontSize, spacing } from '../theme/tokens';
-import type { Term } from '../types/term';
+import { BackgroundPattern } from '../../components/BackgroundPattern';
+import { LoadingState } from '../../components/LoadingState';
+import { useCardIndex } from '../../hooks/useCardIndex';
+import { useCardLoader } from '../../hooks/useCardLoader';
+import { useFilteredCards } from '../../hooks/useFilteredCards';
+import type { RootStackParamList, RootTabParamList } from '../../navigation/types';
+import { colors, fontFamily, fontSize, spacing } from '../../theme/tokens';
+import type { Term } from '../../types/term';
+import { WebTopNav } from '../components/WebTopNav';
+import { WebTwoColumnLayout } from '../components/WebTwoColumnLayout';
 
 type TermsScreenNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<RootTabParamList, 'Terms'>,

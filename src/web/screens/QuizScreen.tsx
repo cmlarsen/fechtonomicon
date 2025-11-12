@@ -4,12 +4,12 @@ import { useNavigationState } from '@react-navigation/native';
 import type { StackNavigationProp } from '@react-navigation/stack';
 import React, { useCallback } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { BackgroundPattern } from '../components/BackgroundPattern';
-import { WebTopNav } from '../components-web/WebTopNav';
-import { QuizSelection } from '../components-web/QuizSelection';
-import { QuizModal } from '../components/quiz/QuizModal';
-import { useQuiz } from '../hooks/useQuiz';
-import type { RootStackParamList, RootTabParamList } from '../navigation/types';
+import { BackgroundPattern } from '../../components/BackgroundPattern';
+import { QuizModal } from '../../components/quiz/QuizModal';
+import { useQuiz } from '../../hooks/useQuiz';
+import type { RootStackParamList, RootTabParamList } from '../../navigation/types';
+import { QuizSelection } from '../components/QuizSelection';
+import { WebTopNav } from '../components/WebTopNav';
 
 type QuizScreenNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<RootTabParamList, 'Quiz'>,

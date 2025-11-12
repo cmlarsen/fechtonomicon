@@ -1,20 +1,25 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { DISCIPLINES } from '../constants/disciplines';
-import { colors, fontFamily, fontSize, spacing } from '../theme/tokens';
-import type { Discipline } from '../types/term';
-import { QuizSelectionCard } from '../components/quiz/QuizSelectionCard';
+import { QuizSelectionCard } from '../../components/quiz/QuizSelectionCard';
+import { DISCIPLINES } from '../../constants/disciplines';
+import { useTermStore } from '../../store/termStore';
+import { colors, fontFamily, fontSize, spacing } from '../../theme/tokens';
+import type { Discipline } from '../../types/term';
 
 interface QuizSelectionProps {
   onSelectQuiz: (discipline: Discipline, mode: 'quick' | 'full') => void;
 }
 
 export const QuizSelection: React.FC<QuizSelectionProps> = ({ onSelectQuiz }) => {
-  const insets = useSafeAreaInsets();
+  const selectedDisciplines = useTermStore((state) => state.selectedDisciplines);
+
+  // Filter to only show currently selected discipline(s)
+  const visibleDisciplines = DISCIPLINES.filter((discipline) =>
+    selectedDisciplines.includes(discipline.id)
+  );
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={styles.container}>
       <ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.content}
@@ -24,7 +29,7 @@ export const QuizSelection: React.FC<QuizSelectionProps> = ({ onSelectQuiz }) =>
           <Text style={styles.title}>Choose Your Challenge</Text>
 
           <View style={styles.cardsContainer}>
-            {DISCIPLINES.map((discipline) => (
+            {visibleDisciplines.map((discipline) => (
               <QuizSelectionCard
                 key={discipline.id}
                 discipline={discipline.id}

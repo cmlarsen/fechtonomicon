@@ -22,6 +22,7 @@ const PagerButton = memo<PagerButtonProps>(({ onPress, disabled, direction }) =>
       disabled={disabled}
       size="medium"
       variant="burgundy"
+      mode="circle"
     />
   );
 });

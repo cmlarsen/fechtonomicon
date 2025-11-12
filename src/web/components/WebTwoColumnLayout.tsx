@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { colors } from '../theme/tokens';
-import type { Term } from '../types/term';
-import { TermCard } from '../components/TermCard';
-import { TermsList } from '../components/terms/TermsList';
+import { TermCard } from '../../components/TermCard';
+import { TermsList } from '../../components/terms/TermsList';
+import { colors } from '../../theme/tokens';
+import type { Term } from '../../types/term';
 
 interface WebTwoColumnLayoutProps {
   cards: Term[];

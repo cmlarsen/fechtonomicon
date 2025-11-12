@@ -2,9 +2,9 @@ import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import type { RootTabParamList } from '../navigation/types';
-import { colors, fontFamily, fontSize, shadows, spacing } from '../theme/tokens';
-import { rgba } from '../utils/colorUtils';
+import type { RootTabParamList } from '../../navigation/types';
+import { colors, fontFamily, fontSize, shadows, spacing } from '../../theme/tokens';
+import { rgba } from '../../utils/colorUtils';
 
 interface WebTopNavProps {
   navigation: BottomTabNavigationProp<RootTabParamList>;

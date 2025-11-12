@@ -2,15 +2,15 @@ import type { CompositeNavigationProp } from '@react-navigation/native';
 import type { StackNavigationProp } from '@react-navigation/stack';
 import React, { useCallback, useState } from 'react';
 import { Keyboard, StyleSheet, View } from 'react-native';
-import { BackgroundPattern } from '../components/BackgroundPattern';
-import { IconButton } from '../components/buttons';
-import { TermsList } from '../components/terms/TermsList';
-import { TermsSearchBar } from '../components/terms/TermsSearchBar';
-import { useTermsSearch } from '../contexts/TermsSearchContext';
-import { useFilteredCards } from '../hooks/useFilteredCards';
-import type { RootStackParamList } from '../navigation/types';
-import { colors, spacing } from '../theme/tokens';
-import type { Term } from '../types/term';
+import { BackgroundPattern } from '../../components/BackgroundPattern';
+import { IconButton } from '../../components/buttons';
+import { TermsList } from '../../components/terms/TermsList';
+import { TermsSearchBar } from '../../components/terms/TermsSearchBar';
+import { useTermsSearch } from '../../contexts/TermsSearchContext';
+import { useFilteredCards } from '../../hooks/useFilteredCards';
+import type { RootStackParamList } from '../../navigation/types';
+import { colors, spacing } from '../../theme/tokens';
+import type { Term } from '../../types/term';
 
 type SearchScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootStackParamList, 'Search'>,

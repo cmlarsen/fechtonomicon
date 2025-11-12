@@ -71,9 +71,9 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: colors.gold.main,
+    backgroundColor: colors.gold.light,
     borderRadius: borderRadius.lg,
-    borderWidth: 3,
+    borderWidth: 1,
     borderColor: colors.gold.dark,
     alignItems: 'center',
     justifyContent: 'center',
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     ...shadows.parchment,
   },
   text: {
-    fontFamily: fontFamily.bodySemiBold,
+    fontFamily: fontFamily.titleSemiBold,
     color: colors.iron.dark,
     textAlign: 'center',
   },

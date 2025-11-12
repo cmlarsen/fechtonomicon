@@ -78,7 +78,7 @@ export const SecondaryButton: React.FC<SecondaryButtonProps> = ({
 const styles = StyleSheet.create({
   button: {
     borderRadius: borderRadius.lg,
-    borderWidth: 2,
+    borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
     minHeight: 48,
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     ...shadows.md,
   },
   text: {
-    fontFamily: fontFamily.bodySemiBold,
+    fontFamily: fontFamily.titleSemiBold,
     textAlign: 'center',
   },
   parchmentText: {

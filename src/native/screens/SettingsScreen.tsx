@@ -5,13 +5,13 @@ import { usePostHog } from 'posthog-react-native';
 import React, { useCallback } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { BackgroundPattern } from '../components/BackgroundPattern';
-import { IconButton } from '../components/buttons';
-import { DISCIPLINES } from '../constants/disciplines';
-import type { RootStackParamList, RootTabParamList } from '../navigation/types';
-import { useTermStore } from '../store/termStore';
-import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../theme/tokens';
-import type { Discipline } from '../types/term';
+import { BackgroundPattern } from '../../components/BackgroundPattern';
+import { IconButton } from '../../components/buttons';
+import { DISCIPLINES } from '../../constants/disciplines';
+import type { RootStackParamList, RootTabParamList } from '../../navigation/types';
+import { useTermStore } from '../../store/termStore';
+import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../../theme/tokens';
+import type { Discipline } from '../../types/term';
 
 type SettingsScreenNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<RootTabParamList, 'Settings'>,

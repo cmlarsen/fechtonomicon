@@ -39,7 +39,7 @@ CardListItem.displayName = 'CardListItem';
 
 const styles = StyleSheet.create({
   cardItem: {
-    paddingVertical: spacing.md,
+    paddingVertical: spacing.sm,
     paddingHorizontal: spacing.md,
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(201, 171, 106, 0.3)',
@@ -62,10 +62,9 @@ const styles = StyleSheet.create({
     marginRight: spacing.sm,
   },
   originalTerm: {
-    fontSize: fontSize.md,
+    fontSize: fontSize.lg,
     fontFamily: fontFamily.bodySemiBold,
     color: colors.text.primary,
-    marginBottom: spacing.xs,
   },
   originalTermSelected: {
     color: colors.iron.dark,
