@@ -7,7 +7,9 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
-    "assetBundlePatterns": ["assets/**/*"],
+    "assetBundlePatterns": [
+      "assets/**/*"
+    ],
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "cover",
@@ -16,7 +18,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.yetanothersidequest.fechtonomicon",
-      "buildNumber": "1",
+      "buildNumber": "2",
       "displayName": "Fechtonomicon",
       "infoPlist": {
         "CFBundleDisplayName": "Fechtonomicon",
@@ -62,6 +64,8 @@
       }
     },
     "owner": "yetanothersidequest",
-    "plugins": ["expo-localization"]
+    "plugins": [
+      "expo-localization"
+    ]
   }
 }
