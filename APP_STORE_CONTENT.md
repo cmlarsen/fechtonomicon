@@ -6,7 +6,7 @@ This document contains ready-to-use content for your App Store submission.
 
 ## 📱 App Name
 
-**Primary Name:** The Fechto
+**Primary Name:** Fechtonomicon
 
 **Subtitle (30 chars max):** HEMA Flashcards & Study Guide
 
@@ -19,7 +19,7 @@ Master Historical European Martial Arts with beautifully designed flashcards. St
 
 ### Full Description (4000 chars max)
 
-**The Fechto** is your pocket guide to Historical European Martial Arts (HEMA). Immerse yourself in the art of the longsword through beautifully crafted flashcards featuring terminology, techniques, and concepts from legendary masters.
+**Fechtonomicon** is your pocket guide to Historical European Martial Arts (HEMA). Immerse yourself in the art of the longsword through beautifully crafted flashcards featuring terminology, techniques, and concepts from legendary masters.
 
 **FEATURES:**
 
@@ -59,7 +59,7 @@ Master Historical European Martial Arts with beautifully designed flashcards. St
 
 **WHO IS THIS FOR?**
 
-Whether you're a seasoned HEMA practitioner, a new student, or simply fascinated by medieval martial arts, The Fechto helps you build your vocabulary and deepen your understanding of historical fencing systems.
+Whether you're a seasoned HEMA practitioner, a new student, or simply fascinated by medieval martial arts, Fechtonomicon helps you build your vocabulary and deepen your understanding of historical fencing systems.
 
 **DISCIPLINES:**
 
@@ -81,7 +81,7 @@ Your data stays on your device. No account required, no tracking, no ads. Just p
 
 Found an error? Want to suggest an improvement? Use the built-in correction feature to submit changes directly to our GitHub repository.
 
-Start your HEMA journey today with The Fechto - your medieval manuscript for modern times.
+Start your HEMA journey today with Fechtonomicon - your medieval manuscript for modern times.
 
 ---
 
@@ -120,7 +120,7 @@ Questionnaire answers:
 
 ### Data Collection
 
-**The Fechto DOES NOT collect or share any personal data.**
+**Fechtonomicon DOES NOT collect or share any personal data.**
 
 All data is stored locally on your device using:
 - iOS: UserDefaults and App Groups (for widget sharing)
@@ -213,7 +213,7 @@ OR use your GitHub repo:
 ### Review Notes
 
 ```
-Thank you for reviewing The Fechto!
+Thank you for reviewing Fechtonomicon!
 
 This is an educational flashcard app for Historical European Martial Arts (HEMA).
 
@@ -234,7 +234,7 @@ DEMO INSTRUCTIONS:
 WIDGET TESTING:
 1. Long-press home screen
 2. Tap "+" to add widget
-3. Search for "The Fechto"
+3. Search for "Fechtonomicon"
 4. Add widget to home screen
 
 The app embeds YouTube videos for educational purposes using react-native-youtube-iframe.
@@ -248,7 +248,7 @@ Please feel free to contact me if you have any questions.
 ## 🚀 Release Notes (Version 1.0.0)
 
 ```
-🎉 Welcome to The Fechto!
+🎉 Welcome to Fechtonomicon!
 
 Your new companion for studying Historical European Martial Arts.
 
@@ -303,13 +303,13 @@ Your new companion for studying Historical European Martial Arts.
    - Go to App Store Connect
    - Click "My Apps" → "+" → "New App"
    - Platform: iOS
-   - Name: The Fechto
+   - Name: Fechtonomicon
    - Bundle ID: com.yetanothersidequest.fechtonomicon
    - SKU: fechtonomicon-001
    - User Access: Full Access
 
 2. **App Information**
-   - Name: The Fechto
+   - Name: Fechtonomicon
    - Subtitle: HEMA Flashcards & Study Guide
    - Category: Education
    - Secondary: Reference

@@ -45,7 +45,7 @@ Keep learning throughout the day with a widget that displays random flashcards o
 - **Instructors** - Quick reference for terminology
 - **Medieval Enthusiasts** - Explore historical martial arts
 
-## 🌟 Why The Fechto?
+## 🌟 Why Fechtonomicon?
 
 ### Privacy First
 No accounts, no tracking, no ads. Your data stays on your device.
@@ -59,7 +59,7 @@ A delightful modern UX wrapped in medieval aesthetics.
 ### Active Development
 Regular updates with new content and features.
 
-## 📲 Get The Fechto
+## 📲 Get Fechtonomicon
 
 Available now on the Apple App Store for iPhone and iPad.
 
@@ -84,7 +84,7 @@ Available now on the Apple App Store for iPhone and iPad.
 
 ## 📖 About Historical Sources
 
-The Fechto's content is based on:
+Fechtonomicon's content is based on:
 - Joachim Meyer's *Gründtliche Beschreibung der Freyen Ritterlichen und Adeligen Kunst des Fechtens* (1570)
 - Italian fencing treatises and modern interpretations
 - Community contributions and expert review
@@ -106,13 +106,13 @@ Swipe through beautifully designed cards, each containing:
 The app automatically tracks which cards you've studied and ensures you see new content first. Once you've reviewed all cards, the cycle begins again.
 
 ### Widget Integration
-Add The Fechto widget to your home screen and learn passively throughout the day. The widget updates hourly with new flashcards.
+Add Fechtonomicon widget to your home screen and learn passively throughout the day. The widget updates hourly with new flashcards.
 
 ### Search & Browse
 Quickly find specific terms or browse by discipline. Perfect for looking up terminology during training.
 
 ### Community Corrections
-Spot an error? Submit corrections directly through the app. Your contributions help improve The Fechto for everyone.
+Spot an error? Submit corrections directly through the app. Your contributions help improve Fechtonomicon for everyone.
 
 ## 🏆 What Users Say
 
@@ -134,7 +134,7 @@ New disciplines, features, and content additions are in active development.
 Your study data belongs to you. We never collect, track, or sell your information.
 
 ### Open Source
-The Fechto is open source software. Contribute on GitHub!
+Fechtonomicon is open source software. Contribute on GitHub!
 
 ## 🔗 Links
 
@@ -161,10 +161,10 @@ Have questions or feedback? We'd love to hear from you!
 
 ## 📜 License
 
-The Fechto is open source software released under the MIT License.
+Fechtonomicon is open source software released under the MIT License.
 
 ---
 
-**Download The Fechto today and start your journey into Historical European Martial Arts! ⚔️**
+**Download Fechtonomicon today and start your journey into Historical European Martial Arts! ⚔️**
 
-*"The Fechto" - From "Fechten" (German: to fence) + "-nomicon" (Greek: book of knowledge)*
+*"Fechtonomicon" - From "Fechten" (German: to fence) + "-nomicon" (Greek: book of knowledge)*

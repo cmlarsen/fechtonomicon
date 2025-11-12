@@ -1,6 +1,6 @@
-# 📱 App Store Submission Guide - The Fechto
+# 📱 App Store Submission Guide - Fechtonomicon
 
-Your complete step-by-step guide to submitting The Fechto to the Apple App Store.
+Your complete step-by-step guide to submitting Fechtonomicon to the Apple App Store.
 
 ---
 
@@ -71,7 +71,7 @@ All checks must pass before building!
 2. Click **"My Apps"** → **"+"** → **"New App"**
 3. Fill in:
    - **Platform:** iOS
-   - **Name:** The Fechto
+   - **Name:** Fechtonomicon
    - **Primary Language:** English (U.S.)
    - **Bundle ID:** `com.yetanothersidequest.fechtonomicon`
    - **SKU:** `fechtonomicon-001`
@@ -190,7 +190,7 @@ eas submit --platform ios --latest
 Go to **App Store** tab → **1.0 Prepare for Submission**
 
 #### A. App Information
-- **Name:** The Fechto
+- **Name:** Fechtonomicon
 - **Subtitle:** HEMA Flashcards & Study Guide
 - **Privacy Policy URL:** Your URL from Step 4.3
 
@@ -250,7 +250,7 @@ Click **Get Started**, complete privacy questionnaire:
 #### D. Version Information
 **What's New in Version 1.0.0:**
 ```
-🎉 Welcome to The Fechto!
+🎉 Welcome to Fechtonomicon!
 
 Your new companion for studying Historical European Martial Arts.
 
@@ -276,7 +276,7 @@ Your new companion for studying Historical European Martial Arts.
 - **Demo Account:** Not required (no login)
 - **Notes:**
   ```
-  Thank you for reviewing The Fechto!
+  Thank you for reviewing Fechtonomicon!
 
   This is an educational flashcard app for Historical European Martial Arts (HEMA).
 
@@ -295,7 +295,7 @@ Your new companion for studying Historical European Martial Arts.
   WIDGET TESTING:
   1. Long-press home screen
   2. Tap "+" to add widget
-  3. Search for "The Fechto"
+  3. Search for "Fechtonomicon"
 
   NSAppTransportSecurity exceptions are set for YouTube domains only for embedded educational videos.
 
