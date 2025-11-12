@@ -20,6 +20,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import React from 'react';
 import { Platform, StyleSheet, useWindowDimensions, View, type ViewStyle } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { CorrectionModal } from './src/components/modals/CorrectionModal';
 import { AppNavigator } from './src/navigation/AppNavigator';
 import { colors } from './src/theme/tokens';
 
@@ -57,6 +58,7 @@ function AppContent() {
   const content = (
     <GestureHandlerRootView style={styles.container}>
       <AppNavigator />
+      <CorrectionModal />
     </GestureHandlerRootView>
   );
 

@@ -16,37 +16,28 @@ import {
   View,
 } from 'react-native';
 import { getOrCreateUserId } from '../../services/userId';
+import { useCorrectionModalStore } from '../../store/correctionModalStore';
 import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../../theme/tokens';
-import type { Term } from '../../types/term';
 import { getNetlifyFunctionUrl } from '../../utils/netlifyConfig';
 import { IconButton, PrimaryButton } from '../buttons';
-
-interface CorrectionModalProps {
-  visible: boolean;
-  card: Term | null;
-  fieldName: string;
-  fieldValue: string;
-  onClose: () => void;
-}
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const EMAIL_ADDRESS = 'cmlarsen+fechtonomicon@gmail.com';
 
-export const CorrectionModal: React.FC<CorrectionModalProps> = ({
-  visible,
-  card,
-  fieldName,
-  fieldValue,
-  onClose,
-}) => {
+export const CorrectionModal: React.FC = () => {
   const posthog = usePostHog();
+  const { isOpen, data, closeModal } = useCorrectionModalStore();
   const slideAnim = useRef(new Animated.Value(SCREEN_HEIGHT)).current;
-  const [editedText, setEditedText] = useState(fieldValue);
+  const [editedText, setEditedText] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const textInputRef = useRef<TextInput>(null);
 
+  const card = data?.card ?? null;
+  const fieldName = data?.fieldName ?? '';
+  const fieldValue = data?.fieldValue ?? '';
+
   useEffect(() => {
-    if (visible) {
+    if (isOpen && fieldValue) {
       setEditedText(fieldValue);
 
       // Start animation and keyboard simultaneously
@@ -74,7 +65,7 @@ export const CorrectionModal: React.FC<CorrectionModalProps> = ({
         useNativeDriver: true,
       }).start();
     }
-  }, [visible, slideAnim, fieldValue]);
+  }, [isOpen, slideAnim, fieldValue]);
 
   const fallbackToEmail = async () => {
     if (!card) return;
@@ -95,10 +86,10 @@ Additional notes:
       const canOpen = await Linking.canOpenURL(mailtoUrl);
       if (canOpen) {
         await Linking.openURL(mailtoUrl);
-        onClose();
+        closeModal();
       }
     } catch {
-      onClose();
+      closeModal();
     }
   };
 
@@ -150,15 +141,15 @@ Additional notes:
             {
               text: 'Close',
               style: 'cancel',
-              onPress: onClose,
+              onPress: closeModal,
             },
             {
-              text: 'View PR',
+              text: 'View Edit On GitHub',
               onPress: () => {
                 if (data.prUrl) {
                   Linking.openURL(data.prUrl);
                 }
-                onClose();
+                closeModal();
               },
             },
           ]
@@ -199,11 +190,11 @@ Additional notes:
     }
   };
 
-  if (!card) return null;
+  if (!isOpen || !card) return null;
 
   return (
-    <Modal visible={visible} transparent animationType="none" onRequestClose={onClose}>
-      <TouchableOpacity style={styles.overlay} activeOpacity={1} onPress={onClose}>
+    <Modal visible={isOpen} transparent animationType="none" onRequestClose={closeModal}>
+      <TouchableOpacity style={styles.overlay} activeOpacity={1} onPress={closeModal}>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           style={styles.keyboardAvoidingView}
@@ -220,7 +211,7 @@ Additional notes:
             <TouchableOpacity activeOpacity={1} onPress={(e) => e.stopPropagation()}>
               {/* Close button in upper right */}
               <View style={styles.closeButtonContainer}>
-                <IconButton icon="✕" onPress={onClose} size="small" variant="gold" />
+                <IconButton icon="✕" onPress={closeModal} size="small" variant="gold" />
               </View>
 
               <Text style={styles.title}>Suggest Edit</Text>
@@ -228,7 +219,7 @@ Additional notes:
               <ScrollView
                 style={styles.scrollView}
                 contentContainerStyle={styles.content}
-                keyboardShouldPersistTaps="handled"
+                keyboardShouldPersistTaps="always"
                 showsVerticalScrollIndicator={true}
               >
                 <TextInput
@@ -241,6 +232,7 @@ Additional notes:
                   placeholder="Edit the text here..."
                   placeholderTextColor={colors.text.light}
                   textAlignVertical="top"
+                  submitBehavior="submit"
                 />
               </ScrollView>
 

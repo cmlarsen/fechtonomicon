@@ -70,7 +70,7 @@ export const handler: Handler = async (event) => {
   }
 
   const githubToken = process.env.GITHUB_TOKEN;
-  const repoOwner = process.env.GITHUB_REPO_OWNER || 'yetanothersidequest';
+  const repoOwner = process.env.GITHUB_REPO_OWNER || 'cmlarsen';
   const repoName = process.env.GITHUB_REPO_NAME || 'fechtonomicon';
 
   if (!githubToken) {

@@ -1,8 +1,8 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { StyleSheet, Text, type TextStyle } from 'react-native';
+import { useCorrectionModalStore } from '../store/correctionModalStore';
 import { colors, fontFamily, spacing } from '../theme/tokens';
 import type { Term } from '../types/term';
-import { CorrectionModal } from './modals';
 
 interface LinkedTextProps {
   text: string;
@@ -25,21 +25,11 @@ export const LinkedText: React.FC<LinkedTextProps> = ({
   disableEdit = false,
   ignoreWords = [],
 }) => {
-  const [showCorrectionModal, setShowCorrectionModal] = useState(false);
-  const [correctionData, setCorrectionData] = useState<{
-    fieldName: string;
-    fieldValue: string;
-  } | null>(null);
+  const openModal = useCorrectionModalStore((state) => state.openModal);
 
   const handleEdit = () => {
     if (!card || !fieldName || disableEdit) return;
-    setCorrectionData({ fieldName, fieldValue: text });
-    setShowCorrectionModal(true);
-  };
-
-  const handleCloseCorrectionModal = () => {
-    setShowCorrectionModal(false);
-    setCorrectionData(null);
+    openModal(card, fieldName, text);
   };
   const termMap = useMemo(() => {
     const map = new Map<string, string>();
@@ -134,49 +124,33 @@ export const LinkedText: React.FC<LinkedTextProps> = ({
   }, [text, termMap]);
 
   return (
-    <>
-      <Text selectable selectionColor={colors.gold.dark} style={style}>
-        {parseText.map((part) => {
-          if (part.isLink && part.cardId) {
-            const cardId = part.cardId;
-            return (
-              <Text
-                key={part.key}
-                selectable
-                onPress={() => onTermPress(cardId)}
-                style={styles.link}
-              >
-                {part.text}
-              </Text>
-            );
-          }
+    <Text selectable selectionColor={colors.gold.dark} style={style}>
+      {parseText.map((part) => {
+        if (part.isLink && part.cardId) {
+          const cardId = part.cardId;
           return (
-            <Text key={part.key} selectable>
+            <Text key={part.key} selectable onPress={() => onTermPress(cardId)} style={styles.link}>
               {part.text}
             </Text>
           );
-        })}
-        {!disableEdit && card && fieldName && (
-          <Text
-            selectable
-            selectionColor={colors.gold.dark}
-            onPress={handleEdit}
-            style={styles.editIcon}
-          >
-            {' ✏️'}
+        }
+        return (
+          <Text key={part.key} selectable>
+            {part.text}
           </Text>
-        )}
-      </Text>
-      {card && correctionData && (
-        <CorrectionModal
-          visible={showCorrectionModal}
-          card={card}
-          fieldName={correctionData.fieldName}
-          fieldValue={correctionData.fieldValue}
-          onClose={handleCloseCorrectionModal}
-        />
+        );
+      })}
+      {!disableEdit && card && fieldName && (
+        <Text
+          selectable
+          selectionColor={colors.gold.dark}
+          onPress={handleEdit}
+          style={styles.editIcon}
+        >
+          {' ✏️'}
+        </Text>
       )}
-    </>
+    </Text>
   );
 };
 
