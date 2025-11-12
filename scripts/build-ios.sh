@@ -9,6 +9,11 @@ echo "🍎 Building iOS app for production..."
 echo "📦 This will create a build for App Store submission"
 echo ""
 
+# Auto-increment iOS build number
+echo "🔢 Incrementing iOS build number..."
+node scripts/increment-ios-build-number.js
+echo ""
+
 # Check if EAS CLI is installed
 if ! command -v eas &> /dev/null; then
     echo "❌ EAS CLI not found. Installing..."
