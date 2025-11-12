@@ -1,5 +1,6 @@
 import { usePostHog } from 'posthog-react-native';
 import { useCallback, useState } from 'react';
+import { getOrCreateUserId } from '../services/userId';
 import { useTermStore } from '../store/termStore';
 import type { Discipline, Term } from '../types/term';
 import {
@@ -46,7 +47,7 @@ export const useQuiz = () => {
   });
 
   const handleSelectQuiz = useCallback(
-    (discipline: Discipline, mode: QuizMode) => {
+    async (discipline: Discipline, mode: QuizMode) => {
       const prepared =
         mode === 'quick'
           ? prepareQuickQuiz(allCards, [discipline])
@@ -73,7 +74,9 @@ export const useQuiz = () => {
         isCorrectAnswer: false,
       });
 
+      const userId = await getOrCreateUserId();
       posthog?.capture('quiz_started', {
+        userId,
         discipline,
         mode,
         cardCount: prepared.length,
@@ -90,7 +93,7 @@ export const useQuiz = () => {
     [state.isChecked]
   );
 
-  const handleCheck = useCallback(() => {
+  const handleCheck = useCallback(async () => {
     if (state.selectedAnswer === null || !state.currentQuestion) return;
 
     const correct = state.selectedAnswer === state.currentQuestion.correctIndex;
@@ -105,19 +108,23 @@ export const useQuiz = () => {
       showFeedbackPanel: true,
     }));
 
+    const userId = await getOrCreateUserId();
     posthog?.capture('quiz_answer_checked', {
+      userId,
       isCorrect: correct,
       questionType: state.currentQuestion.type,
       cardId: state.currentQuestion.card.id,
     });
   }, [state.selectedAnswer, state.currentQuestion, state.score, posthog]);
 
-  const handleContinue = useCallback(() => {
+  const handleContinue = useCallback(async () => {
     const nextIndex = state.currentIndex + 1;
 
     if (nextIndex >= state.quizCards.length) {
       setState((prev) => ({ ...prev, isComplete: true, showFeedbackPanel: false }));
+      const userId = await getOrCreateUserId();
       posthog?.capture('quiz_completed', {
+        userId,
         score: state.score.correct,
         total: state.score.total,
         discipline: state.selectedDiscipline,
@@ -155,9 +162,11 @@ export const useQuiz = () => {
     posthog,
   ]);
 
-  const handleExit = useCallback(() => {
+  const handleExit = useCallback(async () => {
     if (!state.isComplete && state.modalVisible) {
+      const userId = await getOrCreateUserId();
       posthog?.capture('quiz_exited', {
+        userId,
         score: state.score.correct,
         total: state.score.total,
         progress: state.currentIndex,
@@ -182,7 +191,7 @@ export const useQuiz = () => {
     });
   }, [state, posthog]);
 
-  const handleRestart = useCallback(() => {
+  const handleRestart = useCallback(async () => {
     if (!state.selectedDiscipline || !state.quizMode) return;
 
     const prepared =
@@ -205,7 +214,9 @@ export const useQuiz = () => {
       isCorrectAnswer: false,
     }));
 
+    const userId = await getOrCreateUserId();
     posthog?.capture('quiz_restarted', {
+      userId,
       discipline: state.selectedDiscipline,
       mode: state.quizMode,
     });

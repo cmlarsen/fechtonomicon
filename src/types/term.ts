@@ -72,10 +72,12 @@ export interface StorageKeys {
   VIEWED_CARDS: 'viewedCards';
   SELECTED_DISCIPLINES: 'selectedDisciplines';
   LAST_CARD_SHOWN: 'lastCardShown';
+  USER_ID: 'userId';
 }
 
 export const STORAGE_KEYS: StorageKeys = {
   VIEWED_CARDS: 'viewedCards',
   SELECTED_DISCIPLINES: 'selectedDisciplines',
   LAST_CARD_SHOWN: 'lastCardShown',
+  USER_ID: 'userId',
 };

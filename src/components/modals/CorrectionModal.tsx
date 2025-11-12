@@ -15,8 +15,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { getOrCreateUserId } from '../../services/userId';
 import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../../theme/tokens';
-
 import type { Term } from '../../types/term';
 import { getNetlifyFunctionUrl } from '../../utils/netlifyConfig';
 import { IconButton, PrimaryButton } from '../buttons';
@@ -107,7 +107,10 @@ Additional notes:
 
     setIsSubmitting(true);
 
+    const userId = await getOrCreateUserId();
+
     posthog?.capture('submit_edit_tapped', {
+      userId,
       cardId: card.id,
       cardTerm: card.originalTerm,
       fieldName,
@@ -121,6 +124,7 @@ Additional notes:
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          userId,
           cardId: card.id,
           fieldName,
           originalValue: fieldValue,
@@ -133,6 +137,7 @@ Additional notes:
 
       if (response.ok && data.success) {
         posthog?.capture('edit_submitted_success', {
+          userId,
           cardId: card.id,
           fieldName,
           prNumber: data.prNumber,
@@ -140,7 +145,7 @@ Additional notes:
 
         Alert.alert(
           'Edit Submitted!',
-          `Your edit suggestion has been submitted. PR #${data.prNumber} has been created.\n\nWould you like to view it?`,
+          `Your edit suggestion has been submitted. Edit # #${data.prNumber} has been created.`,
           [
             {
               text: 'Close',
@@ -163,6 +168,7 @@ Additional notes:
       }
     } catch (error) {
       posthog?.capture('edit_submit_failed', {
+        userId,
         cardId: card.id,
         fieldName,
         error: error instanceof Error ? error.message : 'Unknown error',

@@ -11,6 +11,7 @@ import { useCardIndex } from '../../hooks/useCardIndex';
 import { useCardLoader } from '../../hooks/useCardLoader';
 import { useFilteredCards } from '../../hooks/useFilteredCards';
 import type { RootStackParamList, RootTabParamList } from '../../navigation/types';
+import { getOrCreateUserId } from '../../services/userId';
 import { colors, fontFamily, fontSize, shadows, spacing } from '../../theme/tokens';
 import { rgba } from '../../utils/colorUtils';
 
@@ -42,16 +43,18 @@ export const TermsScreen: React.FC<TermsScreenProps> = ({ navigation, route }) =
     [navigation]
   );
 
-  const handlePrev = useCallback(() => {
+  const handlePrev = useCallback(async () => {
     if (currentCardIndex > 0) {
-      posthog?.capture('prev_button_tapped');
+      const userId = await getOrCreateUserId();
+      posthog?.capture('prev_button_tapped', { userId });
       handleCardSelect(currentCardIndex - 1);
     }
   }, [currentCardIndex, handleCardSelect, posthog]);
 
-  const handleNext = useCallback(() => {
+  const handleNext = useCallback(async () => {
     if (currentCardIndex < disciplineFilteredCards.length - 1) {
-      posthog?.capture('next_button_tapped');
+      const userId = await getOrCreateUserId();
+      posthog?.capture('next_button_tapped', { userId });
       handleCardSelect(currentCardIndex + 1);
     }
   }, [currentCardIndex, disciplineFilteredCards.length, handleCardSelect, posthog]);

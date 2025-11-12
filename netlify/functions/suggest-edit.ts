@@ -2,6 +2,7 @@ import type { Handler } from '@netlify/functions';
 import { Octokit } from '@octokit/rest';
 
 interface EditRequest {
+  userId?: string;
   cardId: string;
   fieldName: string;
   originalValue: string;
@@ -27,7 +28,7 @@ const DATA_SETS = [
     dataFile: 'assets/data/german-longsword-data.json',
   },
   {
-    idPrefix: 'italian.long.',
+    idPrefix: 'vadi.long.',
     dataFile: 'assets/data/vadi-longsword-data.json',
   },
 ] as const;
@@ -89,7 +90,7 @@ export const handler: Handler = async (event) => {
     };
   }
 
-  const { cardId, fieldName, originalValue, correctedValue, term } = editRequest;
+  const { userId, cardId, fieldName, originalValue, correctedValue, term } = editRequest;
 
   if (!cardId || !fieldName || !correctedValue || !term) {
     return {
@@ -156,7 +157,8 @@ export const handler: Handler = async (event) => {
     });
 
     const prTitle = `Edit suggestion: ${term} - ${fieldName}`;
-    const prBody = `**Card:** ${term} (${cardId})
+    const userInfo = userId ? `**User ID:** ${userId}\n\n` : '';
+    const prBody = `${userInfo}**Card:** ${term} (${cardId})
 **Field:** ${fieldName}
 
 **Original Value:**

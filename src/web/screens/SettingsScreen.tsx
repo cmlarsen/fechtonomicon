@@ -8,6 +8,7 @@ import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-nati
 import { BackgroundPattern } from '../../components/BackgroundPattern';
 import { DISCIPLINES } from '../../constants/disciplines';
 import type { RootStackParamList, RootTabParamList } from '../../navigation/types';
+import { getOrCreateUserId } from '../../services/userId';
 import { useTermStore } from '../../store/termStore';
 import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../../theme/tokens';
 import type { Discipline } from '../../types/term';
@@ -39,9 +40,11 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({ navigation }) =>
   });
 
   const handleDisciplineSelect = useCallback(
-    (discipline: Discipline) => {
+    async (discipline: Discipline) => {
       toggleDiscipline(discipline);
+      const userId = await getOrCreateUserId();
       posthog?.capture('discipline_selected', {
+        userId,
         discipline,
       });
     },

@@ -7,6 +7,7 @@ import { AppState } from 'react-native';
 import { TabIcon } from '../../components/navigation';
 import { TermsSearchProvider } from '../../contexts/TermsSearchContext';
 import type { RootStackParamList, RootTabParamList } from '../../navigation/types';
+import { getOrCreateUserId } from '../../services/userId';
 import { swordsIcon, tomeIcon } from '../../utils/tabIcons';
 import { CustomTabBar } from '../components/CustomTabBar';
 import { QuizScreen } from '../screens/QuizScreen';
@@ -99,17 +100,23 @@ function AppLifecycleTracker() {
   }, []);
 
   React.useEffect(() => {
-    if (posthog) {
-      posthog.capture('app_opened');
-    }
+    const initializeUser = async () => {
+      if (posthog) {
+        const userId = await getOrCreateUserId();
+        posthog.identify(userId, { userId });
+        posthog.capture('app_opened', { userId });
+      }
+    };
+    initializeUser();
   }, [posthog]);
 
   React.useEffect(() => {
     if (!posthog) return;
 
-    const subscription = AppState.addEventListener('change', (nextAppState) => {
+    const subscription = AppState.addEventListener('change', async (nextAppState) => {
       if (nextAppState === 'background' || nextAppState === 'inactive') {
-        posthog.capture('app_closed');
+        const userId = await getOrCreateUserId();
+        posthog.capture('app_closed', { userId });
       }
     });
 

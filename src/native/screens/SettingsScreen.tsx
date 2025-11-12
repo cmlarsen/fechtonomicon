@@ -9,6 +9,7 @@ import { BackgroundPattern } from '../../components/BackgroundPattern';
 import { IconButton } from '../../components/buttons';
 import { DISCIPLINES } from '../../constants/disciplines';
 import type { RootStackParamList, RootTabParamList } from '../../navigation/types';
+import { getOrCreateUserId } from '../../services/userId';
 import { useTermStore } from '../../store/termStore';
 import { borderRadius, colors, fontFamily, fontSize, shadows, spacing } from '../../theme/tokens';
 import type { Discipline } from '../../types/term';
@@ -29,9 +30,11 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({ navigation }) =>
   const toggleDiscipline = useTermStore((state) => state.toggleDiscipline);
 
   const handleDisciplineSelect = useCallback(
-    (discipline: Discipline) => {
+    async (discipline: Discipline) => {
       toggleDiscipline(discipline);
+      const userId = await getOrCreateUserId();
       posthog?.capture('discipline_selected', {
+        userId,
         discipline,
       });
     },

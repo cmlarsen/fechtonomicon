@@ -1,10 +1,11 @@
 import type { DrawerHeaderProps } from '@react-navigation/drawer';
 import React, { useCallback } from 'react';
-import { Keyboard, StyleSheet, Text, View } from 'react-native';
+import { Alert, Keyboard, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import MagnifyingGlassIcon from '../../../assets/icons/np_magnifying-glass.svg';
 import SwordsIcon from '../../../assets/icons/np_swords.svg';
 import { IconButton } from '../../components/buttons';
+import { getOrCreateUserId } from '../../services/userId';
 import { colors, fontFamily, fontSize, spacing } from '../../theme/tokens';
 
 export const NativeHeader: React.FC<DrawerHeaderProps> = ({ navigation }) => {
@@ -20,6 +21,11 @@ export const NativeHeader: React.FC<DrawerHeaderProps> = ({ navigation }) => {
     navigation.getParent()?.navigate('Quiz');
   }, [navigation]);
 
+  const handleTitleLongPress = useCallback(async () => {
+    const userId = await getOrCreateUserId();
+    Alert.alert('User ID', userId);
+  }, []);
+
   return (
     <View style={[styles.header, { paddingTop: insets.top }]}>
       <View style={styles.headerLeft}>
@@ -30,7 +36,9 @@ export const NativeHeader: React.FC<DrawerHeaderProps> = ({ navigation }) => {
           size="small"
         />
       </View>
-      <Text style={styles.title}>Fechtonomicon</Text>
+      <Text style={styles.title} onLongPress={handleTitleLongPress}>
+        Fechtonomicon
+      </Text>
       <View style={styles.headerRight}>
         <IconButton IconComponent={SwordsIcon} onPress={handleQuiz} mode="circle" size="small" />
       </View>

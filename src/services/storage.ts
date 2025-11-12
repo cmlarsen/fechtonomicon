@@ -76,6 +76,24 @@ export const storage = {
     }
   },
 
+  async getUserId(): Promise<string | null> {
+    try {
+      const data = await AsyncStorage.getItem(STORAGE_KEYS.USER_ID);
+      return data || null;
+    } catch (error) {
+      console.error('Error getting user ID:', error);
+      return null;
+    }
+  },
+
+  async setUserId(userId: string): Promise<void> {
+    try {
+      await AsyncStorage.setItem(STORAGE_KEYS.USER_ID, userId);
+    } catch (error) {
+      console.error('Error setting user ID:', error);
+    }
+  },
+
   async clearAll(): Promise<void> {
     try {
       await AsyncStorage.clear();
