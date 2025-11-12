@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
 const appJsonPath = path.join(__dirname, '..', 'app.json');
 
@@ -22,6 +23,20 @@ try {
   fs.writeFileSync(appJsonPath, JSON.stringify(appJson, null, 2) + '\n', 'utf8');
 
   console.log(`✅ Incremented iOS build number: ${currentBuildNumber} → ${newBuildNumber}`);
+
+  // Commit the change
+  try {
+    const relativePath = path.relative(process.cwd(), appJsonPath);
+    execSync(`git add "${relativePath}"`, { stdio: 'inherit' });
+    execSync(
+      `git commit -m "chore: increment iOS build number to ${newBuildNumber}"`,
+      { stdio: 'inherit' }
+    );
+    console.log('✅ Committed build number change');
+  } catch (gitError) {
+    console.warn('⚠️  Warning: Could not commit build number change:', gitError.message);
+    console.warn('   You may need to commit manually');
+  }
 } catch (error) {
   console.error('❌ Error incrementing build number:', error.message);
   process.exit(1);
