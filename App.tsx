@@ -98,15 +98,11 @@ const styles = StyleSheet.create({
     height: '100%',
     maxHeight: 900,
     overflow: 'hidden',
-    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)',
-    borderRadius: 12,
   } as ViewStyle,
   webInnerContainerWide: {
     width: '100%',
     maxWidth: 1280,
     height: '100%',
     overflow: 'hidden',
-    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)',
-    borderRadius: 12,
   } as ViewStyle,
 });

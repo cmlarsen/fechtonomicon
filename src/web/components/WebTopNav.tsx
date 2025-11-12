@@ -1,7 +1,6 @@
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { RootTabParamList } from '../../navigation/types';
 import { colors, fontFamily, fontSize, shadows, spacing } from '../../theme/tokens';
 import { rgba } from '../../utils/colorUtils';
@@ -13,10 +12,8 @@ interface WebTopNavProps {
 }
 
 export const WebTopNav: React.FC<WebTopNavProps> = ({ navigation, currentRoute, onSettings }) => {
-  const insets = useSafeAreaInsets();
-
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={[styles.container]}>
       <Text style={styles.title}>Fechtonomicon</Text>
       <View style={styles.navTabs}>
         <Pressable
@@ -40,7 +37,7 @@ export const WebTopNav: React.FC<WebTopNavProps> = ({ navigation, currentRoute, 
           onPress={onSettings}
         >
           <Text style={[styles.navTabText, currentRoute === 'Settings' && styles.navTabTextActive]}>
-            Settings
+            Disciplines
           </Text>
         </Pressable>
       </View>
@@ -58,6 +55,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.parchment.primary,
     borderBottomWidth: 2,
     borderBottomColor: colors.gold.main,
+    paddingTop: 40,
     ...shadows.sm,
   },
   title: {
