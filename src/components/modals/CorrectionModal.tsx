@@ -30,6 +30,8 @@ export const CorrectionModal: React.FC = () => {
   const slideAnim = useRef(new Animated.Value(SCREEN_HEIGHT)).current;
   const [editedText, setEditedText] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
   const textInputRef = useRef<TextInput>(null);
 
   const card = data?.card ?? null;
@@ -44,6 +46,8 @@ export const CorrectionModal: React.FC = () => {
   useEffect(() => {
     if (isOpen && fieldValue) {
       setEditedText(fieldValue);
+      setIsSuccess(false);
+      setSuccessMessage('');
 
       // Start animation and keyboard simultaneously
       Animated.spring(slideAnim, {
@@ -69,6 +73,8 @@ export const CorrectionModal: React.FC = () => {
         duration: 250,
         useNativeDriver: true,
       }).start();
+      setIsSuccess(false);
+      setSuccessMessage('');
     }
   }, [isOpen, slideAnim, fieldValue]);
 
@@ -95,6 +101,50 @@ Additional notes:
       }
     } catch {
       closeModal();
+    }
+  };
+
+  const handleSuccess = (userId: string, prNumber: number, prUrl?: string) => {
+    posthog?.capture('edit_submitted_success', {
+      userId,
+      cardId: card?.id ?? '',
+      fieldName,
+      prNumber,
+    });
+
+    if (Platform.OS === 'web') {
+      // Show success state on web
+      const message = `Your edit suggestion has been submitted. Edit #${prNumber} has been created.`;
+      setIsSubmitting(false);
+      setSuccessMessage(message);
+      setIsSuccess(true);
+
+      // Close modal after 2.5 seconds
+      setTimeout(() => {
+        closeModal();
+      }, 2500);
+    } else {
+      // Use Alert on native platforms
+      Alert.alert(
+        'Edit Submitted!',
+        `Your edit suggestion has been submitted. Edit # #${prNumber} has been created.`,
+        [
+          {
+            text: 'Close',
+            style: 'cancel',
+            onPress: closeModal,
+          },
+          {
+            text: 'View Edit On GitHub',
+            onPress: () => {
+              if (prUrl) {
+                Linking.openURL(prUrl);
+              }
+              closeModal();
+            },
+          },
+        ]
+      );
     }
   };
 
@@ -137,33 +187,7 @@ Additional notes:
       const data = await response.json();
 
       if (response.ok && data.success) {
-        posthog?.capture('edit_submitted_success', {
-          userId,
-          cardId: card.id,
-          fieldName,
-          prNumber: data.prNumber,
-        });
-
-        Alert.alert(
-          'Edit Submitted!',
-          `Your edit suggestion has been submitted. Edit # #${data.prNumber} has been created.`,
-          [
-            {
-              text: 'Close',
-              style: 'cancel',
-              onPress: closeModal,
-            },
-            {
-              text: 'View Edit On GitHub',
-              onPress: () => {
-                if (data.prUrl) {
-                  Linking.openURL(data.prUrl);
-                }
-                closeModal();
-              },
-            },
-          ]
-        );
+        handleSuccess(userId, data.prNumber, data.prUrl);
       } else {
         throw new Error(data.error || 'Failed to submit edit');
       }
@@ -224,37 +248,47 @@ Additional notes:
                 <IconButton icon="✕" onPress={closeModal} size="small" variant="gold" />
               </View>
 
-              <Text style={styles.title}>Suggest Edit</Text>
+              {isSuccess && Platform.OS === 'web' ? (
+                <View style={styles.successContainer}>
+                  <Text style={styles.successIcon}>✓</Text>
+                  <Text style={styles.successTitle}>Edit Submitted!</Text>
+                  <Text style={styles.successMessage}>{successMessage}</Text>
+                </View>
+              ) : (
+                <>
+                  <Text style={styles.title}>Suggest Edit</Text>
 
-              <ScrollView
-                style={styles.scrollView}
-                contentContainerStyle={styles.content}
-                keyboardShouldPersistTaps="always"
-                showsVerticalScrollIndicator={true}
-              >
-                <TextInput
-                  ref={textInputRef}
-                  style={styles.input}
-                  multiline
-                  numberOfLines={8}
-                  value={editedText}
-                  onChangeText={setEditedText}
-                  placeholder="Edit the text here..."
-                  placeholderTextColor={colors.text.light}
-                  textAlignVertical="top"
-                  submitBehavior="submit"
-                />
-              </ScrollView>
+                  <ScrollView
+                    style={styles.scrollView}
+                    contentContainerStyle={styles.content}
+                    keyboardShouldPersistTaps="always"
+                    showsVerticalScrollIndicator={true}
+                  >
+                    <TextInput
+                      ref={textInputRef}
+                      style={styles.input}
+                      multiline
+                      numberOfLines={8}
+                      value={editedText}
+                      onChangeText={setEditedText}
+                      placeholder="Edit the text here..."
+                      placeholderTextColor={colors.text.light}
+                      textAlignVertical="top"
+                      submitBehavior="submit"
+                    />
+                  </ScrollView>
 
-              <View style={styles.buttonContainer}>
-                <PrimaryButton
-                  title="Submit Edit"
-                  onPress={handleSubmitEdit}
-                  size="medium"
-                  disabled={!canSubmit}
-                  showLoading={isSubmitting}
-                />
-              </View>
+                  <View style={styles.buttonContainer}>
+                    <PrimaryButton
+                      title="Submit Edit"
+                      onPress={handleSubmitEdit}
+                      size="medium"
+                      disabled={!canSubmit}
+                      showLoading={isSubmitting}
+                    />
+                  </View>
+                </>
+              )}
             </TouchableOpacity>
           </Animated.View>
         </KeyboardAvoidingView>
@@ -333,5 +367,37 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.lg,
     paddingTop: spacing.md,
     paddingBottom: spacing.sm,
+  },
+  successContainer: {
+    paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.xl,
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: 200,
+  },
+  successIcon: {
+    fontSize: 64,
+    color: colors.green.main,
+    marginBottom: spacing.md,
+    textShadowColor: 'rgba(255, 255, 255, 0.8)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
+  },
+  successTitle: {
+    fontSize: fontSize.xl,
+    fontFamily: fontFamily.title,
+    color: colors.iron.dark,
+    textAlign: 'center',
+    marginBottom: spacing.md,
+    textShadowColor: 'rgba(255, 255, 255, 0.8)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 1,
+  },
+  successMessage: {
+    fontSize: fontSize.md,
+    fontFamily: fontFamily.body,
+    color: colors.iron.main,
+    textAlign: 'center',
+    lineHeight: fontSize.md * 1.5,
   },
 });
