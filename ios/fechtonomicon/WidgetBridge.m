@@ -21,8 +21,12 @@ RCT_EXPORT_METHOD(updateWidgetData:(NSString *)json resolver:(RCTPromiseResolveB
 
     NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.yetanothersidequest.fechtonomicon.shared"];
 
-    if (jsonObject[@"title"]) {
-        [userDefaults setObject:jsonObject[@"title"] forKey:@"widgetTitle"];
+    if (jsonObject[@"term"]) {
+        [userDefaults setObject:jsonObject[@"term"] forKey:@"widgetTerm"];
+    }
+
+    if (jsonObject[@"translation"]) {
+        [userDefaults setObject:jsonObject[@"translation"] forKey:@"widgetTranslation"];
     }
 
     if (jsonObject[@"description"]) {
@@ -38,6 +42,21 @@ RCT_EXPORT_METHOD(updateWidgetData:(NSString *)json resolver:(RCTPromiseResolveB
     }
 
     resolve(nil);
+}
+
+RCT_EXPORT_METHOD(updateAllTerms:(NSString *)json resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+{
+    NSURL *containerURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.com.yetanothersidequest.fechtonomicon.shared"];
+    NSURL *fileURL = [containerURL URLByAppendingPathComponent:@"terms.json"];
+
+    NSError *error = nil;
+    [json writeToURL:fileURL atomically:YES encoding:NSUTF8StringEncoding error:&error];
+
+    if (error) {
+        reject(@"FILE_WRITE_ERROR", @"Failed to write terms.json", error);
+    } else {
+        resolve(nil);
+    }
 }
 
 RCT_EXPORT_METHOD(reloadWidget:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)

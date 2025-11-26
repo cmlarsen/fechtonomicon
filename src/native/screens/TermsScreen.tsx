@@ -27,10 +27,16 @@ interface TermsScreenProps {
   route: TermsScreenRouteProp;
 }
 
+import { useWidgetSync } from '../../hooks/useWidgetSync';
+
 export const TermsScreen: React.FC<TermsScreenProps> = ({ navigation, route }) => {
   const posthog = usePostHog();
   const { isLoading } = useCardLoader();
   const { disciplineFilteredCards } = useFilteredCards();
+
+  // Sync filtered cards to widget
+  useWidgetSync();
+
   const { currentCard, currentCardIndex, handleCardSelect } = useCardIndex({
     cards: disciplineFilteredCards,
     routeCardId: route.params?.cardId,
