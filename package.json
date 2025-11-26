@@ -1,6 +1,6 @@
 {
   "name": "fechtonomicon",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.ts",
   "scripts": {
     "start": "expo start",
@@ -30,7 +30,8 @@
     "typecheck:verbose": "tsc --noEmit --pretty",
     "validate": "yarn format:check && yarn lint && yarn typecheck",
     "validate:fix": "yarn format && yarn lint:fix && yarn check:fix; yarn typecheck || echo '⚠️  Some type errors remain - these require manual fixes'",
-    "precommit": "yarn validate"
+    "precommit": "yarn validate",
+    "bump-version": "node scripts/bump-version.js"
   },
   "dependencies": {
     "@expo-google-fonts/cormorant-garamond": "^0.4.1",
