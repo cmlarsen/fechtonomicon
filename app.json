@@ -18,7 +18,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.yetanothersidequest.fechtonomicon",
-      "buildNumber": "2",
+      "buildNumber": "3",
       "displayName": "Fechtonomicon",
       "infoPlist": {
         "CFBundleDisplayName": "Fechtonomicon",
