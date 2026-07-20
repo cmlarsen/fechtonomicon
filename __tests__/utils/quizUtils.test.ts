@@ -277,6 +277,7 @@ describe('Quiz Utils', () => {
           weapon: 'longsword',
           originalTerm: 'Stich',
           englishTerm: 'Thrust',
+          briefDescription: 'A thrusting attack.',
           discipline: 'german-longsword',
         },
         {
@@ -285,6 +286,7 @@ describe('Quiz Utils', () => {
           weapon: 'longsword',
           originalTerm: 'Cinghiale',
           englishTerm: 'Boar',
+          briefDescription: 'A low boar guard.',
           briefApplication: 'Use for aggressive thrust offense from a low position.',
           discipline: 'italian-longsword',
         },

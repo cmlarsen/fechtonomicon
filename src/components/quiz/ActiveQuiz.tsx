@@ -64,6 +64,7 @@ export const ActiveQuiz: React.FC<ActiveQuizProps> = ({
           current={score.total + 1}
           total={quizCards.length}
           correct={score.correct}
+          answered={score.total}
         />
       </View>
 

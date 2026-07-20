@@ -3,12 +3,22 @@ import { Animated, StyleSheet, Text, View } from 'react-native';
 import { colors, fontFamily, fontSize, spacing } from '../../theme/tokens';
 
 interface QuizProgressBarProps {
+  /** 1-indexed number of the current question, used for the progress fill. */
   current: number;
+  /** Total number of questions in the quiz. */
   total: number;
+  /** Number of questions answered correctly so far. */
   correct: number;
+  /** Number of questions answered so far, used as the score denominator. */
+  answered: number;
 }
 
-export const QuizProgressBar: React.FC<QuizProgressBarProps> = ({ current, total, correct }) => {
+export const QuizProgressBar: React.FC<QuizProgressBarProps> = ({
+  current,
+  total,
+  correct,
+  answered,
+}) => {
   const progressAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -24,10 +34,15 @@ export const QuizProgressBar: React.FC<QuizProgressBarProps> = ({ current, total
     outputRange: ['0%', '100%'],
   });
 
+  // Score is correct answers over questions actually answered, not the current
+  // question number. Using the question number diluted the score by the
+  // in-progress question (e.g. 2 correct out of 2 answered showing as 67%).
+  const scorePercentage = answered > 0 ? Math.round((correct / answered) * 100) : 0;
+
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
-        <Text style={styles.scoreText}>Score: {Math.round((correct / current) * 100)}%</Text>
+        <Text style={styles.scoreText}>Score: {scorePercentage}%</Text>
       </View>
       <View style={styles.barContainer}>
         <Animated.View style={[styles.progressBar, { width: progressWidth }]} />

@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 import { QuizExitButton } from '../../src/components/quiz/QuizExitButton';
 import { QuizFinalScore } from '../../src/components/quiz/QuizFinalScore';
+import { QuizProgressBar } from '../../src/components/quiz/QuizProgressBar';
 import { QuizQuestion } from '../../src/components/quiz/QuizQuestion';
 import { QuizQuestionCard } from '../../src/components/quiz/QuizQuestionCard';
 import type { Term } from '../../src/types/term';
@@ -148,6 +149,25 @@ describe('Quiz Components', () => {
         <QuizFinalScore correct={3} total={4} onRestart={mockOnRestart} onExit={mockOnExit} />
       );
       expect(screen.getByText('75%')).toBeTruthy();
+    });
+  });
+
+  describe('QuizProgressBar', () => {
+    it('should base the live score on questions answered, not the question number', () => {
+      // 2 correct out of 2 answered while looking at the 3rd question.
+      // Previously this divided by the current question number and showed 67%.
+      render(<QuizProgressBar current={3} total={10} correct={2} answered={2} />);
+      expect(screen.getByText('Score: 100%')).toBeTruthy();
+    });
+
+    it('should show 0% before any question has been answered', () => {
+      render(<QuizProgressBar current={1} total={10} correct={0} answered={0} />);
+      expect(screen.getByText('Score: 0%')).toBeTruthy();
+    });
+
+    it('should round the score to the nearest percent', () => {
+      render(<QuizProgressBar current={4} total={10} correct={2} answered={3} />);
+      expect(screen.getByText('Score: 67%')).toBeTruthy();
     });
   });
 });
