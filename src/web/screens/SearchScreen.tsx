@@ -1,6 +1,6 @@
 import type { CompositeNavigationProp } from '@react-navigation/native';
 import type { StackNavigationProp } from '@react-navigation/stack';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import { Keyboard, StyleSheet, View } from 'react-native';
 import { BackgroundPattern } from '../../components/BackgroundPattern';
 import { IconButton } from '../../components/buttons';
@@ -24,7 +24,6 @@ interface SearchScreenProps {
 export const SearchScreen: React.FC<SearchScreenProps> = ({ navigation }) => {
   const { searchQuery, setSearchQuery } = useTermsSearch();
   const { filteredAndSortedCards } = useFilteredCards();
-  const [isKeyboardVisible] = useState(false);
 
   const handleCardPress = useCallback(
     (card: Term) => {
@@ -40,11 +39,6 @@ export const SearchScreen: React.FC<SearchScreenProps> = ({ navigation }) => {
 
   const handleClearSearch = useCallback(() => {
     setSearchQuery('');
-  }, [setSearchQuery]);
-
-  const dismissKeyboard = useCallback(() => {
-    setSearchQuery('');
-    Keyboard.dismiss();
   }, [setSearchQuery]);
 
   const handleClose = useCallback(() => {
@@ -77,9 +71,6 @@ export const SearchScreen: React.FC<SearchScreenProps> = ({ navigation }) => {
             onSearchChange={setSearchQuery}
             onClearSearch={handleClearSearch}
           />
-          {isKeyboardVisible && (
-            <IconButton icon="✕" onPress={dismissKeyboard} size="small" variant="gold" />
-          )}
         </View>
       </View>
     </BackgroundPattern>

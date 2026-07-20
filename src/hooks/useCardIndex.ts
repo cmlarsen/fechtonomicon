@@ -6,6 +6,9 @@ const updateWidget = (card: Term) => {
   widgetService.updateWidget(card);
 };
 
+const indexOfId = (cards: Term[], id: string | undefined): number =>
+  id ? cards.findIndex((card) => card.id === id) : -1;
+
 interface UseCardIndexOptions {
   cards: Term[];
   routeCardId?: string;
@@ -13,59 +16,57 @@ interface UseCardIndexOptions {
 
 export const useCardIndex = ({ cards, routeCardId }: UseCardIndexOptions) => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  const prevCardsLengthRef = useRef(0);
-  const hasInitializedFromRoute = useRef(false);
+  // The card currently shown, tracked by id so we can follow it across list
+  // changes (e.g. a discipline switch that produces a new, equal-length list).
+  const currentCardIdRef = useRef<string | undefined>(undefined);
+  const prevCardsRef = useRef<Term[] | null>(null);
+  const prevRouteCardIdRef = useRef<string | undefined>(undefined);
+
+  // Single place that moves the selection, keeping currentCardIdRef in sync so
+  // the effect below never depends on effect-ordering to know the current card.
+  const selectIndex = useCallback((index: number, sourceCards: Term[]) => {
+    currentCardIdRef.current = sourceCards[index]?.id;
+    setCurrentCardIndex(index);
+  }, []);
 
   const handleCardSelect = useCallback(
     (index: number) => {
-      setCurrentCardIndex(index);
-      const card = cards[index];
-      if (card) {
-        updateWidget(card);
-      }
+      selectIndex(index, cards);
     },
-    [cards]
+    [cards, selectIndex]
   );
 
-  // Handle initial load from route params (highest priority)
   useEffect(() => {
     if (cards.length === 0) return;
 
-    if (routeCardId && !hasInitializedFromRoute.current) {
-      const foundIndex = cards.findIndex((card) => card.id === routeCardId);
+    // 1) A newly-delivered route param takes priority — but only when it
+    //    actually changes. Reacting to every render would jump the user back to
+    //    the linked card and discard their Prev/Next navigation.
+    const routeChanged = routeCardId !== prevRouteCardIdRef.current;
+    prevRouteCardIdRef.current = routeCardId;
+
+    if (routeCardId && routeChanged) {
+      const foundIndex = indexOfId(cards, routeCardId);
       if (foundIndex !== -1) {
-        hasInitializedFromRoute.current = true;
-        setCurrentCardIndex(foundIndex);
-        updateWidget(cards[foundIndex]);
-        prevCardsLengthRef.current = cards.length;
+        prevCardsRef.current = cards;
+        selectIndex(foundIndex, cards);
         return;
       }
     }
 
-    // Handle cards array changes (e.g., discipline filter changes)
-    if (prevCardsLengthRef.current !== cards.length) {
-      setCurrentCardIndex((prevIndex) => {
-        const safeIndex = prevIndex >= cards.length ? 0 : prevIndex;
-        const cardToShow = cards[safeIndex];
-        if (cardToShow) {
-          updateWidget(cardToShow);
-        }
-        prevCardsLengthRef.current = cards.length;
-        return safeIndex;
-      });
-    }
-  }, [cards, routeCardId]);
-
-  // Reset the route initialization flag when routeCardId changes
-  useEffect(() => {
-    if (routeCardId) {
-      hasInitializedFromRoute.current = false;
-    }
-  }, [routeCardId]);
+    // 2) The cards list itself changed (discipline switch, reload). Follow the
+    //    currently-shown card if it still exists, otherwise reset to the first
+    //    card. Comparing by reference — not length — so a same-length switch to
+    //    a different discipline still resets instead of showing an unrelated card.
+    if (prevCardsRef.current === cards) return;
+    prevCardsRef.current = cards;
+    const keptIndex = indexOfId(cards, currentCardIdRef.current);
+    selectIndex(keptIndex === -1 ? 0 : keptIndex, cards);
+  }, [cards, routeCardId, selectIndex]);
 
   const currentCard = cards[currentCardIndex];
 
-  // Sync current card to widget whenever it changes
+  // Sync the current card to the widget whenever it changes.
   useEffect(() => {
     if (currentCard) {
       updateWidget(currentCard);
