@@ -263,6 +263,48 @@ describe('Quiz Utils', () => {
       });
     });
 
+    it('should not replace ordinary English words that happen to be englishTerms', () => {
+      // Regression: englishTerm values are common English words ("Thrust",
+      // "Point", ...) that appear naturally in prose. They must NOT be
+      // substituted with the target term, which produced nonsense like
+      // "aggressive tutta volta offense" (originally "aggressive thrust offense").
+      const card = mockCards[0]; // Vom Tag / From the Roof
+      const cardsWithReference: Term[] = [
+        ...mockCards,
+        {
+          id: 'thrust-card',
+          category: 'strike',
+          weapon: 'longsword',
+          originalTerm: 'Stich',
+          englishTerm: 'Thrust',
+          discipline: 'german-longsword',
+        },
+        {
+          id: 'boar-guard',
+          category: 'guard',
+          weapon: 'longsword',
+          originalTerm: 'Cinghiale',
+          englishTerm: 'Boar',
+          briefApplication: 'Use for aggressive thrust offense from a low position.',
+          discipline: 'italian-longsword',
+        },
+      ];
+
+      const result = getRandomApplications(
+        card,
+        cardsWithReference,
+        ['german-longsword', 'italian-longsword'],
+        10
+      );
+
+      const boarApp = result.find((app) => app.includes('aggressive'));
+      expect(boarApp).toBeDefined();
+      // The ordinary word "thrust" stays intact and is not mangled.
+      expect(boarApp).toContain('thrust');
+      expect(boarApp?.toLowerCase()).not.toContain('from the roof');
+      expect(boarApp?.toLowerCase()).not.toContain('vom tag');
+    });
+
     it('should return empty array if no cards available', () => {
       const card = mockCards[0];
       const result = getRandomApplications(card, [], ['italian-longsword'], 2);
