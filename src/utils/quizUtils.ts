@@ -29,16 +29,21 @@ export function shuffleArray<T>(array: T[]): T[] {
 /**
  * Replaces term references in text with the target term
  * This is used to sanitize false answers so they don't give away clues
+ *
+ * Only the foreign-language `originalTerm` names (e.g. "Zornhau", "Posta di
+ * Donna") are treated as replaceable references. The `englishTerm`
+ * translations are intentionally excluded: they are ordinary English words
+ * ("Thrust", "Point", "Timing", "Counter", "Binding", ...) that appear
+ * naturally in descriptions and applications. Replacing those mangled the
+ * prose into nonsense (e.g. "aggressive thrust offense" -> "aggressive tutta
+ * volta offense"), so we leave them untouched.
  */
 function replaceTermReferences(text: string, allCards: Term[], targetTerm: string): string {
-  // Build a map of all terms (originalTerm and englishTerm) from all cards
+  // Build a set of the foreign-language term names from all cards.
   const termSet = new Set<string>();
   allCards.forEach((card) => {
     if (card.originalTerm) {
       termSet.add(card.originalTerm.toLowerCase());
-    }
-    if (card.englishTerm) {
-      termSet.add(card.englishTerm.toLowerCase());
     }
   });
 
