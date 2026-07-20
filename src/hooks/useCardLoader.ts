@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import capoferroData from '../../assets/data/capoferro-rapier-data.json';
 import germanData from '../../assets/data/german-longsword-data.json';
 import italianData from '../../assets/data/italian-longsword-data.json';
+import messerData from '../../assets/data/messer-data.json';
 import vadiData from '../../assets/data/vadi-longsword-data.json';
 import { DATA_REGISTRY, getDisciplineFromRecordId } from '../config/dataRegistry';
 import { useTermStore } from '../store/termStore';
@@ -33,6 +34,7 @@ const DATA_FILE_MAP: Record<string, DataFile> = {
   'german-longsword-data.json': germanData as DataFile,
   'vadi-longsword-data.json': vadiData as DataFile,
   'capoferro-rapier-data.json': capoferroData as DataFile,
+  'messer-data.json': messerData as DataFile,
 };
 
 export const useCardLoader = () => {

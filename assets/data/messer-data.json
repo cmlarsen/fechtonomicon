@@ -1,0 +1,932 @@
+{
+  "meta": {
+    "title": "Messer"
+  },
+  "records": [
+    {
+      "id": "leckuchner.messer.langes_messer",
+      "category": "weapon",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Langes Messer",
+      "englishTerm": "Long Knife",
+      "briefDescription": "The single-edged, one-handed short sword built like an oversized knife, with its grip riveted through the tang and a Nagel on the cross to guard the hand; it is the weapon of Lecküchner's entire fencing system.",
+      "fullDescription": "Hold the Messer in one hand and keep your empty hand on your back, bringing it to your chest only when you close for grappling or Messer-taking. The blade gives you a long (sharp) edge, a short (blunt) back edge, and a point; from the hilt to the middle of the blade is your strong, and from the middle to the point is your weak, so learn to feel where you stand in every bind. The Nagel projecting from the cross shields your hand and catches the opponent's blade. Come into the Zufechten without standing still to watch his strokes, for who displaces only will be hurt by the entire art. Set yourself in one of the four guards — Bastei low with the point on the ground, Luginsland high with the long edge forward, Stier with the hilt before your head, or Eber low on the right — or in the Schranckhut with the point down and one edge toward the man. Then step and strike as one action, turning the Messer in the bind so the long edge stands above and the short edge lies below, and drive your point long into his face. Everything rides on Vor, Nach, and Indes.",
+      "briefApplication": "Use the Messer to seize the Vor in the Zufechten, striking bravely to the openings rather than waiting to parry, then working Indes in every bind.",
+      "fullApplication": "Use the Messer to seize the Vor in the Zufechten, striking bravely to the openings rather than waiting to parry, then working Indes in every bind. Against an opponent set in a high guard like Luginsland or Stier, open with a master strike — the Zornhau to break strokes from above and shoot the Zornhau Ort to his face, the Wecker to break the Stier and Eber, or the Entrüsthau against everything struck downward from above. Meet his high threats with the long edge and thrust; answer a low attack by overrunning it with your longer reach. In the bind, feel whether he is soft or hard: if he presses hard on your strong, go high with the arm and Duplieren behind his blade with the short edge; if he is weak, Mutieren into a thrust to the lower opening. When he reaches for your blade, Durchwechseln beneath it to the far opening, or Zucken free of the bind and strike anew. Should he crowd in, bring your empty hand to his arm and go through into wrestling, pressing the hands or taking his Messer outright. Because the weapon is single-edged, keep turning the Nagel and short edge into play to shield your hand, and never merely displace — always follow the parry with your own work.",
+      "related": [
+        "leckuchner.messer.nagel",
+        "leckuchner.messer.knauf",
+        "leckuchner.messer.lange_schneide",
+        "leckuchner.messer.kurze_schneide",
+        "leckuchner.messer.ort"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.nagel",
+      "category": "weapon",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Nagel",
+      "englishTerm": "Nail",
+      "briefDescription": "The Nagel (\"guarding nail,\" or Werenagel) is a bar or ring projecting sideways from your Messer's cross toward the short-edge side, shielding your hand and giving you a hard surface to bind and shove his blade aside.",
+      "fullDescription": "The Nagel is the defining fitting of the langes Messer: a heavy bar, sometimes formed as a ring, fixed to the cross and standing out sideways on the short-edge side, so it shields your hand where a thrust or a draw-cut sliding down his blade would otherwise reach it. Grip the Messer in a single right hand with the long (true) edge leading and the short edge to the rear; the cross and its Nagel sit as a broad transverse guard just above your fist. You do not strike with it — you bring it to bear by turning the hilt. In the bind, roll your hand and hilt across so the flat of the cross or the projecting Nagel beds against the flat of his Messer, then drive from the shoulder and step in to push his blade offline. Reaching toward the short-edge side, it catches his Messer where the bare cross would leave your hand thin, letting you trap and lever his blade or hilt while your point and long edge stay live to answer. Keep the arm structured behind it, so the shove comes from your whole frame and footwork rather than from wrist strength alone.",
+      "briefApplication": "Reach for the Nagel when a foe is too strong in the bind: work with the cross or guarding nail to shove his Messer aside, then strike the Entrüsthau to the other peak.",
+      "fullApplication": "Reach for the Nagel when a foe is too strong in the bind: work with the cross or guarding nail to shove his Messer aside, then strike the Entrüsthau to the other peak. Lecküchner names it in exactly this spot — when you strike the Entrüsthau with your strong and he displaces so hard that neither your Mutieren nor your Duplieren will come, stop matching strength edge-to-edge and instead lay the cross or Werenagel on his blade, push it offline, and cut the Entrüsthau to the other peak. This makes the Nagel your answer to a bind you cannot out-muscle: rather than surrendering the Indes to a stronger arm, you use the guard itself as a lever, borrowing the whole structure of the hilt instead of your edge. From that shove you flow into the close play the cross enables throughout the system — going with the hilt over his Messer, laying the cross to his elbow, or falling in to take his Messer outright in a disarm. Beware that committing hilt-forward carries you to grappling measure, where he can answer with Durchlaufen, wrestling, or a counter-grip; keep your point and long edge live so that the instant his blade is displaced you thrust or cut before he closes. Treat the Nagel as leverage and hand-protection, not a striking part — it wins the bind you would otherwise lose, then hands you back to the point, the long edge, and the winding.",
+      "related": [
+        "leckuchner.messer.langes_messer",
+        "leckuchner.messer.knauf",
+        "leckuchner.messer.versetzen"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.knauf",
+      "category": "weapon",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Knauf",
+      "englishTerm": "Pommel",
+      "briefDescription": "The hooked butt-cap terminating the Messer's hilt, used as a blunt striking head against the ears, head, and chest and as a lever to go over the opponent's Messer or hand in close, armed-hand play.",
+      "fullDescription": "To bring the Knauf to bear you shift into the armed hand: from a bind or a straight wind on his Messer, drop your left hand onto the middle of your own blade so you grip the Messer at both ends, turning the whole hilt—cross, Nagel, and pommel—into a short, powerful lever. Stand with the left foot forward, and as he commits his stroke, fall in with the armed hand, step your right foot well out to his right, and go high with the arm, driving the pommel down over his Messer or above his hand into his ear or head; the thumb turns above on the grip so that body rotation, not the wrist, delivers the blow. Keep the short point live throughout: once the pommel lands, twitch it back and set it at his chest or face, thrusting with the armed hand. Stepping your right foot well behind his, then your left foot behind him, lets you chain hilt-strikes to the head, stomach, and neck with your weight behind each blow, the point always threatening between them.",
+      "briefApplication": "Reach for the Knauf once you are crowded in close in the armed hand, when the blades are too near to cut and you want to overwhelm him with blunt strikes and leverage.",
+      "fullApplication": "Reach for the Knauf once you are crowded in close in the armed hand, when the blades are too near to cut and you want to overwhelm him with blunt strikes and leverage. Choose it out of a bind or a straight wind: as he strikes crooked to your left side or presses in too close for a clean edge, fall into the armed hand Indes, step offline, and answer with the pommel to his ear or chest rather than trying to out-cut him. It flows naturally from overrunning with the Entrüsthau—after you go from below over his Messer with the hilt and pull his blade back, raise the pommel and hammer his head, stomach, and neck as you step behind his forward foot. From the pommel strike, transition straight into taking his Messer: go with the hilt from above over his hand, or thread between his hilt and his hand and shove his Messer aside with your left elbow to strip it. If he displaces after the pommel lands, twitch the short striking point outside to his head and set your thrust anew. Against it, expect him to rush the Versetzen before your hilt arrives—grabbing your hilt behind your right hand with his left, striking your blade, and pushing you offline—or to catch your pommel-strike on a hanging point and wind with Mutieren against you in the bind.",
+      "related": [
+        "leckuchner.messer.langes_messer",
+        "leckuchner.messer.nagel",
+        "leckuchner.messer.durchlaufen"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.lange_schneide",
+      "category": "blade part",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Lange Schneide",
+      "englishTerm": "Long Edge",
+      "briefDescription": "The Messer's true, sharpened edge, lying on the same side as your knuckles when you grip the hilt naturally and opposite the short edge and Nagel; your strongest edge, leading your most powerful cuts and firmest binds.",
+      "fullDescription": "Hold the Messer in a natural hammer grip and the long edge falls along the same side as your knuckles, directly opposite the short (false) edge, with the Nagel guarding your hand from that side. This is the true, sharpened edge, and it leads all your heaviest work. To bring it to bear from above, chamber high on your right shoulder or in the Luginsland with the arm stretched high and the long edge turned toward the man, then step in with the right foot and drive the cut down so the long edge bites first, the arm extending through the blow. In the bind you dominate by winding your Messer so the long edge stands above on his blade, thumb set on the flat for leverage; from that seat it carries your strongest pressure and threatens the point straight into his face. Because it sits toward the knuckles it also slices cleanly from below, running up into an arm or wrist. Whenever real force is wanted, the committed strike, the firm bind that stays strong on his Messer, or the pressing cut, it is the long edge that leads and the short edge that follows once you wind.",
+      "briefApplication": "Lead with the long edge whenever you want maximum force: the committed strike, the strong bind that dominates his blade, or the powerful slicing cut.",
+      "fullApplication": "Lead with the long edge whenever you want maximum force: the committed strike, the strong bind that dominates his blade, or the powerful slicing cut. It is your default answer to a stroke from above, an Oberhau; cut your own Zornhau so that as the Messers spark you wind the long edge above his blade, then shoot the point straight to his face in the Zornhau Ort. When you overrun a low attack (Überlaufen), strike long from the shoulder and remain with the long edge firmly on his Messer, then go high with the arm and hang the point in. Feel him in the bind: if he is hard, stay strong on the long edge, dominate above, and double behind his blade with Duplieren; if he is soft, shoot your point through or take the lower opening with Mutieren. Many master strikes open long and trade to the short: the Wecker and Geférhau strike with the long edge, then wind so the short edge finds the head, so treat the long edge as the powerful entry that buys you finer work Indes. Against a taking-away on the Messer, step offline and strike again with the long edge to the head, or turn your flat onto his and set the point. In the four cuts, run the long edge down onto his arms to press and slice. Its natural counter is a fencer who slips beneath your strength with Durchwechseln or Zucken rather than meeting it; feel that and do not chase the bind, but wind or set your point online instead.",
+      "related": [
+        "leckuchner.messer.kurze_schneide",
+        "leckuchner.messer.ort",
+        "leckuchner.messer.langes_messer",
+        "leckuchner.messer.sterke"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.kurze_schneide",
+      "category": "blade part",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Kurze Schneide",
+      "englishTerm": "Short Edge",
+      "briefDescription": "The short edge is the Messer's false back edge, running opposite the long edge and often left flat or blunt except near the point, brought around by winding to strike over or behind the opponent's blade.",
+      "fullDescription": "Because the Messer is single-edged, the long (true) edge runs along the front of the blade while the short edge sits on the back, frequently flat or blunt except near the tip where it is sharpened. You bring it into play by turning the hand and winding rather than by a fresh swing: as your point drops and your hilt rises high between you and him, bend your wrist so the short edge falls onto his face, head, or arm and cuts through as it lands. Laying your thumb flat on the back of the blade steadies this and lets you drive the short edge firmly through the windings and hangings. After a Wecker you angle the short edge out and strike short to his head, and from the Schranckhut you turn the long edge onto his Messer and then roll the short edge over onto his head. In the bind you can strike behind the blade of his Messer with the short (blunt) edge, doubling against his strong while your arm stays high and your long edge holds the bind, or wind so the short edge comes below and thrust to the face.",
+      "briefApplication": "Choose the short edge when your long edge is bound or blocked and you need to reach over or behind his Messer to strike the head, face, or arm.",
+      "fullApplication": "Choose the short edge when your long edge is bound or blocked and you need to reach over or behind his Messer to strike the head, face, or arm. It is the working edge of the winding game: turn your hand in the bind so the short edge touches his blade, let the point drop, and cut it across his face; after the Wecker, angle it out and strike short to his head; in the Wincker, strike long with the long edge, then wind and let the short edge fall behind his blade to the head in a doubled manner. When he displaces high and hard, do not fight his strong head-on but go high with the arm, stay on the blade, and strike the short edge behind his Messer as Duplieren. The Zwinger drives the blunt edge long from a stretched arm over his Messer into his face, and if he changes through below you remain in the Langer Ort so he can do nothing. Because these strikes live in Indes and the windings, they flow out of the hangings into further thrusts, cuts, and the four Schnitte into his arms. Beware that a canny opponent winds his own point against your short-edge cut and thrusts to your face first; if he does, wind again against his Messer or change through to the next opening rather than forcing the short edge home.",
+      "related": [
+        "leckuchner.messer.lange_schneide",
+        "leckuchner.messer.wecker",
+        "leckuchner.messer.wincker",
+        "leckuchner.messer.winden"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.ort",
+      "category": "blade part",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Ort",
+      "englishTerm": "Point",
+      "briefDescription": "The Ort is the thrusting tip of your Messer, the point you shoot, wind, and hang at the face and chest, and the decisive end behind the Zornhau Ort, the Langer Ort, and the winding thrusts (some render it \"peak\").",
+      "fullDescription": "The Ort sits at the very end of your single-edged blade, and nearly every thrust in the system turns on how you carry it. To shoot a straight point, extend your arm long and drive the tip at the face or chest, keeping the Ort online so your opponent cannot reach you before he must deal with it. When you thrust from a bind, wind your Messer against his so the long edge stands above and the short edge below, then let the point run forward to the face; if he grows aware and covers, wind again to the other side, always keeping the long edge up. To hang the point, raise the hilt and let the Ort droop over or under his blade so the tip stays aimed at his chest while your hands ride high. From the Zornhau you turn the long edge above and shoot the Ort forward the instant your displacement lands; from the Bastei you strip off the upper strikes with the point and from the Luginsland the lower ones, shooting it long before any bind forms. Keep the thumb on the flat to steady the tip, and let the point, not the edge, do the finishing work.",
+      "briefApplication": "Lead with the Ort whenever you want to threaten or finish: a long point held in the face forces your opponent to answer it and lets you seize the Vor.",
+      "fullApplication": "Lead with the Ort whenever you want to threaten or finish: a long point held in the face forces your opponent to answer it and lets you seize the Vor. The master rates the long point above the master strikes as a defense, since the strokes cannot protect themselves against it, so extend it against a man who rushes the bind, and if he strikes to knock it aside, work Indes: let the point sink and change through (Durchwechseln) below his blade to thrust at the far opening. After a Zornhau, shoot the Ort to the face or chest and turn the long edge above; if he winds it off, wind again to the other side or fall into the hanging point at his chest and push him back. Against the Stier and the Eber, go with the ready long point to the face and fall with your rear foot well outside, since those guards cannot protect themselves against a straight point. Use the Ort to set on (Absetzen) to the nearest of the four openings the moment he commits, and carry it through the four cuts, finishing a slice by winding the point back into his face. The Ort is answered in kind: an opponent may strike your wrist as you thrust, lower his own long point to your chest to shove you back, or wind against your point and beat you to the face, so cover your extension and stay ready to change through or hang.",
+      "related": [
+        "leckuchner.messer.langer_ort",
+        "leckuchner.messer.stich",
+        "leckuchner.messer.zornhau_ort",
+        "leckuchner.messer.hangen"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.sterke",
+      "category": "blade part",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Stärke",
+      "englishTerm": "Strong",
+      "briefDescription": "The strong (Stärke) is the half of your Messer's blade from the hilt to its middle, where leverage is greatest, used to command the bind, receive force, and push an opponent's blade aside.",
+      "fullDescription": "Divide your Messer's blade in half: from the hilt to the middle lies the strong, and from the middle to the point lies the weak (Schwäche). Because the strong sits nearest your fist and the crosspiece, it carries the greatest leverage, so force met there is easily held, turned, and overpowered. Work it by keeping a firm grip and driving the strong forward as the blades meet, going high with the arm so that your strong lies over his Messer. Seek always to catch the opponent's weak with your strong: when your strong grasps his weak you command the bind and may wind, press, mutate, or thrust as you please. The long edge commonly leads as you bind and dominate from above, while the crosspiece and the Nagel back the strong to shield your hand and let you shove his Messer aside. Keep your point online and your body behind the blade, and feel through the strong whether he is soft or hard in the displacement, for that feeling tells you whether to press through or to yield and work elsewhere.",
+      "briefApplication": "Bring your strong against the opponent's weak to win the bind, receive his cut without being overpowered, and set up winding, doubling, or pressing.",
+      "fullApplication": "Bring your strong against the opponent's weak to win the bind, receive his cut without being overpowered, and set up winding, doubling, or pressing. The choice turns on Indes: as the blades meet, feel whether he is soft or hard, and read where you stand strong and where weak. When he is strong and hard in the bind, pressing your strong with his own strong, do not fight strength against strength forever; wind the hilt under your arm, go high with the arm, and double (Duplieren) behind his blade with the long or blunt edge to strike his head, for doubling is worked against the strong of his Messer. When instead he is soft and weak in the bind, mutate (Mutieren) against his weak, hanging your point over his Messer and thrusting to the lower opening. In the Entrüsthau you strike with your strong, then drive your strong onto his weak; once you grasp his weak you may mutate to the neck or double behind the blade. Should he prove too strong in the displacement, do not force it: back your strong with the crosspiece and the Nagel to shove his Messer aside, or leave his strong and work your weak to the next opening. Beware in turn the foe who catches your weak with his strong, or who changes through (Durchwechseln) beneath your blade before you can settle the bind.",
+      "related": [
+        "leckuchner.messer.sweche",
+        "leckuchner.messer.duplieren",
+        "leckuchner.messer.winden",
+        "leckuchner.messer.versetzen"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.sweche",
+      "category": "blade part",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Schwäche",
+      "englishTerm": "Weak",
+      "briefDescription": "The Schwäche is the forward half of the Messer's blade, running from the middle down to the point — the section with the least leverage in a bind but the greatest reach and speed, where the point does its work.",
+      "fullDescription": "Divide your Messer into two halves: from the hilt to the middle lies the Stärke, and from the middle down to the point lies the Schwäche. This forward half carries the least leverage against a crossed blade, so it cannot press or hold strongly, but it reaches farthest and moves fastest, and it is where the point lives. Whenever your Messer meets your opponent's, know at once which part is bound — if the blades cross near your point you stand in the weak, and you should not try to overpower him there. Instead keep the point online and let the weak feel through the bind whether he is soft or hard, then work Indes from what you sense. Extend the arm and the weak carries your thrusts and the Langer Ort into his face; turned edge-on, the same forward blade delivers the reaching cuts with the long edge. Because the weak yields under pressure, you answer a firm bind not by shoving with it but by winding, hanging the point, or changing through, letting your leverage travel back toward the strong while the weak still threatens with its point.",
+      "briefApplication": "Read which part of your blade is in the bind and act on it — mutate against the weak of his Messer, and never overpower a hard bind while standing in your own weak.",
+      "fullApplication": "Read which part of your blade is in the bind and act on it — mutate against the weak of his Messer, and never overpower a hard bind while standing in your own weak. The weak of the opponent's Messer is the target of Mutieren: when you strike strongly from your right shoulder and he displaces soft and weak in the Messer, wind onto his blade, go high with the arms, hang your point over his weak and thrust down to the lower opening. Duplieren is its partner against the other half — double behind his blade when you feel him strong, mutate over it when you feel him weak. Striking an Entrüsthau to his right side, turn your hand and wind the weak of your Messer over his, then finish with the long edge to his head. When you bind him firmly with the Wecker and feel him weak in the binding, wind through and take his neck, or if he answers strong work quickly with the weak to the next opening on the far side. Beware the mirror of this: commit your own weak against his strong and he can mutate or wind against you, so when he stands hard, hang the point, change through, or twitch off rather than pushing. In the grip and disarms the weak still serves — pull your hilt back so your weak rides onto his hand for Hände Drücken, and always fall to the weak of his Messer with the right hand when you go for the Messer-taking.",
+      "related": [
+        "leckuchner.messer.sterke",
+        "leckuchner.messer.mutieren",
+        "leckuchner.messer.winden",
+        "leckuchner.messer.indes"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.luginsland",
+      "category": "guard",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Luginsland",
+      "englishTerm": "Watchtower",
+      "briefDescription": "One of the four guards and the Messer's answer to the longsword's Vom Tag: left foot forward, the Messer held high before your head on a stretched arm, long edge toward the man, threatening descending strokes.",
+      "fullDescription": "Set your left foot forward and extend the Messer arm fully so the weapon stands high in front of your head, hilt raised and the long (sharp) edge turned toward the man, the point angled up and forward. This is a high, open, extended guard, the functional analogue of Liechtenauer's Vom Tag, from which every stroke from above threatens. Because the arm is stretched rather than chambered on the shoulder, Luginsland reaches long: you can shoot the point straight at his face, fall into a powerful stroke from above, or launch the Geférhau by leaping in and cutting with the long edge from above while your arm stays high and the point sinks to his face or chest. The name means \"look into the land,\" a watchtower stance: standing tall and stretched, you survey the four openings and wait, keeping your leg well in balance so that the man can make nothing whether he changes through or does what he likes. Keep the long edge leading and the point alive, ready to hang, wind, or let the point fall through to the other side.",
+      "briefApplication": "Choose Luginsland when you want to own the high line and threaten descending strokes, forcing the man to answer your long, stretched point before you ever commit to a cut.",
+      "fullApplication": "Choose Luginsland when you want to own the high line and threaten descending strokes, forcing the man to answer your long, stretched point before you ever commit to a cut. From here you seize the Vor: leap in with the right foot and strike the Geférhau, cutting from above with the long edge and letting the point drop to his face, or feint the cut and change through to thrust the far side. It is also a patient guard. Stand well balanced, hold the Messer stretched, and let him do what he wants; against strokes aimed at your lower openings you can defend with the point alone, stretching and shooting it from above at his face, and if you fail with the point, wind his Messer up into the Stier. Should he try to run in on you, go high with the arm and lower the point into his face or chest to push him off. You can also draw after from here: when he strikes long from his shoulder and his Messer sinks toward the ground, leap and strike into his opening before he recovers high. Beware, though, that Luginsland is the very guard the Entrüsthau is built to break; a foe who leaps offline and strikes the blunt edge to your upper peak will beat your descending stroke. So do not simply wait to be struck, but work Indes, hang and wind rather than trading blow for blow.",
+      "related": [
+        "leckuchner.messer.entrusthau",
+        "leckuchner.messer.stier",
+        "leckuchner.messer.eber",
+        "leckuchner.messer.bastei",
+        "leckuchner.messer.vier_leger"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.stier",
+      "category": "guard",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Stier",
+      "englishTerm": "Bull",
+      "briefDescription": "Stier (the Bull) is a high hanging guard: you hold the hilt up in front of your head with the point angled down at the opponent's face, like a bull lowering its horns — a functional counterpart to the longsword's Ochs.",
+      "fullDescription": "To assume the Stier, set your left foot forward and raise the Messer so the hilt sits high in front of and to one side of your head, your hand turned so the short edge faces back toward you and the long edge stands outward. Let the point hang down and forward, menacing the opponent's face or throat from above — the lifted hilt and dropped point give the guard its name, a bull lowering its horns to gore. The Nagel and cross shield your hand where it rides high beside your head, and you keep the arm carried rather than rigid, the weak of the blade light so you can turn freely. Lecküchner forms the Stier from either side, and it doubles as the two upper hangings, so it is less a resting stance than a poised, point-forward threat you flow into and out of as the bind shifts. From here you can wind against an incoming stroke — meeting it with the short edge on one side or the long edge on the other — stay in the Stier, and thrust down into the face, or drop into the windings on both sides to hunt the openings above.",
+      "briefApplication": "Take the Stier to hold the high line and threaten a descending thrust to the face, winding against strokes from above and answering them from your upper hangings.",
+      "fullApplication": "Take the Stier to hold the high line and threaten a descending thrust to the face, winding against strokes from above and answering them from your upper hangings. Standing point-forward invites the opponent to commit; when he strikes down at your open side, wind Indes against his blade — short edge on one side, long edge on the other — staying in the Stier and shooting your point into his face from above, then remaining on his Messer to wind again to the far side if he sets the thrust aside. You can also flow into the Stier from another guard: when you stand in the Eber and he cuts high, go up and wind so the hilt rises before your head into the Stier, then step in and thrust to his face or chest. Against a foe who is himself in the Stier, do not merely displace — as he readies his thrust, come high with the long point in the Vor and drive it into his face, throat, or chest, for the long point beats the strokes on its own and they cannot protect against it. The Stier's own breaker is the Wecker: the opponent leaps offline and strikes his long edge onto your Messer, winding his point into your face. Guard against this by keeping your point online and threatening first, working Indes so his rousing cut finds a thrust already waiting rather than an idle high guard.",
+      "related": [
+        "leckuchner.messer.wecker",
+        "leckuchner.messer.eber",
+        "leckuchner.messer.luginsland",
+        "leckuchner.messer.bastei",
+        "leckuchner.messer.vier_leger"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.eber",
+      "category": "guard",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Eber",
+      "englishTerm": "Boar",
+      "briefDescription": "One of the four Messer guards: a low right-side stance with the hilt at your hip and the point angled up toward the opponent's face like a boar's tusk, the Messer's functional counterpart to the longsword's Pflug.",
+      "fullDescription": "Assume the Eber most commonly on your right: set your left foot forward and hold the Messer down at your right leg with the hilt resting at your hip, so the blunt short edge is uppermost and the point runs forward and up toward the man's face. The hilt stays low while the point rides high, so the blade slopes upward like a boar's tusk driving from beneath — the Messer's answer to the longsword's Pflug. Keep the arm relaxed but the point true on his face or chest, poised to shoot a rising thrust the instant he commits. You may also take the Eber on the left: hold the Messer at your left hip with the long edge turned upward and the hilt sunk a little toward the ground, the point again standing up against his face. Either side rests in one of the two lower hangings, so your natural work from here is to wind through those hangings, each winding offering a stroke, a thrust, or a cut. Stay soft and coiled rather than braced; the guard's strength is the threat of the waiting point, not muscled tension in the arm.",
+      "briefApplication": "Choose the Eber to bait and set aside an incoming thrust, then answer instantly with your own rising thrust to his face or chest.",
+      "fullApplication": "Choose the Eber to bait and set aside an incoming thrust, then answer instantly with your own rising thrust to his face or chest. Standing on your right in the guard, expose your left opening as bait; when he thrusts, wind against him so your short edge catches his Messer and sets it aside (Absetzen) with your point already online, then drive the point home to the face or body. If instead he strikes down at your left side, go up with the Messer and wind so the hilt comes before your head — you arrive in the Stier — then step in and thrust to the face or chest. Because the Eber sits in the two lower hangings, you always keep the windings in reserve: feel his pressure Indes and turn a winding into whichever opening he leaves, taking the stroke, thrust, or cut as it offers. Be wary that a point-forward stance is itself vulnerable to the point. The Zwinger is the stroke the master sets against the Eber, and he rates the Langer Ort surer still — he meets your thrust with a long straight point to your face and drops his rear foot wide to reach past you. So threaten first and keep your own point live, forcing him to answer your Vor rather than settle the long point on you unopposed.",
+      "related": [
+        "leckuchner.messer.wecker",
+        "leckuchner.messer.stier",
+        "leckuchner.messer.luginsland",
+        "leckuchner.messer.bastei",
+        "leckuchner.messer.vier_leger"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.bastei",
+      "category": "guard",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Bastei",
+      "englishTerm": "Bastion",
+      "briefDescription": "The first of Lecküchner's four guards: a low, provocative bulwark held with the left foot forward and the stretched Messer's point on the ground, short edge above — the functional analogue of the longsword's Alber.",
+      "fullDescription": "Assume the Bastei by putting your left foot forward and holding the Messer in your stretched arm out in front of you, letting the point sink all the way to the ground so the short edge faces upward. The arm hangs long, the hilt low before your body, so the whole weapon slopes down and forward like a bulwark thrown across your line. Though the posture looks open and inviting, it is coiled: from the sunk point you can rise in a single motion, driving the point up beneath an incoming blade to his face or chest with the stretched arm, shooting the Langer Ort the master calls the best defense in the Messer. The guard roughly mirrors Liechtenauer's Alber (Fool) — it deliberately offers the openings to draw a committed attack, then answers upward with the point rather than parrying across. You may hold it on either side: with the left foot leading as described, or on the left side with the right foot forward, from which you can equally strike, thrust and cut, though the master warns it works a little worse and feels awkward until you are trained in it.",
+      "briefApplication": "Choose the Bastei to bait an aggressive opponent into committing to your openings, then strip his blow aside with the point and thrust up into his face or chest.",
+      "fullApplication": "Choose the Bastei to bait an aggressive opponent into committing to your openings, then strip his blow aside with the point and thrust up into his face or chest. It shines against fighters who rush in: hold the point forward and let him run onto it, and if he tries to displace it and reaches for your Messer, change through (Durchwechseln) Indes to the next opening. Whatever he aims at your upper peaks, defend with the Langer Ort — the best defense in the Messer — and if he tries to seize the Vor, take it from him on the point and work Indes according to the Nach. If your thrust lands and he flinches back, fall straight into the Bastei again and draw your rear foot back, never letting yourself be moved from the guard unharmed. When he binds high, go up with the point to his face; when he sinks low with the arm, close for the wrestling. Should he crook onto your blade or fall on it, change through below. Its natural counter comes from above: the Geférhau breaks the Bastei, and who aims at the Bastei is hurt from the Luginsland, whose high point answers your low one — so against a foe in that high guard, go up under his Messer, change through, and thrust, adding Duplieren or going through as he gives you the bind.",
+      "related": [
+        "leckuchner.messer.luginsland",
+        "leckuchner.messer.stier",
+        "leckuchner.messer.eber",
+        "leckuchner.messer.vier_leger",
+        "leckuchner.messer.unterhau"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.schrankhut",
+      "category": "guard",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Schrankhut",
+      "englishTerm": "Barrier Guard",
+      "briefDescription": "The barrier guard: a low, crossed stance in which you rest the Messer's point on the ground to one side, short edge toward the man and the arm barred across your body — a favored launch point for the master strikes.",
+      "fullDescription": "Schrankhut comes in a right-side and a left-side form, and both set the leading foot opposite the side the point rests on — the crossing that gives the guard its name. For the left barrier, put your right foot forward and hold the Messer with its point down on the ground to your left, so the short (blunt) edge faces the man; for the right barrier, put your left foot forward and carry the point down to your right, again with the short edge toward him. Either way the arm bars low across your body while the Nagel and cross shield your hand and the point loiters near the earth. Deliberately expose the open side to invite a strike. From here you spring: leap or step well offline out of the incoming blow, wind the hilt up under your arm, and drive the long edge onto his Messer, then turn the short edge onto his head or thrust the point to his face. Because the point is already gathered low and the arm coiled, the barrier loads a Wecker, a changing-through, or a winding thrust with almost no warning.",
+      "briefApplication": "Rest in the Schrankhut at the onset to bait an overhead strike, then spring offline and answer with the Wecker or a winding thrust to the face.",
+      "fullApplication": "Rest in the Schrankhut at the onset to bait an overhead strike, then spring offline and answer with the Wecker or a winding thrust to the face. It is above all a launching platform: from the barrier you can throw the Wecker on either side to break his Stier or Eber. Expose your open flank, and when he commits a strike from above, leap from the stroke, drive the long edge onto his Messer, and Indes wind the point into his face. Against a man in the Luginsland or Stier, act as if you would strike the Wecker but do not deliver it — Indes change through to the next peak and thrust to his other side, much like the Geférhau's strike-into-changing-through. When the Messers spark together in the bind, wind the point to his face, strike the short edge onto his head, or cut skillfully from one peak to the other. The barrier also serves roughly against clumsy peasant strokes: keep the point aimed at his face and strike in as the blades clash, then sweep around his head to the neck. Beware a cool opponent who refuses the bind and holds a straight Langer Ort: he can spoil your changing-through, thrusting into your face as you cross under, so do not over-commit the cross and stay ready to wind against his openings if he stays hard.",
+      "related": [
+        "leckuchner.messer.wecker",
+        "leckuchner.messer.versetzen",
+        "leckuchner.messer.luginsland",
+        "leckuchner.messer.stier"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.zornhau",
+      "category": "strike",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Zornhau",
+      "englishTerm": "Wrath Cut",
+      "briefDescription": "The first master strike: a wrathful descending diagonal cut from your right shoulder, delivered with the long edge, that answers an overhead attack by striking into it to form a strong bind from which you work Indes.",
+      "fullDescription": "Begin with the Messer chambered high on your right shoulder, left foot forward, or drawn up from the Schranckhut. As your opponent hews down at your head from his right, step in with your right foot and drive a wrathful diagonal cut from high right to low left, the long edge leading. Rather than parrying wide, strike angrily into his descending blade so both cuts meet above and you displace his stroke while landing your own, meeting force with force to form a strong bind. Keep the arm firm and let the point run forward: turn your Messer against his so the long edge stands above and the short edge below, shooting the Ort toward his face or chest. Your body unwinds from the hips behind the blow, the Nagel and hilt guarding your hand. From that bind you do not simply hold; through the crossed blades you feel whether he is soft or hard, and stay poised to wind, thrust, or take away Indes.",
+      "briefApplication": "Choose the Zornhau as your primary answer whenever an opponent hews at you from above, meeting his Oberhau with a strike that both displaces and threatens at once.",
+      "fullApplication": "Choose the Zornhau as your primary answer whenever an opponent hews at you from above, meeting his Oberhau with a strike that both displaces and threatens at once. Lecküchner calls it a simple peasant stroke, yet its point breaks all the strokes from above: the strength lies in seizing the Vor and turning his attack into your bind. Once bound, work Indes and feel whether he is soft or hard on your Messer. If he is soft and yields, shoot the Zornhau Ort straight to his face or chest with the long edge above. If he grows aware of the point and displaces, go high with the arm and wind the point over his blade to the face on his left, the war of windings; if he sets that aside, drop to the other peak under his arm to the chest. You may instead take away, pulling up over his blade to strike the far side of his head with the long edge, or lower the point and cut short-edge through his mouth. Beware his counters: he may drop his long point to your chest with a straight arm and step his left leg back, strike to your wrist, or bind and wind against you in turn, so keep your own point online and stay ready to change through.",
+      "related": [
+        "leckuchner.messer.zornhau_ort",
+        "leckuchner.messer.oberhau",
+        "leckuchner.messer.versetzen",
+        "leckuchner.messer.indes",
+        "leckuchner.messer.duplieren"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.wecker",
+      "category": "strike",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Wecker",
+      "englishTerm": "Waker",
+      "briefDescription": "The second of the six master strikes, the \"Waker\" is a rousing cross-cut driven with the long edge and an offline step that breaks the high guard Stier and wins the Eber and the strokes from below.",
+      "fullDescription": "Begin with your Messer chambered on your right shoulder or set in the Schrankhut at your right leg, left foot forward, while your opponent waits in the Stier with his hilt before his head. As he threatens, leap with your right foot well out to your right side to carry yourself offline, and strike with the right (long) edge firmly onto his Messer to rouse and displace it. Indes, wind your point into his face so the cut flows straight into a thrust. Worked from the Schrankhut you can instead drop the hilt under your arm, bind his blade with the long edge, then turn the short edge onto his head. The stroke lives on its footwork — as the verse says, whoever wakes well with steps stretches many strokes — so the leap that clears his line matters as much as the cut. Keep the point busy throughout: after the bind you may hang it, wind into the hanging point with the long edge above, or strike short-edge to the head as the Messers spark together. It is roughly the Messer's answer to the Zwerchhau, a horizontal rousing displacement rather than a descending blow.",
+      "briefApplication": "Reach for the Wecker to break an opponent waiting in the Stier or menacing from the Eber, stepping offline to rouse his blade and win the line above.",
+      "fullApplication": "Reach for the Wecker to break an opponent waiting in the Stier or menacing from the Eber, stepping offline to rouse his blade and win the line above. It is your displacement of choice in the Zufechten when he holds a high threatening guard: the offline leap voids his point while your long edge wakes his Messer and your own point arrives at his face. Once you bind, work Indes rather than lingering — if he is weak in the bind, wind to his right side and take his neck; if he raises with the strong, strike again beneath his Messer to his head. You can also feint the Wecker to his left, then Durchwechseln and thrust to his right as he reaches for the parry, or wind into the hanging point and thrust with the long edge above. Expect a seasoned foe to break it: he may hang his point to your chest and push you off, Zucken his Messer free and cut over to your head, Durchgehen to your right to thrust, or answer with the Entrüsthau, winding high and striking your head. Guard against these by keeping your point online and your step complete, flowing straight from the rousing cut into your own winding or thrust before he can settle.",
+      "related": [
+        "leckuchner.messer.stier",
+        "leckuchner.messer.eber",
+        "leckuchner.messer.entrusthau",
+        "leckuchner.messer.vier_versetzen",
+        "leckuchner.messer.kurze_schneide"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.entrusthau",
+      "category": "strike",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Entrüsthau",
+      "englishTerm": "Disarming Cut",
+      "briefDescription": "The third master strike, a high displacing cut that raises the hilt before your head into a hanging point and drops the short edge onto the head, breaking the Luginsland guard and every descending blow.",
+      "fullDescription": "Begin with your left foot forward and the Messer held low, point toward the ground and the flat resting against your torso on the right side, much as in the Schrankhut. As he steps in and cuts down from the Luginsland, act in the Vor: leap well out to your right side and, as you leap, turn the Messer so the hilt rides high in front of your head with the thumb turned downward. This throws the point into a hanging line above you, the short (blunt) edge leading, while the raised hilt becomes a shield that covers your head. Drive the short edge down onto his upper opening, striking long from the arm and swinging the arm well around so the blow carries over his descending Messer. Deliver it with the strong of your Messer so you command the bind. If he comes sooner than you, displace with the same hanging turn out of his stroke, then strike long to his head. Should he prove too strong in the displacement, set the crosspiece or the guarding Nagel against his Messer, push it aside, and strike the Entrüsthau to another peak.",
+      "briefApplication": "Choose the Entrüsthau to break the high Luginsland guard and any descending Oberhau, meeting the blow above with a hanging displacement that answers in the same tempo.",
+      "fullApplication": "Choose the Entrüsthau to break the high Luginsland guard and any descending Oberhau, meeting the blow above with a hanging displacement that answers in the same tempo. Always aim for the four peaks: strike to the upper opening, and if he displaces, strike Indes to another peak, leaping far to the side with each cut so you stay covered behind your raised hilt. In the bind, feel his blade — if you catch his weak with your strong, mutate over his Messer to the neck; if you cannot, work Duplieren behind his blade with the short edge to the head, or twitch off and set the point on. It also breaks the Wecker: as he crosses in from his right, wind to your left, take the hanging point high, and strike the Entrüsthau to his head. The strike feeds naturally into overrunning, into winding the weak onto his Messer to strike long with the long edge, and into running in to take his Messer or wrestle. Feints serve well here, threatening one peak and striking another to dupe those who only displace and hew at the blade. Against it, beware the Sprechfenster and Langer Ort: a foe who holds a long point in your face breaks your feints, and a clean Schnitt over the arm punishes you if you strike carelessly around from the bind.",
+      "related": [
+        "leckuchner.messer.luginsland",
+        "leckuchner.messer.wecker",
+        "leckuchner.messer.hangen",
+        "leckuchner.messer.ort"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.zwinger",
+      "category": "strike",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Zwinger",
+      "englishTerm": "Constrainer",
+      "briefDescription": "The fourth master strike, a crooked short-edge cut thrown from a low point-down guard up over a descending attack to strike the face, breaking the Eber and serving as the messer's rough analogue of the Krumphau.",
+      "fullDescription": "As you close in the Zufechten, put your left foot forward and set your Messer with the point on the ground in front of you, your thumb turned underneath the grip. When he strikes an Oberhau down at your head, do not merely meet it: turn your Messer and drive the short (blunt) edge long from a fully stretched arm, up and over his descending Messer, so that it arrives against his face while your crossing blade constrains his stroke from above. The turn of the hand and the thumb beneath give the cut its crooked, over-binding character, which is why it works like the longsword's Krumphau — you catch his blade obliquely rather than trading force straight on. Keep the arm extended so the strike lands long and your point stays forward; the stretched arm and the forward point are what let this single short-edge action both foil his cut and threaten his head in one tempo. Delivered this way from the low point-down position, it breaks the Eber.",
+      "briefApplication": "Choose the Zwinger to break the Eber and to answer a committed descending cut, meeting it over the top with a constraining short-edge strike to the face.",
+      "fullApplication": "Choose the Zwinger to break the Eber and to answer a committed descending cut, meeting it over the top with a constraining short-edge strike to the face. Its verse warns of what a buffalo strikes or thrusts and of the one who trusts in changing — so it is your reply against a strong, brute-force fighter, the buffalo who overwhelms with power, whether he cuts from above or thrusts at you from the low Eber. Because you cross over his Messer rather than opposing it squarely, you both foil his stroke and land in a single tempo. The essential follow-up answers his most natural escape: if he defends cleverly and changes through below (Durchwechseln), do not chase his blade — remain with the Langer Ort thrust long into his face so he can do nothing and cannot come through underneath. The master notes that such breakings with the long point are better than the strokes themselves, since a committed cut cannot defend itself against a point already set in the face. From there work Indes: if he presses to clear the point, wind against his openings or fall into a Schnitt on his hands and arms. As a crooked over-binding action it shares the character of the Krumphau, and it is one of the four displacements — so heed the master's warning not to merely displace, but to threaten and work on from the bind.",
+      "related": [
+        "leckuchner.messer.langer_ort",
+        "leckuchner.messer.durchwechseln",
+        "leckuchner.messer.kurze_schneide",
+        "leckuchner.messer.oberhau"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.geferhau",
+      "category": "strike",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Geférhau",
+      "englishTerm": "Perilous Cut",
+      "briefDescription": "The fifth master strike, a deceptive long-edge cut thrown from a high, stretched arm whose point sinks toward the opening, turning a threatened blow into a sudden thrust that waits for the face and chest.",
+      "fullDescription": "Set yourself in the Luginsland: left foot forward, Messer held with a stretched arm high above your head, the long edge leading. As you close in the Zufechten, leap in with your right foot and strike from above with the long edge, but do not chop through. Keep your arm high and, as the blow travels, let your point sink downward so it hangs toward his face or chest, exactly as the verse says the Geférhau \"with its point waits for the face and the chest.\" That high hand paired with a dropped, hanging point makes this a threatened cut that is really a thrust, which is what marks it as the Messer's rough analogue of the Schielhau. The deception lives in the changing-through: strike honestly and firmly against his Messer, and the instant he rises to set your stroke aside, let your point drop forward, change through beneath his blade (Durchwechseln), and shoot the point to his right side at the face with a fully stretched arm. The Nagel guards your hand as you extend that long point, so the stretched thrust rather than a committed chop carries the threat.",
+      "briefApplication": "Choose the Geférhau when a foe waits in Luginsland or Bastei and you want a cut he must parry, so that his own defense opens the line for your changing-through thrust.",
+      "fullApplication": "Choose the Geférhau when a foe waits in Luginsland or Bastei and you want a cut he must parry, so that his own defense opens the line for your changing-through thrust. Lecküchner lists it among the four displacements as the stroke that breaks the Bastei, and it works by baiting a reaction: you strike with real intent at his Messer, and because the threat is genuine he lifts to set it aside (Versetzen). That upward parry is the trap. Working Indes, the very moment he commits to rising you let the point fall forward, change through beneath his blade, and thrust to his right side at the face with a stretched arm, the \"simultaneously\" timing where Vor and Nach meet in a single tempo. Because the master then adds \"do what you prefer,\" the thrust is only the first branch: if he finds your point and binds, you can wind against his blade or change through again to the other opening, or fall into the cuts and the close play. Its weakness is a foe who does not chase the feint; if he keeps his point online rather than reaching out to parry, there is nothing to change through, so make the opening cut convincing and read his hands before you let the point drop.",
+      "related": [
+        "leckuchner.messer.durchwechseln",
+        "leckuchner.messer.luginsland",
+        "leckuchner.messer.stich",
+        "leckuchner.messer.wincker"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.wincker",
+      "category": "strike",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Wincker",
+      "englishTerm": "Winker",
+      "briefDescription": "The sixth and newest master strike, a deceptive short-edge blow that begins as a long-edge cut, then winds high and beckons around to the head, undoing opponents who displace loosely and freely.",
+      "fullDescription": "Stand with your left foot forward and chamber the Messer on your right shoulder (or set it in the Schranckhut with the right foot leading to work the mirror side). As your opponent waits in the Luginsland, drive a long stroke at him from the shoulder with a stretched arm, leading with the long edge. But do not let the blades meet: in the stroke, wind against his Messer, raise the hilt so your hand hangs high above, and turn the short edge over to strike his head. Indes, let the Messer sink down toward your body, go through to your left side with the point lowered, and beckon the short edge to the head on his other side. Because you switch edge and line before the blades ever spark together, the blow flicks around his cover like a beckoning wave of the hand. You can run it doubled to both sides, striking always with the short edge and going through underneath to cross over. If you choose not to go through, simply remain, wind to your left so the short edge sits below, and thrust to his face.",
+      "briefApplication": "Choose the Wincker against a fighter who displaces freely and loosely, whose parry you can slip by turning to the short edge before the blades ever meet.",
+      "fullApplication": "Choose the Wincker against a fighter who displaces freely and loosely, whose parry you can slip by turning to the short edge before the blades ever meet. Lecküchner calls it new, peculiar and good precisely because it punishes the free fighters who throw out displacements without working Indes, and it goes rightfully against anyone who parries in a crooked or wrong manner. It answers the high Luginsland especially well: your opening long-edge stroke draws his Versetzen, then you wind and flick the short edge high over his Messer to the head before he can settle any bind. Work everything Indes; the instant your point sinks, go through (Durchgehen) to the far side and beckon the short edge to his other opening, so the element threatens on both sides. If he covers the first head strike, do not chase it. Go high with the arm and thrust to his throat, chest, or face, winding again to renew the point should the first thrust fail, or fall to taking his weapon (Messer Nehmen) once you dominate his hands. Against a crooked displacer, turn your Messer before one sparks on the other and let the short edge arrive around his cover, so his parry closes on nothing.",
+      "related": [
+        "leckuchner.messer.geferhau",
+        "leckuchner.messer.kurze_schneide",
+        "leckuchner.messer.luginsland",
+        "leckuchner.messer.versetzen"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.oberhau",
+      "category": "strike",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Oberhau",
+      "englishTerm": "Over Cut",
+      "briefDescription": "The fundamental descending cut, struck straight down from above out of the right shoulder or the Luginsland — the plainest attack in the Messer, the one nearly every guard and master strike must answer.",
+      "fullDescription": "Begin with your Messer chambered high, either resting on your right shoulder or held with a stretched arm high before your head in the Luginsland, the long (sharp) edge turned toward the man. Set your left foot forward. As you strike, leap in with your right foot and unwind the arm, driving the Messer down from above with the long edge leading and the arm stretched long, so the cut falls straight or diagonally onto the head, to his left or right side. Keep the point tracking your opponent throughout, so that where the edge does not land the point can follow: after the blow lands or is displaced, turn your Messer against his so the long edge stands above and the short edge below, and shoot the point long to his face or chest. This is the plainest stroke in the art, struck honestly and firmly, nothing else but a simple peasant stroke, yet its strength lies in reach and directness. Drive it long and committed in the Vor to force him to displace, then feel in the bind whether he is soft or hard before you continue your work.",
+      "briefApplication": "Throw the Oberhau in the Zufechten to seize the Vor, forcing your opponent to answer from above and open himself to your follow-up work in the bind.",
+      "fullApplication": "Throw the Oberhau in the Zufechten to seize the Vor, forcing your opponent to answer from above and open himself to your follow-up work in the bind. It is your default opening attack, the most direct way to menace the head and make him commit to a displacement. Because it is so plain, much of the art is organized to answer it: from the same high descent you can wrath it into the Zornhau and its Zornhau Ort, or sharpen it into one of the six master strikes, the hidden and refined strokes of the system. Expect it to be answered in kind. The Zornhau displaces it and shoots the point back; the Entrüsthau is made expressly to break the strokes struck from above downward; and the Zwinger turns the short edge long over your incoming cut to your face. Against a foe in the Luginsland or any raised guard, commit the cut long. Once the Messers spark together, do not merely stand parried but work Indes: feel soft or hard, then wind the point to his face, double behind his blade against the strong, or mutate to the lower opening against the weak. If he chases your Messer with his displacement, change through beneath and thrust to the far side; if he binds hard and strikes around, meet him with a cut from above into his arms. Never simply displace and wait, for whoever only displaces will be hurt by the whole art.",
+      "related": [
+        "leckuchner.messer.zornhau",
+        "leckuchner.messer.unterhau",
+        "leckuchner.messer.luginsland",
+        "leckuchner.messer.versetzen"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.unterhau",
+      "category": "strike",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Unterhau",
+      "englishTerm": "Under Cut",
+      "briefDescription": "The Unterhau is the fundamental rising cut of the Messer, struck from below upward out of the low guards Eber and Bastei to displace an incoming blow and to threaten or slice the opponent's hands and arms.",
+      "fullDescription": "Set yourself in a low guard such as the Eber, left foot forward and the hilt held low at your hip with the point angled up toward the opponent's face. Drive the cut from below upward along a straightened arm, letting the blade rise long into his hands, arm, or face while the point stays online the whole way. The long edge commonly leads the rising cut into the arm; striking from your left you can instead brace the thumb on the flat so the short edge goes forward, keeping the point driving true at the face. Cut with a gathering, twofold step — the lead foot steps in and the rear foot follows, the feet closing as you strike — so your weight climbs with the blade and the hilt reaches its highest just as the edge bites the arm. From that high hilt you can let the point fall into a thrust beneath his shoulder or chest, or, if the rising cut is displaced, remain on his Messer and wind to keep your point at his face. The stroke serves struck in full, as a half-stroke, or doubled from below.",
+      "briefApplication": "Choose the Unterhau to answer or displace an attack from beneath and to menace the opponent's exposed hands and forearms, discouraging him from committing freely.",
+      "fullApplication": "Choose the Unterhau to answer or displace an attack from beneath and to menace the opponent's exposed hands and forearms, discouraging him from committing freely. It rises naturally from the Eber and Bastei and is the reward of the Wecker, the displacement that obtains the Stier and the Eber and gains you the strokes from below. Use it in the Zufechten to threaten the hands as you close, or in the bind to slice upward into the arm: if he binds you from below, go Indes with the long edge onto his arm and press the cut downward or through his face. Should he displace the rising cut, do not linger — wind on his Messer to bring your point back to his face, Duplieren behind his blade to the far opening, or let the point sink into a thrust under his shoulder. Against a stubborn parry, Durchwechseln belongs especially to the strokes from below: feint the point to one side, drop it beneath his hilt, and thrust to the other. Beware that the low line invites the counter — an opponent who aims below can be overrun with Überlaufen, striking from above with a longer stroke and shooting the long point to your face so you cannot reach him from beneath, and the long point from the Luginsland or Bastei strips off strokes from below. Mask your intent and stay ready to change through the instant he sets his point against you.",
+      "related": [
+        "leckuchner.messer.oberhau",
+        "leckuchner.messer.eber",
+        "leckuchner.messer.bastei",
+        "leckuchner.messer.uberlaufen"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.stich",
+      "category": "thrust",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Stich",
+      "englishTerm": "Thrust",
+      "briefDescription": "The thrust with the point (Ort) — one of the three woundings with the cut and the slice — driving a leveled point into the face, throat, or chest out of winding, hanging, setting-off, and changing-through.",
+      "fullDescription": "To thrust, extend the point straight at the man along a stretched arm, passing toward the opening so your body drives the Ort home. Most winding thrusts turn the thumb onto the flat of the Messer to steer and stiffen the point: as you go high with the hilt and wind against his blade, the short edge rides below and the long edge above, and the point stays leveled at his face. From the low guards you shoot the long point directly to the face, thumb above; from the bind you go high with the arm, wind against his Messer, and let the point fall to the nearest opening — the face, throat, chest, or stomach. The thrust seldom travels alone: it issues from the hanging point, from setting-off (Absetzen) as you catch his blade with the short edge so your own point stands ready against him, and from changing-through (Durchwechseln) as you drop the point beneath his weapon. Keep the arm long and the point online so that even a miss leaves you standing in the Langer Ort, threatening him and free to wind again.",
+      "briefApplication": "Choose the thrust whenever his blade is occupied or offline — in the bind, or as he commits a cut — so your point reaches an opening before he can answer.",
+      "fullApplication": "Choose the thrust whenever his blade is occupied or offline — in the bind, or as he commits a cut — so your point reaches an opening before he can answer. Against the Stier or Eber, go with the stretched long point Indes to his face, throat, or chest, falling with your rear foot well outside so he cannot thrust back. When he strikes at your Messer rather than your body, change through beneath his blade and thrust to the other peak; if he chases that with his displacement, change through again to the far side — thrust painfully from both sides. Against a committed cut from above, set off with the short edge or wind up to the Stier so the hilt shields your head, then step in and thrust to the face or chest. The thrust flows naturally out of winding and the hanging point, for whenever you go high with the arm in the bind, the Ort is already leveled at an opening. Do not merely parry a thrust, or the whole art will hurt you — set it aside on your own point kept online, or turn it away with the empty hand and seize his blade. His answers are also yours: he may change through under your point, set your thrust aside, or wind against it, so stay ready to double behind his blade, twitch to a new opening, or fall into a slice if he crowds your hilt.",
+      "related": [
+        "leckuchner.messer.ort",
+        "leckuchner.messer.langer_ort",
+        "leckuchner.messer.winden",
+        "leckuchner.messer.zornhau_ort"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.zornhau_ort",
+      "category": "thrust",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Zornhau Ort",
+      "englishTerm": "Wrath-Cut Point",
+      "briefDescription": "The thrust that issues from the Zornhau: once your wrathful descending cut has displaced his stroke from above, you shoot the point forward into his face or chest with the long edge above.",
+      "fullDescription": "When he strikes at your head from above on the right, answer with your own Zornhau from your right shoulder, cutting angrily downward so your blade meets his above and displaces it. Do not stop there: in that same instant, Indes, let your point shoot forward toward his face or chest and turn your Messer against his so the long edge stands above and the short edge below. This turn both threatens the thrust and keeps his blade off your line, your straight arm carrying the point long into the opening. If he becomes aware of the point and defends, wind it around to his left side toward the face, always keeping the long edge above; if he defends that too, pull the Messer up along the upper blade and strike to the other side of his head, taking away on the Messer. The action is plain enough that the master names it nothing but a simple peasant stroke, yet with it the Zornhau Ort breaks every stroke that comes from above.",
+      "briefApplication": "Choose the Zornhau Ort to break any stroke that comes at you from above, meeting his cut with your own and instantly turning that displacement into a thrust.",
+      "fullApplication": "Choose the Zornhau Ort to break any stroke that comes at you from above, meeting his cut with your own and instantly turning that displacement into a thrust. It answers an Oberhau in the Nach, yet the Indes shooting of the point seizes the Vor before he can recover, so you are never merely displacing, for the master warns that whoever only displaces is hurt by the whole art. If he feels the thrust and forces it aside, wind the point to his other side toward the face, keeping the long edge above; if he defends again, take away on the Messer and strike to the far side of his head, or lower the point between you and strike the cross stroke with the long edge to his right ear. You can also drop the point with the hilt held high and strike the short edge up into his face. Beware his counters: he may strike your hand at the wrist as the point comes in, or meet your thrust by lowering his own long point to your chest with a straight arm and a step back to push you off, and a Wecker struck against your Messer can likewise turn your point away and answer with his own thrust to your face.",
+      "related": [
+        "leckuchner.messer.zornhau",
+        "leckuchner.messer.ort",
+        "leckuchner.messer.oberhau",
+        "leckuchner.messer.langer_ort"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.vor",
+      "category": "timing",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Vor",
+      "englishTerm": "Before",
+      "briefDescription": "The Vor, or \"Before,\" is the initiative: you come with your stroke sooner than your opponent so that he must displace, one of the three timing words the master calls the keep of the entire art.",
+      "fullDescription": "The Vor is not a single cut but the act of seizing the tempo, so you take it the moment you enter the Zufechten: rather than standing still and waiting for his strokes, you drive a committed stroke into the nearest opening before your opponent can move. Set out from a forward guard — the left foot leading as in the Luginsland, or the point dropped to the ground in the Schranckhut — and as you go before, leap in with the foot toward the side you strike so your whole body drives the blow. Let the long edge lead and the point run forward, aimed at a definite peak, so that he has no choice but to displace your Messer rather than answer with a stroke of his own. The instant your blow lands or is met, you do not pause: you keep working Indes with the Messer in front of you, flowing straight into further strokes, thrusts, winding, or cuts so he can never come to any work of his own. This unbroken pressure, taken sooner than he and never surrendered, is what the master means when he says you have acquired the Vor.",
+      "briefApplication": "Take the Vor whenever you close in the Zufechten and want to dictate the fight, striking first so your opponent is put on the defensive and forced to react to you.",
+      "fullApplication": "Take the Vor whenever you close in the Zufechten and want to dictate the fight, striking first so your opponent is put on the defensive and forced to react to you. It answers a hesitant or waiting foe: attack a tempo before he settles, force his displacement, then stay in the war (Krieg), feeling in the bind whether he is soft or hard and working Indes to the next opening with winding, Duplieren, or a cut so he never recovers. The Vor is countered by his Nach: if he comes sooner than you, or if you merely displace and stand there, the initiative passes to him, and the master warns that whoever only displaces will be beaten by the whole art. But losing it is not the end, because you can take the Vor back from him with your Nach: displace his blow and, in the very same instant, work Indes so skillfully that you seize the tempo again and do not let him come to any work. This is why Indes binds the two together, living inside both Vor and Nach, and why Nachreisen, Absetzen, and shooting the long point are all ways to steal the initiative back the moment he over-commits or leaves a tempo open.",
+      "related": [
+        "leckuchner.messer.nach",
+        "leckuchner.messer.indes",
+        "leckuchner.messer.zufechten"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.nach",
+      "category": "timing",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Nach",
+      "englishTerm": "After",
+      "briefDescription": "The counter-time in Lecküchner's timing: the responding tempo you work in when the opponent comes sooner and forces you to displace, whereupon you reply instantly and take the Vor back from him.",
+      "fullDescription": "Nach is a state of timing rather than a single cut, so you hold it in readiness: stand in a forward guard such as the Luginsland, left foot leading, your shield — that is, the displacement — held before your head, and never stand still merely watching his blade. When he comes sooner than you with a stroke and you must displace it, meet his Messer with the long edge, the point kept online and the Nagel guarding your hand. The instant the two blades meet, feel through the bind whether he is soft or hard, and without pause drive your own work Indes: shoot the point long to his face or chest, wind over his blade, slice the long edge down into his arm, or hang the point over his Messer and thrust to the far opening. The whole art of the Nach lies in that immediate reply, for as the master warns, who displaces only will be hurt by the entire art.",
+      "briefApplication": "Work in the Nach whenever the opponent has seized the Vor and strikes first: displace his attack and answer Indes so the initiative flows straight back to you.",
+      "fullApplication": "Work in the Nach whenever the opponent has seized the Vor and strikes first: displace his attack and answer Indes so the initiative flows straight back to you. It is your reply to anyone who commits — above all the fencer who throws a long stroke and then recovers. If his cut falls short or misses, do not wait; strike to him after into the nearest opening before he can raise his Messer again, which is the heart of Nachreisen. If instead you catch him in the bind, read soft or hard through the feeling of the Messer: when he is soft, shoot the point to his face, wind over to the opening, or use Mutieren to hang the point over his blade and thrust to the lower opening; when he is hard, use Duplieren to go high with the arm and strike behind his blade to the head. Should he change through beneath your displacement, follow with the Langer Ort so he can do nothing. Beware that the Nach can be turned against you: a fencer who only reaches to displace is easily drawn by a feint, so keep your shield, the displacement, before your head, never chase his blade blindly, and let every parry carry its reply, or he will take the Vor back from you in the very same moment.",
+      "related": [
+        "leckuchner.messer.vor",
+        "leckuchner.messer.indes",
+        "leckuchner.messer.versetzen",
+        "leckuchner.messer.nachreisen"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.indes",
+      "category": "timing",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Indes",
+      "englishTerm": "Instantly",
+      "briefDescription": "Indes is the decisive instant in the bind — the moment your Messer touches his, when you feel whether he is soft or hard and wind, strike, thrust, or slice to the next opening before he can act.",
+      "fullDescription": "Indes is not a stroke but a faculty of timing you exercise the instant your blade meets his in the bind. As the two Messers spark together, keep your point online toward his face and read the pressure running down the blade through your strong against his weak — this is the feeling of the Messer (Empfindung). If he is soft in the bind, drive Indes forward into the nearest opening: shoot the point, wind so the long edge stands above, or press a slice into his arm before he recovers. If he is hard and shoving against you, do not fight the pressure but yield Indes, winding to a new angle, changing through beneath his blade, or twitching off to another peak. The whole action is a single tempo — you feel and answer in the same moment his weapon commits, your feet leaping offline as your hand turns the Messer, point, long edge, or short edge working while the Nagel guards your hand. Never pause to look at his weapon and displace only; that hesitation is exactly the tempo Indes is made to steal.",
+      "briefApplication": "Work Indes the instant you feel the bind — it turns a mere displacement into an attack, letting you beat him to the next opening instead of standing still to parry.",
+      "fullApplication": "Work Indes the instant you feel the bind — it turns a mere displacement into an attack, letting you beat him to the next opening instead of standing still to parry. It is the master key to the whole system: whether you hold the Vor, coming with a stroke sooner so he must displace, or the Nach, forced to displace his committed blow, Indes is how you keep working, and with it your Nach steals the Vor back from him. The moment counts most in the war, the close exchange after a Zornhau or Wecker: feel whether he is soft or hard, then wind the point to his face, double behind his blade, mutate the upper bind into a thrust below, or twitch off and change through to the other peak. Against a fencer who only wants to displace and watch your Messer, Indes is his undoing, for his hesitation is the very tempo you take — this is also why the feints and the settings on succeed, since the blades spark and you commit before he can recover his guard. Its only real counter is better Indes: if he winds or slices in the same instant, you must feel it and act first again, because whoever owns the tempo owns the bind. Never let the bind go static — the fencer who pauses to look loses the entire art.",
+      "related": [
+        "leckuchner.messer.vor",
+        "leckuchner.messer.nach",
+        "leckuchner.messer.winden",
+        "leckuchner.messer.krieg"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.versetzen",
+      "category": "parry",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Versetzen",
+      "englishTerm": "Displacing",
+      "briefDescription": "Displacing is the parry of Lecküchner's Messer system, meeting an incoming cut or thrust so that the very act of defending turns your point online and threatens the opponent rather than merely blocking.",
+      "fullDescription": "There is no single fixed posture for Versetzen; you displace from whatever guard you stand in, but the master's model is a displacement that strikes rather than waits. Against a cut coming from above from his right shoulder, strike from your own right side, also from above, angrily meeting his blade to turn it aside, and in the same tempo let your point shoot forward to his face or chest, rolling the Messer so the long edge stands above and the short edge below. Carry the hilt raised and well in front of your head — the master calls the displacement your shield, so it must cover the line it defends. Step or leap offline as you catch the blow, moving out of the stroke to your right so his force passes you while your point stays aimed at an opening. The strongest form is simply to set the Langer Ort in his way: extend the point long against the man so his cut or thrust runs onto it and cannot land, defending and threatening in one stretched motion.",
+      "briefApplication": "Use Versetzen whenever you must answer an attack you did not lead, but never as a bare block: displace so that you seize the Vor back with your Nach in the same instant.",
+      "fullApplication": "Use Versetzen whenever you must answer an attack you did not lead, but never as a bare block: displace so that you seize the Vor back with your Nach in the same instant. The Recital warns that whoever only displaces will be hurt by the entire art — a fencer who stands and waits, watching another man's strokes, is beaten in spite of his skill. So the moment your Messer meets his, work Indes and feel whether he is soft or hard in the bind. If he is hard and strong in the displacement, wind your point high to his face, or double behind his blade to the head; if he is soft or weak, mutate over his Messer to the lower opening. If he chases your blade with his own displacement, change through beneath it to the far opening, or twitch your point off and thrust to the other peak. When he strikes around from the displacement, fall with the long edge over his arm and cut. Displacing also names the four displacements — the Wecker, Entrüsthau, Zwinger and Geferhau — the master strokes that break the four guards, so that you unseat a stance with a threatening cut rather than a passive parry. Beware the same fault in yourself: an opponent who displaces freely, or in a crooked and wrong manner, invites the Wincker and the feint, and the long point breaks any defense that leaves its own point idle.",
+      "related": [
+        "leckuchner.messer.absetzen",
+        "leckuchner.messer.indes",
+        "leckuchner.messer.langer_ort",
+        "leckuchner.messer.nach"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.nachreisen",
+      "category": "technique",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Nachreisen",
+      "englishTerm": "Chasing",
+      "briefDescription": "A technique of the Nach in which you follow, or chase, the opponent's committed or withdrawing stroke, striking into the opening he leaves before he can bring his Messer back into guard.",
+      "fullDescription": "Stand in the guard of Luginsland with your left foot forward, arm stretched high before your head and the long edge toward the man, watching him closely rather than committing first. When he throws a long stroke from his right shoulder that falls short, wait for the instant his Messer sinks toward the ground and can no longer reach you; then leap in with your right foot and cut from above with the long edge into the opening on his right side, arriving sooner than he can raise his Messer to guard again. Should he recover and bind, stay firm with the long edge pressed on his Messer and feel at once whether he is soft or hard; the moment one blade sparks on the other, step your left foot well behind his right and strike to his head, or lay the long edge on his arm and press the cut downward, or slice through his face. You can also chase from the Bastei, avoiding his stroke to the side and thrusting with a stretched arm over his Messer, winding the point firmly to his face if he displaces. Chase on either side, bringing cuts, windings, or thrusts out of the same motion.",
+      "briefApplication": "Use Nachreisen against a foe who fights with long, free strokes that overcommit or miss, striking the recovery gap before he can bring his Messer back to guard.",
+      "fullApplication": "Use Nachreisen against a foe who fights with long, free strokes that overcommit or miss, striking the recovery gap before he can bring his Messer back to guard. It is the art of the Nach: rather than displacing, you stand patient in Luginsland or Bastei, let his stroke spend itself, and answer in the empty tempo as his weapon falls away. It punishes the free fighters who swing wide and withdraw from the man, and it serves equally when your own chasing stroke has been displaced, so long as you remain on his blade, feel for soft or hard, and let your work follow Indes. If he goes high and binds you from below, go simultaneously with the long edge onto his arm and press the cut down, or cut through his face. If he strikes an Entrüsthau around your head from the bind, meet it Indes with your own Entrüsthau forward under his Messer to his neck, or raise the hilt and drop the point to his chest to push him back. From the same chase you can wind the point firmly to his face or shoot a stretched-arm thrust. The chase is itself broken by the Bogen: the man you are chasing can bow under your Messer, catch your stroke on the flat with the short edge against you, then overwind and thrust to your cheek in return.",
+      "related": [
+        "leckuchner.messer.nach",
+        "leckuchner.messer.zufechten",
+        "leckuchner.messer.absetzen"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.uberlaufen",
+      "category": "technique",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Überlaufen",
+      "englishTerm": "Overrunning",
+      "briefDescription": "Overrunning answers a low attack with a longer, higher one: you meet a blow from below not by parrying but by striking over it from above, so your reach lands your point while his low blow falls short.",
+      "fullDescription": "As you close in the Zufechten and your opponent strikes at you from below with a low cut or half-stroke, do not displace it. Mark the instant his blow rises toward you and answer it by striking from your right shoulder from above, driving the cut out long with the long edge leading and shooting the point straight to his face. Keep the arm stretched so the Messer travels over the top of his attack; because your line runs higher and longer, you set on to his face while his low blow falls short and cannot reach you from below. Should he lift from below and displace your descending point, do not pull back: remain with the long edge lying firmly on his Messer and, in that same instant, go high with the arm, wind, and let the point hang down into his face over his defense. Throughout, the higher hand and the longer arm dominate the low line, so it is reach and the commanding upper line, not a parry that meets his blow, that decide the exchange.",
+      "briefApplication": "Choose Überlaufen whenever an opponent commits to a low cut or thrust from beneath: rather than parry, out-reach him from above so your point lands first.",
+      "fullApplication": "Choose Überlaufen whenever an opponent commits to a low cut or thrust from beneath: rather than parry, out-reach him from above so your point lands first. The principle is \"who aims below, overrun him\" — a high, extended line covers more ground than a rising one, so a strong strike from above wins the line by superior reach rather than by trading a parry. Do not fall into displacing; the master warns that merely parrying leaves you hurt, so treat the overrun as a counter in the Nach, striking as his low blow travels. Your safeguard against his answer is built in: if he rises to displace your descending point, keep the long edge firm on his Messer and work Indes — go high with the arm, wind, and hang the point into his face, flowing straight into the Winden and the hangings (Hängen). In the same chapter the master also overruns with the Entrüsthau against a foe in the Luginsland, going over his Messer with the hilt, winding and raising the pommel to strike with the hilt or thrust with the armed hand, then seizing the neck to throw him over your leg. Guard against the master's own breaking against these overrunning plays: he turns his edge to cut and works the point, and if you crowd in to grapple he pushes you off and twitches (Zucken) his Messer free.",
+      "related": [
+        "leckuchner.messer.unterhau",
+        "leckuchner.messer.oberhau",
+        "leckuchner.messer.langer_ort"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.absetzen",
+      "category": "technique",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Absetzen",
+      "englishTerm": "Setting Off",
+      "briefDescription": "Setting off is a single-time displacing counter in which you wind the opponent's cut or thrust aside with your short edge while your point stays online, so one action both deflects him and threatens his face.",
+      "fullDescription": "Absetzen is the fifth of the further elements, worked from the four guards but taught most clearly from the Eber. Come out of the Zufechten and set your left foot forward, holding the Messer low on your right side in the Eber with the point angled up toward the man, and deliberately expose your left opening as bait. When he thrusts at that opening, wind your Messer over to your left side against his thrust so that the short edge comes onto his blade, and set his point aside — but do not chase it away. The same wind that turns him must leave your own point standing against his face or body, so a single motion defends and threatens at once; then drive your thrust home to his face or chest. Against a descending stroke from the same Eber, instead go high and wind to your left so the hilt rises before your head into the Stier, catching his cut above, then step in with the forward foot and thrust. Keep the arm firm and the point true throughout: the deflection and the threat are one tempo, not two. You can perform it on both sides, from any of the four guards, against strokes and thrusts alike.",
+      "briefApplication": "Choose Absetzen when an opponent commits to a cut or thrust and you want to defend and counter in a single tempo rather than merely parrying.",
+      "fullApplication": "Choose Absetzen when an opponent commits to a cut or thrust and you want to defend and counter in a single tempo rather than merely parrying. It embodies the master's warning that whoever only displaces will be hurt by the whole art: rather than knocking the blade away and then attacking, you turn his line aside while your point never leaves his face, so the Nach becomes the Vor in one motion. Bait him from a guard such as the Eber, exposing an opening; the instant he fills it, wind and set off, working Indes so his own committed weapon carries him onto your waiting point. Because that point stays online, he cannot safely Durchwechseln beneath your blade — the very error that punishes a loose set-off whose point drifts wide. Its chief danger is the deceptive stroke: a Geférhau feints at your Messer, and as you rise to set aside he lets his point drop, changes through, and thrusts to your other opening. Guard against this by keeping the displacement small and the point honest rather than over-committing to the parry. If your setting-off thrust is itself displaced, flow on into the hangings and winding against the openings, or double behind his blade to the nearest opening.",
+      "related": [
+        "leckuchner.messer.versetzen",
+        "leckuchner.messer.langer_ort",
+        "leckuchner.messer.stich",
+        "leckuchner.messer.durchwechseln"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.durchwechseln",
+      "category": "technique",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Durchwechseln",
+      "englishTerm": "Changing Through",
+      "briefDescription": "A deceptive point action in which you drop your Messer's point beneath the opponent's blade the moment he reaches for your steel to bind or parry, then thrust through to the far opening before he finds steel.",
+      "fullDescription": "Durchwechseln lives on the point rather than the edge, so keep your arm long and your Messer's tip alive. A clear form: come in the Zufechten and strike a long stroke from above to his head, or set your left foot forward and hold the Langer Ort against his face. Then watch where his blade travels. If he strikes at your Messer to bind or beat it aside, and not at your body, Indes let your point sink down and through beneath his blade before the steel meets, then drive it up to the opposite opening, his face or chest on the far side, with a stretched arm. Should he chase your point with his displacement, simply change through again to the other side; work it on both sides. From long rising strokes the same holds: with your feet drawing together and a straight arm, feint as if to shoot the point at his right side, then Indes let the tip sway through low at his hilt and thrust to his left. As you change you may also strike the short edge over his Messer, let the point fall, and cut through his head with the long edge. Move with care throughout, so he cannot set on or draw after while your point passes under.",
+      "briefApplication": "Choose Durchwechseln against opponents who chase your steel, striking to your Messer to bind or parry rather than to your body, and punish the opening they abandon.",
+      "fullApplication": "Choose Durchwechseln against opponents who chase your steel, striking to your Messer to bind or parry rather than to your body, and punish the opening they abandon. It is the natural partner of the Geferhau: as you strike that perilous cut and he goes high to set it aside, let the point fall forward, change through, and thrust to his face with a stretched arm. But read the bind first, because Lecküchner's decision rule governs everything. If he binds or displaces yet lets his point drift out to the side, off your face and your openings, change through merrily; if instead he keeps his point online and threatening your face, do not change through. Remain on the Messer and wind or work to the nearest opening, lest he set on or draw after you as your point crosses. That same principle names the counter to Durchwechseln itself: an opponent who holds the Langer Ort straight at your face breaks the change-through, for he simply stays with the long point and thrusts as you pass beneath, stepping his rear foot wide to reach further. Where your change lands and he is soft, flow onward, doubling behind his blade with Duplieren, winding for a cleaner line, or twitching off with Zucken should he bind hard again. Perform it on both sides, always with great care so no one sets on against you mid-change.",
+      "related": [
+        "leckuchner.messer.geferhau",
+        "leckuchner.messer.zwinger",
+        "leckuchner.messer.stich",
+        "leckuchner.messer.versetzen"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.ablaufen",
+      "category": "technique",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Ablaufen",
+      "englishTerm": "Running Off",
+      "briefDescription": "A deceptive bind element in which you let your Messer weave and run off out of the bind from both sides, drawing the opponent to chase your blade so you can strike Indes into the opening he uncovers.",
+      "fullDescription": "Begin from the bind, having closed in the Zufechten and bound close on his Messer. Rather than press, let the blade flow: weave it from side to side out of the bind, exactly as a woman unspools yarn from both sides, keeping your thumb pressed down on the flat of the Messer throughout so it turns freely. As you weave, sink your weight as if you meant to sit down, letting the Messer run off and down from both sides so the bind's pressure spills away and your point rides loose and free. Keep the motion continuous while you feel for the instant he commits. The moment you see him follow your weaving Messer with his displacement, act Indes and throw a Feler: show to one side and land on whichever side you can surest reach him. Or, as the Messer runs off, strike quickly to the lower opening and instantly again to the upper; or drive the point to his chest, then strike skillfully back to the first opening.",
+      "briefApplication": "Use Ablaufen from the bind to bait a defensive opponent into chasing your blade, then strike Indes into the opening his displacement uncovers.",
+      "fullApplication": "Use Ablaufen from the bind to bait a defensive opponent into chasing your blade, then strike Indes into the opening his displacement uncovers. It answers the man who only displaces — the master warns that whoever relies on parrying alone will be hurt by the whole art — because your weaving, sinking Messer invites him to follow, and the instant he commits to chasing it he stands out of position. Choose it when the bind is even and you would rather draw a mistake than force one. As his displacement follows your blade, work Indes: throw a Feler and land on whichever side you can surest reach him, or run the point off and strike the lower opening then the upper, or thrust to the chest and return to the first opening. From here you flow into Winden against the openings, into Durchwechseln if he over-covers one line, or into Duplieren should he catch your strike hard. In the armed manner, the free hand laid on the blade, the same running off on both sides sets up thrusts, cuts and strokes: overrun his Messer, seize him by the neck, and finish with the armed hand. The bait only works if he takes it — against a patient man who keeps his point online in your face and refuses to chase, you draw out no opening, so break off and bind anew rather than weave onto a waiting point.",
+      "related": [
+        "leckuchner.messer.versetzen",
+        "leckuchner.messer.nachreisen",
+        "leckuchner.messer.winden"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.ubernehmen",
+      "category": "technique",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Übernehmen",
+      "englishTerm": "Taking Over",
+      "briefDescription": "Übernehmen is a bind-dominating action from the hanging point: you drive your crosspiece over the opponent's Messer, press it aside, go high with your arm, and strike behind his blade to his head.",
+      "fullDescription": "Übernehmen begins in the Zufechten, when you and your opponent close and both settle into the hanging point, Messers crossed and bound with the points hanging toward one another. From here you take his blade over from above. Standing on his right in the bind, lay your crosspiece over onto his Messer toward his left and push his blade across to his right with your own; as you do, step well around to his left with your right foot and, driving your arm high, strike behind his blade to his head with the blunt short edge. On the other side, when you stand on his left, bring the crosspiece or hilt onto his blade toward his right, push his Messer to his left, step your left foot forward to his right side, and strike his head with the long edge. Throughout, keep your hand covered behind the Nagel, move with the cross to master his weapon, and use whichever edge the side demands. The high arm and the crosspiece are what let you dominate above and clear the path for the strike behind his Messer.",
+      "briefApplication": "Choose Übernehmen when both of you have settled into the hanging point in the bind and you want to take control of his Messer from above and strike behind it.",
+      "fullApplication": "Choose Übernehmen when both of you have settled into the hanging point in the bind and you want to take control of his Messer from above and strike behind it. It thrives in that mutual hanging bind where neither point yet threatens cleanly: rather than wrestle for the center, you overpower his blade with your crosspiece, push it offline, and step around to strike the head he leaves uncovered. The action feeds naturally into taking his weapon — as you take over, drop your empty left hand onto his hilt and pull downward to wrench the Messer from him, or reach through his Messer to trap it with the empty hand — so Übernehmen doubles as an entry to Messer Nehmen, and it can flow onward into winding and a thrust to the face if he stiffens. Work it Indes, feeling whether he is soft or hard as you push. Respect its breaks: the master's own remedy is Durchgehen, going through — as you push and wind up your strike he twitches his Messer close to his body with a lowered point (Zucken) and beats you to the ear, or, the surer break, he goes high under your Messer and sets his point on your neck. Because twitching and going through undo it, commit only once you feel his Messer yield to your cross, and keep your point ready to wind should he slip free.",
+      "related": [
+        "leckuchner.messer.winden",
+        "leckuchner.messer.duplieren",
+        "leckuchner.messer.sterke"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.bogen",
+      "category": "technique",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Bogen",
+      "englishTerm": "The Bow",
+      "briefDescription": "The Bow is a bow-shaped hanging displacement — hilt raised, point lowered, arm and Messer curved into a shield before your head — used to catch a stroke swung around at your head, worked twofold from both sides.",
+      "fullDescription": "To form the Bow, hold your Messer low on your left side, above the knee, with the point toward the man. When he strikes or binds around from his right to your left, bow the Messer in toward your body: raise the hilt, let the point sink a little, turn the thumb underneath the grip, and set the blunt short edge toward yourself, so that your arm and blade curve into a rounded shield — your displacement — carried well before your head. As the two Messers spark together, catch his stroke on the flat of your hanging blade. Then work Indes: step clear of the line with a twofold step, carrying both feet around toward his open side, and strike through his head. The Bow is worked twofold from both sides — mirror it on the right, thumb above and point toward the ground with the blunt short edge to him, bowing up under his Messer, then stepping around to strike the far side of his head. Because you hang rather than meet force squarely, the shield lets his stroke slide off while your point and hilt stay poised to wind.",
+      "briefApplication": "Choose the Bow against a rough stroke that comes around at your head or neck: bend under his Messer, catch it on the shield, and step around behind him to strike.",
+      "fullApplication": "Choose the Bow against a rough stroke that comes around at your head or neck: bend under his Messer, catch it on the shield, and step around behind him to strike. It answers wide peasant blows and the Wecker that swing around the head, where meeting edge-to-edge would lose the exchange — instead you hang, let the force spend itself on the flat, and use the twofold step to leave the line entirely. Once you have displaced, work Indes: wind over his Messer to his right side and step behind him to strike his head, or thrust to his cheek or throat as the winding opens. The Bow is also a doorway to the close game, for many Messer-takings flow from it — leap under his blade with the bow, seize over his Messer with your free hand, and press into his wrist so he must drop the weapon. You may likewise use it to catch a Nachreisen when your own stroke has missed, hanging under his blade with the shield before your head. Beware the counters: an alert opponent steps offline and strikes your head as your direct stroke comes out of the bow, or winds and thrusts to your face; he may even turn his short edge onto your Messer, then roll to the long edge and cut through your head. Guard the wind by going over his weak with the hilt and striking or thrusting first.",
+      "related": [
+        "leckuchner.messer.hangen",
+        "leckuchner.messer.versetzen",
+        "leckuchner.messer.winden"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.langer_ort",
+      "category": "technique",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Langer Ort",
+      "englishTerm": "Long Point",
+      "briefDescription": "The Messer's dominant point-forward position: your arm stretched full and the point driven long into the opponent's face or chest so he can do nothing but react — the best defense in the whole art and your surest close.",
+      "fullDescription": "Extend the point long by stretching your arm fully so the Messer reaches out toward the opponent's face or chest, keeping your body behind the steel. Commonly you stand with the left foot forward and the thumb lying above on the flat of the Messer, the point held online and threatening; either edge may lead depending on how you arrived — the long edge above when you wind up from below, the short (blunt) edge above when you set on out of the Zwinger. You reach the Langer Ort from the guards, shooting it long from the Bastei or down from the Luginsland, out of the Zwinger, and out of every winding and hanging point, finishing with the arm long rather than short. Because the stretched point outreaches his stroke, he cannot come in without first dealing with the steel already in his face, and your reach lets you thrust, strike, or cut from it the instant he commits. Stay balanced and light in the legs, stepping to keep the point on his centre, so that whatever he attempts you meet it Indes with the point.",
+      "briefApplication": "Use the Langer Ort to seize and hold the initiative, forcing the opponent to react to your extended point while you stay safely covered behind it.",
+      "fullApplication": "Use the Langer Ort to seize and hold the initiative, forcing the opponent to react to your extended point while you stay safely covered behind it. The master names it the best defense in the Messer: it breaks strike and thrust alike, for a bare stroke cannot protect itself once your point already fills his face, and if he tries to win the Vor you take it from him and work Indes according to the Nach. Choose it whenever you want the surest close, and above all against a waiting guard — go with the long stretched point to the face of a man in the Eber or Stier, or shoot it as a setting-off (Absetzen) to his nearest opening when he strikes from above. If he answers by binding, striking your Messer aside, or changing through below, let the point drop and change through (Durchwechseln) to thrust the other side, or wind into the hanging point and thrust from there; if he stays high and hard in the bind, follow with Duplieren or go through. Against his feints and the Entrüsthau, break them with the long point held as a Sprechfenster and seek the openings in a masterly way. Its chief risk is over-committing on the single forward line, so cover his change-through and winding, keep stepping offline, and if you fail with the point wind into the Stier and be first again to his face.",
+      "related": [
+        "leckuchner.messer.ort",
+        "leckuchner.messer.stich",
+        "leckuchner.messer.zwinger",
+        "leckuchner.messer.absetzen"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.zucken",
+      "category": "handwork",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Zucken",
+      "englishTerm": "Twitching",
+      "briefDescription": "The seventh element: in a firm bind, sharply twitch (jerk) your Messer back off his blade and immediately strike or thrust to a different opening, deceiving an opponent who binds hard and displaces strongly.",
+      "fullDescription": "Twitching lives in the bind. Come into the Zufechten and strike firmly — for instance bind with the Entrüsthau onto his Messer at his left side — then, as the blades spark together, twitch a little back with your arm, jerking your Messer sharply off his to break the pressure. Keep the movement small and quick, sometimes drawing the weapon toward you only to the middle of the blade rather than fully away. As you twitch you must wind your Messer against his so the long edge rides above, keeping your point online; then thrust out of that same motion to another opening — his face, throat, or chest. Set your feet with a twofold step offline, often to his right, so your body clears his blade even as your point returns. From the Bastei you may twitch your whole body out of an incoming stroke; from the Luginsland, twitch the Messer toward you, raise the hilt to your head with the short edge turned inward and the point sinking to your left, then set the point into his throat and push him back.",
+      "briefApplication": "Choose Zucken against a master who binds hard and displaces strongly, using the jerk off his blade to dupe his pressure and hit an opening he has left.",
+      "fullApplication": "Choose Zucken against a master who binds hard and displaces strongly, using the jerk off his blade to dupe his pressure and hit an opening he has left. The element is numerous and various, but its logic is constant: when he commits his strength to the bind or reaches to seize your blade, deny him the contact he wants. If you strike from above to his head and he moves to displace, twitch your Messer to yourself before he binds and thrust to the far peak; if he has already bound and waits to see whether you will pull back, remain on the blade, twitch only to the middle, then thrust again quickly to his face or chest. Work Indes throughout — the twitch and the thrust are one tempo. If the thrust does not land cleanly, flow on with Duplieren or let the Messer run through and strike the far opening with the long or short edge, and you may also twitch through to change through or cut. It pairs naturally with Durchwechseln, since both feed on a man who over-commits to the bind. Its counter is to refuse the disengage: as he goes high with the hilt to twitch, drive your point firmly into his face and raise your arm, following his Messer with the hanging point so he can neither come off your blade nor twitch through.",
+      "related": [
+        "leckuchner.messer.winden",
+        "leckuchner.messer.indes",
+        "leckuchner.messer.durchwechseln"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.abschneiden",
+      "category": "handwork",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Abschneiden",
+      "englishTerm": "Slicing Off",
+      "briefDescription": "Abschneiden, the ninth main element, is a family of four slicing cuts - two from above and two from below - pressed edge-first into the opponent's arms and wrists in the bind to wound him and drive him off.",
+      "fullDescription": "There are four cuts, two from above and two from below, and each is a shearing press of the edge onto the arm rather than a struck hew. For the upper cuts against a foe who whips around out of the bind - say with the Entrüsthau to your other side - leap out of his stroke with your left foot to his right side and fall with the long (sharp) edge over his arm, pressing the slice away from you; when instead you both lie at the ear and he strikes toward your other ear, cut with the short edge into the inside of his arm. For the two lower cuts against a foe who runs in with a high, stretched arm, turn your Messer so the thumb is below and drive the edge under his hilt onto his arm, pressing firmly upward as you slice - the long edge when he comes in on your left, the short edge when he comes in on your right. Keep your hand and point controlling his weapon throughout, so the slice both bites and shoves; performed well, you can bring these cuts into every bind.",
+      "briefApplication": "Choose Abschneiden when the opponent strikes around out of the bind or runs in with a stretched arm - lay your edge on his arm and slice to wound him and drive him off.",
+      "fullApplication": "Choose Abschneiden when the opponent strikes around out of the bind or runs in with a stretched arm - lay your edge on his arm and slice to wound him and drive him off. The upper cuts answer fighters who leave the bind and swing to your other opening, as with the Entrüsthau, while the lower cuts answer those who run in high to grapple or close; because the slice both wounds and displaces, it punishes these committed actions safely. Work Indes: feel the instant he strikes around or runs in and fall on the arm before his blow lands. The cuts flow into one another - having sliced upward from below with the short edge, turn the Messer around on his arm and drop the upper cut over the same arm, changing low to high. From a lower cut you can step to his left side, let the hilt pass through below, and roll the long edge over into a cut from above, or carry the slice on into his neck or chest; it sits close to Hände Drücken and the Winden and can be reached out of any bind. Its own answer is Messer nehmen: cut into his outstretched right arm and he may pin your blade with his hilt, reach his free hand over behind your hilt, and pull to strip your Messer - so drive the slice home and keep your hilt strong rather than leaving the cutting arm hanging for him to seize.",
+      "related": [
+        "leckuchner.messer.hande_drucken",
+        "leckuchner.messer.hangen",
+        "leckuchner.messer.sweche"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.hangen",
+      "category": "handwork",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Hängen",
+      "englishTerm": "Hanging",
+      "briefDescription": "The hangings: from the bind you let your point hang over the opponent's blade from above (out of the Stier) or under it from below (out of the Eber) so it still threatens his face while the strong shelters your hand.",
+      "fullDescription": "Work the hangings from the bind. For the upper hanging, stand in the Stier: raise your hilt high beside your head with the arm lifted, so the point hangs downward over the opponent's blade and stays aimed at his face or chest. The strong of the Messer, guarded by the Nagel, rests on his blade and shelters your hand while the weak keeps the threat. Standing on your right side, if he strikes from above at your left, wind against his stroke with the short edge on his Messer, staying in the Stier; should he set the thrust aside, remain on the blade, wind back to your right with the flat on his Messer, and thrust from above at his face. Working from your left side, lead instead with the long edge. For the lower hanging, take the Eber on either side: hold the hilt low and let the point hang up from beneath his Messer, still menacing his face. There are four hangings in all, the two upper from the Stier and the two lower from the Eber, the two from above and the two from below, and from these four you bring eight windings, delivering a stroke, a thrust, or a cut from each.",
+      "briefApplication": "Reach for the hangings in the bind when you want to stay sheltered yet keep your point online: the strong guards your hand while the hanging point threatens his face.",
+      "fullApplication": "Reach for the hangings in the bind when you want to stay sheltered yet keep your point online: the strong guards your hand while the hanging point threatens his face. Use the upper hanging to catch a stroke from above; as his cut lands, go high with the arm and hang the point over his Messer to his face or chest, even hanging it into his chest to push him from you, or driving on with the Entrüsthau to his head. Feel whether he is soft or hard, for the master binds the hangings to the openings and to the play of soft and hard: if he is soft, thrust in with the hanging point; if he resists, wind. From the four hangings flow the eight windings, each yielding a stroke, a thrust, or a cut, and the hangings feed the Mutieren, where you hang your point over his Messer, take the arm high, and thrust to the other opening, as well as the Übernehmen and Messer nehmen worked from the hanging point. Watch the counters: if he twitches out of the hanging point with Zucken to strike your ear, go with your point firmly to his face and do not let him leave the Messer; if he hangs his point at your face, let your Messer drop below his arm and rise with the Langer Ort, or wind against him in the hanging point and thrust.",
+      "related": [
+        "leckuchner.messer.winden",
+        "leckuchner.messer.ort",
+        "leckuchner.messer.bogen",
+        "leckuchner.messer.entrusthau"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.winden",
+      "category": "handwork",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Winden",
+      "englishTerm": "Winding",
+      "briefDescription": "Winden is the seventeenth main element: in the bind you turn your Messer around the opponent's blade to bring your point and either edge online against his four openings, the heart of the close play.",
+      "fullDescription": "Winden begins the instant your blade meets his in the bind, usually after a displacing cut such as the Zornhau or Wecker. Rather than pull back, stay firmly on his Messer and rotate around his blade: go high with the arm and raise the hilt, turning the Messer so the long edge stands above and the short edge below, with your thumb pressed on the flat for leverage. This carries your point online to his face or chest along his blade. If he becomes aware of the point and defends, wind again to the other side, so the long edge is now below and the short edge above, and thrust or strike from there. Each turn keeps your point threatening while changing which edge and what leverage you bring to bear. Through the contact you feel Indes whether he is soft or hard on the Messer, and you wind on both sides, working the point around against his four openings. This working of the point in the bind is what the master calls the Krieg, the war.",
+      "briefApplication": "Wind whenever your cut is caught in the bind, using contact and Indes to turn your point against his openings rather than merely displacing.",
+      "fullApplication": "Wind whenever your cut is caught in the bind, using contact and Indes to turn your point against his openings rather than merely displacing. The master warns that whoever only displaces will be hurt by the whole art, so treat every bind as the doorway to the Krieg and feel through the blades whether he is soft or hard. If he is soft, wind high and shoot the point to his face; if he presses hard and displaces that thrust, go high to the other side and thrust under his arm to the chest, then follow to the next opening he leaves. This same feeling of soft and hard chooses between Duplieren, doubling behind his blade against the strong, and Mutieren, sinking the point over his blade to the lower opening against the weak; the Hängen and the Langer Ort flow out of the same winding. Winding answers a stubborn, strong bind and any free or crooked displacement, since from the contact you can always send the point above or below. It is countered in turn by winding against your winding, by changing through (Durchwechseln) beneath your point, or by twitching (Zucken) off the blade to strike a fresh opening before your turn completes.",
+      "related": [
+        "leckuchner.messer.hangen",
+        "leckuchner.messer.indes",
+        "leckuchner.messer.duplieren",
+        "leckuchner.messer.mutieren",
+        "leckuchner.messer.krieg"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.duplieren",
+      "category": "handwork",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Duplieren",
+      "englishTerm": "Doubling",
+      "briefDescription": "Duplieren is an Indes counter worked against the strong of the opponent's Messer: right after the bind you go high with the arm, stay on his blade, and immediately strike again behind it with the short edge.",
+      "fullDescription": "You reach Duplieren straight out of a strong bind, not as a fresh strike. Come in with a forceful cut and feel him displace hard, strong against strong. In the plainest form you have struck from your left and bound on his Messer with the long edge; now, without leaving the blade, shoot your arm quickly high, keep your Messer lying on his so the bind is never broken, and snap the short (blunt) edge behind his blade to strike his head, doubling the very stroke he thought he had parried. If instead you both came down from the right shoulder and he meets your strong, wind the hilt in under your right arm, go high with the arm the same way, and strike with the long edge behind his blade to the head. Either way the defining action is the same: stay glued to his strong, ride the arm high above him, and deliver the second cut behind his blade before he can free it. Drive it from wrist and arm rather than winding away, and let his own hard parry give you the frame you strike around.",
+      "briefApplication": "Choose Duplieren the instant you feel the opponent parry your strong strike hard and strong, striking again behind his blade before he can recover or riposte.",
+      "fullApplication": "Choose Duplieren the instant you feel the opponent parry your strong strike hard and strong, striking again behind his blade before he can recover or riposte. It is the answer to the strong of his Messer, and it pairs with Mutieren as a matched set the master frames as \"double from above and mutate from below\": in the bind you feel Indes whether he is soft or hard, and against a hard, strong displacement you double, while against a weak, yielding one you mutate down to the lower opening instead. Because you never leave his blade, doubling defeats the fencer who trusts a firm parry — the harder he presses, the more surely his strong holds nothing behind it. It flows naturally out of strong descending strokes like the Zornhau, and it also lives among the Entrüsthau plays: when your Entrüsthau's strong catches the weak of his Messer and you cannot mutate, work the doubling behind his blade to his head. If your doubled cut does not land, cut through his face, chase firmly to the next opening, or fall back to going-through or changing-through. It fails against an opponent who is soft in the bind or who slips the bind entirely, since then the strong is not there to strike around, and Mutieren or a changing-through serves better.",
+      "related": [
+        "leckuchner.messer.mutieren",
+        "leckuchner.messer.sterke",
+        "leckuchner.messer.winden",
+        "leckuchner.messer.indes"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.mutieren",
+      "category": "handwork",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Mutieren",
+      "englishTerm": "Mutating",
+      "briefDescription": "Mutieren transforms an upper bind into a thrust to the opponent's lower opening by winding over his blade and sinking the point in, worked against the weak of his Messer as the paired opposite of Duplieren.",
+      "fullDescription": "Begin from a bind reached with a strong Oberhau: strike from your right shoulder powerfully from above so your long edge falls onto his Messer. As he displaces and you feel him go soft, or \"weak in the Messer,\" wind onto his blade toward your left side and drive your arms well high, lifting the hilt and Nagel. From this high winding, hang your point over his Messer from above, carry the arm high over his blade, and let the point sink down the far side into his lower opening, thrusting to an opening below his belt while your edge still controls his steel. You can mirror the whole action from a left-side bind: having bound with the long edge, go high with the arm, remain with that same edge on his Messer, wind over to his left side, and thrust to the opening beyond. The element lives entirely in the winding and hanging of the point across his blade, so keep the arm raised and the point heavy while your strength stays gathered in the hilt and the point does the finishing work below.",
+      "briefApplication": "Choose Mutieren when you feel the opponent go soft in the bind, converting your upper bind into a thrust that drops beneath his blade into his lower opening.",
+      "fullApplication": "Choose Mutieren when you feel the opponent go soft in the bind, converting your upper bind into a thrust that drops beneath his blade into his lower opening. It is the lower-line partner to Duplieren: read the bind Indes, and where Duplieren answers a hard, strong bind by doubling behind his blade above, Mutieren answers a weak, yielding one by winding over and thrusting below, so between the two you can break all four openings from any stroke. Reach it most naturally from a strong Oberhau that he displaces softly, but you can also fold it in after other work: when he catches your cut in the hanging point, wind Indes with the mutating onto his Messer and thrust to his chest or face, or use that same winding to seize his hilt and go into Messernehmen. Be aware it is well answered. An alert opponent can Zucken, twitching his point free the instant you start over his blade, then wind into the hanging point and thrust to your face. He may also meet your mutation by winding his own hanging point against you — right edge high if you come to his right side, to the nearest opening if you come to his left — and once he has deflected you there he can hurry Indes with the long point into your face. So commit only when you truly feel him weak, keep your point controlling his steel as you wind over, and be ready to change your line the moment his point comes alive.",
+      "related": [
+        "leckuchner.messer.duplieren",
+        "leckuchner.messer.sweche",
+        "leckuchner.messer.winden",
+        "leckuchner.messer.stich"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.durchlaufen",
+      "category": "wrestling",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Durchlaufen",
+      "englishTerm": "Running Through",
+      "briefDescription": "Durchlaufen, the eighth element, is Lecküchner's wrestling at the Messer: against an opponent who rushes in high and strong, you close hard, drop the Messer, and run through his arms to grapple, throw, or break.",
+      "fullDescription": "Durchlaufen begins the moment the bind collapses into a clinch. As the opponent drives in with an upper stroke, high with the arms and eager to shove you over, strike the Entrüsthau together with him and close hard, so your hands touch surely on each other. Now, Indes, drop your Messer and grapple. With your left hand grab behind his right elbow on the outside and push him to his left side; simultaneously reach with your right hand or arm behind his right knee-bending, lift the leg, and throw him in front of you. If instead you both bind arm to arm, seize his right hand with your left, raise it high, run your head through beneath his arm, lay it across your shoulder, and rise with your neck and shoulders to break it. When you enter with the Entrüsthau, hold the thumb below on the flat so the blunt short edge strikes his head, then pull firmly with the hilt to draw the hands together before letting the Messer fall to wrestle at close quarters.",
+      "briefApplication": "Choose Durchlaufen against an opponent who rushes in eagerly, high with the arms, and tries to overpower you with force once the bind becomes a clinch.",
+      "fullApplication": "Choose Durchlaufen against an opponent who rushes in eagerly, high with the arms, and tries to overpower you with force once the bind becomes a clinch. It answers exactly the fighter who abandons clean fencing to shove and press, turning his committed rush into a throw. Enter it Indes off the Entrüsthau, feeling whether he is soft or hard in the bind; the master lists running through among the works of Indes, alongside Duplieren, Mutieren, and taking over. Once you own the clinch you flow freely between plays: throw him over the hip or leg, run the head through to break the arm over your shoulder, or, when disarming serves better, pass into Messer Nehmen by seizing his wrist and winding the Messer from his hand, or into Abschneiden by slicing the sharp edge into his wrist. The characteristic finish is to take the balance at his elbow and throw. Beware that it can be countered: if he grabs your right hand and moves to take the balance at your elbow, drop the elbow hard down to your right side against your body and flick the short edge onto his head, or counter-grab his right hand and turn his own throw back upon him. Do not linger in the grips, commit fully, or you hand him the very holds you sought.",
+      "related": [
+        "leckuchner.messer.durchgehen",
+        "leckuchner.messer.messer_nehmen",
+        "leckuchner.messer.knauf"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.hande_drucken",
+      "category": "wrestling",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Hände Drücken",
+      "englishTerm": "Pressing the Hands",
+      "briefDescription": "The tenth element: a close wrestling play where you fold your hilt over his Messer, pull back so your weak drops onto his hand, then fall with both hands onto both Messers and press down to trap his weapon hand.",
+      "fullDescription": "You reach this element from a bind where you have already gone over the top: coming from your right with an Entrüsthau to his left side, bring your hilt above his Messer on his right side so his blade sits trapped beneath yours. From here, pull your hilt backwards along his Messer so the weak of your blade, the point-half, draws down onto his right hand. Indes, fall with your left hand onto both Messers and let your armed right hand drop from above onto both blades as well, so his hand is caught beneath the two weapons between your hands. Press firmly straight down with both hands, pinning his hand under the blades so he cannot lift or free it; because you fall from above, sink your weight through the press rather than muscling with the arms alone, and stay close through his body. Then turn your left side in toward his right and finish freely, for you have grabbed and locked the hand and can throw, disarm, or strike as you please.",
+      "briefApplication": "Choose Hände Drücken when you have folded your hilt over his Messer and want to shut the fight down by trapping his weapon hand rather than trading further cuts.",
+      "fullApplication": "Choose Hände Drücken when you have folded your hilt over his Messer and want to shut the fight down by trapping his weapon hand rather than trading further cuts. It belongs to the family of over-the-hilt plays reached from the Entrüsthau, and it sits close to Abschneiden: where the four cuts slice into the arms, here you pin his hand under both blades and press with both of yours. Use it Indes, the instant your over-grip and backward pull have drawn your weak down onto his hand; the two-handed fall must land while he is still committed to the bind, before he can lift or wind free. Once the press is set and you turn your left side to his right, you own his Messer and can flow into whatever the moment offers: press on into Messer Nehmen to strip his weapon with the empty hand, step behind his foot to throw, or simply cut. Because the technique commits your left hand to the blades, it is a close-play answer inside the bind, not the Zufechten, so do not reach for it at distance. He can unmake it before you set it: feeling the over-grip come, he can wind his own long edge over your hand and cut down first to beat you to it, Zucken his Messer free before your left hand falls, or set your follow-up aside with the empty hand and race you to his own disarm. The whole thing lives in the tempo of the fall; press late and he slips the hand, press in the moment and he is locked.",
+      "related": [
+        "leckuchner.messer.abschneiden",
+        "leckuchner.messer.messer_nehmen",
+        "leckuchner.messer.durchlaufen"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.durchgehen",
+      "category": "wrestling",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Durchgehen",
+      "englishTerm": "Going Through",
+      "briefDescription": "The thirteenth element: passing your Messer and point through the gap between you and the opponent, off a feinted Oberhau, to find strokes, thrusts, and cuts at close or far distance, or to enter wrestling and disarms.",
+      "fullDescription": "Come together in the Zufechten and strike an upper stroke (Oberhau) from your right shoulder straight toward his left side. Indes, before the stroke lands, wind the short (blunt) edge against his Messer and let your point sink. Now carry that lowered point through the space between him and you, passing your Messer across to his right side, and either strike to his head or thrust from above at his face, turning the Messer so the short edge is below. The whole action lives on the feint: the threatened stroke brings his Messer up to meet you, and you wind your blunt edge against it and slip the point under and through rather than completing the blow. It works whether you stand close or far, and you may finish with the point, with strokes, or with cuts. To recover and renew the attack, drive the Messer high above your head with the thumb below on the flat, the point trailing back and the hilt toward the man, then fall from above to his head once more.",
+      "briefApplication": "Reach for it in the Zufechten to deceive a defender with a feinted Oberhau, slipping your point through to strike or thrust at the opening he leaves uncovered.",
+      "fullApplication": "Reach for it in the Zufechten to deceive a defender with a feinted Oberhau, slipping your point through to strike or thrust at the opening he leaves uncovered. Choose Durchgehen against a fencer who brings his Messer up to meet your upper stroke: winding the short edge and dropping the point takes you beneath his blade instead of meeting it, so you arrive on his right side. Once your point is through, work Indes, feeling whether he is soft or hard, and chain freely: twitch through with Zucken to thrust at the other cheek, stab through both cheeks in succession, work Duplieren behind his blade, cut into his arm, or drop to the lower openings. It is also named as your break against his taking-over in the hanging point, going through to remain uninjured, and going through low is the doorway to wrestling and Messer-taking, passing under to seize his hilt or hand. Heed the master's warning that going through in the Messer is done differently than in the sword. Take care, too, that a wary opponent can break it by winding against your Messer and driving his own point to your face so that yours is set off, so keep the point threatening and be ready to wind against him.",
+      "related": [
+        "leckuchner.messer.durchlaufen",
+        "leckuchner.messer.messer_nehmen",
+        "leckuchner.messer.stich"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.messer_nehmen",
+      "category": "wrestling",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Messer Nehmen",
+      "englishTerm": "Taking the Messer",
+      "briefDescription": "The fifteenth main element and a disarm (\"take the defence\"): in the bind you seize his hilt or hand, then twist or press his Messer downward to strip it clean out of his grip and strike through his head.",
+      "fullDescription": "You reach the Messer-taking out of the bind, best after driving in firmly with the Entrüsthau to his left side. As the Messers spark together, do not linger on the blade: carry your hilt high and over his Messer to his right side, laying the crosspiece to the inside of his right elbow, and push firmly from you so his weapon is pinned across. In the same instant fall with your left hand into his bind behind his right hand and pull firmly toward you; his Messer strips free, and you strike through his head. To take with the armed hand instead, catch his stroke between both hands set on your own blade, drive your hilt high on the inside, then fold it from above down over his hand to the wrist joint on the outside and pull firmly to your right side, stepping your rear foot back for weight. You may also take purely with the empty hand: as he strikes, bow under his Messer, leap to his right side, and press your left arm between his hand and hilt to lever the weapon loose. Whichever mode you use, remember the master's rule: always fall to the weak of his Messer with your right hand, winding over to his left and pressing rapidly downward.",
+      "briefApplication": "Reach for Messer nehmen in the bind, Indes, when you feel his hilt or hand exposed after a displacement — to end it by stripping his weapon rather than trading cuts.",
+      "fullApplication": "Reach for Messer nehmen in the bind, Indes, when you feel his hilt or hand exposed after a displacement — to end it by stripping his weapon rather than trading cuts. It belongs to close play: choose it when you have bound firmly (as after an Entrüsthau) and feel him committed, so that levering his cross or wrist is surer than doubling or mutating against his blade. It also flows out of the hanging point and out of taking over, where you fall with the empty hand onto his hilt and simply pull downward. Expect him to defend, for the master gives breaks against every taking. If, as you press down to strip him, he falls with both hands onto his own hilt and pulls firmly down, he reclaims the Messer and strikes through your head — the counter the master names \"freely unbridled,\" and the same break answers the other takings. He may instead wind his Messer around so the short edge is below, go high with the hilt, and set the point to your chest, or seize your gripping arm and lever it back against you. Guard against these by keeping your point online as you disarm and stepping well offline, so that if the strip fails you can still wind to the langer Ort or strike anew rather than be left grasping empty-handed.",
+      "related": [
+        "leckuchner.messer.durchgehen",
+        "leckuchner.messer.durchlaufen",
+        "leckuchner.messer.hande_drucken"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.zufechten",
+      "category": "concept",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Zufechten",
+      "englishTerm": "Onset",
+      "briefDescription": "Zufechten is the onset, the approach phase before the bind, in which you close the distance and drive a decisive stroke to the openings to seize the initiative rather than standing still and waiting for the attack.",
+      "fullDescription": "As you come toward the man, do not stand frozen with the Messer and wait for his strokes; carry it in a ready guard, most often Luginsland with the arm stretched high and the long edge forward, or chambered on your right shoulder or in the Schrankhut at the right leg with the left foot forward. Keep your attention on his four peaks, the openings, not on his blade, and hold your displacement before your head as a shield. When the measure closes, leap with the right foot well out to the side and unwind the body into a master strike, whether a Zornhau from the shoulder, a Wecker with the right edge, or an Entrüsthau to the upper peak, leading with the long or short edge and driving the point online. Indes, as the edges spark together, wind the point into his face and thrust to the nearest opening. The whole phase is forward, brave motion: stay light on the feet, strike sooner than he does, and let the guard flow straight into the stroke without pausing to see what he will do.",
+      "briefApplication": "Use the Zufechten to win the Vor: close bravely and strike first to the openings so your opponent is forced to displace and answer you rather than the reverse.",
+      "fullApplication": "Use the Zufechten to win the Vor: close bravely and strike first to the openings so your opponent is forced to displace and answer you rather than the reverse. This is the phase that decides who leads, and the master warns that whoever only wants to displace will be beaten by the whole art, so never stand and merely wait for his strokes. Read his guard as you approach and choose the strike that breaks it: meet Luginsland with the Entrüsthau, break the Stier or Eber with the Wecker, and answer a low attack by overrunning from above. Aim at the four peaks, not at his Messer, and keep your head covered as you go. If he commits a stroke or only raises his Messer to strike around, chase it: fall in with the point and thrust to the nearest opening before he recovers, as in Nachreisen. Should he reach the Vor sooner than you, leap offline and set his cut aside with Absetzen or displace, then take the Vor back with your Nach by working Indes in the bind, winding the point to his face, changing through below with Durchwechseln if he presses to the blade, or twitching off to strike another peak. The onset is countered only by a man who wins the Vor first or steps clean out of your line, so hold the measure, keep moving, and let your guard become the stroke.",
+      "related": ["leckuchner.messer.vor", "leckuchner.messer.krieg", "leckuchner.messer.versetzen"]
+    },
+    {
+      "id": "leckuchner.messer.krieg",
+      "category": "concept",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Krieg",
+      "englishTerm": "The War",
+      "briefDescription": "Krieg is the close-quarters winding phase that opens the instant your blades bind, the flurry of windings, thrusts, doublings and slices decided by feeling and Indes, as opposed to the Zufechten of the onset.",
+      "fullDescription": "The Krieg is not a single strike but the whole close play you conduct once one Messer touches the other. Lecküchner defines it as the four windings and the work you draw from them with the point into the four openings. Enter it straight from a bind, for instance after a Zornhau that he displaces: go high with the arm so the hilt rides up before your head and the point hangs down, then wind the point over his Messer from above to the opening. Keep the long edge on his blade as you turn the hand; if you wind to his left, thrust to the face on that side, and if he sets the thrust aside, go high again to the other peak, under his right arm to his chest. Throughout, read whether he is soft or hard on the Messer and let that feeling, not your eyes, choose the winding. Always keep the arm high and the point sunk toward the openings, so that each turn threatens with point, long edge, or short edge at once, and follow him from one peak to the next whenever he displaces.",
+      "briefApplication": "Choose the Krieg the moment a bind forms, working Indes off the feeling of his blade to strike, thrust, or slice into whichever of the four openings he leaves.",
+      "fullApplication": "Choose the Krieg the moment a bind forms, working Indes off the feeling of his blade to strike, thrust, or slice into whichever of the four openings he leaves. It is the answer to the master's warning that whoever only displaces will be hurt by the whole art: rather than parry and reset, you stay on his Messer and pursue the next peak. If he is hard in the bind and shoves against your strong, double with Duplieren, going high with the arm to strike behind his blade with the short edge; if he is soft or gives at the weak, mutate below with Mutieren, sinking the upper bind into a thrust to his lower opening. When he presses in or runs high with the arm, fall on it with the Schnitt; when he chases your winding, twitch off with Zucken and thrust to a fresh opening. Your own windings are answered in kind, for he may drop under your point with Durchwechseln or wind against you to steal the line, so feel constantly and keep the hanging point covering your head as you work. Driven rightly, the Krieg lets him hardly come away unstruck; you shame him above and below, sinking the point onto opening after opening until he can neither defend nor strike back.",
+      "related": [
+        "leckuchner.messer.zufechten",
+        "leckuchner.messer.winden",
+        "leckuchner.messer.indes"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.vier_blossen",
+      "category": "concept",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Vier Blößen",
+      "englishTerm": "Four Openings",
+      "briefDescription": "The four openings are the opponent's target quarters — upper and lower, split at the belt, right and left of the centreline — that you strike toward instead of aiming at his Messer itself.",
+      "fullDescription": "Picture the opponent divided into four quarters: the belt separates the upper openings from the lower, and his centreline separates his right from his left, giving an upper-right, upper-left, lower-right, and lower-left target — Lecküchner also names these the four peaks. From the Zufechten you keep all four in mind and, crucially, do not strike at his Messer; you drive your stroke, thrust, or point at whichever quarter stands bare. The openings are equally where the war — the windings — does its work: in the bind you wind the point over or under his Messer and shoot it from one quarter to the next, over his blade to the face on his left side, then high to the other peak under his right arm to the chest. Break the upper openings by doubling against the strong of his Messer and the lower ones by mutating against the weak. Whether you lead with the point, the long edge, or the short edge, your work is always aimed against an opening and never against his steel.",
+      "briefApplication": "Use the four openings as your targeting map: from the onset strike boldly at whichever quarter stands uncovered rather than hammering at his Messer.",
+      "fullApplication": "Use the four openings as your targeting map: from the onset strike boldly at whichever quarter stands uncovered rather than hammering at his Messer. This principle underlies every attack — when you throw a Zornhau, a Wecker, or an Entrüsthau, you aim it at a specific opening, and it turns his defence into a trap, because he can guard only one quarter at a time, so covering one peak bares another. When he displaces, do not stall; strike Indes to the next opening, from one peak to the other, exactly as each Entrüsthau is driven to a fresh peak — from an upper peak to the lower, and across to the far side. In the bind, feel whether he is soft or hard: read the opening he leaves and work the war, winding the point to the face above or the chest below. If he binds strong and high, double against the strong into the upper opening; if he binds weak, mutate against the weak into the lower. If he holds his point online against your opening, do not change through — remain and work; but if he lets his point drift wide, change through to the far quarter. The same concept drives setting-on and drawing-after, where you shoot the long point to the nearest open quarter as he recovers or withdraws. Keep your own four quarters covered — hold your shield, the displacement, in front of your head — even as you hunt his.",
+      "related": [
+        "leckuchner.messer.winden",
+        "leckuchner.messer.indes",
+        "leckuchner.messer.uberlaufen"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.vier_leger",
+      "category": "concept",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Vier Leger",
+      "englishTerm": "Four Guards",
+      "briefDescription": "The Vier Leger are the Messer's four principal wards — Bastei, Luginsland, Stier, and Eber — the standing positions from which you defend, threaten, and launch your strokes, each broken by its own displacement.",
+      "fullDescription": "The four guards are your resting and threatening positions throughout the system, and each has a fixed form. In Bastei, the bulwark, put your left foot forward and hold the Messer with a stretched arm before you, the point resting on the ground and the short edge uppermost. In Luginsland, the watchtower, again lead with the left foot and stretch the arm high in front of your head with the long, sharp edge turned against the man so the point looms overhead. Stier, the bull, is a high side ward: left foot forward, hilt held before your head on the right so the short edge faces you and the point menaces his face from above. Eber, the boar, is its low counterpart: left foot forward, Messer at the right leg with the hilt at your hip, the short blunt edge above and the point angled up toward his face like a tusk; you may also form it on the left, hilt lowered and long edge turned up. From every ward the long point is your surest defense, so keep your arm and balance settled and let the point threaten, rather than displacing for its own sake.",
+      "briefApplication": "Choose your ward to shape the exchange: each guard defends a line and threatens an opening, and each is broken by one particular master strike.",
+      "fullApplication": "Choose your ward to shape the exchange: each guard defends a line and threatens an opening, and each is broken by one particular master strike. The high Luginsland is undone by the Entrüsthau, which strips away everything struck from above; the low Bastei is opened by the Geferhau; the high Stier is broken by the Wecker, stepping offline to wind the point into his face; and the low Eber is forced by the Zwinger. So read the ward he stands in and reply with its counter — though the master teaches that the long point is often surer still, for the guards cannot protect themselves against it: go high and thrust it at his face to break a Stier, or sink the Messer low and drive the ready point up to break an Eber, catching him before his own stroke lands. Do not simply displace and wait: whoever only parries is hurt by the whole art. Stand in the guard, seize the Vor, and if he binds or presses, work Indes out of it — wind into the Stier from the hangings, change through beneath his blade when he reaches for the bind, or set on and draw after as he recovers. From Bastei especially you can catch a man who runs in on your forward point, then change through to his next opening.",
+      "related": [
+        "leckuchner.messer.luginsland",
+        "leckuchner.messer.stier",
+        "leckuchner.messer.eber",
+        "leckuchner.messer.bastei",
+        "leckuchner.messer.schrankhut"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.verborgene_haue",
+      "category": "concept",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Verborgene Häue",
+      "englishTerm": "Hidden Strokes",
+      "briefDescription": "Lecküchner's name for his six master strikes — the Zornhau, Wecker, Entrüsthau, Zwinger, Geferhau, and Wincker — the core offensive system whose true working stays hidden from the untrained eye.",
+      "fullDescription": "These six strokes are the striking heart of Lecküchner's Messer, standing roughly where Liechtenauer's master hews stand in the longsword, and most share a common delivery. Set your left foot forward and chamber the Messer on your right shoulder or in the Schranckhut, its point toward the ground and the blunt short edge turned to the man. As the opponent commits, leap offline with your striking foot and drive the cut firmly onto his Messer, most often with the long edge, though several turn the short edge to the head. Do not let the stroke end at the cut: the instant the blades spark together, wind the point up into his face so the long edge rides above. Each of the six is aimed to break a particular guard or attack, and their name is earned here — the visible cut is only the doorway, while the true work stays concealed in the windings, thrusts, and edge-changes that spring from it once you feel the bind. Carry the blade with your stepping body behind the Nagel, not the arm alone.",
+      "briefApplication": "Use the Verborgene Häue as your primary offense in the Zufechten, choosing the one stroke that breaks the opponent's guard and lets you seize the Vor.",
+      "fullApplication": "Use the Verborgene Häue as your primary offense in the Zufechten, choosing the one stroke that breaks the opponent's guard and lets you seize the Vor. Match the strike to what stands before you: the Zornhau answers any stroke from above, the Wecker breaks the Stier and the Eber, the Entrüsthau undoes the Luginsland and descending cuts, the Zwinger constrains a downward blow, the Geferhau feints high and shows the changing-through, and the Wincker punishes free-fighters who parry openly. Their power is never in the cut alone: because whoever only displaces will be hurt by the whole art, do not halt once you bind. Feel Indes whether he is soft or hard, then flow to the nearest opening — wind the point to his face, use Durchwechseln if he chases your blade, Duplieren against the strong of his Messer or Mutieren against the weak, or Zucken to twitch off and strike anew. It is from these six that Lecküchner's many elements grow, so treat each less as a single blow than as the entrance to the war, and let foot, edge, and point keep working until the opening is yours.",
+      "related": [
+        "leckuchner.messer.zornhau",
+        "leckuchner.messer.wecker",
+        "leckuchner.messer.entrusthau",
+        "leckuchner.messer.zwinger",
+        "leckuchner.messer.geferhau",
+        "leckuchner.messer.wincker"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.vier_versetzen",
+      "category": "concept",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Vier Versetzen",
+      "englishTerm": "Four Displacements",
+      "briefDescription": "The four master strikes that break the four guards, one matched to each Leger, where displacing means striking aggressively through a guard to cover and threaten in a single tempo rather than passively parrying.",
+      "fullDescription": "There is no single posture here; the Vier Versetzen are four named master strikes, each assigned to break one of the four guards: the Wecker breaks the Stier, the Entrüsthau breaks the Luginsland, the Zwinger breaks the Eber, and the Geférhau breaks the Bastei. Whichever you throw, the mechanics are shared. From the Zufechten, set your left foot forward with the Messer chambered on the right shoulder, in the Schranckhut at the leg, or high in the Luginsland, and as the opening shows, leap offline with your right foot toward his side. Drive the matched strike long from a stretched arm so that its blade stays as a shield before your head, cutting through his guard rather than beside it, and immediately wind the point into his face. The leading edge follows the stroke: the long edge for the Wecker and Geférhau, the short blunt edge laid long over his Messer for the Zwinger, and the strong of the blade behind the Entrüsthau. Footwork carries the blow, so step well to the side with every strike, letting the cut lengthen and land from a safe line.",
+      "briefApplication": "Use the Vier Versetzen in the Zufechten to break a man who waits in a static guard, seizing the Vor by striking through his Leger instead of standing back to parry.",
+      "fullApplication": "Use the Vier Versetzen in the Zufechten to break a man who waits in a static guard, seizing the Vor by striking through his Leger instead of standing back to parry. This is the master's answer to his own warning that a man who only displaces will be shamed and beaten: you do not wait to ward his blow, you displace his guard with a stroke that covers and threatens at once. Read which Leger he holds and throw its counter, the Wecker against the Stier, the Entrüsthau against the Luginsland and any descending stroke, the Zwinger against the Eber, the Geférhau against the Bastei. As your blade arrives, work Indes and wind the point to his face into a Langer Ort so he can do nothing; if he answers, flow on. Should he displace hard, double behind his blade with Duplieren or mutate to the lower opening with Mutieren; should he chase your Messer with his parry, change through below with Durchwechseln and thrust to the far side; should he bind firmly, twitch off with Zucken to another peak. Beware the same weapon turned on you, for a man who shoots the Langer Ort first can break your incoming strike, and one who displaces freely or crookedly invites the Wincker, so keep your shield, the displacement itself, well before your head and never merely parry in return.",
+      "related": [
+        "leckuchner.messer.wecker",
+        "leckuchner.messer.entrusthau",
+        "leckuchner.messer.vier_leger",
+        "leckuchner.messer.verborgene_haue"
+      ]
+    },
+    {
+      "id": "leckuchner.messer.zettel",
+      "category": "concept",
+      "master": ["Johannes Lecküchner"],
+      "weapon": "messer",
+      "originalTerm": "Zettel",
+      "englishTerm": "The Recital",
+      "briefDescription": "The rhymed mnemonic verse that epitomizes Lecküchner's whole Messer art in terse couplets, closely modeled on Liechtenauer's, which the master then quotes and glosses element by element.",
+      "fullDescription": "Treat the Zettel as the skeleton on which every technique hangs: a sequence of terse rhymed couplets meant to be memorized whole, then fleshed out by the master's prose gloss. Its foreword sets the mindset, warning that whoever only displaces will be hurt by the entire art, and fixes the timing words Vor, Nach and Indes as the keep of the whole art, alongside reading the weak and strong of the blade. It then tells you how to carry yourself: fence one-handed, the free hand laid on your back, bringing it to your chest only when you mean to wrestle or take the Messer. From there the verse names the six hidden strokes in order — Zornhau, Wecker, Entrüsthau, Zwinger, Geferhau and Wincker — then the seventeen further elements, opening with the four guards (Bastei, Luginsland, Stier, Eber) and running on through displacing, drawing after, overrunning, changing through, twitching, the four cuts, the bow, the hangings and winding against the openings, twenty-three main elements in all.",
+      "briefApplication": "Recite the Zettel to hold the entire art in memory and to locate any play, since its verses tell you which stroke or element answers a given guard or bind.",
+      "fullApplication": "Recite the Zettel to hold the entire art in memory and to locate any play, since its verses tell you which stroke or element answers a given guard or bind. Because each couplet is a heading, the Recital doubles as an index: when an opponent settles into Luginsland you recall the line pairing the Entrüsthau against it; when he takes the Stier or Eber you reach for the Wecker; when he binds hard you find Zucken (twitching) and Winden (winding) further down the list. The gloss layers breakings and counter-breakings onto each verse, so a single line grows into a chain — strike, displace, then work Indes into Durchwechseln (changing through), Duplieren, or the four cuts as his reaction dictates. Learn it in order, for the master builds later elements on earlier ones: the six strokes come first because many good elements come from them, and the seventeen that follow — displacing, drawing after, overrunning, running through, the bow, taking the Messer, the hangings and winding — assume you already own the strokes. The Recital is never itself thrown or parried; it is the map, and every other Messer element is one point charted on it.",
+      "related": [
+        "leckuchner.messer.verborgene_haue",
+        "leckuchner.messer.vier_leger",
+        "leckuchner.messer.vier_versetzen"
+      ]
+    }
+  ]
+}
