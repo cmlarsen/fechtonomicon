@@ -1,5 +1,6 @@
 import type { Handler } from '@netlify/functions';
 import { Octokit } from '@octokit/rest';
+import { resolveFieldKey, updateCardField } from '../lib/fieldMapping';
 
 interface EditRequest {
   userId?: string;
@@ -36,29 +37,6 @@ const DATA_SETS = [
 const getDataFilePath = (cardId: string): string => {
   const dataSet = DATA_SETS.find((ds) => cardId.startsWith(ds.idPrefix));
   return dataSet?.dataFile ?? 'assets/data/german-longsword-data.json'; // fallback
-};
-
-const updateCardField = (
-  data: { records: Array<Record<string, unknown>> },
-  cardId: string,
-  fieldName: string,
-  newValue: string
-): { records: Array<Record<string, unknown>> } => {
-  const cardIndex = data.records.findIndex((record) => record.id === cardId);
-  if (cardIndex === -1) {
-    throw new Error(`Card with ID ${cardId} not found`);
-  }
-
-  const updatedRecords = [...data.records];
-  updatedRecords[cardIndex] = {
-    ...updatedRecords[cardIndex],
-    [fieldName]: newValue,
-  };
-
-  return {
-    ...data,
-    records: updatedRecords,
-  };
 };
 
 const getAllowedOrigin = (origin: string | null | undefined): string | null => {
@@ -243,6 +221,16 @@ export const handler: Handler = async (event) => {
       statusCode: 400,
       headers: corsHeaders,
       body: JSON.stringify({ error: 'Missing required fields' }),
+    };
+  }
+
+  // Reject unknown field names before creating any branch so we neither leave
+  // orphan branches behind nor write an arbitrary key into the data records.
+  if (!resolveFieldKey(fieldName)) {
+    return {
+      statusCode: 400,
+      headers: corsHeaders,
+      body: JSON.stringify({ error: `Unsupported field name: ${fieldName}` }),
     };
   }
 

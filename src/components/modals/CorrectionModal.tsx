@@ -127,7 +127,7 @@ Additional notes:
       // Use Alert on native platforms
       Alert.alert(
         'Edit Submitted!',
-        `Your edit suggestion has been submitted. Edit # #${prNumber} has been created.`,
+        `Your edit suggestion has been submitted. Edit #${prNumber} has been created.`,
         [
           {
             text: 'Close',
