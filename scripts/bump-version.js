@@ -1,11 +1,11 @@
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
-const readline = require('readline');
+const fs = require('node:fs');
+const path = require('node:path');
+const { execSync } = require('node:child_process');
+const readline = require('node:readline');
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
 const packageJsonPath = path.join(__dirname, '..', 'package.json');
@@ -29,7 +29,7 @@ console.log('4) Skip');
 rl.question('Select an option (1-4): ', (answer) => {
   let newVersion;
 
-  switch(answer.trim()) {
+  switch (answer.trim()) {
     case '1':
       newVersion = `${major + 1}.0.0`;
       break;
@@ -53,7 +53,7 @@ rl.question('Select an option (1-4): ', (answer) => {
 
   // Update package.json
   packageJson.version = newVersion;
-  fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2) + '\n');
+  fs.writeFileSync(packageJsonPath, `${JSON.stringify(packageJson, null, 2)}\n`);
 
   // Update app.json
   appJson.expo.version = newVersion;
@@ -67,9 +67,11 @@ rl.question('Select an option (1-4): ', (answer) => {
   const newVersionCode = currentVersionCode + 1;
   appJson.expo.android.versionCode = newVersionCode;
 
-  fs.writeFileSync(appJsonPath, JSON.stringify(appJson, null, 2) + '\n');
+  fs.writeFileSync(appJsonPath, `${JSON.stringify(appJson, null, 2)}\n`);
 
-  console.log(`Updated version to ${newVersion}, iOS build to ${newBuildNumber}, Android versionCode to ${newVersionCode}`);
+  console.log(
+    `Updated version to ${newVersion}, iOS build to ${newBuildNumber}, Android versionCode to ${newVersionCode}`
+  );
 
   // Commit changes
   try {

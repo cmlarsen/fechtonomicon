@@ -59,6 +59,13 @@ export const DATA_REGISTRY: readonly DataSetConfig[] = [
     dataFile: 'capoferro-rapier-data.json',
     idPrefix: 'capoferro.rapier.',
   },
+  {
+    id: 'messer',
+    name: 'Messer',
+    description: "Johannes Lecküchner's Langes Messer system for the single-edged short sword",
+    dataFile: 'messer-data.json',
+    idPrefix: 'leckuchner.messer.',
+  },
 ] as const;
 
 /**

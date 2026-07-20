@@ -7,9 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
-    "assetBundlePatterns": [
-      "assets/**/*"
-    ],
+    "assetBundlePatterns": ["assets/**/*"],
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "cover",
@@ -64,8 +62,6 @@
       }
     },
     "owner": "yetanothersidequest",
-    "plugins": [
-      "expo-localization"
-    ]
+    "plugins": ["expo-localization"]
   }
 }
