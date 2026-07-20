@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { DISCIPLINES } from '../../constants/disciplines';
 import { useTermStore } from '../../store/termStore';
@@ -21,24 +21,19 @@ export const DisciplineSelector: React.FC = () => {
     [toggleDiscipline]
   );
 
-  const getSelectedNames = useCallback(() => {
-    if (selectedDisciplines.length === 0) return 'No disciplines selected';
-    if (selectedDisciplines.length === DISCIPLINES.length) return 'All disciplines';
-
-    const names = selectedDisciplines
-      .map((id) => DISCIPLINES.find((d) => d.id === id)?.name)
-      .filter(Boolean);
-
-    if (names.length === 1) return names[0];
-    if (names.length === 2) return names.join(' & ');
-    return `${names.length} disciplines`;
+  // Discipline selection is single-select (see the store's toggleDiscipline and
+  // the Settings screens), so show the one selected discipline's name.
+  const selectedName = useMemo(() => {
+    const [selectedId] = selectedDisciplines;
+    if (!selectedId) return 'No discipline selected';
+    return DISCIPLINES.find((d) => d.id === selectedId)?.name ?? 'No discipline selected';
   }, [selectedDisciplines]);
 
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.header} onPress={handleToggle} activeOpacity={0.7}>
         <View style={styles.headerContent}>
-          <Text style={styles.selectedText}>{getSelectedNames()}</Text>
+          <Text style={styles.selectedText}>{selectedName}</Text>
         </View>
         <Text style={[styles.arrow, isExpanded && styles.arrowExpanded]}>▼</Text>
       </TouchableOpacity>
@@ -60,8 +55,8 @@ export const DisciplineSelector: React.FC = () => {
                   >
                     {discipline.name}
                   </Text>
-                  <View style={[styles.checkbox, isSelected && styles.checkboxSelected]}>
-                    {isSelected && <Text style={styles.checkmark}>✓</Text>}
+                  <View style={[styles.radioButton, isSelected && styles.radioButtonSelected]}>
+                    {isSelected && <View style={styles.radioButtonInner} />}
                   </View>
                 </View>
               </TouchableOpacity>
@@ -138,23 +133,23 @@ const styles = StyleSheet.create({
     fontFamily: fontFamily.bodySemiBold,
     color: colors.iron.dark,
   },
-  checkbox: {
+  radioButton: {
     width: 20,
     height: 20,
-    borderRadius: 4,
+    borderRadius: 10,
     borderWidth: 2,
     borderColor: colors.gold.main,
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: spacing.md,
   },
-  checkboxSelected: {
-    backgroundColor: colors.gold.dark,
+  radioButtonSelected: {
     borderColor: colors.gold.dark,
   },
-  checkmark: {
-    fontSize: fontSize.xs,
-    color: colors.parchment.primary,
-    fontFamily: fontFamily.bodySemiBold,
+  radioButtonInner: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: colors.gold.dark,
   },
 });
