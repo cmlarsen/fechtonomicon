@@ -4,6 +4,8 @@
 *Scope: illustrating each term (guards, cuts, techniques) with public-domain historical folios, licensed images, commissioned diagrams, and embedded video. Meyer 1570 / Fiore c.1409 / Vadi c.1480s.*
 
 > **Legal note:** This report is legally precise but is not legal advice. It flags jurisdictional nuance and never claims something is "always legal." Before shipping, have a qualified IP attorney sign off on the sourcing manifest for the specific images you commit — especially because Fechtonomicon is a **commercial** (paid + monetized) app, which narrows what you may use.
+>
+> For a focused, contributor-facing compliance reference (license matrix, source rights cheat-sheet, per-image checklist, provenance manifest), see [`IMAGE_LICENSING_AND_ATTRIBUTION.md`](./IMAGE_LICENSING_AND_ATTRIBUTION.md).
 
 ---
 
