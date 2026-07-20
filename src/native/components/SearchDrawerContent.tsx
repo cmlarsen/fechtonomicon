@@ -3,6 +3,7 @@ import React, { useCallback } from 'react';
 import { Keyboard, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { TermsList } from '../../components/terms/TermsList';
+import { TermsSearchBar } from '../../components/terms/TermsSearchBar';
 import { useTermsSearch } from '../../contexts/TermsSearchContext';
 import { useFilteredCards } from '../../hooks/useFilteredCards';
 import { colors } from '../../theme/tokens';
@@ -10,7 +11,7 @@ import type { Term } from '../../types/term';
 import { DisciplineSelector } from './DisciplineSelector';
 
 export const SearchDrawerContent: React.FC<DrawerContentComponentProps> = ({ navigation }) => {
-  const { searchQuery } = useTermsSearch();
+  const { searchQuery, setSearchQuery } = useTermsSearch();
   const { filteredAndSortedCards } = useFilteredCards();
   const insets = useSafeAreaInsets();
 
@@ -26,10 +27,22 @@ export const SearchDrawerContent: React.FC<DrawerContentComponentProps> = ({ nav
     [navigation]
   );
 
+  const handleClearSearch = useCallback(() => {
+    setSearchQuery('');
+  }, [setSearchQuery]);
+
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
       <View style={styles.topSection}>
         <DisciplineSelector />
+      </View>
+
+      <View style={styles.searchBarContainer}>
+        <TermsSearchBar
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+          onClearSearch={handleClearSearch}
+        />
       </View>
 
       <View style={styles.listContainer}>
@@ -52,7 +65,10 @@ const styles = StyleSheet.create({
     backgroundColor: colors.parchment.primary,
   },
   topSection: {},
-  searchBarContainer: {},
+  searchBarContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   listContainer: {
     flex: 1,
   },
