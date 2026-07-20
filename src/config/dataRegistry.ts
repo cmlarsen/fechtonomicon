@@ -52,6 +52,13 @@ export const DATA_REGISTRY: readonly DataSetConfig[] = [
     dataFile: 'vadi-longsword-data.json',
     idPrefix: 'vadi.long.',
   },
+  {
+    id: 'capoferro-rapier',
+    name: 'Capo Ferro Rapier',
+    description: "Ridolfo Capo Ferro's Italian rapier system from the Gran Simulacro (1610)",
+    dataFile: 'capoferro-rapier-data.json',
+    idPrefix: 'capoferro.rapier.',
+  },
 ] as const;
 
 /**

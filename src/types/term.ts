@@ -1,4 +1,8 @@
-export type Discipline = 'italian-longsword' | 'german-longsword' | 'vadi-longsword';
+export type Discipline =
+  | 'italian-longsword'
+  | 'german-longsword'
+  | 'vadi-longsword'
+  | 'capoferro-rapier';
 
 export interface DisciplineInfo {
   name: string;
@@ -21,6 +25,11 @@ export const DISCIPLINE_INFO: Record<Discipline, DisciplineInfo> = {
     name: 'Vadi Longsword',
     shortName: 'Vadi LS',
     color: '#6B4423',
+  },
+  'capoferro-rapier': {
+    name: 'Capo Ferro Rapier',
+    shortName: 'Capo Ferro',
+    color: '#34556B',
   },
 };
 

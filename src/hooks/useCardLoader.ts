@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import capoferroData from '../../assets/data/capoferro-rapier-data.json';
 import germanData from '../../assets/data/german-longsword-data.json';
 import italianData from '../../assets/data/italian-longsword-data.json';
 import vadiData from '../../assets/data/vadi-longsword-data.json';
@@ -31,6 +32,7 @@ const DATA_FILE_MAP: Record<string, DataFile> = {
   'italian-longsword-data.json': italianData as DataFile,
   'german-longsword-data.json': germanData as DataFile,
   'vadi-longsword-data.json': vadiData as DataFile,
+  'capoferro-rapier-data.json': capoferroData as DataFile,
 };
 
 export const useCardLoader = () => {

@@ -32,6 +32,10 @@ const DATA_SETS = [
     idPrefix: 'vadi.long.',
     dataFile: 'assets/data/vadi-longsword-data.json',
   },
+  {
+    idPrefix: 'capoferro.rapier.',
+    dataFile: 'assets/data/capoferro-rapier-data.json',
+  },
 ] as const;
 
 const getDataFilePath = (cardId: string): string => {

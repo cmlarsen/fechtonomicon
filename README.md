@@ -263,7 +263,7 @@ The iOS widget communicates with the React Native app via:
 - [ ] Android support
 - [x] Web support
 - [ ] Quiz system
-- [ ] Additional disciplines (Rapier, Sword & Buckler, etc.)
+- [x] Rapier (Ridolfo Capo Ferro); more disciplines (Sword & Buckler, etc.) to come
 - [ ] Image support for flashcards
 - [ ] Spaced repetition system
 - [ ] Progress statistics
@@ -285,5 +285,5 @@ MIT License - see LICENSE file for details
 
 ## Acknowledgments
 
-- Flashcard content based on Joachim Meyer's teachings
+- Flashcard content based on the teachings of Joachim Meyer, Fiore dei Liberi, Filippo Vadi, and Ridolfo Capo Ferro
 - [Wiktenauer](https://wiktenauer.com) for HEMA source materials
