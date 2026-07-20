@@ -1,6 +1,6 @@
 import { NativeModules, Platform } from 'react-native';
 
-import { Term } from '../types/term';
+import { DISCIPLINE_INFO, Term } from '../types/term';
 
 interface WidgetBridge {
   updateWidgetData: (cardData: string) => Promise<void>;
@@ -10,6 +10,27 @@ interface WidgetBridge {
 
 const WidgetBridge: WidgetBridge | null = Platform.OS === 'ios' ? NativeModules.WidgetBridge : null;
 
+interface WidgetTerm {
+  id: string;
+  term: string;
+  translation: string;
+  description: string;
+  discipline: string;
+}
+
+/**
+ * Maps a card to the shape the iOS widget expects. The widget's `discipline`
+ * field must carry the card's discipline (e.g. "German Longsword"), not its
+ * weapon — previously this sent `card.weapon`, which is always "longsword".
+ */
+export const toWidgetTerm = (card: Term): WidgetTerm => ({
+  id: card.id,
+  term: card.originalTerm,
+  translation: card.englishTerm,
+  description: card.briefDescription || '',
+  discipline: card.discipline ? (DISCIPLINE_INFO[card.discipline]?.name ?? '') : '',
+});
+
 export const widgetService = {
   async updateWidget(card: Term): Promise<void> {
     if (!WidgetBridge) {
@@ -18,13 +39,7 @@ export const widgetService = {
     }
 
     try {
-      const widgetData = JSON.stringify({
-        id: card.id,
-        term: card.originalTerm,
-        translation: card.englishTerm,
-        description: card.briefDescription || '',
-        discipline: card.weapon,
-      });
+      const widgetData = JSON.stringify(toWidgetTerm(card));
 
       await WidgetBridge.updateWidgetData(widgetData);
       await WidgetBridge.reloadWidget();
@@ -42,13 +57,7 @@ export const widgetService = {
 
     try {
       // Simplify data to reduce size
-      const simplifiedCards = cards.map(card => ({
-        id: card.id,
-        term: card.originalTerm,
-        translation: card.englishTerm,
-        description: card.briefDescription || '',
-        discipline: card.weapon,
-      }));
+      const simplifiedCards = cards.map(toWidgetTerm);
 
       const jsonString = JSON.stringify(simplifiedCards);
 
