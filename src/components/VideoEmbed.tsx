@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  Linking,
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  useWindowDimensions,
-  View,
-} from 'react-native';
+import { Linking, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import { borderRadius, colors, fontFamily, fontSize, spacing } from '../theme/tokens';
 import type { VideoLink } from '../types/term';
@@ -23,8 +15,6 @@ const extractYouTubeVideoId = (url: string): string | null => {
 };
 
 export const VideoEmbed: React.FC<VideoEmbedProps> = ({ videoLink }) => {
-  const { width } = useWindowDimensions();
-  const _videoHeight = Math.round(width * (9 / 16));
   const [playing, setPlaying] = React.useState(false);
 
   const handleOpenVideo = React.useCallback(() => {
