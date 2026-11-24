@@ -6,7 +6,9 @@
     {
       "id": "meyer1570.long.vom_tag",
       "category": "guard",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Vom Tag",
       "englishTerm": "From the Roof",
@@ -18,7 +20,9 @@
     {
       "id": "meyer1570.long.alber",
       "category": "guard",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Alber",
       "englishTerm": "Fool",
@@ -30,7 +34,9 @@
     {
       "id": "meyer1570.long.ochs",
       "category": "guard",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Ochs",
       "englishTerm": "Ox",
@@ -42,7 +48,9 @@
     {
       "id": "meyer1570.long.pflug",
       "category": "guard",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Pflug",
       "englishTerm": "Plow",
@@ -54,7 +62,9 @@
     {
       "id": "meyer1570.long.langort",
       "category": "guard",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Langort",
       "englishTerm": "Long Point",
@@ -66,7 +76,9 @@
     {
       "id": "meyer1570.long.eisenport",
       "category": "guard",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Eisenport",
       "englishTerm": "Iron Gate",
@@ -78,7 +90,9 @@
     {
       "id": "meyer1570.long.hengetort",
       "category": "guard",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Hengetort",
       "englishTerm": "Hanging Point",
@@ -90,7 +104,9 @@
     {
       "id": "meyer1570.long.sprechfenster",
       "category": "guard",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Sprechfenster",
       "englishTerm": "Speaking Window",
@@ -102,7 +118,9 @@
     {
       "id": "meyer1570.long.schluessel",
       "category": "guard",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Schlüssel",
       "englishTerm": "Key",
@@ -114,7 +132,9 @@
     {
       "id": "meyer1570.long.einhorn",
       "category": "guard",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Einhorn",
       "englishTerm": "Unicorn",
@@ -126,7 +146,9 @@
     {
       "id": "meyer1570.long.nebenhut",
       "category": "guard",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Nebenhut",
       "englishTerm": "Side Guard",
@@ -138,7 +160,9 @@
     {
       "id": "meyer1570.long.schrankhut",
       "category": "guard",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Schrankhut",
       "englishTerm": "Barrier Guard",
@@ -150,7 +174,9 @@
     {
       "id": "meyer1570.long.zornhut",
       "category": "guard",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Zornleger / Zornhut",
       "englishTerm": "Wrath Guard",
@@ -162,7 +188,9 @@
     {
       "id": "meyer1570.long.zornhau",
       "category": "strike",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Zornhau",
       "englishTerm": "Wrath Cut",
@@ -180,7 +208,9 @@
     {
       "id": "meyer1570.long.krumphau",
       "category": "strike",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Krumphau",
       "englishTerm": "Crooked Cut",
@@ -192,7 +222,9 @@
     {
       "id": "meyer1570.long.zwerchhau",
       "category": "strike",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Zwerchhau",
       "englishTerm": "Thwart Cut",
@@ -210,7 +242,9 @@
     {
       "id": "meyer1570.long.scheitelhau",
       "category": "strike",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Scheitelhau",
       "englishTerm": "Scalp Cut",
@@ -222,7 +256,9 @@
     {
       "id": "meyer1570.long.schielhau",
       "category": "strike",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Schielhau",
       "englishTerm": "Squinting Cut",
@@ -234,7 +270,9 @@
     {
       "id": "meyer1570.long.prellhau",
       "category": "strike",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Prellhau",
       "englishTerm": "Rebound Cut",
@@ -246,7 +284,9 @@
     {
       "id": "meyer1570.long.sturzhau",
       "category": "strike",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Sturzhau",
       "englishTerm": "Plunge Cut",
@@ -258,7 +298,9 @@
     {
       "id": "meyer1570.long.blendhau",
       "category": "strike",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Blendhau",
       "englishTerm": "Blind Cut",
@@ -270,7 +312,9 @@
     {
       "id": "meyer1570.long.glutzhau",
       "category": "strike",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Glützhau",
       "englishTerm": "Glancing Cut",
@@ -282,7 +326,9 @@
     {
       "id": "meyer1570.long.kronhau",
       "category": "strike",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Kronhau",
       "englishTerm": "Crown Cut",
@@ -294,7 +340,9 @@
     {
       "id": "meyer1570.long.wechselhau",
       "category": "strike",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Wechselhau",
       "englishTerm": "Change Cut",
@@ -306,7 +354,9 @@
     {
       "id": "meyer1570.long.kurzhau",
       "category": "strike",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Kurzhau",
       "englishTerm": "Short Cut",
@@ -318,7 +368,9 @@
     {
       "id": "meyer1570.long.winden",
       "category": "handwork",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Winden",
       "englishTerm": "Winding",
@@ -330,7 +382,9 @@
     {
       "id": "meyer1570.long.binden",
       "category": "handwork",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Binden",
       "englishTerm": "Binding",
@@ -342,7 +396,9 @@
     {
       "id": "meyer1570.long.absetzen",
       "category": "handwork",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Absetzen",
       "englishTerm": "Setting-off",
@@ -354,7 +410,9 @@
     {
       "id": "meyer1570.long.durchwechseln",
       "category": "handwork",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Durchwechseln",
       "englishTerm": "Changing-through",
@@ -366,7 +424,9 @@
     {
       "id": "meyer1570.long.abnehmen",
       "category": "handwork",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Abnehmen",
       "englishTerm": "Taking-off",
@@ -378,7 +438,9 @@
     {
       "id": "meyer1570.long.zucken",
       "category": "handwork",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Zucken",
       "englishTerm": "Pulling/Twitching-off",
@@ -390,7 +452,9 @@
     {
       "id": "meyer1570.long.duplieren",
       "category": "handwork",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Duplieren",
       "englishTerm": "Doubling",
@@ -402,7 +466,9 @@
     {
       "id": "meyer1570.long.mutieren",
       "category": "handwork",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Mutieren",
       "englishTerm": "Mutating",
@@ -414,7 +480,9 @@
     {
       "id": "meyer1570.long.abschneiden",
       "category": "handwork",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Abschneiden",
       "englishTerm": "Slicing-off",
@@ -426,19 +494,23 @@
     {
       "id": "meyer1570.long.ablaufen",
       "category": "handwork",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Ablaufen",
       "englishTerm": "Running-off",
       "briefDescription": "A handwork in which, from the bind, you reverse your hand and let your blade run off downward with the short edge while pulling your hilt up into a fresh strike—done to either side.",
-      "fullDescription": "From a bind on either side, as the blades clash, turn (reverse) your hand and let your blade run off downward along the short (half) edge, so it slips off your opponent's blade instead of pressing or fighting for the bind. In the same motion, pull (zuck) your hilt up high into a new strike. The blade 'runs off' downward and around while your hilt rises, so that leaving the bind and loading the next blow are one continuous action. This can be done from both sides.\n\nThe motion is smooth and flowing rather than a hard shove or a dead disengage: your blade sinks and runs off their steel while your hands rotate the hilt upward. As your blade clears theirs, you are already gathering the strike from above. Keep your body engaged and let footwork support the new line.",
+      "fullDescription": "When your blade is in contact with your opponent's, rotate your sword around the axis of your hilt, causing your blade to slip off or flow around their blade. The motion involves turning your hands/hilt while your blade arcs around this central pivot point. Your blade essentially 'runs off' or 'flows off' their blade rather than maintaining pressure or pushing through. The technique can involve your blade sliding down around the hilt—picture your blade rotating downward and around like water flowing off and around an obstacle.\n\nYour hands may make a small circular motion, or you might maintain hand position while rotating the blade through wrist and forearm action. The key is the flowing, continuous quality rather than a sharp disengagement. As you execute Ablaufen, your blade clears their blade and often repositions to a new line or angle. Your body may step or shift to support the new angle. The motion should feel smooth and flowing rather than jerky or forced. F",
       "fullApplication": "Use Ablauffen when a bind offers you nothing to push against—or when meeting your opponent's strength directly is a poor bargain—so instead of fighting for the bind you let your blade run off downward and pull your hilt up to strike anew. Rather than staying to wrestle in the bind, you flow off their blade and reload a stroke from above in the same tempo.\n\nThis is standard handwork in Meyer's middle, not a last resort: it is a way to leave a bind that has stalled and immediately threaten again from a fresh angle, keeping the initiative. Because your blade runs off downward as your hilt rises, you are never simply retreating—the disengage itself becomes the wind-up for your next strike.\n\nPractice running off to both sides, keeping the motion smooth so you are not exposed during the transition and your rising strike arrives quickly. Use it whenever a bind gives poor options: reverse the hand, let the blade run off below, pull the hilt high, and strike.",
       "briefApplication": "Use Ablauffen to leave a stalled bind offensively: reverse your hand, let your blade run off downward, and pull your hilt up to strike anew."
     },
     {
       "id": "meyer1570.long.verkehren",
       "category": "handwork",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Verkehren",
       "englishTerm": "Reversing",
@@ -450,7 +522,9 @@
     {
       "id": "meyer1570.long.wechselhut",
       "category": "guard",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Wechsel",
       "englishTerm": "Change Guard",
@@ -463,7 +537,9 @@
     {
       "id": "meyer1570.long.oberhau",
       "category": "strike",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Oberhau",
       "englishTerm": "High Cut",
@@ -476,7 +552,9 @@
     {
       "id": "meyer1570.long.unterhau",
       "category": "strike",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Unterhau",
       "englishTerm": "Low Cut",
@@ -489,7 +567,9 @@
     {
       "id": "meyer1570.long.mittelhau",
       "category": "strike",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Mittelhau",
       "englishTerm": "Middle Cut",
@@ -502,7 +582,9 @@
     {
       "id": "meyer1570.long.stich",
       "category": "strike",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Stich",
       "englishTerm": "Thrust",
@@ -515,7 +597,9 @@
     {
       "id": "meyer1570.long.schnitt",
       "category": "strike",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Schnitt",
       "englishTerm": "Slice",
@@ -528,7 +612,9 @@
     {
       "id": "meyer1570.long.versetzen",
       "category": "parry",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Versetzen",
       "englishTerm": "Displacement",
@@ -541,7 +627,9 @@
     {
       "id": "meyer1570.long.nachreisen",
       "category": "concept",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Nachreisen",
       "englishTerm": "Traveling After",
@@ -554,7 +642,9 @@
     {
       "id": "meyer1570.long.berlaufen",
       "category": "technique",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Überlaufen",
       "englishTerm": "Overrunning",
@@ -567,7 +657,9 @@
     {
       "id": "meyer1570.long.f_hlen",
       "category": "concept",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Fühlen",
       "englishTerm": "Feeling",
@@ -580,7 +672,9 @@
     {
       "id": "meyer1570.long.durchlaufen",
       "category": "technique",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Durchlaufen",
       "englishTerm": "Running Through",
@@ -593,7 +687,9 @@
     {
       "id": "meyer1570.long.ansetzen",
       "category": "technique",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Ansetzen",
       "englishTerm": "Setting On",
@@ -606,7 +702,9 @@
     {
       "id": "meyer1570.long.vor",
       "category": "timing",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Vor",
       "englishTerm": "Before (Initiative)",
@@ -619,7 +717,9 @@
     {
       "id": "meyer1570.long.nach",
       "category": "timing",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Nach",
       "englishTerm": "After",
@@ -632,7 +732,9 @@
     {
       "id": "meyer1570.long.indes",
       "category": "timing",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Indes",
       "englishTerm": "In the Instant",
@@ -645,7 +747,9 @@
     {
       "id": "meyer1570.long.hart",
       "category": "concept",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Hart",
       "englishTerm": "Hard/Strong",
@@ -658,7 +762,9 @@
     {
       "id": "meyer1570.long.weich",
       "category": "concept",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Weich",
       "englishTerm": "Soft/Weak",
@@ -671,7 +777,9 @@
     {
       "id": "meyer1570.long.zufechten",
       "category": "concept",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Zufechten",
       "englishTerm": "Onset",
@@ -684,7 +792,9 @@
     {
       "id": "meyer1570.long.handarbeit",
       "category": "concept",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Handarbeit",
       "englishTerm": "Handwork",
@@ -697,7 +807,9 @@
     {
       "id": "meyer1570.long.vier_blossen",
       "category": "concept",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Vier Blößen",
       "englishTerm": "Four Openings",
@@ -709,7 +821,9 @@
     {
       "id": "meyer1570.long.krieg",
       "category": "concept",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Krieg",
       "englishTerm": "War",
@@ -721,7 +835,9 @@
     {
       "id": "meyer1570.long.abzug",
       "category": "concept",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Abzug",
       "englishTerm": "Withdrawal",
@@ -734,7 +850,9 @@
     {
       "id": "meyer1570.long.ringen_am_schwert",
       "category": "technique",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Ringen am Schwert",
       "englishTerm": "Wrestling at the Sword",
@@ -747,7 +865,9 @@
     {
       "id": "meyer1570.long.schwertnehmen",
       "category": "technique",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Schwertnehmen",
       "englishTerm": "Sword-taking",
@@ -760,7 +880,9 @@
     {
       "id": "meyer1570.long.kurze_schneide",
       "category": "blade part",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Kurze Schneide",
       "englishTerm": "Short Edge (False Edge)",
@@ -773,7 +895,9 @@
     {
       "id": "meyer1570.long.lange_schneide",
       "category": "blade part",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Lange Schneide",
       "englishTerm": "Long Edge (True Edge)",
@@ -786,7 +910,9 @@
     {
       "id": "meyer1570.long.ort",
       "category": "blade part",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Ort",
       "englishTerm": "Point",
@@ -799,7 +925,9 @@
     {
       "id": "meyer1570.long.staerke",
       "category": "blade part",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Stärke",
       "englishTerm": "Strong (Forte)",
@@ -811,7 +939,9 @@
     {
       "id": "meyer1570.long.schwaeche",
       "category": "blade part",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Schwäche",
       "englishTerm": "Weak (Foible)",
@@ -823,7 +953,9 @@
     {
       "id": "meyer1570.long.kreuz",
       "category": "blade part",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Kreuz",
       "englishTerm": "Cross (Crossguard / Hilt)",
@@ -835,7 +967,9 @@
     {
       "id": "meyer1570.long.knopf",
       "category": "blade part",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Knopf",
       "englishTerm": "Pommel",
@@ -847,7 +981,9 @@
     {
       "id": "meyer1570.long.fehlen",
       "category": "technique",
-      "master": ["Joachim Meyer"],
+      "master": [
+        "Joachim Meyer"
+      ],
       "weapon": "longsword",
       "originalTerm": "Fehlen",
       "englishTerm": "Feint (Missing)",
